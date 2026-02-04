@@ -1,4 +1,5 @@
 [package]
+autobins = false
 name = "lambda-calculus-eval"
 version = "0.1.0"
 edition = "2021"

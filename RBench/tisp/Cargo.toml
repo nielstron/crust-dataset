@@ -1,4 +1,5 @@
 [package]
+autobins = false
 name = "tisp_proj"
 version = "0.1.0"
 edition = "2024"

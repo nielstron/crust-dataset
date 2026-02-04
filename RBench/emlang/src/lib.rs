@@ -6,10 +6,10 @@ pub mod stack;
 
 pub mod utils;
 
-pub fn parse(path: &str) -> em::Program {
+pub fn parse(_path: &str) {
     unimplemented!()
 }
 
-pub fn usage(path: &str) {
+pub fn usage(_path: &str) {
     unimplemented!()
 }
