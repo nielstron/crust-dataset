@@ -71,7 +71,12 @@ impl RegexMatcherState {
         }
     }
 }
-pub fn regex_parse(pattern: &str, tokens: &mut Vec<RegexToken>, token_count: &mut i16, flags: i32) -> Result<(), i32> {
+pub fn regex_parse(
+    pattern: &str,
+    tokens: &mut Vec<RegexToken>,
+    token_count: &mut i16,
+    flags: i32,
+) -> Result<(), i32> {
     unimplemented!()
 }
 #[derive(Debug, Clone, Copy)]
@@ -83,12 +88,14 @@ enum State {
     CharClassNormal,
     CharClassRange,
 }
-pub fn regex_match(tokens: &[RegexToken],
+pub fn regex_match(
+    tokens: &[RegexToken],
     text: &str,
     start_i: usize,
     cap_slots: u16,
     cap_pos: &mut [i64],
-    cap_span: &mut [i64]) -> Option<usize> {
+    cap_span: &mut [i64],
+) -> Option<usize> {
     unimplemented!()
 }
 pub fn print_regex_tokens(tokens: &[RegexToken]) {

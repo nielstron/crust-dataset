@@ -174,4 +174,4 @@ fn test_cube_functions() {
     // Test find_entropy (expected entropy 25 for original)
     assert_eq!(find_entropy(&original), 25);
 }
-pub fn main(){}
+pub fn main() {}

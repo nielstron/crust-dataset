@@ -1,5 +1,5 @@
 //! Base122 encoder/decoder
-//! 
+//!
 //! Base122 is a binary-to-text encoding scheme that avoids certain illegal characters
 //! such as null, newline, carriage return, double quote, ampersand, and backslash.
 use std::error::Error;
@@ -76,12 +76,20 @@ pub fn encode(input: &[u8]) -> Result<Vec<u8>, Base122Error> {
     unimplemented!()
 }
 /// Internal function to perform the encoding
-fn encode_internal(input: &[u8], mut output: Option<&mut [u8]>, out_written: &mut usize) -> Result<(), Base122Error> {
+fn encode_internal(
+    input: &[u8],
+    mut output: Option<&mut [u8]>,
+    out_written: &mut usize,
+) -> Result<(), Base122Error> {
     unimplemented!()
 }
 /// Write the last 7 bits of byteVal for decoding.
 /// Returns an error if byteVal has 1 bits exceeding the last byte boundary.
-fn write_last_7(writer: &mut BitWriter, byte_val: u8, error: &mut Base122Error) -> Result<(), Base122Error> {
+fn write_last_7(
+    writer: &mut BitWriter,
+    byte_val: u8,
+    error: &mut Base122Error,
+) -> Result<(), Base122Error> {
     unimplemented!()
 }
 /// Decode Base122 encoded data to binary
@@ -98,6 +106,10 @@ pub fn decode(input: &[u8]) -> Result<Vec<u8>, Base122Error> {
     unimplemented!()
 }
 /// Internal function to perform the decoding
-fn decode_internal(input: &[u8], writer: &mut BitWriter, out_written: &mut usize) -> Result<(), Base122Error> {
+fn decode_internal(
+    input: &[u8],
+    writer: &mut BitWriter,
+    out_written: &mut usize,
+) -> Result<(), Base122Error> {
     unimplemented!()
 }

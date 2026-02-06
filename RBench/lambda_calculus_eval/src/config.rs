@@ -15,19 +15,19 @@ pub enum option_type_t {
     CONFIG_ERROR,
 }
 pub struct Options {
-pub file: File,
-pub step_by_step_reduction: bool,
-pub reduction_order: reduction_order_t,
+    pub file: File,
+    pub step_by_step_reduction: bool,
+    pub reduction_order: reduction_order_t,
 }
 pub fn trim(str: &mut String) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn get_config_type(key: &str) -> option_type_t {
-unimplemented!()
+    unimplemented!()
 }
 pub fn parse_config(line: &str, key: &mut String, value: &mut String) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn get_config_from_file() -> Options {
-unimplemented!()
+    unimplemented!()
 }

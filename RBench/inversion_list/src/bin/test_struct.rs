@@ -7,4 +7,4 @@ fn test() {
     // for memory layout in Rust.
     println!("test_struct: no equivalent Rust test for struct layout.");
 }
-fn main(){}
+fn main() {}

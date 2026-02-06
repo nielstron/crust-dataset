@@ -1,7 +1,7 @@
-use std::f32::consts::PI;
-use std::collections::HashMap;
-use std::sync::Arc;
 use lazy_static::lazy_static;
+use std::collections::HashMap;
+use std::f32::consts::PI;
+use std::sync::Arc;
 #[derive(Clone, Copy, Debug)]
 pub enum MapperSignalValue {
     F(f32),
@@ -9,7 +9,7 @@ pub enum MapperSignalValue {
 }
 impl MapperSignalValue {
     pub fn as_f32(&self) -> Option<f32> {
-       unimplemented!() 
+        unimplemented!()
     }
     pub fn as_i32(&self) -> Option<i32> {
         unimplemented!()
@@ -130,17 +130,17 @@ struct Token {
 fn function_lookup(s: &str) -> Option<&'static FunctionEntry> {
     unimplemented!();
 }
-fn expr_lex(s: Vec<&str>) -> Vec<Token>{
+fn expr_lex(s: Vec<&str>) -> Vec<Token> {
     unimplemented!();
 }
-pub struct ExprNode{
+pub struct ExprNode {
     pub tok: Token,
     pub is_float: i32,
     pub history_index: i32,
     pub vector_index: i32,
     pub next: Option<Arc<ExprNode>>,
 }
-pub struct MapperExpr{
+pub struct MapperExpr {
     pub node: ExprNode,
     pub vector_size: i32,
     pub history_size: i32,
@@ -148,7 +148,7 @@ pub struct MapperExpr{
     pub input_history: Vec<MapperSignalValue>,
     pub output_history: Vec<MapperSignalValue>,
 }
-pub enum state_t{
+pub enum state_t {
     YEQUAL_Y,
     YEQUAL_EQ,
     EXPR,
@@ -171,36 +171,40 @@ enum stack_obj_t {
     State(state_t),
     Node(ExprNode),
 }
-impl ExprNode{
-    pub fn new() -> ExprNode{
+impl ExprNode {
+    pub fn new() -> ExprNode {
         unimplemented!();
     }
-    pub fn expr_free(&self){
+    pub fn expr_free(&self) {
         unimplemented!();
     }
 }
-fn printtoken(t: &Token){
+fn printtoken(t: &Token) {
     unimplemented!();
 }
-fn printexprnode(s: &str, list: &ExprNode){
+fn printexprnode(s: &str, list: &ExprNode) {
     unimplemented!();
 }
-fn printexpr(s: &str, list: &MapperExpr){
+fn printexpr(s: &str, list: &MapperExpr) {
     unimplemented!();
 }
-fn printstack(stack: &stack_obj_t, stack_size: i32){
+fn printstack(stack: &stack_obj_t, stack_size: i32) {
     unimplemented!();
 }
-fn collapse_expr_to_left(plhs: &mut ExprNode, constant_folding: i32){
+fn collapse_expr_to_left(plhs: &mut ExprNode, constant_folding: i32) {
     unimplemented!();
 }
-pub fn mapper_expr_new_from_string(s: &str, 
-                                input_is_float: i32,
-                                output_is_float: i32,
-                                vector_size: i32)-> MapperExpr{
+pub fn mapper_expr_new_from_string(
+    s: &str,
+    input_is_float: i32,
+    output_is_float: i32,
+    vector_size: i32,
+) -> MapperExpr {
     unimplemented!();
 }
-pub fn mapper_expr_evaluate<'a>(mapper: &mut MapperExpr, 
-                         input: &'a MapperSignalValue) -> MapperSignalValue{
+pub fn mapper_expr_evaluate<'a>(
+    mapper: &mut MapperExpr,
+    input: &'a MapperSignalValue,
+) -> MapperSignalValue {
     unimplemented!();
 }

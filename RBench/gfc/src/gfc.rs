@@ -13,8 +13,8 @@ fn round(x: &mut u32, y: &mut u32, k: u32) {
 }
 #[derive(Debug)]
 pub struct GFC {
-    m: u64,       // Range
-    r: u64,       // Number of Feistel rounds
+    m: u64, // Range
+    r: u64, // Number of Feistel rounds
     a: u64,
     b: u64,
     speck_exp: Vec<u32>,

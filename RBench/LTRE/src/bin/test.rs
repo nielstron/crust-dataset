@@ -1,5 +1,5 @@
-use LTRE::ltre::*;
 use std::fmt::Write;
+use LTRE::ltre::*;
 
 #[derive(Debug)]
 struct Test {
@@ -1265,4 +1265,4 @@ typedef|union|unsigned|void|volatile|while|_Bool|_Complex|_Imaginary)";
 
     println!("All done!");
 }
-fn main(){}
+fn main() {}

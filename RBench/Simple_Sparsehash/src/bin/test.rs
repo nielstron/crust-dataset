@@ -1,5 +1,5 @@
-use Simple_Sparsehash::simple_sparsehash;
 use std::convert::TryInto;
+use Simple_Sparsehash::simple_sparsehash;
 
 // --- Helper function ---
 /// Converts an i32 into a byte slice.
@@ -300,4 +300,4 @@ fn test_dict_lots_of_set() {
 
     assert!(simple_sparsehash::sparse_dict_free(dict) != 0);
 }
-fn main(){}
+fn main() {}

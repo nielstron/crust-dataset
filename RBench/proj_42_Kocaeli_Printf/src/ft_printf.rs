@@ -8,7 +8,7 @@ pub const LOCATION: i32 = 2;
 pub fn writeuint(n: u64, len: &mut i32) -> i32 {
     unimplemented!()
 }
-pub fn format(args:&[Box<dyn Any>], c: char, len: &mut i32) -> i32 {
+pub fn format(args: &[Box<dyn Any>], c: char, len: &mut i32) -> i32 {
     unimplemented!()
 }
 pub fn writechar(c: char, len: &mut i32) -> i32 {

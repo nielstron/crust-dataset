@@ -7,7 +7,7 @@ const SPLASH_TOKEN: char = '/';
 pub struct XMLElement {
     pub tag_name: String,
     pub value: String,
-    pub parent: (),                   
+    pub parent: (),
     pub children: Vector<XMLElement>, // owns children
 }
 
@@ -44,7 +44,7 @@ pub struct StackElement {
 
 impl StackElement {
     pub fn new(element: XMLElement, depth: usize) -> Self {
-        unimplemented!() 
+        unimplemented!()
     }
     pub fn release(&mut self) {
         unimplemented!()

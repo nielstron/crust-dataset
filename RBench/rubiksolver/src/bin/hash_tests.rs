@@ -20,4 +20,4 @@ fn test_hash_insert_and_exists() {
     assert!(hash.delete(&"Hello", compare_equal_str));
     assert!(!hash.element_exists(&"Hello", compare_equal_str));
 }
-pub fn main(){}
+pub fn main() {}

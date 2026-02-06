@@ -1,10 +1,10 @@
-use std::fs::File;
-use std::io::{self, Read, Write};
-use crate::sr::Sr;
 use crate::bitset::BitSet;
 use crate::queue::Queue;
+use crate::sr::Sr;
 use crate::symt::SymTable;
 use std::collections::VecDeque;
+use std::fs::File;
+use std::io::{self, Read, Write};
 pub type State = u32;
 pub type Arc = u32;
 pub type Label = u32;
@@ -94,7 +94,14 @@ impl Fst {
     pub fn fread(&mut self, filename: &str) -> io::Result<()> {
         unimplemented!()
     }
-    pub fn compile(&mut self, fin: &mut File, ist: &SymTable, ost: &SymTable, sst: &SymTable, is_acc: bool) -> Self {
+    pub fn compile(
+        &mut self,
+        fin: &mut File,
+        ist: &SymTable,
+        ost: &SymTable,
+        sst: &SymTable,
+        is_acc: bool,
+    ) -> Self {
         unimplemented!()
     }
     pub fn compile_str(&mut self, str_data: &str) -> Self {
@@ -115,7 +122,13 @@ impl Fst {
     pub fn draw(&self, fout: &mut File) -> io::Result<i32> {
         unimplemented!()
     }
-    pub fn draw_sym(&self, fout: &mut File, ist: &SymTable, ost: &SymTable, sst: &SymTable) -> io::Result<i32> {
+    pub fn draw_sym(
+        &self,
+        fout: &mut File,
+        ist: &SymTable,
+        ost: &SymTable,
+        sst: &SymTable,
+    ) -> io::Result<i32> {
         unimplemented!()
     }
     pub fn copy(&self, copy: &mut Fst) {
@@ -140,18 +153,48 @@ impl Fst {
         unimplemented!()
     }
 }
-pub fn match_unsorted(a: &[ArcData], b: &[ArcData], m: Arc, n: Arc, q: &mut Queue<(ArcData, ArcData)>) {
+pub fn match_unsorted(
+    a: &[ArcData],
+    b: &[ArcData],
+    m: Arc,
+    n: Arc,
+    q: &mut Queue<(ArcData, ArcData)>,
+) {
     unimplemented!()
 }
-pub fn match_half_sorted(a: &[ArcData], b: &[ArcData], m: Arc, n: Arc, q: &mut Queue<(ArcData, ArcData)>) {
+pub fn match_half_sorted(
+    a: &[ArcData],
+    b: &[ArcData],
+    m: Arc,
+    n: Arc,
+    q: &mut Queue<(ArcData, ArcData)>,
+) {
     unimplemented!()
 }
-pub fn match_half_sorted_rev(a: &[ArcData], b: &[ArcData], m: Arc, n: Arc, q: &mut Queue<(ArcData, ArcData)>) {
+pub fn match_half_sorted_rev(
+    a: &[ArcData],
+    b: &[ArcData],
+    m: Arc,
+    n: Arc,
+    q: &mut Queue<(ArcData, ArcData)>,
+) {
     unimplemented!()
 }
-pub fn match_full_sorted(a: &[ArcData], b: &[ArcData], m: Arc, n: Arc, q: &mut Queue<(ArcData, ArcData)>) {
+pub fn match_full_sorted(
+    a: &[ArcData],
+    b: &[ArcData],
+    m: Arc,
+    n: Arc,
+    q: &mut Queue<(ArcData, ArcData)>,
+) {
     unimplemented!()
 }
-pub fn match_arcs(fst_a: &Fst, fst_b: &Fst, pair: &Spair, sr: &Sr, mq: &mut Queue<(ArcData, ArcData)>) {
+pub fn match_arcs(
+    fst_a: &Fst,
+    fst_b: &Fst,
+    pair: &Spair,
+    sr: &Sr,
+    mq: &mut Queue<(ArcData, ArcData)>,
+) {
     unimplemented!()
 }

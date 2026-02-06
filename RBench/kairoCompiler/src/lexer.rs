@@ -1,17 +1,15 @@
+use crate::buffer::{buffer_create, buffer_free, buffer_ptr, buffer_write, Buffer};
 use crate::compiler::{
-compiler_error, CompileProcess, Token, TOKEN_TYPE_NUMBER, TOKEN_TYPE_STRING, TOKEN_TYPE_KEYWORD,
-NUMBER_TYPE_LONG, NUMBER_TYPE_FLOAT, NUMBER_TYPE_NORMAL, LEXICAL_ANALYSIS_ALL_OK,
+    compiler_error, CompileProcess, Token, LEXICAL_ANALYSIS_ALL_OK, NUMBER_TYPE_FLOAT,
+    NUMBER_TYPE_LONG, NUMBER_TYPE_NORMAL, TOKEN_TYPE_KEYWORD, TOKEN_TYPE_NUMBER, TOKEN_TYPE_STRING,
 };
 use crate::lex_process::{LexProcess, LexProcessFunctions};
-use crate::vector::{vector_push, vector_pop};
-use crate::buffer::{
-buffer_create, buffer_write, buffer_ptr, buffer_free, Buffer,
-};
+use crate::vector::{vector_pop, vector_push};
 /// A global set of function pointers for reading from a CompileProcess.
 pub static COMPILER_LEX_FUNCTIONS: LexProcessFunctions = LexProcessFunctions {
-next_char: crate::cprocess::compile_process_next_char,
-peek_char: crate::cprocess::compile_process_peek_char,
-push_char: crate::cprocess::compile_process_push_char,
+    next_char: crate::cprocess::compile_process_next_char,
+    peek_char: crate::cprocess::compile_process_peek_char,
+    push_char: crate::cprocess::compile_process_push_char,
 };
 /// Returns true if we're inside an expression. Stub returns false for demonstration.
 fn lex_is_in_expression(_lex_process: &LexProcess) -> bool {
@@ -31,7 +29,7 @@ fn token_make_string(lex_process: &mut LexProcess, start_delim: char, end_delim:
 }
 /// If the next char is an operator or symbol, create that token.
 fn token_make_operator_or_symbol(lex_process: &mut LexProcess) -> Token {
-unimplemented!()
+    unimplemented!()
 }
 /// If the next char is alpha or '_', read an identifier or keyword (placeholder).
 fn token_make_identifier_or_keyword(lex_process: &mut LexProcess) -> Token {

@@ -1,6 +1,6 @@
 use std::fmt;
 #[derive(Debug, PartialEq, Eq)]
-pub enum tokens_t{
+pub enum tokens_t {
     L_PAREN,
     R_PAREN,
     LAMBDA,
@@ -12,40 +12,40 @@ pub enum tokens_t{
     EQ,
     QUOTE,
     COLON,
-} 
+}
 #[derive(Debug, PartialEq, Eq)]
 pub enum AstNodeType {
-LAMBDA_EXPR,
-APPLICATION,
-VAR,
-DEFINITION,
+    LAMBDA_EXPR,
+    APPLICATION,
+    VAR,
+    DEFINITION,
 }
 #[derive(Debug)]
 pub struct LambdaExpression {
-pub parameter: String,
-pub type_: String,
-pub body: Option<Box<AstNode>>,
+    pub parameter: String,
+    pub type_: String,
+    pub body: Option<Box<AstNode>>,
 }
 #[derive(Debug)]
 pub struct Application {
-pub function: Option<Box<AstNode>>,
-pub argument: Option<Box<AstNode>>,
+    pub function: Option<Box<AstNode>>,
+    pub argument: Option<Box<AstNode>>,
 }
 #[derive(Debug)]
 pub struct Variable {
-pub name: String,
-pub type_: String,
+    pub name: String,
+    pub type_: String,
 }
 #[derive(Debug)]
 pub enum AstNodeUnion {
-LambdaExpr(LambdaExpression),
-Application(Application),
-Variable(Variable),
+    LambdaExpr(LambdaExpression),
+    Application(Application),
+    Variable(Variable),
 }
 #[derive(Debug)]
 pub struct AstNode {
-pub type_: AstNodeType,
-pub node: AstNodeUnion,
+    pub type_: AstNodeType,
+    pub node: AstNodeUnion,
 }
 impl Default for AstNode {
     fn default() -> Self {
@@ -53,26 +53,26 @@ impl Default for AstNode {
     }
 }
 pub fn set_verbose(verbose: bool) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn print_ast_verbose(n: &AstNode) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn print_verbose(format: &str, args: fmt::Arguments) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn error(msg: &str, file: &str, line: i32, func: &str) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn format(fmt: &str, args: fmt::Arguments) -> String {
-unimplemented!()
+    unimplemented!()
 }
 pub fn append_to_buffer(buffer: &mut String, str: &str) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn append_ast_to_buffer(buffer: &mut String, node: &AstNode) {
-unimplemented!()
+    unimplemented!()
 }
 pub fn ast_to_string(node: &AstNode) -> String {
-unimplemented!()
+    unimplemented!()
 }

@@ -52,7 +52,7 @@ fn test_vec_swapsplice() {
 fn test_vec_insert() {
     let mut v: Vec<i32> = Vec::new();
     for i in 0..1000 {
-        vec::vec_insert(&mut v, 0,i);
+        vec::vec_insert(&mut v, 0, i);
     }
     let mut v_length = v.len();
     // print first 5 elements of the vector v
@@ -62,9 +62,9 @@ fn test_vec_insert() {
     assert_eq!(v[10], 123);
     assert_eq!(v.len(), 1001);
     v_length = v.len();
-    vec::vec_insert(&mut v, v_length - 2,678);
+    vec::vec_insert(&mut v, v_length - 2, 678);
     assert_eq!(v[999], 678);
-    assert_eq!(vec::vec_insert(&mut v, 10,123), 0);
+    assert_eq!(vec::vec_insert(&mut v, 10, 123), 0);
     v_length = v.len();
     vec::vec_insert(&mut v, v_length, 789);
     assert_eq!(v[v.len() - 1], 789);

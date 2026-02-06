@@ -1,5 +1,5 @@
-use crate::cards::Card;
 use crate::bucket;
+use crate::cards::Card;
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Copy, Clone)]
 pub enum HandType {
     InvalidHand,

@@ -24,5 +24,5 @@ pub fn compare_keys(k1: Key, k2: Key) -> std::cmp::Ordering {
 }
 /// Rehashes an existing hash value.
 pub fn rehash(h: Hash) -> Hash {
-   unimplemented!() 
+    unimplemented!()
 }

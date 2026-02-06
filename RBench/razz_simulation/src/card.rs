@@ -21,25 +21,81 @@ pub mod card {
     pub const R2_BITS: u32 = 2;
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardSuitRank {
-        SpadeAce, Spade2, Spade3, Spade4, Spade5, Spade6, Spade7, Spade8,
-        Spade9, Spade10, SpadeJ, SpadeQ, SpadeK,
-        HeartAce, Heart2, Heart3, Heart4, Heart5, Heart6, Heart7, Heart8,
-        Heart9, Heart10, HeartJ, HeartQ, HeartK,
-        DiamondAce, Diamond2, Diamond3, Diamond4, Diamond5, Diamond6,
-        Diamond7, Diamond8, Diamond9, Diamond10, DiamondJ, DiamondQ, DiamondK,
-        ClubAce, Club2, Club3, Club4, Club5, Club6, Club7, Club8, Club9,
-        Club10, ClubJ, ClubQ, ClubK,
+        SpadeAce,
+        Spade2,
+        Spade3,
+        Spade4,
+        Spade5,
+        Spade6,
+        Spade7,
+        Spade8,
+        Spade9,
+        Spade10,
+        SpadeJ,
+        SpadeQ,
+        SpadeK,
+        HeartAce,
+        Heart2,
+        Heart3,
+        Heart4,
+        Heart5,
+        Heart6,
+        Heart7,
+        Heart8,
+        Heart9,
+        Heart10,
+        HeartJ,
+        HeartQ,
+        HeartK,
+        DiamondAce,
+        Diamond2,
+        Diamond3,
+        Diamond4,
+        Diamond5,
+        Diamond6,
+        Diamond7,
+        Diamond8,
+        Diamond9,
+        Diamond10,
+        DiamondJ,
+        DiamondQ,
+        DiamondK,
+        ClubAce,
+        Club2,
+        Club3,
+        Club4,
+        Club5,
+        Club6,
+        Club7,
+        Club8,
+        Club9,
+        Club10,
+        ClubJ,
+        ClubQ,
+        ClubK,
         CardCount,
         InvalidCard,
     }
     impl CardSuitRank {
-        pub fn cardtostr(&self) ->  Option<String> {
+        pub fn cardtostr(&self) -> Option<String> {
             unimplemented!()
         }
     }
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardRank {
-        Ace, R2, R3, R4, R5, R6, R7, R8, R9, R10, J, Q, K,
+        Ace,
+        R2,
+        R3,
+        R4,
+        R5,
+        R6,
+        R7,
+        R8,
+        R9,
+        R10,
+        J,
+        Q,
+        K,
         RankCount,
         InvalidRank,
     }
@@ -53,12 +109,15 @@ pub mod card {
     }
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardSuit {
-        Spade, Heart, Diamond, Club,
+        Spade,
+        Heart,
+        Diamond,
+        Club,
         SuitCount,
         InvalidSuit,
     }
     pub struct Card {
-        card: u8
+        card: u8,
     }
     impl Card {
         pub fn write_card(csr: CardSuitRank) -> Self {
@@ -81,12 +140,12 @@ pub mod card {
         }
     }
     pub struct CardCollection {
-        prev: Option<Box<CardCollection>>, 
-        next: Option<Box<CardCollection>>, 
+        prev: Option<Box<CardCollection>>,
+        next: Option<Box<CardCollection>>,
         c: Option<Card>,
     }
     impl CardCollection {
-        pub fn insert_into_collection(self, c: Option<Card>, sorter: CardSorter) -> Self{
+        pub fn insert_into_collection(self, c: Option<Card>, sorter: CardSorter) -> Self {
             unimplemented!()
         }
         pub fn iterate_collection(&self) -> &Self {
@@ -100,9 +159,9 @@ pub mod card {
         }
     }
     pub struct CardHand {
-        max: u8, 
-        len: u8, 
-        sorter: CardSorter, 
+        max: u8,
+        len: u8,
+        sorter: CardSorter,
         cards: CardCollection,
     }
     impl CardHand {
@@ -130,12 +189,12 @@ pub mod card {
         pub fn remove_from_hand(&mut self, c: CardSuitRank) {
             unimplemented!();
         }
-        pub fn remove_from_hand_under_iter (&mut self, CardCollection: &CardCollection, pos: usize) {
+        pub fn remove_from_hand_under_iter(&mut self, CardCollection: &CardCollection, pos: usize) {
             unimplemented!()
         }
     }
     pub struct CardDeck {
-        card_count: u8, 
+        card_count: u8,
         cards: [Card; CardSuitRank::CardCount as usize],
     }
     impl CardDeck {
@@ -156,7 +215,11 @@ pub mod card {
     pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
         unimplemented!();
     }
-    pub fn sort_card_by_rank(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
+    pub fn sort_card_by_rank(
+        before: &Option<Card>,
+        new: &Option<Card>,
+        after: &Option<Card>,
+    ) -> i32 {
         unimplemented!();
     }
     #[derive(Debug, Clone, Copy)]

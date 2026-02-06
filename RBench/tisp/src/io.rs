@@ -1,22 +1,22 @@
-use crate::tisp::{Tsp, Val, Rec};
+use crate::tisp::{Rec, Tsp, Val};
 pub fn count_parens(s: &str, len: i32) -> i32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn read_file(fname: &str) -> String {
-unimplemented!()
+    unimplemented!()
 }
 pub fn prim_write(st: &mut Tsp, env: &mut Rec, args: Val) -> Val {
-unimplemented!()
+    unimplemented!()
 }
 pub fn prim_read(st: &mut Tsp, env: &mut Rec, args: Val) -> Val {
-unimplemented!()
+    unimplemented!()
 }
 pub fn prim_parse(st: &mut Tsp, env: &mut Rec, args: Val) -> Val {
-unimplemented!()
+    unimplemented!()
 }
 pub fn prim_load(st: &mut Tsp, env: &mut Rec, args: Val) -> Val {
-unimplemented!()
+    unimplemented!()
 }
 pub fn tib_env_io(st: &mut Tsp) {
-unimplemented!()
+    unimplemented!()
 }

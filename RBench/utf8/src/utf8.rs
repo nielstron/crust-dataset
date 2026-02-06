@@ -1,5 +1,5 @@
 // Import necessary modules
-use crate::{utf8};
+use crate::utf8;
 // Struct Definitions
 #[derive(Debug, Clone)]
 pub struct Utf8Validity {
@@ -32,7 +32,7 @@ pub struct Utf8CharIter {
 }
 // Function Definitions
 pub fn slice_utf8_string(ustr: Utf8String, byte_index: usize, byte_len: usize) -> Utf8String {
-   unimplemented!() 
+    unimplemented!()
 }
 pub fn unicode_code_point(uchar: Utf8Char) -> u32 {
     unimplemented!()

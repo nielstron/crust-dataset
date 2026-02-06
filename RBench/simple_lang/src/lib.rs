@@ -1,8 +1,8 @@
-pub mod utils;
-pub mod settings;
-pub mod parser;
-pub mod vm;
-pub mod lexer;
 pub mod ast;
-pub mod token;
 pub mod compiler;
+pub mod lexer;
+pub mod parser;
+pub mod settings;
+pub mod token;
+pub mod utils;
+pub mod vm;

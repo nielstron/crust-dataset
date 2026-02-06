@@ -113,4 +113,4 @@ fn test_001() {
         simulate_munmap(addr, test.alloc_sz);
     }
 }
-pub fn main(){}
+pub fn main() {}

@@ -25,4 +25,4 @@ fn test_heap_with_integers() {
     // The minimum should be 11.
     assert_eq!(heap.delete_min(), Some(11));
 }
-pub fn main(){}
+pub fn main() {}

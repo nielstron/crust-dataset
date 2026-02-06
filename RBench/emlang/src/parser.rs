@@ -1,5 +1,5 @@
-use core::fmt;
 use crate::em;
+use core::fmt;
 pub const PARSER_MAX_TOKEN_LENGTH: usize = 1024;
 pub const PARSER_MAX_NESTS: usize = 256;
 #[derive(Debug, Clone, Copy, PartialEq)]

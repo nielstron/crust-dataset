@@ -1,11 +1,11 @@
+use crate::compiler::{CompileProcess, CompileProcessInputFile, Pos};
 use std::fs;
 use std::io::Read;
-use crate::compiler::{CompileProcess, CompileProcessInputFile, Pos};
 /// Creates a new compile_process, reading in the entire input file. Returns None on failure.
 pub fn compile_process_create(
-filename: &str,
-filename_out: &str,
-flags: i32,
+    filename: &str,
+    filename_out: &str,
+    flags: i32,
 ) -> Option<CompileProcess> {
     unimplemented!()
 }

@@ -1,2 +1,2 @@
-pub mod xopt;
 pub mod snprintf;
+pub mod xopt;

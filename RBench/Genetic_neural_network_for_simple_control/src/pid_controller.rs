@@ -1,7 +1,7 @@
 use crate::systems_builder;
 // pid_controller.rs
-use std::fs::File;
 use crate::signal_designer::Signal;
+use std::fs::File;
 #[derive(Default)]
 pub struct PID {
     // constants not changed in calculations
@@ -16,10 +16,10 @@ pub struct PID {
     pub integralError: f32,
     pub differenError: f32,
     // input values
-    pub signal: Option<Box<Signal>>,  // Assuming ownership
+    pub signal: Option<Box<Signal>>, // Assuming ownership
     pub func_system: Option<fn(&mut [f32]) -> f32>,
     // memory of output
-    pub output: Option<Box<Signal>>,  // Assuming ownership
+    pub output: Option<Box<Signal>>, // Assuming ownership
     pub dataSystem: Option<Box<[f32]>>,
     pub sizeDataSystem: i32,
     // the limits

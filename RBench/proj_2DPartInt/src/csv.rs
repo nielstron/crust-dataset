@@ -10,12 +10,7 @@ pub fn write_simulation_step(
 ) {
     unimplemented!()
 }
-pub fn write_grid(
-    x_squares: i32,
-    y_squares: i32,
-    square_length: f64,
-    folder: &str,
-) {
+pub fn write_grid(x_squares: i32, y_squares: i32, square_length: f64, folder: &str) {
     unimplemented!()
 }
 pub fn write_particles_from_grid(

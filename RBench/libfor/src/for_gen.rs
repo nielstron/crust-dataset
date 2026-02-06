@@ -1,35 +1,35 @@
 pub fn pack0_32(base: u32, input: &[u32], output: &mut [u8]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn pack0_16(base: u32, input: &[u32], output: &mut [u8]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn pack0_8(base: u32, input: &[u32], output: &mut [u8]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn unpack0_32(base: u32, input: &[u8], output: &mut [u32]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn unpack0_16(base: u32, input: &[u8], output: &mut [u32]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn unpack0_8(base: u32, input: &[u8], output: &mut [u32]) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn pack0_x(base: u32, input: &[u32], output: &mut [u8], length: u32) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn unpack0_x(base: u32, input: &[u8], output: &mut [u32], length: u32) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn linsearch0_32(base: u32, input: &[u8], value: u32, found: &mut i32) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn linsearch0_16(base: u32, input: &[u8], value: u32, found: &mut i32) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn linsearch0_8(base: u32, input: &[u8], value: u32, found: &mut i32) -> u32 {
-unimplemented!()
+    unimplemented!()
 }
 pub fn linsearch0_x(base: u32, input: &[u8], length: u32, value: u32, found: &mut i32) -> u32 {
     unimplemented!()

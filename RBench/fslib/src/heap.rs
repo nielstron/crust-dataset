@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use std::cmp::Ordering;
+use std::collections::HashMap;
 const HEAP_INIT_SIZE: usize = 0xff;
 const HEAP_RESIZE_FACTOR: usize = 2;
 pub type HeapCmp<T> = fn(&T, &T) -> Ordering;
@@ -46,6 +46,6 @@ impl<T: Ord + Clone + std::hash::Hash + Eq> Heap<T> {
         unimplemented!()
     }
     fn swap_items(&mut self, i: usize, j: usize) {
-        unimplemented!() 
+        unimplemented!()
     }
 }

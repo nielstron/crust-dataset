@@ -193,4 +193,4 @@ fn empty_input_test() {
     let res = psbt_read(&buf, psbt_len, &mut psbt_instance, None, &mut ());
     assert_eq!(res, PsbtResult::Ok);
 }
-pub fn main(){}
+pub fn main() {}

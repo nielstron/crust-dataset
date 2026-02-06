@@ -1,4 +1,4 @@
-use crate::fst::{Fst,ArcData};
+use crate::fst::{ArcData, Fst};
 use std::cmp::Ordering;
 fn icomp(a: &ArcData, b: &ArcData) -> std::cmp::Ordering {
     unimplemented!()

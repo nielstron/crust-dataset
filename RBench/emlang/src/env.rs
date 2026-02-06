@@ -1,8 +1,8 @@
-use std::fmt;
 use crate::{
     em::{self, Program},
     stack,
 };
+use std::fmt;
 pub const GC_FREQUENCY_IN_TICKS: usize = 64;
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum RuntimeError {

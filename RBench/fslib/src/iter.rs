@@ -1,5 +1,5 @@
-use crate::fst::Fst;
 use crate::bitset::BitSet;
+use crate::fst::Fst;
 use crate::queue::Queue;
 pub struct FstIter<'a, T> {
     pub fst: &'a Fst,

@@ -1,5 +1,5 @@
-use crate::{throw, slothvm};
 use crate::slothvm::SlothProgram;
+use crate::{slothvm, throw};
 pub fn parse(filename: &str) -> Option<SlothProgram> {
     unimplemented!()
 }

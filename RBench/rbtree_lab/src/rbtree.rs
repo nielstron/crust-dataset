@@ -91,7 +91,13 @@ impl RBTree {
     }
 
     /// In-order traversal of `curr` into `arr` until `n` elements (`None` == NIL).
-    pub fn subtree_to_array(&self, curr: Option<NodeRef>, arr: &mut Vec<Key>, n: usize, count: &mut usize) {
+    pub fn subtree_to_array(
+        &self,
+        curr: Option<NodeRef>,
+        arr: &mut Vec<Key>,
+        n: usize,
+        count: &mut usize,
+    ) {
         unimplemented!()
     }
 

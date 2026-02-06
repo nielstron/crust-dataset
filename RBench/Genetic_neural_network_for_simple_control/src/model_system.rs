@@ -55,6 +55,6 @@ pub fn createDeNormalization(system_nn: &mut SystemNN) {
     unimplemented!();
 }
 /// Simulates the system using its neural network and updates fit/error metrics.
-pub fn makeSimulationOfSignalNN<W: Write>(system: &mut SystemNN, writer: &mut W, csv: bool){
+pub fn makeSimulationOfSignalNN<W: Write>(system: &mut SystemNN, writer: &mut W, csv: bool) {
     unimplemented!();
 }

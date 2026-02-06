@@ -23,23 +23,14 @@ fn crud_test() {
     // Push `b` into the queue
     q.push(b);
     assert_eq!(q.size, 2);
-    assert_eq!(
-        *q.front().unwrap().downcast_ref::<i32>().unwrap(),
-        10
-    );
+    assert_eq!(*q.front().unwrap().downcast_ref::<i32>().unwrap(), 10);
     println!("✅ Queue Front");
-    assert_eq!(
-        *q.back().unwrap().downcast_ref::<i32>().unwrap(),
-        15
-    );
+    assert_eq!(*q.back().unwrap().downcast_ref::<i32>().unwrap(), 15);
     println!("✅ Queue Back");
 
     // Pop the front of the queue
     let popped_value = q.pop().unwrap();
-    assert_eq!(
-        *popped_value.downcast_ref::<i32>().unwrap(),
-        10
-    );
+    assert_eq!(*popped_value.downcast_ref::<i32>().unwrap(), 10);
     assert_eq!(q.size, 1);
     println!("✅ Queue Pop");
 
@@ -48,6 +39,4 @@ fn crud_test() {
     println!("✅ Queue Free");
 }
 
-fn main() {
-    
-}
+fn main() {}

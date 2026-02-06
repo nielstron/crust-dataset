@@ -1,50 +1,49 @@
 use crate::compiler::Pos;
 use crate::vector::{
-vector_back_ptr, vector_back_ptr_or_null, vector_create, vector_empty,
-vector_pop, vector_push, vector_element_size, Vector,
+    vector_back_ptr, vector_back_ptr_or_null, vector_create, vector_element_size, vector_empty,
+    vector_pop, vector_push, Vector,
 };
-use std::sync::Mutex;
 use lazy_static::lazy_static;
+use std::sync::Mutex;
 #[derive(Debug, Default, Clone)]
 pub struct NodeBinded {
-pub owner: Option<Box<Node>>,
-pub function: Option<Box<Node>>,
+    pub owner: Option<Box<Node>>,
+    pub function: Option<Box<Node>>,
 }
 #[derive(Debug, Default, Clone)]
 pub struct Node {
-pub r#type: i32,
-pub flags: i32,
-pub pos: Pos,
-pub binded: NodeBinded,
-pub cval: Option<char>,
-pub sval: Option<String>,
-pub inum: Option<u32>,
-pub lnum: Option<u64>,
-pub llnum: Option<u64>,
+    pub r#type: i32,
+    pub flags: i32,
+    pub pos: Pos,
+    pub binded: NodeBinded,
+    pub cval: Option<char>,
+    pub sval: Option<String>,
+    pub inum: Option<u32>,
+    pub lnum: Option<u64>,
+    pub llnum: Option<u64>,
 }
 /// Global list of all nodes. We store them here so we can push references (indices) into the vectors.
 lazy_static! {
-static ref NODES: Mutex<Vec<Node>> = Mutex::new(Vec::new());
+    static ref NODES: Mutex<Vec<Node>> = Mutex::new(Vec::new());
 }
 /// Emulates `struct vector* node_vector`
 lazy_static! {
-static ref NODE_VECTOR: Mutex<Option<Vector>> = Mutex::new(None);
+    static ref NODE_VECTOR: Mutex<Option<Vector>> = Mutex::new(None);
 }
 /// Emulates `struct vector* node_vector_root`
 lazy_static! {
-static ref NODE_VECTOR_ROOT: Mutex<Option<Vector>> = Mutex::new(None);
+    static ref NODE_VECTOR_ROOT: Mutex<Option<Vector>> = Mutex::new(None);
 }
 /// Converts a u64 index to 8 bytes LE.
 fn encode_index(idx: u64) -> [u8; 8] {
-idx.to_le_bytes()
+    idx.to_le_bytes()
 }
 /// Converts 8 bytes LE to u64.
 fn decode_index(bytes: &[u8]) -> Option<u64> {
     unimplemented!()
 }
 /// Sets the two global vectors used for node push/pop.
-pub fn node_set_vector(vec: Vector, root_vec: Vector) 
-{
+pub fn node_set_vector(vec: Vector, root_vec: Vector) {
     unimplemented!()
 }
 /// Pushes a node onto node_vector.

@@ -1,7 +1,5 @@
 use c_aces::common::randrange;
-use c_aces::matrix::{
-    fill_random_invertible_pairs, matrix2d_eye, matrix2d_multiply, Matrix2D,
-};
+use c_aces::matrix::{fill_random_invertible_pairs, matrix2d_eye, matrix2d_multiply, Matrix2D};
 
 #[test]
 fn matrix2d_multiply_test() {
@@ -39,4 +37,4 @@ fn fill_random_invertible_pairs_test() {
     // The product m1 * m2 should be the identity.
     assert_eq!(result.data, exp_result.data);
 }
-fn main(){}
+fn main() {}

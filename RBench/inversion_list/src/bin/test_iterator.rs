@@ -14,4 +14,4 @@ fn test() {
 
     println!("test_iterator passed.");
 }
-fn main(){}
+fn main() {}

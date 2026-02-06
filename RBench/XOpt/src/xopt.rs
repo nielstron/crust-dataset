@@ -1,19 +1,19 @@
 use crate::snprintf;
-pub const XOPT_TYPE_STRING: i64 = 0x1;   // const char * type
-pub const XOPT_TYPE_INT: i64    = 0x2;   // int type
-pub const XOPT_TYPE_LONG: i64   = 0x4;   // long type
-pub const XOPT_TYPE_FLOAT: i64  = 0x8;   // float type
-pub const XOPT_TYPE_DOUBLE: i64 = 0x10;  // double type
-pub const XOPT_TYPE_BOOL: i64   = 0x20;  // boolean (int) type
+pub const XOPT_TYPE_STRING: i64 = 0x1; // const char * type
+pub const XOPT_TYPE_INT: i64 = 0x2; // int type
+pub const XOPT_TYPE_LONG: i64 = 0x4; // long type
+pub const XOPT_TYPE_FLOAT: i64 = 0x8; // float type
+pub const XOPT_TYPE_DOUBLE: i64 = 0x10; // double type
+pub const XOPT_TYPE_BOOL: i64 = 0x20; // boolean (int) type
 /// Indicates that the argument value is optional.
-pub const XOPT_OPTIONAL: i64    = 0x40;
+pub const XOPT_OPTIONAL: i64 = 0x40;
 /// Bitmask constants for context flags.
-pub const XOPT_CTX_KEEPFIRST: i64     = 0x1;
+pub const XOPT_CTX_KEEPFIRST: i64 = 0x1;
 pub const XOPT_CTX_POSIXMEHARDER: i64 = 0x2;
-pub const XOPT_CTX_NOCONDENSE: i64    = 0x4;
+pub const XOPT_CTX_NOCONDENSE: i64 = 0x4;
 /// `XOPT_CTX_SLOPPYSHORTS` is defined as 0x8 | 0x4 in C
-pub const XOPT_CTX_SLOPPYSHORTS: i64  = 0x8 | XOPT_CTX_NOCONDENSE;
-pub const XOPT_CTX_STRICT: i64        = 0x10;
+pub const XOPT_CTX_SLOPPYSHORTS: i64 = 0x8 | XOPT_CTX_NOCONDENSE;
+pub const XOPT_CTX_STRICT: i64 = 0x10;
 pub type XoptCallback = fn(
     value: Option<&str>,
     data: *mut u8,
@@ -100,7 +100,7 @@ pub fn xopt_autohelp(
 }
 #[macro_export]
 macro_rules! XOPT_SIMPLE_PARSE {
-    ( 
+    (
       $name:expr,
       $options:expr,
       $config_ptr:expr,

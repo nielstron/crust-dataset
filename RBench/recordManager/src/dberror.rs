@@ -35,10 +35,10 @@ pub enum RC {
     ShutdownWithoutInit = 420,
     LoggingSetupFailure = 430,
 }
-pub fn throw(rc: RC, message: &str) -> i32{
+pub fn throw(rc: RC, message: &str) -> i32 {
     unimplemented!()
 }
-pub fn check(code: i32){
+pub fn check(code: i32) {
     unimplemented!()
 }
 pub fn print_error(error: RC) {

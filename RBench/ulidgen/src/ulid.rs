@@ -1,5 +1,5 @@
 // Import statements
-use crate::{ulidgen};
+use crate::ulidgen;
 // Constants
 pub const ULID_LENGTH: usize = 27;
 // Function Declarations

@@ -69,15 +69,15 @@ pub fn displace_particle(
 }
 pub fn collide_two_particles(
     dt: f64,
-    distance: f64, 
+    distance: f64,
     p1: &data::Particle,
     p2: &data::Particle,
     velocity_p1: &data::Vector,
     velocity_p2: &data::Vector,
     properties_p1: &data::ParticleProperties,
     properties_p2: &data::ParticleProperties,
-    previous_normal: f64, 
-    previous_tangent: f64, 
+    previous_normal: f64,
+    previous_tangent: f64,
     forces_p2: &data::Vector,
 ) {
     unimplemented!()

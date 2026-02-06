@@ -1,8 +1,8 @@
 const MAX_CARDINALITY: usize = 1 << 16;
 const LOW_CUTOFF: usize = 1 << 12;
 const HIGH_CUTOFF: usize = MAX_CARDINALITY - LOW_CUTOFF;
-const MAX_ITEM:u16 = 0xFFFF;
-const MAX_SIZE:u16 = 1 << 16 -1;
+const MAX_ITEM: u16 = 0xFFFF;
+const MAX_SIZE: u16 = 1 << 16 - 1;
 pub struct RSet {
     buffer: Vec<u16>,
     size: usize,

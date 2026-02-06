@@ -10,7 +10,7 @@ pub mod quadtree {
         }
         pub fn quadtree_point_free(&self) {
             unimplemented!()
-        } 
+        }
     }
     #[derive(Default)]
     pub struct QuadtreeBounds {
@@ -40,7 +40,7 @@ pub mod quadtree {
         pub point: Option<Box<QuadtreePoint>>,
         pub key: Option<T>,
     }
-    impl <T> QuadtreeNode<T> {
+    impl<T> QuadtreeNode<T> {
         pub fn node_contains_(&mut self, point: Option<Box<QuadtreePoint>>) {
             unimplemented!()
         }
@@ -53,7 +53,7 @@ pub mod quadtree {
         pub fn quadtree_node_new() -> QuadtreeNode<T> {
             unimplemented!()
         }
-        pub fn quadtree_node_free(&self, value_free: Option<fn(Option<T>)>,) {
+        pub fn quadtree_node_free(&self, value_free: Option<fn(Option<T>)>) {
             unimplemented!()
         }
         pub fn quadtree_node_ispointer(&self) -> bool {
@@ -65,10 +65,15 @@ pub mod quadtree {
         pub fn quadtree_node_isleaf(&self) -> bool {
             unimplemented!()
         }
-        pub fn quadtree_node_reset(&self, value_free: Option<fn(Option<T>)>,) {
+        pub fn quadtree_node_reset(&self, value_free: Option<fn(Option<T>)>) {
             unimplemented!()
         }
-        pub fn quadtree_node_with_bounds(minx: f64, miny: f64, maxx: f64, maxy: f64) -> QuadtreeNode<T> {
+        pub fn quadtree_node_with_bounds(
+            minx: f64,
+            miny: f64,
+            maxx: f64,
+            maxy: f64,
+        ) -> QuadtreeNode<T> {
             unimplemented!()
         }
     }
@@ -78,11 +83,16 @@ pub mod quadtree {
         pub key_free: Option<fn(Option<T>)>,
         pub length: u32,
     }
-    impl <T> Quadtree<T> {
+    impl<T> Quadtree<T> {
         pub fn split_node_(&mut self, node: Option<Box<QuadtreeNode<T>>>) {
             unimplemented!()
         }
-        pub fn insert_(&mut self, tree: Option<Box<QuadtreeNode<T>>>, point: Option<Box<QuadtreePoint>>, key: Option<T>) {
+        pub fn insert_(
+            &mut self,
+            tree: Option<Box<QuadtreeNode<T>>>,
+            point: Option<Box<QuadtreePoint>>,
+            key: Option<T>,
+        ) {
             unimplemented!()
         }
         pub fn quadtree_new(minx: f64, miny: f64, maxx: f64, maxy: f64) -> Quadtree<T> {
@@ -97,10 +107,16 @@ pub mod quadtree {
         pub fn quadtree_insert(&self, x: f64, y: f64, key: Option<T>) -> bool {
             unimplemented!()
         }
-        pub fn quadtree_walk(&self, descent: fn(&mut Option<Box<QuadtreeNode<T>>>), ascent: fn(&mut Option<Box<QuadtreeNode<T>>>)) {
+        pub fn quadtree_walk(
+            &self,
+            descent: fn(&mut Option<Box<QuadtreeNode<T>>>),
+            ascent: fn(&mut Option<Box<QuadtreeNode<T>>>),
+        ) {
             unimplemented!()
         }
     }
 }
 // Helper function
-pub fn elision_<T>(key: Option<Box<T>>) {unimplemented!()}
+pub fn elision_<T>(key: Option<Box<T>>) {
+    unimplemented!()
+}

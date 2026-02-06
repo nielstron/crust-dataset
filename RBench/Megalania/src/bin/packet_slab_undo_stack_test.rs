@@ -73,4 +73,4 @@ fn packet_slab_undo_stack_test_free() {
     }
     // (Memory will be dropped automatically.)
 }
-pub fn main(){}
+pub fn main() {}

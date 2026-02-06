@@ -10,18 +10,18 @@ pub const SIMPLE_LANG_AST_H: bool = true;
 /// } ASTNode;
 #[derive(Debug, Clone)]
 pub struct ASTNode {
-pub type_: token::TokenType,
-pub left: Option<Box<ASTNode>>,
-pub right: Option<Box<ASTNode>>,
-pub value: String,
+    pub type_: token::TokenType,
+    pub left: Option<Box<ASTNode>>,
+    pub right: Option<Box<ASTNode>>,
+    pub value: String,
 }
 /// Replicates the C signature:
 /// ASTNode* new_ast_node(TokenType type, const char* value);
 pub fn new_ast_node(type_: token::TokenType, value: &str) -> Box<ASTNode> {
-unimplemented!()
+    unimplemented!()
 }
 /// Replicates the C signature:
 /// void free_ast_node(ASTNode* node);
 pub fn free_ast_node(node: Box<ASTNode>) {
-unimplemented!()
+    unimplemented!()
 }

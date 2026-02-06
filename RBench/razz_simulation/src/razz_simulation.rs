@@ -8,13 +8,22 @@ pub mod razz_simulation {
         pub opponent_cards: [Option<Card>; 7],
     }
     pub type RankListener<T> = fn(&mut T, CardRank);
-    pub fn simulate_razz_game<T>(decided_cards: &DecidedCards, game_count: u64, arg: &mut T, listener: RankListener<T>) -> i32 {
+    pub fn simulate_razz_game<T>(
+        decided_cards: &DecidedCards,
+        game_count: u64,
+        arg: &mut T,
+        listener: RankListener<T>,
+    ) -> i32 {
         unimplemented!()
     }
     pub fn strip_deck(deck: &mut CardDeck, decided_cards: &DecidedCards) {
         unimplemented!()
     }
-    pub fn complete_hand(my_hand: &mut CardHand, decided_cards: &DecidedCards, deck: &mut CardDeck) {
+    pub fn complete_hand(
+        my_hand: &mut CardHand,
+        decided_cards: &DecidedCards,
+        deck: &mut CardDeck,
+    ) {
         unimplemented!()
     }
 }

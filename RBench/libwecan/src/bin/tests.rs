@@ -1154,4 +1154,4 @@ fn run_tests() {
         dphy_value
     ));
 }
-pub fn main(){}
+pub fn main() {}

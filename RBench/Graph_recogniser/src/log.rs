@@ -1,7 +1,7 @@
-use std::collections::HashMap;
-use std::sync::{Arc, RwLock};
-use std::fmt;
 use crate::check;
+use std::collections::HashMap;
+use std::fmt;
+use std::sync::{Arc, RwLock};
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LogType {
     Log = 0,
@@ -19,7 +19,7 @@ pub struct Logger {
 }
 impl Logger {
     pub fn new() -> Arc<Self> {
-       unimplemented!() 
+        unimplemented!()
     }
     pub fn insert_log(&self, log_type: LogType, priority: u8, format: fmt::Arguments) {
         unimplemented!()

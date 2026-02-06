@@ -1,10 +1,10 @@
+use std::cell::RefCell;
 use std::fs::File;
 use std::io::{self, Write};
-use std::ptr;
 use std::os::raw::c_int;
-use std::sync::Arc;
+use std::ptr;
 use std::rc::Rc;
-use std::cell::RefCell;
+use std::sync::Arc;
 pub const TAG: &str = "phashmvp2010";
 pub const VERSION: u32 = 0x01000000;
 pub const HEADER_SIZE: usize = 32;
@@ -94,9 +94,9 @@ pub struct InternalNode {
     pub m2: Vec<f32>,
     pub child_nodes: Vec<Rc<RefCell<Node>>>,
 }
-impl InternalNode{
-    pub fn new(bf:u32) -> Self {
-       unimplemented!() 
+impl InternalNode {
+    pub fn new(bf: u32) -> Self {
+        unimplemented!()
     }
 }
 pub struct LeafNode {
@@ -109,7 +109,7 @@ pub struct LeafNode {
     pub nbpoints: usize,
 }
 impl LeafNode {
-    pub fn new(bf:u32) -> Self {
+    pub fn new(bf: u32) -> Self {
         unimplemented!()
     }
 }
@@ -130,16 +130,27 @@ pub struct MVPTree {
     pub distance_function: DistanceFunction,
 }
 impl MVPTree {
-    pub fn new(branch_factor: usize, path_length: usize, leaf_capacity: usize, datatype: MVPDataType, distance_function: DistanceFunction) -> Self {
+    pub fn new(
+        branch_factor: usize,
+        path_length: usize,
+        leaf_capacity: usize,
+        datatype: MVPDataType,
+        distance_function: DistanceFunction,
+    ) -> Self {
         unimplemented!()
     }
     pub fn add(&mut self, points: Vec<MVPDatapoint>) -> MVPError {
-        unimplemented!() 
-    }
-    pub fn retrieve(&self, target: &MVPDatapoint, knearest: usize, radius: f32) -> Result<Vec<MVPDatapoint>, MVPError> {
         unimplemented!()
     }
-    pub fn write(&self, filename: &str, mode:i32) -> MVPError {
+    pub fn retrieve(
+        &self,
+        target: &MVPDatapoint,
+        knearest: usize,
+        radius: f32,
+    ) -> Result<Vec<MVPDatapoint>, MVPError> {
+        unimplemented!()
+    }
+    pub fn write(&self, filename: &str, mode: i32) -> MVPError {
         unimplemented!()
     }
     pub fn print(&self, stream: &mut dyn Write) -> MVPError {
@@ -148,11 +159,14 @@ impl MVPTree {
     pub fn clear(&mut self, node: &mut Option<Box<Node>>) {
         unimplemented!()
     }
-    pub fn extend_mvpfile(&mut self)-> i32{
+    pub fn extend_mvpfile(&mut self) -> i32 {
         unimplemented!()
     }
 }
-pub fn mvptree_read(filename: &str, distance_function: DistanceFunction) -> Result<MVPTree, MVPError> {
+pub fn mvptree_read(
+    filename: &str,
+    distance_function: DistanceFunction,
+) -> Result<MVPTree, MVPError> {
     unimplemented!()
 }
 impl MVPDatapoint {
@@ -166,16 +180,37 @@ impl MVPDatapoint {
             data_type,
         }
     }
-    pub fn select_vantage_points(&mut self, nb:u32, sv1_pos: i32, sv2_pos: i32, dist: DistanceFunction) -> i32 {
+    pub fn select_vantage_points(
+        &mut self,
+        nb: u32,
+        sv1_pos: i32,
+        sv2_pos: i32,
+        dist: DistanceFunction,
+    ) -> i32 {
         unimplemented!()
     }
-    pub fn find_splits(&mut self, nb:u32, vp:&MVPDatapoint, tree: &MVPTree,  lengthM: u32) -> f32{
+    pub fn find_splits(&mut self, nb: u32, vp: &MVPDatapoint, tree: &MVPTree, lengthM: u32) -> f32 {
         unimplemented!()
     }
-    pub fn sort_points(&mut self, nb:u32, sv1_pos: i32, sv2_pos: i32, vp: &MVPDatapoint, tree: &MVPTree, counts: &mut Vec<Vec<i32>>, pivots: Vec<f32>) -> Vec<Vec<Vec<Arc<MVPDatapoint>>>> {
+    pub fn sort_points(
+        &mut self,
+        nb: u32,
+        sv1_pos: i32,
+        sv2_pos: i32,
+        vp: &MVPDatapoint,
+        tree: &MVPTree,
+        counts: &mut Vec<Vec<i32>>,
+        pivots: Vec<f32>,
+    ) -> Vec<Vec<Vec<Arc<MVPDatapoint>>>> {
         unimplemented!()
     }
-    pub fn find_distance_range_for_vp(&mut self, nb:u32, vp: &MVPDatapoint, tree: &MVPTree, level: i32) -> i32 {
+    pub fn find_distance_range_for_vp(
+        &mut self,
+        nb: u32,
+        vp: &MVPDatapoint,
+        tree: &MVPTree,
+        level: i32,
+    ) -> i32 {
         unimplemented!()
     }
     pub fn write(&self, tree: &MVPTree) -> i64 {
@@ -183,5 +218,5 @@ impl MVPDatapoint {
     }
 }
 pub fn error_to_string(error: MVPError) -> &'static str {
-   unimplemented!()
+    unimplemented!()
 }

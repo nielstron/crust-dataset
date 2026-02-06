@@ -1,7 +1,7 @@
+use frunk_core::{hlist, poly_fn, HList};
+use std::fmt;
 use std::fs::{File, OpenOptions};
 use std::io::{self, Write};
-use frunk_core::{hlist, HList, poly_fn};
-use std::fmt;
 pub const CLOG_MAX_LOGGERS: usize = 16;
 pub const CLOG_FORMAT_LENGTH: usize = 256;
 pub const CLOG_DATETIME_LENGTH: usize = 256;

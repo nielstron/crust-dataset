@@ -10,17 +10,17 @@ pub const DEFAULT_MOD: usize = 8;
 /// Enum corresponding to the C enum `dict_type_t`.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DictType {
-Char,
-WChar,
-I32,
-U32,
-F32,
-I64,
-U64,
-F64,
-Ptr,
-Str,
-Struct,
+    Char,
+    WChar,
+    I32,
+    U32,
+    F32,
+    I64,
+    U64,
+    F64,
+    Ptr,
+    Str,
+    Struct,
 }
 /// A safe function pointer type for deep-copying values.
 pub type DictDeepCopy = fn(dest: &mut [u8], src: &[u8]);
@@ -37,56 +37,56 @@ pub type DictFree = fn(_: Vec<u8>);
 /// Corresponds to `dict_alloc_t` in C.
 #[derive(Clone)]
 pub struct DictAlloc {
-pub malloc: Option<DictMalloc>,
-pub free: Option<DictFree>,
+    pub malloc: Option<DictMalloc>,
+    pub free: Option<DictFree>,
 }
 /// Corresponds to `dict_key_attr_t` in C.
 #[derive(Clone)]
 pub struct DictKeyAttr {
-pub type_: DictType,
-pub size: usize,
-pub copy: Option<DictDeepCopy>,
-pub free: Option<DictDestructor>,
-pub hash: Option<DictHash>,
-pub cmpr: Option<DictCmpr>,
+    pub type_: DictType,
+    pub size: usize,
+    pub copy: Option<DictDeepCopy>,
+    pub free: Option<DictDestructor>,
+    pub hash: Option<DictHash>,
+    pub cmpr: Option<DictCmpr>,
 }
 /// Corresponds to `dict_val_attr_t` in C.
 #[derive(Clone)]
 pub struct DictValAttr {
-pub size: usize,
-pub free: Option<DictDestructor>,
+    pub size: usize,
+    pub free: Option<DictDestructor>,
 }
 /// Corresponds to `dict_args_t` in C.
 #[derive(Clone)]
 pub struct DictArgs {
-pub key: DictKeyAttr,
-pub val: DictValAttr,
-pub alloc: DictAlloc,
+    pub key: DictKeyAttr,
+    pub val: DictValAttr,
+    pub alloc: DictAlloc,
 }
 /// Each element in the dictionary. Mirrors the struct dict_elem in C.
 /// We store the key bytes in `key` and the value bytes in `val`.
 #[derive(Clone)]
 pub struct DictElem {
-pub code: u64,    // The hash code
-pub key: Vec<u8>, // Owned bytes for the key
-pub val: Vec<u8>, // Owned bytes for the value
+    pub code: u64,    // The hash code
+    pub key: Vec<u8>, // Owned bytes for the key
+    pub val: Vec<u8>, // Owned bytes for the value
 }
 /// A bucket (list) in the dictionary. Mirrors dict_list_t in C, but
 /// instead of a linked list, we store a Vec for safe iteration/removal.
 #[derive(Clone)]
 pub struct DictBucket {
-pub elements: Vec<DictElem>,
+    pub elements: Vec<DictElem>,
 }
 /// Corresponds to `struct dict` in C.
 pub struct Dict {
-pub key: DictKeyAttr,
-pub val: DictValAttr,
-pub alloc: DictAlloc,
-pub mod_: usize,              // Number of buckets
-pub buckets: Vec<DictBucket>, // The buckets array
-pub key_temp: Vec<u8>,        // Temporary buffer for constructing a key
-pub keys_dump: Vec<u8>,       // Unused here; effectively replaced by a safe approach
-pub count: usize,             // Number of elements total
+    pub key: DictKeyAttr,
+    pub val: DictValAttr,
+    pub alloc: DictAlloc,
+    pub mod_: usize,              // Number of buckets
+    pub buckets: Vec<DictBucket>, // The buckets array
+    pub key_temp: Vec<u8>,        // Temporary buffer for constructing a key
+    pub keys_dump: Vec<u8>,       // Unused here; effectively replaced by a safe approach
+    pub count: usize,             // Number of elements total
 }
 /// Create a dictionary using detailed arguments. Matches C's dict_create().
 pub fn dict_create(args: DictArgs) -> Dict {
@@ -155,7 +155,7 @@ pub fn dict_key_equals(dict: &Dict, a: &[u8], b: &[u8]) -> bool {
 }
 /// Not used in this design, but signature is kept.
 pub fn dict_delete_node(_list: &mut DictBucket, _curr: &mut DictElem) {
-// no-op in this safe design
+    // no-op in this safe design
 }
 /// The original dict_free_val. Kept for signature consistency.
 pub fn dict_free_val(dict: &Dict, val: &mut [u8]) {

@@ -2,7 +2,7 @@ use crate::common;
 use std::collections::HashMap;
 pub const HASH_TABLE_SIZE: usize = 2000;
 pub struct HashTable {
-table: HashMap<String, common::AstNode>,
+    table: HashMap<String, common::AstNode>,
 }
 impl HashTable {
     pub fn new() -> Self {

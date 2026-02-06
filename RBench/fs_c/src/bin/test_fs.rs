@@ -210,4 +210,4 @@ fn test_fs_fnwrite() {
     let buf = fs_read(&file_path).unwrap();
     assert_eq!(buf, b"abcdefghi");
 }
-fn main(){}
+fn main() {}

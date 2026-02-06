@@ -50,7 +50,7 @@ impl TwoBit {
     pub fn twobitTell(&mut self) -> u64 {
         unimplemented!()
     }
-    pub fn twobitRead(&mut self, data:&Vec<u8>, sz: usize, nmemb: usize) -> usize {
+    pub fn twobitRead(&mut self, data: &Vec<u8>, sz: usize, nmemb: usize) -> usize {
         unimplemented!()
     }
     pub fn twobitSeek(&mut self, offset: u64) {

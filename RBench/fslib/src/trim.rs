@@ -1,6 +1,6 @@
-use crate::queue::Queue;
-use crate::fst::{ArcData, Fst};
 use crate::bitset::BitSet;
+use crate::fst::{ArcData, Fst};
+use crate::queue::Queue;
 pub fn fst_close(fst: &mut Fst, finals: &mut Queue<(ArcData, ArcData)>) {
     unimplemented!()
 }

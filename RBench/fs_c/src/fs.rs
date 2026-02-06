@@ -1,6 +1,6 @@
 use std::fs;
-use std::os::fd;
 use std::io::Result;
+use std::os::fd;
 #[cfg(target_os = "windows")]
 pub const FS_OPEN_READ: &str = "rb";
 #[cfg(target_os = "windows")]

@@ -1,6 +1,6 @@
+pub mod buffer_mgr;
 pub mod buffer_mgr_stat;
 pub mod dberror;
-pub mod buffer_mgr;
 pub mod dt;
 pub mod expr;
 pub mod record_mgr;

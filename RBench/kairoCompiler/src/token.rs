@@ -1,9 +1,9 @@
 use crate::compiler::{
-Token, TOKEN_TYPE_KEYWORD, TOKEN_TYPE_SYMBOL, TOKEN_TYPE_NEWLINE, TOKEN_TYPE_COMMENT,
+    Token, TOKEN_TYPE_COMMENT, TOKEN_TYPE_KEYWORD, TOKEN_TYPE_NEWLINE, TOKEN_TYPE_SYMBOL,
 };
 /// Helper to compare token.sval with the given &str.
 fn s_eq(opt_s: &Option<String>, val: &str) -> bool {
- unimplemented!()
+    unimplemented!()
 }
 /// Replicates the original bug: "return token->type = TOKEN_TYPE_KEYWORD && S_EQ(token->sval, value);"
 /// We do this in Rust by assigning token.r#type = if eq { 1 } else { 0 } and then returning eq.

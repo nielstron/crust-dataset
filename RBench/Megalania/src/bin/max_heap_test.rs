@@ -122,4 +122,4 @@ fn max_heap_top_k_test() {
     }
     println!();
 }
-pub fn main(){}
+pub fn main() {}

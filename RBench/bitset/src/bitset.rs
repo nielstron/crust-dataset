@@ -10,7 +10,7 @@ pub struct Bitset {
 }
 impl Bitset {
     pub fn new(nb_bits: usize) -> Self {
-       unimplemented!() 
+        unimplemented!()
     }
     pub fn delete(self) {
         unimplemented!()

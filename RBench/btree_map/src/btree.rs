@@ -1,6 +1,6 @@
+use std::any::Any;
 use std::collections::HashMap;
 use std::sync::Arc;
-use std::any::Any;
 pub const BTREE_KEY_SIZE: usize = 10;
 #[derive(Clone)]
 pub struct BTreeKey {
@@ -37,7 +37,7 @@ impl BTree {
         BTree { node: None }
     }
     pub fn add_entry(&mut self, key: Vec<u8>, key_len: usize, value: Vec<u8>, value_len: usize) {
-       unimplemented!()
+        unimplemented!()
     }
     pub fn list_entries(&self) -> EntryList {
         unimplemented!()
@@ -57,7 +57,7 @@ impl BTree {
 }
 impl Node {
     pub fn new_node(key: Vec<u8>, key_len: usize, value: Vec<u8>, value_len: usize) -> Arc<Self> {
-       unimplemented!() 
+        unimplemented!()
     }
     pub fn add_node(&mut self, n_node: Arc<Node>) {
         unimplemented!()
@@ -65,7 +65,12 @@ impl Node {
     pub fn free_node(&mut self) {
         unimplemented!()
     }
-    pub fn delete_node(root: &mut Arc<Node>, key_hash: u32, key: Vec<u8>, key_len: usize) -> Option<Arc<Node>> {
+    pub fn delete_node(
+        root: &mut Arc<Node>,
+        key_hash: u32,
+        key: Vec<u8>,
+        key_len: usize,
+    ) -> Option<Arc<Node>> {
         unimplemented!()
     }
     pub fn get_node_count(&self) -> usize {

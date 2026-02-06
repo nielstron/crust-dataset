@@ -97,4 +97,4 @@ fn test() {
         }
     }
 }
-fn main(){}
+fn main() {}

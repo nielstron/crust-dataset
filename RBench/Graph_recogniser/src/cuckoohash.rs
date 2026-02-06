@@ -1,8 +1,8 @@
-use std::collections::HashMap;
-use std::sync::{Arc, RwLock};
-use crate::log::{LogType, Logger};
 use crate::check;
 use crate::hash::hash;
+use crate::log::{LogType, Logger};
+use std::collections::HashMap;
+use std::sync::{Arc, RwLock};
 const LOAD_FACTOR: f32 = 1.0;
 #[cfg(debug_assertions)]
 const EPS: f32 = 1e-3;
@@ -43,10 +43,20 @@ impl CuckooHashTable {
     fn get_second_entry(&self, key: &str) -> &mut CuckooEntry {
         unimplemented!()
     }
-    fn try_to_store(&mut self, key: &'static str, data: &'static str, entry: &mut CuckooEntry) -> bool {
+    fn try_to_store(
+        &mut self,
+        key: &'static str,
+        data: &'static str,
+        entry: &mut CuckooEntry,
+    ) -> bool {
         unimplemented!()
     }
-    fn swap_key_data_entry(&mut self, key: &mut &'static str, data: &mut &'static str, entry: &mut CuckooEntry) {
+    fn swap_key_data_entry(
+        &mut self,
+        key: &mut &'static str,
+        data: &mut &'static str,
+        entry: &mut CuckooEntry,
+    ) {
         unimplemented!()
     }
     fn free_cukoo_hash_table(self) {

@@ -442,4 +442,4 @@ fn test_vector_operations() {
     delete_vector(w);
     delete_vector(v);
 }
-pub fn main(){}
+pub fn main() {}

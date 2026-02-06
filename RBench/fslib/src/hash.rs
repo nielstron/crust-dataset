@@ -27,7 +27,9 @@ where
     pub fn new(hash_f: F, size: usize) -> Self {
         let mut buckets = Vec::with_capacity(size);
         for _ in 0..size {
-            buckets.push(Bucket { items: LinkedList::new() });
+            buckets.push(Bucket {
+                items: LinkedList::new(),
+            });
         }
         Self {
             buckets,

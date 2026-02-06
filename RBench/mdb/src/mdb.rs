@@ -32,7 +32,7 @@ pub struct MdbOptions {
     pub items_max: u32,
 }
 #[derive(Debug)]
-pub struct MdbStatus{
+pub struct MdbStatus {
     pub code: u8,
     pub desc: String,
 }
@@ -73,7 +73,7 @@ impl Mdb {
         unimplemented!()
     }
     pub fn read(&mut self, key: &str, buf: &mut [u8]) -> Result<usize> {
-        unimplemented!()    
+        unimplemented!()
     }
     pub fn write(&mut self, key: &str, value: &str) -> Result<()> {
         unimplemented!()
@@ -100,11 +100,17 @@ impl Mdb {
     fn write_bucket(&mut self, bucket: u32, ptr: MdbPtr) -> Result<()> {
         unimplemented!()
     }
-    fn write_index(&mut self, idxptr: MdbPtr, key: &[u8], value_ptr: MdbPtr, value_size: MdbSize) -> Result<()> {
+    fn write_index(
+        &mut self,
+        idxptr: MdbPtr,
+        key: &[u8],
+        value_ptr: MdbPtr,
+        value_size: MdbSize,
+    ) -> Result<()> {
         unimplemented!()
     }
     fn read_nextptr(&mut self, idxptr: MdbPtr) -> Result<MdbPtr> {
-        unimplemented!()    
+        unimplemented!()
     }
     fn write_nextptr(&mut self, ptr: MdbPtr, nextptr: MdbPtr) -> Result<()> {
         unimplemented!()
@@ -130,7 +136,7 @@ impl Mdb {
     fn data_free(&mut self, ptr: MdbPtr, size: MdbSize) -> Result<()> {
         unimplemented!()
     }
-    fn alloc()-> Result<()> {
+    fn alloc() -> Result<()> {
         unimplemented!()
     }
     fn free() -> Result<()> {
@@ -145,4 +151,4 @@ impl Mdb {
 } // impl Mdb
 pub fn mdb_status() -> Result<MdbStatus> {
     unimplemented!()
-} 
+}

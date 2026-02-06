@@ -1,8 +1,8 @@
-use std::fmt::Display;
 use crate::{
     annotation::PgnAnnotation, check::PgnCheck, comments::PgnComments, coordinate::PgnCoordinate,
     piece::PgnPiece,
 };
+use std::fmt::Display;
 pub const PGN_CASTLING_NONE: u8 = 0;
 pub const PGN_CASTLING_KINGSIDE: u8 = 2;
 pub const PGN_CASTLING_QUEENSIDE: u8 = 3;

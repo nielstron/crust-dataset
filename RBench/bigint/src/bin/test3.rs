@@ -58,4 +58,4 @@ fn test6() {
     let a = BigInt::from_str("123412341");
     let _b = a.sqrt();
 }
-fn main(){}
+fn main() {}

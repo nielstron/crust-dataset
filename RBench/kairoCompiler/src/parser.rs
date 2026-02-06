@@ -1,16 +1,16 @@
+use crate::compiler::Pos;
 use crate::compiler::{
-compiler_error, CompileProcess, Token,
-TOKEN_TYPE_NUMBER, TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_STRING,
-PARSE_ALL_OK, PARSE_GENERAL_ERROR,
-};
-use crate::vector::{
-vector_peek, vector_peek_no_increment, vector_set_peek_pointer,
-vector_peek_ptr, vector_push, vector_pop, vector_back, vector_count, vector_empty,
+    compiler_error, CompileProcess, Token, PARSE_ALL_OK, PARSE_GENERAL_ERROR,
+    TOKEN_TYPE_IDENTIFIER, TOKEN_TYPE_NUMBER, TOKEN_TYPE_STRING,
 };
 use crate::node::{
-node_create, node_set_vector, node_peek, node_peek_or_null, node_pop, node_push as node_stack_push,
+    node_create, node_peek, node_peek_or_null, node_pop, node_push as node_stack_push,
+    node_set_vector,
 };
-use crate::compiler::Pos;
+use crate::vector::{
+    vector_back, vector_count, vector_empty, vector_peek, vector_peek_no_increment,
+    vector_peek_ptr, vector_pop, vector_push, vector_set_peek_pointer,
+};
 /// Skips newline/comment tokens from the front.
 fn parser_ignore_nl_or_comments(process: &mut CompileProcess, token_opt: &mut Option<Token>) {
     unimplemented!()
@@ -20,7 +20,10 @@ fn token_peek_no_increment(process: &mut CompileProcess) -> Option<Token> {
     unimplemented!()
 }
 /// Returns the next token with increment, ignoring newlines/comments.
-fn token_next(process: &mut CompileProcess, parser_last_token: &mut Option<Token>) -> Option<Token> {
+fn token_next(
+    process: &mut CompileProcess,
+    parser_last_token: &mut Option<Token>,
+) -> Option<Token> {
     unimplemented!()
 }
 /// We create a placeholder function that returns a default token. In a real parser, we'd decode real data.

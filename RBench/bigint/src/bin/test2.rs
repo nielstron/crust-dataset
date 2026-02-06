@@ -83,4 +83,4 @@ fn test_basic_operations() {
 
     println!("Test passed");
 }
-fn main(){}
+fn main() {}

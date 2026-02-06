@@ -1,8 +1,8 @@
-use std::collections::HashMap;
-use std::sync::{Arc, RwLock};
-use crate::log::{LogType, Logger};
 use crate::check;
 use crate::hash::hash;
+use crate::log::{LogType, Logger};
+use std::collections::HashMap;
+use std::sync::{Arc, RwLock};
 const LOAD_FACTOR: f32 = 0.6;
 #[cfg(debug_assertions)]
 const EPS: f32 = 1e-3;
@@ -17,7 +17,7 @@ pub struct OpenHashTable {
 }
 impl OpenHashTable {
     pub fn new(initial_size: usize) -> Arc<RwLock<Self>> {
-       unimplemented!() 
+        unimplemented!()
     }
     fn query(&self, key: &str) -> usize {
         unimplemented!()

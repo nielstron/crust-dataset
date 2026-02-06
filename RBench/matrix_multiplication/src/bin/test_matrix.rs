@@ -50,7 +50,7 @@ fn tests_generate_matrix() {
 /// 2. Multiply them using the chosen `method`.
 /// 3. Print results if success, else print error.
 /// 4. Free them all.
-fn test_multiply(x1: usize, y1: usize, x2: usize, y2: usize, test_name: &str, method: i32)-> i32 {
+fn test_multiply(x1: usize, y1: usize, x2: usize, y2: usize, test_name: &str, method: i32) -> i32 {
     // 1. Generate the matrices
     let mut matrix1 = matrix::generate_matrix(x1, y1, false);
     let mut matrix2 = matrix::generate_matrix(x2, y2, false);
@@ -65,13 +65,11 @@ fn test_multiply(x1: usize, y1: usize, x2: usize, y2: usize, test_name: &str, me
             x1, y1, x2, y2, method
         );
     } else {
-        
         println!("====={}======", test_name);
         utils::print_array(&matrix1, "result", ARRAY_TYPE_CHAR);
         utils::print_array(&matrix2, "result", ARRAY_TYPE_CHAR);
         utils::print_array(&r, "result", ARRAY_TYPE_CHAR);
         println!("=============");
-        
     }
 
     // 4. Free / clear the matrices
@@ -88,41 +86,38 @@ fn tests_multiply() {
     let (mut x1, mut y1, mut x2, mut y2) = (4, 4, 4, 4);
 
     assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-1", 1), 0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-3", 3),0);
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-3", 3), 0);
 
     x1 = 8;
     y1 = 8;
     x2 = 8;
     y2 = 8;
     assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-1", 1), 0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-3", 3),0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-2", 2),0);
-    
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-3", 3), 0);
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 1-2", 2), 0);
 
     x1 = 4;
     y1 = 4;
     x2 = 1;
     y2 = 4;
     assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 2-1", 1), 0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 2-3", 3),0);
-    
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 2-3", 3), 0);
 
     x1 = 1;
     y1 = 1;
     x2 = 1;
     y2 = 1;
     assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 3-1", 1), 0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 3-3", 3),0);
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 3-3", 3), 0);
 
     x1 = 1;
     y1 = 2;
     x2 = 2;
     y2 = 1;
     assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 4-1", 1), 0);
-    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 4-3", 3),0);
-    
+    assert_eq!(test_multiply(x1, y1, x2, y2, "multiply 4-3", 3), 0);
 
     // Testing an invalid method = 0
-    assert_ne!(test_multiply(x1, y1, x2, y2, "multiply 5-0", 0),0);
+    assert_ne!(test_multiply(x1, y1, x2, y2, "multiply 5-0", 0), 0);
 }
-fn main(){}
+fn main() {}

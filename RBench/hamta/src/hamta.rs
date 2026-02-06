@@ -13,33 +13,57 @@ pub struct KeyValue<'a, T, U> {
     pub key: &'a mut T,
     pub value: &'a mut U,
 }
-impl <T, U> KeyValue<'_, T, U> {
-}
+impl<T, U> KeyValue<'_, T, U> {}
 pub enum HamtNode<'a, T, U> {
     Leaf(Option<KeyValue<'a, T, U>>),
     Sub(SubNode<'a, T, U>),
 }
-impl <T, U> HamtNode<'_, T, U> {
+impl<T, U> HamtNode<'_, T, U> {
     pub fn get_children_pointer(&mut self) -> Self {
         unimplemented!()
     }
     pub fn is_leaf(&mut self) -> bool {
         unimplemented!()
     }
-    pub fn hamt_node_search(&mut self, hash: u32, lvl: i32, key: &mut T, equals_fn: EqualsFn<T>) -> Self {
+    pub fn hamt_node_search(
+        &mut self,
+        hash: u32,
+        lvl: i32,
+        key: &mut T,
+        equals_fn: EqualsFn<T>,
+    ) -> Self {
         unimplemented!()
     }
-    pub fn hamt_node_insert(&mut self, hash: u32, lvl: i32, key: &mut T, 
-        value: &mut U, hash_fn: HashFn<T>, equals_fn: EqualsFn<T>, conflict_kv: &mut KeyValue<'_, T, U>) -> bool {
+    pub fn hamt_node_insert(
+        &mut self,
+        hash: u32,
+        lvl: i32,
+        key: &mut T,
+        value: &mut U,
+        hash_fn: HashFn<T>,
+        equals_fn: EqualsFn<T>,
+        conflict_kv: &mut KeyValue<'_, T, U>,
+    ) -> bool {
         unimplemented!()
     }
-    pub fn hamt_node_remove(&mut self, hash: u32, lvl: i32, key: &mut T, equals_fn: EqualsFn<T>, removed_kv: &mut KeyValue<'_, T, U>) -> bool {
+    pub fn hamt_node_remove(
+        &mut self,
+        hash: u32,
+        lvl: i32,
+        key: &mut T,
+        equals_fn: EqualsFn<T>,
+        removed_kv: &mut KeyValue<'_, T, U>,
+    ) -> bool {
         unimplemented!()
     }
-    pub fn hamt_node_destroy(&mut self, deallocate_fn_key: DeallocateFn<T>, deallocate_fn_val: DeallocateFn<U>) {
+    pub fn hamt_node_destroy(
+        &mut self,
+        deallocate_fn_key: DeallocateFn<T>,
+        deallocate_fn_val: DeallocateFn<U>,
+    ) {
         unimplemented!()
     }
-    pub fn hamt_node_print(&mut self, lvl:i32, str_fn_key: StrFn<T>, str_fn_val: StrFn<U>) {
+    pub fn hamt_node_print(&mut self, lvl: i32, str_fn_key: StrFn<T>, str_fn_val: StrFn<U>) {
         unimplemented!()
     }
 }
@@ -53,14 +77,19 @@ pub struct Hamt<'a, T, U> {
     pub hash_fn: HashFn<T>,
     pub equals_fn: EqualsFn<T>,
 }
-impl <'a, T, U> Hamt<'a, T, U> {
+impl<'a, T, U> Hamt<'a, T, U> {
     pub fn new_hamt(hash_fn: HashFn<T>, equals_fn: EqualsFn<T>) -> Self {
         unimplemented!()
     }
     pub fn hamt_size(&self) -> i32 {
         unimplemented!()
     }
-    pub fn hamt_set(&mut self, key: &mut T, value: &mut U, conflict_kv: &mut KeyValue<T, U>) -> bool {
+    pub fn hamt_set(
+        &mut self,
+        key: &mut T,
+        value: &mut U,
+        conflict_kv: &mut KeyValue<T, U>,
+    ) -> bool {
         unimplemented!()
     }
     pub fn hamt_search(&self, key: &mut T) -> Option<KeyValue<'a, T, U>> {

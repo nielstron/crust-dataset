@@ -93,12 +93,7 @@ impl BRSAContext {
     ) -> i32 {
         unimplemented!()
     }
-    pub fn brsa_publickey_id(
-        &self,
-        id: &[u8],
-        id_len: usize,
-        pk: &BRSAPublicKey,
-    ) -> i32 {
+    pub fn brsa_publickey_id(&self, id: &[u8], id_len: usize, pk: &BRSAPublicKey) -> i32 {
         unimplemented!()
     }
 }
@@ -166,27 +161,20 @@ impl BRSASignature<'_> {
     }
 }
 pub struct BRSAPublicKey {
-    pub evp_pkey: Option<EVP_PKEY>, // Placeholder for EVP_PKEY
+    pub evp_pkey: Option<EVP_PKEY>,    // Placeholder for EVP_PKEY
     pub mont_ctx: Option<BN_MONT_CTX>, // Placeholder for BN_MONT_CTX
 }
 impl BRSAPublicKey {
     pub fn new() -> Self {
         unimplemented!()
     }
-    pub fn brsa_publickey_import(
-        &mut self,
-        der: &[u8],
-        der_len: usize,
-    ) -> i32 {
+    pub fn brsa_publickey_import(&mut self, der: &[u8], der_len: usize) -> i32 {
         unimplemented!()
     }
     pub fn brsa_publickey_deinit(&mut self) {
         unimplemented!()
     }
-    pub fn brsa_publickey_recover(
-        &mut self,
-        sk: &BRSASecretKey,
-    ) -> i32 {
+    pub fn brsa_publickey_recover(&mut self, sk: &BRSASecretKey) -> i32 {
         unimplemented!()
     }
 }
@@ -197,18 +185,10 @@ impl BRSASecretKey {
     pub fn new() -> Self {
         unimplemented!()
     }
-    pub fn brsa_keypair_generate(
-        &mut self,
-        pk: &mut BRSAPublicKey,
-        modulus_bits: c_int,
-    ) -> i32 {
+    pub fn brsa_keypair_generate(&mut self, pk: &mut BRSAPublicKey, modulus_bits: c_int) -> i32 {
         unimplemented!()
     }
-    pub fn brsa_secretkey_import(
-        &mut self,
-        der: &[u8],
-        der_len: usize,
-    ) -> i32 {
+    pub fn brsa_secretkey_import(&mut self, der: &[u8], der_len: usize) -> i32 {
         unimplemented!()
     }
     pub fn brsa_secretkey_deinit(&mut self) {
@@ -224,16 +204,10 @@ impl BRSASerializedKey<'_> {
     pub fn new() -> Self {
         unimplemented!()
     }
-    pub fn brsa_secretkey_export(
-        &mut self,
-        sk: &BRSASecretKey,
-    ) -> i32 {
+    pub fn brsa_secretkey_export(&mut self, sk: &BRSASecretKey) -> i32 {
         unimplemented!()
     }
-    pub fn brsa_publickey_export(
-        &mut self,
-        pk: &BRSAPublicKey,
-    ) -> i32 {
+    pub fn brsa_publickey_export(&mut self, pk: &BRSAPublicKey) -> i32 {
         unimplemented!()
     }
     pub fn brsa_serializedkey_deinit(&mut self) {
@@ -250,10 +224,10 @@ impl BRSAMessageRandomizer {
     }
 }
 // Macro, Static function and functions not in header file
-pub const  MIN_MODULUS_BITS: usize = 2048;
-pub const  MAX_MODULUS_BITS: usize = 4096;
-pub const  MAX_SERIALIZED_PK_LEN: usize = 1000;
-pub const MAX_HASH_DIGEST_LENGTH:u32 = EVP_MAX_MD_SIZE;
+pub const MIN_MODULUS_BITS: usize = 2048;
+pub const MAX_MODULUS_BITS: usize = 4096;
+pub const MAX_SERIALIZED_PK_LEN: usize = 1000;
+pub const MAX_HASH_DIGEST_LENGTH: u32 = EVP_MAX_MD_SIZE;
 pub fn BN_bn2bin_padded(OUT: &mut [u8], LEN: c_int, IN: Option<BIGNUM>) -> bool {
     unimplemented!()
 }
@@ -275,18 +249,35 @@ pub fn new_mont_domain(n: Option<BIGNUM>) -> Option<BN_MONT_CTX> {
 pub fn _rsa_parameters_check(evp_pkey: Option<EVP_PKEY>) -> i32 {
     unimplemented!()
 }
-pub fn _hash(evp_md: Option<EVP_MD>, prefix: &BRSAMessageRandomizer, msg_hash: &[u8], msg: &[u8]) -> i32 {
+pub fn _hash(
+    evp_md: Option<EVP_MD>,
+    prefix: &BRSAMessageRandomizer,
+    msg_hash: &[u8],
+    msg: &[u8],
+) -> i32 {
     unimplemented!()
 }
-pub fn _blind(blind_message: &BRSABlindMessage, secret: &BRSABlindingSecret, pk: &BRSAPublicKey, 
-    bn_ctx: Option<BN_CTX>, padded: &[u8]) -> i32 {
-        unimplemented!()
+pub fn _blind(
+    blind_message: &BRSABlindMessage,
+    secret: &BRSABlindingSecret,
+    pk: &BRSAPublicKey,
+    bn_ctx: Option<BN_CTX>,
+    padded: &[u8],
+) -> i32 {
+    unimplemented!()
 }
 pub fn _check_cannonical(sk: &BRSASecretKey, blind_message: &BRSABlindMessage) -> i32 {
     unimplemented!()
 }
-pub fn _finalize(context: &BRSAContext, sig: &BRSASignature, blind_sig: &BRSABlindSignature, 
-    secret: &BRSABlindingSecret, msg_randomizer: &BRSAMessageRandomizer, pk: &BRSAPublicKey, 
-    bn_ctx: Option<BN_CTX>, msg: &[u8]) -> i32 {
-        unimplemented!()
+pub fn _finalize(
+    context: &BRSAContext,
+    sig: &BRSASignature,
+    blind_sig: &BRSABlindSignature,
+    secret: &BRSABlindingSecret,
+    msg_randomizer: &BRSAMessageRandomizer,
+    pk: &BRSAPublicKey,
+    bn_ctx: Option<BN_CTX>,
+    msg: &[u8],
+) -> i32 {
+    unimplemented!()
 }

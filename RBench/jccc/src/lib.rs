@@ -1,8 +1,8 @@
-pub mod token;
-pub mod lex;
 pub mod codegen;
+pub mod cst;
 pub mod hashmap;
+pub mod lex;
+pub mod list;
 pub mod out;
 pub mod parse;
-pub mod list;
-pub mod cst;
+pub mod token;

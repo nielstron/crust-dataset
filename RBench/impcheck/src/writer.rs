@@ -4,27 +4,27 @@ pub struct Writer {
 }
 impl Writer {
     pub fn write_char(&mut self, c_int: i32) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_int(&mut self, i: i32) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_ints(&mut self, data: &[i32], nb_ints: u64) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_sig(&mut self, sig: &[u8]) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn writer_init(output_path: &str) -> Self {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_bool(&mut self, b: bool) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_uls(&mut self, data: &[u64], nb_uls: u64) {
-    unimplemented!()
+        unimplemented!()
     }
     pub fn write_ul(&mut self, ul: u64) {
-    unimplemented!()
+        unimplemented!()
     }
 }

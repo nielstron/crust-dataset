@@ -46,4 +46,4 @@ fn xgcd_test() {
     assert_eq!(result.a, -2);
     assert_eq!(result.b, 3);
 }
-fn main(){}
+fn main() {}

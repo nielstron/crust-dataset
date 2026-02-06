@@ -24,4 +24,4 @@ fn test_factorial() {
     println!("Test passed");
 }
 
-fn main(){}
+fn main() {}

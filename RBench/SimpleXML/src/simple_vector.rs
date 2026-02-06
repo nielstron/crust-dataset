@@ -1,9 +1,9 @@
-pub struct Vector<T>{
+pub struct Vector<T> {
     pub capacity: usize,
     pub size: usize,
     pub data: Vec<T>,
 }
-impl<T> Vector<T>{
+impl<T> Vector<T> {
     pub fn new(capacity: usize) -> Self {
         Vector {
             capacity,

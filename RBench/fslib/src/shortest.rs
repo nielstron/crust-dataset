@@ -1,8 +1,8 @@
-use crate::fst::{Fst, ArcData};
-use crate::sr::Sr;
+use crate::fst::{ArcData, Fst};
 use crate::heap::Heap;
-use std::collections::HashMap;
+use crate::sr::Sr;
 use std::cmp::Ordering;
+use std::collections::HashMap;
 pub struct ShortestPath {
     sr: Sr,
     weights: Vec<f32>,
@@ -19,7 +19,7 @@ impl ShortestPath {
         unimplemented!()
     }
     fn states_cmp(&self, a: &u32, b: &u32) -> Ordering {
-       unimplemented!() 
+        unimplemented!()
     }
 }
 fn states_hash(a: &u32) -> u64 {

@@ -1,20 +1,14 @@
 // genetic_operations.rs
-use crate::population::{Pop, InputPop};
-use crate::sort::quickSort;
 use crate::general_math::createRandomFloat;
+use crate::population::{InputPop, Pop};
+use crate::sort::quickSort;
 /// Creates a new input population structure from a given population.
 /// Used internally by other selection functions.
 fn create_input_pop_custom(input_pop: &mut InputPop, rows: i32, population: &Pop) {
     unimplemented!();
 }
 /// Selects the best individuals based on fitness.
-pub fn selbest(
-    fit: &[f32],
-    population: &Pop,
-    new_population: &mut Pop,
-    selects: &[i32],
-    way: i32,
-) {
+pub fn selbest(fit: &[f32], population: &Pop, new_population: &mut Pop, selects: &[i32], way: i32) {
     unimplemented!();
 }
 /// Selects individuals randomly from the population.

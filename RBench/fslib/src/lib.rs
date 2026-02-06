@@ -10,6 +10,6 @@ pub mod print;
 pub mod queue;
 pub mod shortest;
 pub mod sort;
-pub mod sr; 
+pub mod sr;
 pub mod symt;
 pub mod trim;

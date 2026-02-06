@@ -66,4 +66,4 @@ fn substring_enumerator_aa_bb_cc_test() {
         });
     }
 }
-pub fn main(){}
+pub fn main() {}

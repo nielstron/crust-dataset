@@ -31,7 +31,7 @@ pub fn xxh_is_little_endian() -> bool {
 pub fn xxh_read_le64_align(mem_ptr: &mut XXHU8) -> XXHU64 {
     unimplemented!()
 }
-pub fn xxh_swap32(x: &mut  XXHU32) -> XXHU32 {
+pub fn xxh_swap32(x: &mut XXHU32) -> XXHU32 {
     unimplemented!()
 }
 pub fn xxh_read32(mem_ptr: &mut XXHU32) -> XXHU32 {
@@ -73,18 +73,18 @@ pub fn cset_hash1_callback(memptr: &mut XXHU8, size: usize) -> XXHU64 {
 pub fn cset_hash2_callback(memptr: &mut XXHU8, size: usize) -> XXHU64 {
     unimplemented!()
 }
-pub struct  CsetValue<T> {
-    pi: i32, 
-    elem: T, 
+pub struct CsetValue<T> {
+    pi: i32,
+    elem: T,
 }
 pub struct Cset<T> {
     buckets: Vec<CsetValue<T>>,
-    max_load_factor: f64,                                                   
-    min_load_factor: f64,                                                    
-    seed: u64,                                                          
-    v: CsetValue<T>,                                                        
-    bucket_size: usize, 
-    compare: Option<fn(&T, &T) -> bool>, 
+    max_load_factor: f64,
+    min_load_factor: f64,
+    seed: u64,
+    v: CsetValue<T>,
+    bucket_size: usize,
+    compare: Option<fn(&T, &T) -> bool>,
     temp_buckets: Vec<CsetValue<T>>,
 }
 impl<T> Cset<T> {
@@ -112,7 +112,7 @@ impl<T> Cset<T> {
     pub fn get_seed(&self) -> u64 {
         unimplemented!()
     }
-    pub fn set_seed(&mut self, seed: u64){
+    pub fn set_seed(&mut self, seed: u64) {
         unimplemented!()
     }
     pub fn get_max_load_factor(&self) -> f64 {
