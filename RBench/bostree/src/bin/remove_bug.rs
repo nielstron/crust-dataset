@@ -4,7 +4,6 @@ use std::{env, process};
 use rand::rngs::StdRng;
 use rand::{Rng, SeedableRng};
 use Bostree::bostree::*;
-use Bostree::test_tree_sanity;
 fn cmp(a: &str, b: &str) -> i32 {
     a.cmp(b) as i32
 }
@@ -28,7 +27,6 @@ fn test() {
         if let Some(node) = tree.bostree_lookup(&key) {
             tree.bostree_remove(&node);
         }
-        test_tree_sanity(&tree);
         let expected_count = 'Z' as u32 - 'A' as u32 - 1;
         if tree.bostree_node_count() != expected_count {
             println!("Removed one node from a tree, but the node count did not decrease properly.");

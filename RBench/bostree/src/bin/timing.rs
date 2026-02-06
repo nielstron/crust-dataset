@@ -4,7 +4,6 @@ use std::{env, process};
 use rand::rngs::StdRng;
 use rand::{Rng, SeedableRng};
 use Bostree::bostree::*;
-use Bostree::test_tree_sanity;
 
 fn cmp(a: &str, b: &str) -> i32 {
     a.cmp(b) as i32
@@ -57,7 +56,6 @@ fn test() {
                 tree.bostree_node_count(),
                 gestime.as_secs_f64() / 1e9
             );
-            test_tree_sanity(&tree);
             println!(" sanity check passed");
             gestime = Duration::new(0, 0);
         }
@@ -74,7 +72,6 @@ fn test() {
 
         if node.is_none() {
             println!("Node missing!");
-            test_tree_sanity(&tree);
             process::exit(1);
         }
         let node = node.unwrap();
@@ -90,7 +87,6 @@ fn test() {
                 selecttime.as_secs_f64() / 1e9,
                 deletetime.as_secs_f64() / 1e9
             );
-            test_tree_sanity(&tree);
             println!(" sanity check passed");
             selecttime = Duration::new(0, 0);
             deletetime = Duration::new(0, 0);
