@@ -19,3 +19,16 @@ RBench/*/Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/rust
 
+# CBench generated/editor artifacts
+CBench/**/.idea/
+CBench/**/.vscode/
+CBench/**/build/
+CBench/**/cmake-build-*/
+CBench/**/*.o
+CBench/**/*.a
+CBench/**/*.so
+CBench/**/*.so.*
+CBench/**/*.exe
+CBench/**/*.out
+CBench/**/*.gcda
+CBench/**/*.gcno
