@@ -1,1 +1,5 @@
-// Auto-stubbed module to satisfy cargo build.
+use crate::output_interface::OutputInterface;
+use std::fs::File;
+pub fn file_output_new(output: &mut dyn OutputInterface, file: File) {
+    unimplemented!();
+}

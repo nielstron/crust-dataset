@@ -1,1 +1,3 @@
-// Auto-stubbed module to satisfy cargo build.
+fn main() -> i32 {
+    unimplemented!()
+}

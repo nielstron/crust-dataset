@@ -1,1 +1,3 @@
-// Auto-stubbed module to satisfy cargo build.
+pub trait OutputInterface {
+    fn write(&mut self, data: &[u8]) -> bool;
+}
