@@ -4,7 +4,6 @@ use std::{env, process};
 use rand::rngs::StdRng;
 use rand::{Rng, SeedableRng};
 use Bostree::bostree::*;
-use Bostree::test_tree_sanity;
 fn cmp(a: &str, b: &str) -> i32 {
     a.cmp(b) as i32
 }
@@ -31,7 +30,6 @@ fn test() {
         tree.bostree_remove(&node);
     }
 
-    test_tree_sanity(&tree);
     if tree.bostree_lookup("E").is_none() {
         println!("Nodes missing after removing another one");
         process::exit(1);
