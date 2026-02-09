@@ -9,9 +9,24 @@ use std::{fs::File, io::{Read, Write}};
 use crate::trusted_utils::*;
 use std::process::Command;
 use std::fs::OpenOptions;
+use std::ffi::CString;
+use std::path::PathBuf;
+use std::os::unix::fs::OpenOptionsExt;
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::OnceLock;
 use crate::checker_interface::*;
 use std::thread;
 use std::time::Duration;
+
+static NEXT_CHECKER_ID: AtomicU64 = AtomicU64::new(1);
+static HELPER_BINS: OnceLock<HelperBins> = OnceLock::new();
+
+#[derive(Clone, Debug)]
+struct HelperBins {
+parse: PathBuf,
+check: PathBuf,
+confirm: PathBuf,
+}
 
 fn do_assert(cond: bool) {
 assert!(cond, "Assertion failed!");
@@ -141,10 +156,78 @@ _ => false, // Parent process
 }
 }
 
+fn next_checker_instance_id() -> u64 {
+let pid = std::process::id() as u64;
+let seq = NEXT_CHECKER_ID.fetch_add(1, Ordering::Relaxed);
+(pid << 32) | seq
+}
+
+fn resolve_helper_binary(bin_name: &str, env_var: &str) -> Result<PathBuf, String> {
+let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+let mut candidates: Vec<PathBuf> = Vec::new();
+if let Ok(p) = std::env::var(env_var) {
+candidates.push(PathBuf::from(p));
+}
+for suffix in [bin_name.to_string(), format!("{}.exe", bin_name)] {
+candidates.push(manifest_dir.join("build").join(&suffix));
+candidates.push(manifest_dir.join("target").join("debug").join(&suffix));
+candidates.push(manifest_dir.join("target").join("debug").join("deps").join(&suffix));
+if let Ok(cwd) = std::env::current_dir() {
+candidates.push(cwd.join("build").join(&suffix));
+candidates.push(cwd.join("target").join("debug").join(&suffix));
+candidates.push(cwd.join("target").join("debug").join("deps").join(&suffix));
+}
+}
+for path in &candidates {
+if path.is_file() {
+return Ok(path.clone());
+}
+}
+let searched = candidates
+.into_iter()
+.map(|p| p.display().to_string())
+.collect::<Vec<_>>()
+.join(", ");
+Err(format!("{} not found. searched: {}", bin_name, searched))
+}
+
+fn helper_bins() -> &'static HelperBins {
+HELPER_BINS.get_or_init(|| {
+let parse = resolve_helper_binary("impcheck_parse", "IMPCHECK_PARSE_BIN")
+.unwrap_or_else(|e| panic!("{}", e));
+let check = resolve_helper_binary("impcheck_check", "IMPCHECK_CHECK_BIN")
+.unwrap_or_else(|e| panic!("{}", e));
+let confirm = resolve_helper_binary("impcheck_confirm", "IMPCHECK_CONFIRM_BIN")
+.unwrap_or_else(|e| panic!("{}", e));
+HelperBins { parse, check, confirm }
+})
+}
+
+fn ensure_required_binaries() {
+let _ = helper_bins();
+}
+
 fn create_pipe(path: &str) {
 let _ = std::fs::remove_file(path);
-let res = unsafe { libc::mkfifo(path.as_ptr() as *const i8, 0o777) };
+let c_path = CString::new(path).expect("Pipe path contains interior NUL");
+let res = unsafe { libc::mkfifo(c_path.as_ptr(), 0o777) };
 do_assert(res == 0);
+}
+
+fn open_fifo_read_nonblocking(path: &str) -> File {
+OpenOptions::new()
+.read(true)
+.custom_flags(libc::O_NONBLOCK)
+.open(path)
+.unwrap_or_else(|e| panic!("Failed to open read FIFO {}: {}", path, e))
+}
+
+fn open_fifo_write_nonblocking(path: &str) -> File {
+OpenOptions::new()
+.write(true)
+.custom_flags(libc::O_NONBLOCK)
+.open(path)
+.unwrap_or_else(|e| panic!("Failed to open write FIFO {}: {}", path, e))
 }
 
 fn await_ok(out: &mut File, input: &mut File) {
@@ -155,7 +238,9 @@ do_assert(ok[0] != 0);
 }
 
 fn setup(cnf_input: &str) -> (u64, File, File) {
-let checker_instance_id = 1;
+ensure_required_binaries();
+let bins = helper_bins();
+let checker_instance_id = next_checker_instance_id();
 let pipe_parsed = format!(".parsed.{}.pipe", checker_instance_id);
 let pipe_directives = format!(".directives.{}.pipe", checker_instance_id);
 let pipe_feedback = format!(".feedback.{}.pipe", checker_instance_id);
@@ -165,7 +250,7 @@ create_pipe(&pipe_directives);
 create_pipe(&pipe_feedback);
 
 if do_fork() {
-let mut cmd = Command::new("build/impcheck_parse")
+let mut cmd = Command::new(&bins.parse)
 .arg(format!("-formula-input={}", cnf_input))
 .arg(format!("-fifo-parsed-formula={}", pipe_parsed))
 .spawn()
@@ -174,7 +259,7 @@ cmd.wait().expect("Failed to wait on child");
 std::process::exit(0);
 }
 
-let mut in_parsed = File::open(&pipe_parsed).unwrap();
+let mut in_parsed = open_fifo_read_nonblocking(&pipe_parsed);
 let nb_vars = trusted_utils_read_int(&mut in_parsed);
 trusted_utils_read_int(&mut in_parsed);
 
@@ -195,7 +280,7 @@ for i in &fvec[fvec.len() - (SIG_SIZE_BYTES / std::mem::size_of::<i32>())..] {
 //let fsig = &fvec[fvec.len() - (SIG_SIZE_BYTES / std::mem::size_of::<i32>())..];
 
 if do_fork() {
-let mut cmd = Command::new("build/impcheck_check")
+let mut cmd = Command::new(&bins.check)
 .arg(format!("-fifo-directives={}", pipe_directives))
 .arg(format!("-fifo-feedback={}", pipe_feedback))
 .arg("-check-model")
@@ -205,11 +290,8 @@ cmd.wait().expect("Failed to wait on child");
 std::process::exit(0);
 }
 
-let mut out_directives = OpenOptions::new()
-.write(true)
-.open(&pipe_directives)
-.unwrap();
-let mut in_feedback = File::open(&pipe_feedback).unwrap();
+let mut out_directives = open_fifo_write_nonblocking(&pipe_directives);
+let mut in_feedback = open_fifo_read_nonblocking(&pipe_feedback);
 
 trusted_utils_write_char(TRUSTED_CHK_INIT, &mut out_directives);
 trusted_utils_write_int(nb_vars, &mut out_directives);
@@ -227,8 +309,9 @@ await_ok(&mut out_directives, &mut in_feedback);
 }
 
 fn confirm(cnf_input: &str, result: i32, sig: &[u8]) -> bool {
+let bins = helper_bins();
 let sigstr: String = sig.iter().map(|b| format!("{:02x}", b)).collect();
-let output = Command::new("build/impcheck_confirm")
+let output = Command::new(&bins.confirm)
 .arg(format!("-formula-input={}", cnf_input))
 .arg(format!("-result={}", result))
 .arg(format!("-result-sig={}", sigstr))
@@ -388,4 +471,3 @@ println!("[TEST] ---  end  test_trivial_unsat_x2() ---\n");
 
 fn main() {
 }
-
