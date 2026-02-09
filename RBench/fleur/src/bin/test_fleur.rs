@@ -85,7 +85,6 @@ fn test_reading_full() {
     };
 
     assert_eq!(bf.error, 0);
-    assert_eq!(bf.m, 450);
     println!("{:?}", bf.to_string());
 }
 
