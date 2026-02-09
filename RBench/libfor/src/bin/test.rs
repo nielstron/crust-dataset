@@ -186,7 +186,7 @@ let in_data = generate_input(10, 8, bits);
 println!("lowlevel pack/unpack  {} ints, {:2} bits", length, bits);
 lowlevel_blockx_func(bits, for_gen::pack0_x, for_gen::unpack0_x, &in_data, 10, length as u32);
 }
-fn main() {
+fn run_all() {
 for i in 0..=32 {
 lowlevel_block32(i);
 }
@@ -239,4 +239,18 @@ append_sorted();
 append_sorted_bignum();
 append_unsorted();
 println!("\nsuccess!");
+}
+
+fn main() {
+    run_all();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::run_all;
+
+    #[test]
+    fn test_reference_suite() {
+        run_all();
+    }
 }
