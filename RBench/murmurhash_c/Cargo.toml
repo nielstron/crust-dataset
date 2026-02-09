@@ -1,5 +1,4 @@
 [package]
-autobins = false
 name = "murmurhash-c"
 version = "0.1.0"
 edition = "2021"

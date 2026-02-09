@@ -1,5 +1,4 @@
 [package]
-autobins = false
 name = "jccc"
 version = "0.1.0"
 edition = "2021"

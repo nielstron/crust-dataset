@@ -1,5 +1,4 @@
 [package]
-autobins = false
 name = "proj_42_Kocaeli_Printf"
 version = "0.1.0"
 edition = "2021"

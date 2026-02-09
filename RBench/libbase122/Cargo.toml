@@ -1,5 +1,4 @@
 [package]
-autobins = false
 name = "libbase122"
 version = "0.1.0"
 edition = "2024"
