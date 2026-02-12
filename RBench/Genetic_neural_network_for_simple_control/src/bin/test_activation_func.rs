@@ -1,7 +1,6 @@
-
 use Genetic_neural_network_for_simple_control::activation_fnc::{
-    selectTangActivationFunction, 
-    selectSigmActivationFunction};
+    selectSigmActivationFunction, selectTangActivationFunction,
+};
 
 fn compare_results(a: f32, b: f32) -> bool {
     (a - b).abs() < f32::EPSILON
@@ -15,7 +14,7 @@ pub fn testActivationFncTanh() {
     println!("\x1b[1m=======TEST ACTIVAION FNC TANH STARTED=======\x1b[0m");
 
     let data_check1: f32 = 1.0;
-    let data_check2:f32 = 23.5;
+    let data_check2: f32 = 23.5;
     let data_check3: f32 = 3.333;
 
     let mut func_ptr_tanh: Option<fn(f32) -> f32> = None;
@@ -28,13 +27,15 @@ pub fn testActivationFncTanh() {
 
     selectSigmActivationFunction(&mut None); // dummy call to match C code
 
-    assert!(flag1 && flag2 && flag3, "Test Activation Function Tanh failed");
+    assert!(
+        flag1 && flag2 && flag3,
+        "Test Activation Function Tanh failed"
+    );
     println!("\x1b[1m\x1b[32m=======TEST ACTIVAION FNC TANH SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
-pub fn testActivationFncSigm()  {
+pub fn testActivationFncSigm() {
     println!("\x1b[1m=======TEST ACTIVAION FNC SIGM STARTED=======\x1b[0m");
 
     let data_check1 = 1.0;
@@ -49,8 +50,10 @@ pub fn testActivationFncSigm()  {
     let flag2 = compare_results(test_sigmoid(data_check2), func(data_check2));
     let flag3 = compare_results(test_sigmoid(data_check3), func(data_check3));
 
-    assert!(flag1 && flag2 && flag3, "Test Activation Function Sigmoid failed");
+    assert!(
+        flag1 && flag2 && flag3,
+        "Test Activation Function Sigmoid failed"
+    );
     println!("\x1b[1m\x1b[32m=======TEST ACTIVAION FNC SIGM SUCCESSFUL=======\x1b[0m");
-    
 }
-fn main(){}
+fn main() {}

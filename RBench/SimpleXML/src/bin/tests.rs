@@ -1,7 +1,5 @@
-
-use std::rc::Rc;
 use std::cell::RefCell;
-
+use std::rc::Rc;
 
 use SimpleXML::simple_vector::Vector;
 use SimpleXML::simple_xml::{XMLElement, parse_xml_from_text};
@@ -79,7 +77,7 @@ const SIZE: usize = 100000;
 #[test]
 fn test_vector2() {
     let mut v = Vector::new(8);
-    
+
     // Initialize elements
     for i in 0..SIZE {
         let tag_name = format!("tag {}", i);
@@ -92,7 +90,7 @@ fn test_vector2() {
     for i in 0..v.size() {
         let expected_tag = format!("tag {}", i);
         let expected_value = format!("value {}", i);
-        
+
         let element = v.get_element_at(i);
         let element_ref = element.unwrap();
 
@@ -122,7 +120,7 @@ fn test_xml() {
 
     let elem = parse_xml_from_text(s).unwrap();
     let elem_ref = elem;
-    
+
     assert_eq!(elem_ref.tag_name, "programmer");
     assert_eq!(elem_ref.children.size, 2);
 
@@ -134,10 +132,18 @@ fn test_xml() {
     let child2 = elem_ref.children.get_element_at(1).unwrap();
     assert_eq!(child2.tag_name, "languages");
     assert_eq!(child2.children.size, 10);
-    
+
     let list_languages = [
-        "C", "C++", "Python", "Ruby", "Objective C", 
-        "Java", "Javascript", "Lua", "C#", "PHP"
+        "C",
+        "C++",
+        "Python",
+        "Ruby",
+        "Objective C",
+        "Java",
+        "Javascript",
+        "Lua",
+        "C#",
+        "PHP",
     ];
 
     for i in 0..10 {
@@ -149,5 +155,4 @@ fn test_xml() {
     println!("PASSED Test parser xml");
 }
 
-
-fn main(){}
+fn main() {}

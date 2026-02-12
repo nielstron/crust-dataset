@@ -2,7 +2,7 @@ use fslib::queue::Queue;
 #[test]
 fn test_queue_create() {
     let q: Queue<i32> = Queue::new();
-    assert!(q.items.len()==0);
+    assert!(q.items.len() == 0);
 }
 #[test]
 fn test_queue_enqueue() {
@@ -21,5 +21,4 @@ fn test_queue_enqueue() {
     assert_eq!(q.dequeue(), None);
     assert_eq!(q.dequeue(), None);
 }
-fn main() {
-}
+fn main() {}

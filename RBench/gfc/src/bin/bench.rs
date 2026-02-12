@@ -10,7 +10,7 @@ fn benchmark_dec(range: u64, rounds: u64, seed: u64, count: u64) -> f64 {
         let _ = gfc.decrypt(i);
     }
     let duration = start.elapsed();
-    
+
     duration.as_secs_f64() // Convert to seconds
 }
 

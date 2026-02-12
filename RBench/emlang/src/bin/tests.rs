@@ -46,4 +46,4 @@ fn test() {
     let runtime = run_program(test_case!("runtime_error.eml"));
     assert!(runtime.em.is_err());
 }
-fn main(){}
+fn main() {}

@@ -10,7 +10,6 @@ fn test_print() {
     fst.set_final(state_a, 1.0);
     fst.set_final(state_b, 1.0);
     fst.print();
-    assert_eq!(fst.n_states, 2);  
+    assert_eq!(fst.n_states, 2);
 }
-fn main() {
-}
+fn main() {}

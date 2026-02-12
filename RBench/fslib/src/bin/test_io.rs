@@ -51,4 +51,4 @@ fn test_fst_stress() {
     assert_eq!(count, arcs_size);
     fst.remove();
 }
-fn main(){}
+fn main() {}

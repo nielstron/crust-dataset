@@ -1,9 +1,9 @@
-use simple_lang::compiler::{compile};
+use simple_lang::compiler::compile;
 use simple_lang::vm::OpCode;
 #[test]
 fn test_compiler() {
     let source = "let x = 5 + 3 - 2; dis x;";
-    let instructions = compile(source,&mut 0);
+    let instructions = compile(source, &mut 0);
 
     assert_eq!(instructions[0].opcode, OpCode::LOAD_CONST);
     assert_eq!(instructions[0].operand, "5");
@@ -29,5 +29,4 @@ fn test_compiler() {
     println!("All Tests passed!");
 }
 
-fn main() {
-}
+fn main() {}

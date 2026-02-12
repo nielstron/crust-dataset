@@ -30,4 +30,4 @@ fn test_clear() {
     bs.clear(0);
     assert_eq!(bs.get(0), false);
 }
-fn main(){}
+fn main() {}

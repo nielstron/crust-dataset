@@ -206,7 +206,7 @@ mod test {
     #[test]
     fn write_remap_read_2() {
         let i = 101;
-        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();;
+        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();
         let ok = dht.dht_init_table(1, 6, false);
         assert!(ok, "> malloc fail causes fail not logic fail.");
         dht.dht_write(5, Box::new(i));
@@ -218,7 +218,7 @@ mod test {
     #[test]
     fn write_remap_read_3() {
         let i = 1;
-        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();;
+        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();
         let ok = dht.dht_init_table(101, 1600, false);
         assert!(ok, "> malloc fail causes fail not logic fail.");
         dht.dht_write(171, Box::new(i));
@@ -230,7 +230,7 @@ mod test {
     #[test]
     fn write_remap_read_4() {
         let i = 65;
-        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();;
+        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();
         let ok = dht.dht_init_table(0, 20, false);
         assert!(ok, "> malloc fail causes fail not logic fail.");
         dht.dht_write(0, Box::new(i));
@@ -242,7 +242,7 @@ mod test {
     #[test]
     fn write_remap_read_5() {
         let i = 65;
-        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();;
+        let mut dht: HASHTABLE<Box<i32>> = HASHTABLE::dht_init();
         let ok = dht.dht_init_table(0, 20, false);
         assert!(ok, "> malloc fail causes fail not logic fail.");
         dht.dht_write(0, Box::new(i));

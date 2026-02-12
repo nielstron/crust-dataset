@@ -33,4 +33,4 @@ fn test_murmurhash() {
     let seed = 1;
     t("", seed, 0x514e28b7);
 }
-fn main(){}
+fn main() {}

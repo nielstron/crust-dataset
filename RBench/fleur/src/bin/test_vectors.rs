@@ -9,4 +9,4 @@ fn test() {
     assert_eq!(expected, s);
 }
 
-fn main(){}
+fn main() {}

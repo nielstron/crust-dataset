@@ -3,12 +3,12 @@ use fslib::symt::SymTable;
 fn test_create() {
     let st: SymTable = SymTable::new();
     assert!(st.sym.len() == 0);
-    for i in 0..st.n_max{
+    for i in 0..st.n_max {
         assert!(st.get(i as i32) == None);
     }
 }
 #[test]
-fn test_add(){
+fn test_add() {
     let mut st: SymTable = SymTable::new();
     st.add(1, "Mary");
     st.add(2, "had");
@@ -26,7 +26,7 @@ fn test_add(){
     st.remove();
 }
 #[test]
-fn test_add_sparse(){
+fn test_add_sparse() {
     let mut token: &str = "token";
     let mut st: SymTable = SymTable::new();
     st.add(100, token);
@@ -34,7 +34,7 @@ fn test_add_sparse(){
     assert!(st.get(100) == Some("token"));
 }
 #[test]
-fn test_reverse(){
+fn test_reverse() {
     let mut st: SymTable = SymTable::new();
     let k0 = "000";
     let k1 = "111";
@@ -49,7 +49,7 @@ fn test_reverse(){
     st.remove();
 }
 #[test]
-fn test_getr(){
+fn test_getr() {
     let mut st: SymTable = SymTable::new();
     let k0 = "000";
     let k1 = "111";
@@ -72,4 +72,4 @@ fn test_getr(){
 //     assert!(st.get(2)==Some("two"));
 //     st.remove();
 // }
-fn main(){}
+fn main() {}

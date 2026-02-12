@@ -401,4 +401,4 @@ fn test_parsing_comments_on_position_all() {
     );
 }
 
-fn main() { }
+fn main() {}

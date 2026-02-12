@@ -24,7 +24,7 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     }
 }
 #[test]
-fn test_union(){
+fn test_union() {
     let mut a = Fst::new();
     let mut b = Fst::new();
     let mut c = Fst::new();
@@ -40,4 +40,4 @@ fn test_union(){
     b.remove();
     c.remove();
 }
-fn main(){}
+fn main() {}

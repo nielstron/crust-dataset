@@ -1,4 +1,4 @@
-use fslib::fst::{Fst, StateData, ArcData};
+use fslib::fst::{ArcData, Fst, StateData};
 
 pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.state, arc_b.state);
@@ -86,5 +86,4 @@ fn test_shortest_reflexive() {
     path.remove();
     expected_path.remove();
 }
-fn main() {
-}
+fn main() {}

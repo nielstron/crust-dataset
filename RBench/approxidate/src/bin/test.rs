@@ -1,9 +1,9 @@
 use approxidate::approxidate;
+use chrono::TimeZone;
+use chrono::Utc;
 use std::time::UNIX_EPOCH;
 use std::time::{Duration, SystemTime};
-use chrono::Utc;
-use chrono::TimeZone;
- fn _start_of_day(sec: approxidate::TimeT) -> approxidate::TimeT{
+fn _start_of_day(sec: approxidate::TimeT) -> approxidate::TimeT {
     sec - (sec % 86400)
 }
 pub fn monotonic_now() -> f64 {
@@ -12,7 +12,7 @@ pub fn monotonic_now() -> f64 {
     duration.as_secs() as f64 + (duration.subsec_nanos() as f64 / 1_000_000_000.0)
 }
 #[test]
- fn approxidate_test(){
+fn approxidate_test() {
     let mut errors = 0;
     macro_rules! assert_equal {
         ($a:expr, $b:expr) => {
@@ -22,7 +22,10 @@ pub fn monotonic_now() -> f64 {
             }
         };
     }
-    let mut tv = approxidate::TimeVal { tv_sec: 0, tv_usec: 0 };
+    let mut tv = approxidate::TimeVal {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
     // Placeholder function calls for approxidate
     approxidate::approxidate_main("10/Mar/2013:00:00:02.003 UTC", &mut tv);
     assert_eq!(tv.tv_sec, 1362873602);
@@ -79,13 +82,16 @@ pub fn monotonic_now() -> f64 {
     assert_eq!(_start_of_day(tv.tv_sec), 1388534400);
     approxidate::approxidate_main("1/1/2014 UTC", &mut tv);
     assert_eq!(_start_of_day(tv.tv_sec), 1388534400);
-    let mut tv_rel = approxidate::TimeVal { tv_sec: 1577910617, tv_usec: 0 }; // 2020-01-01 12:30:17 -08:00
+    let mut tv_rel = approxidate::TimeVal {
+        tv_sec: 1577910617,
+        tv_usec: 0,
+    }; // 2020-01-01 12:30:17 -08:00
     approxidate::approxidate_relative("1/1/2014", &mut tv, &mut tv_rel);
     assert_eq!(tv.tv_sec, 1388608217);
     let mut ts = SystemTime::now()
-    .duration_since(UNIX_EPOCH)
-    .expect("Time went backwards")
-    .as_secs();
+        .duration_since(UNIX_EPOCH)
+        .expect("Time went backwards")
+        .as_secs();
     ts += 86400 * 31 * 5;
     let tm = Utc.timestamp(ts as i64, 0);
     let buff = tm.format("%m/%d/%Y").to_string();
@@ -107,12 +113,15 @@ pub fn monotonic_now() -> f64 {
     }
 }
 #[test]
- fn approxidate_benchmark(){
+fn approxidate_benchmark() {
     let rounds = 1000000;
     let start = monotonic_now();
-    let mut tv = approxidate::TimeVal { tv_sec: 0, tv_usec: 0 };
+    let mut tv = approxidate::TimeVal {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
     for _ in 0..rounds {
         assert!(approxidate::approxidate_main("2019-01-01 00:00:00", &mut tv) >= 0);
     }
 }
-fn main(){}
+fn main() {}

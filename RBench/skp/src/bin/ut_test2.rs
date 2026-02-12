@@ -1,4 +1,4 @@
-use skp::skp::{skp_};
+use skp::skp::skp_;
 #[macro_export]
 macro_rules! skptrace {
     ($($arg:tt)*) => {
@@ -64,4 +64,4 @@ fn ut_test2() {
     skptrace!("alt: {} '{}'", alt, &to[..len]);
     skptest!(alt == 1 && len == 2, "alt: {} len: {}", alt, len);
 }
-fn main(){}
+fn main() {}

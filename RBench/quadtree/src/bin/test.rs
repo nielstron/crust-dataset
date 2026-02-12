@@ -17,10 +17,10 @@ mod tests {
         assert!(bounds.se.is_some());
         assert_eq!(bounds.nw.as_ref().unwrap().x, std::f64::INFINITY);
         assert_eq!(bounds.se.as_ref().unwrap().x, -std::f64::INFINITY);
-        bounds.quadtree_bounds_extend( 5.0, 5.0);
+        bounds.quadtree_bounds_extend(5.0, 5.0);
         assert_eq!(bounds.nw.as_ref().unwrap().x, 5.0);
         assert_eq!(bounds.se.as_ref().unwrap().x, 5.0);
-        bounds.quadtree_bounds_extend( 10.0, 10.0);
+        bounds.quadtree_bounds_extend(10.0, 10.0);
         assert_eq!(bounds.nw.as_ref().unwrap().y, 10.0);
         assert_eq!(bounds.se.as_ref().unwrap().y, 5.0);
         assert_eq!(bounds.width, 5.0);
@@ -31,10 +31,58 @@ mod tests {
     fn test_tree() {
         let mut val = Some(10);
         let mut tree: Quadtree<i32> = Quadtree::quadtree_new(1.0, 1.0, 10.0, 10.0);
-        assert_eq!(tree.root.as_ref().unwrap().bounds.as_ref().unwrap().nw.as_ref().unwrap().x, 1.0);
-        assert_eq!(tree.root.as_ref().unwrap().bounds.as_ref().unwrap().nw.as_ref().unwrap().y, 10.0);
-        assert_eq!(tree.root.as_ref().unwrap().bounds.as_ref().unwrap().se.as_ref().unwrap().x, 10.0);
-        assert_eq!(tree.root.as_ref().unwrap().bounds.as_ref().unwrap().se.as_ref().unwrap().y, 1.0);
+        assert_eq!(
+            tree.root
+                .as_ref()
+                .unwrap()
+                .bounds
+                .as_ref()
+                .unwrap()
+                .nw
+                .as_ref()
+                .unwrap()
+                .x,
+            1.0
+        );
+        assert_eq!(
+            tree.root
+                .as_ref()
+                .unwrap()
+                .bounds
+                .as_ref()
+                .unwrap()
+                .nw
+                .as_ref()
+                .unwrap()
+                .y,
+            10.0
+        );
+        assert_eq!(
+            tree.root
+                .as_ref()
+                .unwrap()
+                .bounds
+                .as_ref()
+                .unwrap()
+                .se
+                .as_ref()
+                .unwrap()
+                .x,
+            10.0
+        );
+        assert_eq!(
+            tree.root
+                .as_ref()
+                .unwrap()
+                .bounds
+                .as_ref()
+                .unwrap()
+                .se
+                .as_ref()
+                .unwrap()
+                .y,
+            1.0
+        );
         assert!(!tree.quadtree_insert(0.0, 0.0, val.clone()));
         assert!(!tree.quadtree_insert(110.0, 110.0, val.clone()));
         assert!(tree.quadtree_insert(8.0, 2.0, val.clone()));

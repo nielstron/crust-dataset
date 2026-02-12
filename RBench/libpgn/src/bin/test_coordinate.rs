@@ -11,4 +11,4 @@ fn test_convert_coordinate() {
     assert_eq!(pgn_coordinate_file_as_index('g'), 6);
     assert_eq!(pgn_coordinate_file_as_index('h'), 7);
 }
-fn main(){}
+fn main() {}

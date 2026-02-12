@@ -33,5 +33,4 @@ fn test_bucket() {
     assert_eq!(bucket.cards[2], Some(c3), "bucket[2] = Ah");
     assert_eq!(bucket.cards[3], Some(c4), "bucket[3] = As");
 }
-pub fn main() {
-}
+pub fn main() {}

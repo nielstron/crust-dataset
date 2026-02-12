@@ -1,10 +1,9 @@
-
 use simple_lang::lexer::tokenize;
-use simple_lang::token::{TokenType, Token};
+use simple_lang::token::{Token, TokenType};
 #[test]
 fn test_tokenize() {
     let source = "let x = 5 + 3 - 2; dis x;";
-    let tokens:Vec<Token> = tokenize(source);
+    let tokens: Vec<Token> = tokenize(source);
 
     assert_eq!(tokens[0].token_type, TokenType::TOKEN_LET);
     assert_eq!(tokens[1].token_type, TokenType::TOKEN_IDENTIFIER);
@@ -22,5 +21,4 @@ fn test_tokenize() {
 
     println!("All Tests passed!");
 }
-fn main() {
-}
+fn main() {}

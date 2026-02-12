@@ -1,4 +1,6 @@
-use Genetic_neural_network_for_simple_control::population::{createInputPop, createStructure, clearPopulation, Pop, InputPop};
+use Genetic_neural_network_for_simple_control::population::{
+    InputPop, Pop, clearPopulation, createInputPop, createStructure,
+};
 
 #[test]
 pub fn testPopulation() {
@@ -19,7 +21,6 @@ pub fn testPopulation() {
     for i in 0..pop.cols {
         println!("{} - {}", pop.s[0][i], pop.s[1][i]);
         assert!(pop.s[0][i] - max[i] < f32::EPSILON || pop.s[1][i] - min[i] < f32::EPSILON);
-        
     }
 
     println!("Following population created:");
@@ -35,8 +36,6 @@ pub fn testPopulation() {
 
     clearPopulation(&mut pop);
 
-
     println!("\x1b[1m\x1b[32m=======TEST POPULATION SUCCESSFUL=======\x1b[0m");
-    
 }
-fn main(){}
+fn main() {}

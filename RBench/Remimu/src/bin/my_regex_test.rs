@@ -1,10 +1,4 @@
-
-use Remimu::my_regex::{
-    regex_match,
-    print_regex_tokens, 
-    regex_parse, 
-    RegexToken
-};
+use Remimu::my_regex::{print_regex_tokens, regex_match, regex_parse, RegexToken};
 #[test]
 fn test() {
     let mut tokens = vec![RegexToken::default(); 1024];
@@ -16,10 +10,17 @@ fn test() {
     print_regex_tokens(&tokens);
 
     // Test matching
-    let mut cap_pos = [0i64; 10];  // Example size
+    let mut cap_pos = [0i64; 10]; // Example size
     let mut cap_span = [0i64; 10]; // Example size
 
-    let match_len = regex_match(&tokens, "23.53) ", 0, 0u16, &mut cap_pos[..], &mut cap_span[..]);
+    let match_len = regex_match(
+        &tokens,
+        "23.53) ",
+        0,
+        0u16,
+        &mut cap_pos[..],
+        &mut cap_span[..],
+    );
     println!("########### return: {:?}", match_len);
 }
-fn main(){}
+fn main() {}

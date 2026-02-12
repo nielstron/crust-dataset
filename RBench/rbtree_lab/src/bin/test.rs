@@ -31,10 +31,7 @@ fn test_find_single() {
     let q = t.rbtree_find(key);
     assert!(q.is_some());
     assert_eq!(q.as_ref().unwrap().borrow().key, key);
-    assert_eq!(
-        q.as_ref().unwrap().borrow().key,
-        p.unwrap().borrow().key
-    );
+    assert_eq!(q.as_ref().unwrap().borrow().key, p.unwrap().borrow().key);
 
     let q = t.rbtree_find(wrong_key);
     assert!(q.is_none());

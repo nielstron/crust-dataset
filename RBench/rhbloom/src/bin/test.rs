@@ -1,6 +1,6 @@
-use rhbloom::rhbloom::{RHBloom};
-use std::time::{Instant};
+use rhbloom::rhbloom::RHBloom;
 use std::fmt::Write;
+use std::time::Instant;
 
 fn murmurhash2(key: &[u8], seed: u32) -> u32 {
     let m = 0x5bd1e995;
@@ -93,7 +93,10 @@ fn test_step(rhbloom: &mut RHBloom, n: i32, p: f64) {
     if (hits as f64 / n as f64 - p).abs() > 0.1 && n > 0 {
         println!(
             "n={} p={} hits={} \t({})",
-            n, p, hits, hits as f64 / n as f64
+            n,
+            p,
+            hits,
+            hits as f64 / n as f64
         );
         println!(" ({})", hits as f64 / n as f64 - p);
         panic!("bad probability");
@@ -161,7 +164,10 @@ fn bench(args: Vec<String>) {
         misses,
         misses as f64 / n as f64 * 100.0
     );
-    println!("Memory {:.2} MB", rhbloom.memsize() as f64 / 1024.0 / 1024.0);
+    println!(
+        "Memory {:.2} MB",
+        rhbloom.memsize() as f64 / 1024.0 / 1024.0
+    );
 }
 
 fn main() {

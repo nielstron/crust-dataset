@@ -151,9 +151,15 @@ fn test_string_endswith() {
 
 #[test]
 fn test_string_find() {
-    let bytes = ["", "vfv\n\n", "test string", "test string", " some another test  "];
+    let bytes = [
+        "",
+        "vfv\n\n",
+        "test string",
+        "test string",
+        " some another test  ",
+    ];
     let chars = ["", "\n", "no", "", "another"];
-    let expected_pos:Vec<Option<usize>> = vec![Some(0), Some(3), None, Some(0), Some(6)];
+    let expected_pos: Vec<Option<usize>> = vec![Some(0), Some(3), None, Some(0), Some(6)];
     for (idx, &byte) in bytes.iter().enumerate() {
         let str = new_string_from_bytes(byte);
         assert_eq!(string_find(&str, chars[idx]), expected_pos[idx]);

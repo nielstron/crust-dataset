@@ -1,5 +1,9 @@
-use utf8::utf8::{make_utf8_string, make_utf8_string_lossy, make_utf8_char_iter, next_utf8_char, free_owned_utf8_string, validate_utf8, slice_utf8_string, utf8_char_count, is_utf8_char_boundary, nth_utf8_char, unicode_code_point};
-use utf8::utf8::{Utf8Char};
+use utf8::utf8::Utf8Char;
+use utf8::utf8::{
+    free_owned_utf8_string, is_utf8_char_boundary, make_utf8_char_iter, make_utf8_string,
+    make_utf8_string_lossy, next_utf8_char, nth_utf8_char, slice_utf8_string, unicode_code_point,
+    utf8_char_count, validate_utf8,
+};
 #[test]
 fn test_validate_utf8_ok() {
     let validity = validate_utf8("Hello Здравствуйте こんにちは 🚩😁");
@@ -67,7 +71,10 @@ fn test_validate_utf8_err() {
 }
 
 fn assert_overlong_encodings(actual: Utf8Char, overlong: Utf8Char) {
-    assert_eq!(unicode_code_point(actual.clone()), unicode_code_point(overlong.clone()));
+    assert_eq!(
+        unicode_code_point(actual.clone()),
+        unicode_code_point(overlong.clone())
+    );
     let mut validity = validate_utf8(&actual.str);
     assert!(validity.valid);
     assert_eq!(validity.valid_upto, actual.byte_len as usize);
@@ -78,16 +85,97 @@ fn assert_overlong_encodings(actual: Utf8Char, overlong: Utf8Char) {
 
 #[test]
 fn test_validate_utf8_overlong_encoding_err() {
-    assert_overlong_encodings(Utf8Char { str: "H".to_string(), byte_len: 1 }, Utf8Char { str: "\u{C1}\u{88}".to_string(), byte_len: 2 });
-    assert_overlong_encodings(Utf8Char { str: "H".to_string(), byte_len: 1 }, Utf8Char { str: "\u{E0}\u{81}\u{88}".to_string(), byte_len: 3 });
-    assert_overlong_encodings(Utf8Char { str: "H".to_string(), byte_len: 1 }, Utf8Char { str: "\u{F0}\u{80}\u{81}\u{88}".to_string(), byte_len: 4 });
-    assert_overlong_encodings(Utf8Char { str: "д".to_string(), byte_len: 2 }, Utf8Char { str: "\u{E0}\u{90}\u{B4}".to_string(), byte_len: 3 });
-    assert_overlong_encodings(Utf8Char { str: "д".to_string(), byte_len: 2 }, Utf8Char { str: "\u{F0}\u{80}\u{90}\u{B4}".to_string(), byte_len: 4 });
-    assert_overlong_encodings(Utf8Char { str: "こ".to_string(), byte_len: 3 }, Utf8Char { str: "\u{F0}\u{83}\u{81}\u{93}".to_string(), byte_len: 4 });
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "H".to_string(),
+            byte_len: 1,
+        },
+        Utf8Char {
+            str: "\u{C1}\u{88}".to_string(),
+            byte_len: 2,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "H".to_string(),
+            byte_len: 1,
+        },
+        Utf8Char {
+            str: "\u{E0}\u{81}\u{88}".to_string(),
+            byte_len: 3,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "H".to_string(),
+            byte_len: 1,
+        },
+        Utf8Char {
+            str: "\u{F0}\u{80}\u{81}\u{88}".to_string(),
+            byte_len: 4,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "д".to_string(),
+            byte_len: 2,
+        },
+        Utf8Char {
+            str: "\u{E0}\u{90}\u{B4}".to_string(),
+            byte_len: 3,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "д".to_string(),
+            byte_len: 2,
+        },
+        Utf8Char {
+            str: "\u{F0}\u{80}\u{90}\u{B4}".to_string(),
+            byte_len: 4,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "こ".to_string(),
+            byte_len: 3,
+        },
+        Utf8Char {
+            str: "\u{F0}\u{83}\u{81}\u{93}".to_string(),
+            byte_len: 4,
+        },
+    );
 
-    assert_overlong_encodings(Utf8Char { str: "\u{7F}".to_string(), byte_len: 1 }, Utf8Char { str: "\u{C1}\u{BF}".to_string(), byte_len: 2 });
-    assert_overlong_encodings(Utf8Char { str: "\u{DF}\u{BF}".to_string(), byte_len: 2 }, Utf8Char { str: "\u{E0}\u{9F}\u{BF}".to_string(), byte_len: 3 });
-    assert_overlong_encodings(Utf8Char { str: "\u{EF}\u{BF}\u{BF}".to_string(), byte_len: 3 }, Utf8Char { str: "\u{F0}\u{8F}\u{BF}\u{BF}".to_string(), byte_len: 4 });
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "\u{7F}".to_string(),
+            byte_len: 1,
+        },
+        Utf8Char {
+            str: "\u{C1}\u{BF}".to_string(),
+            byte_len: 2,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "\u{DF}\u{BF}".to_string(),
+            byte_len: 2,
+        },
+        Utf8Char {
+            str: "\u{E0}\u{9F}\u{BF}".to_string(),
+            byte_len: 3,
+        },
+    );
+    assert_overlong_encodings(
+        Utf8Char {
+            str: "\u{EF}\u{BF}\u{BF}".to_string(),
+            byte_len: 3,
+        },
+        Utf8Char {
+            str: "\u{F0}\u{8F}\u{BF}\u{BF}".to_string(),
+            byte_len: 4,
+        },
+    );
 }
 
 #[test]
@@ -126,7 +214,6 @@ fn test_make_utf8_string_lossy_invalid_sequence() {
 
 #[test]
 fn test_make_utf8_string_lossy_completely_invalid() {
-
     let test_string = "\u{C0}\u{C0}\u{C0}\u{C0}";
     let expected = "����";
     let owned_ustr = make_utf8_string_lossy(test_string);

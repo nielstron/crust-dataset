@@ -1,4 +1,4 @@
-use fslib::fst::{Fst, StateData, ArcData};
+use fslib::fst::{ArcData, Fst, StateData};
 pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.state, arc_b.state);
     assert_eq!(arc_a.ilabel, arc_b.ilabel);
@@ -34,5 +34,4 @@ fn test_fst_sort() {
     fst_a.arc_sort(0);
     assert_fst_equal(&fst_a, &fst_b);
 }
-fn main() {
-}
+fn main() {}

@@ -1,4 +1,4 @@
-use Simple_Config::simple_config::{Cfg, CfgColor, CfgEntry, cfg_parse, CfgVal};
+use Simple_Config::simple_config::{cfg_parse, Cfg, CfgColor, CfgEntry, CfgVal};
 
 pub const TEST_CAPACITY: usize = 10;
 #[test]
@@ -242,4 +242,4 @@ fn test() {
         }
     }
 }
-fn main(){}
+fn main() {}

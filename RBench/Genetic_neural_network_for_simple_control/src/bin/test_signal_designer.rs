@@ -1,4 +1,6 @@
-use Genetic_neural_network_for_simple_control::signal_designer::{Signal, cliSignalSelector, deleteSignal};
+use Genetic_neural_network_for_simple_control::signal_designer::{
+    Signal, cliSignalSelector, deleteSignal,
+};
 #[test]
 pub fn testSignalCreate() {
     println!("\x1b[1m=======TEST SIGNAL CREATE STARTED=======\x1b[0m");
@@ -13,6 +15,4 @@ pub fn testSignalCreate() {
     println!("\x1b[1m\x1b[32m=======TEST SIGNAL CREATE SUCCESSFUL=======\x1b[0m");
 }
 
-fn main() {
- 
-}
+fn main() {}

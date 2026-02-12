@@ -1,10 +1,10 @@
-use Genetic_neural_network_for_simple_control::sort::quickSort;
 use Genetic_neural_network_for_simple_control::fit_functions::*;
 use Genetic_neural_network_for_simple_control::genetic_operations::*;
+use Genetic_neural_network_for_simple_control::model_system::*;
+use Genetic_neural_network_for_simple_control::neural_network::*;
 use Genetic_neural_network_for_simple_control::pid_controller::*;
 use Genetic_neural_network_for_simple_control::population::*;
-use Genetic_neural_network_for_simple_control::neural_network::*;
-use Genetic_neural_network_for_simple_control::model_system::*;
+use Genetic_neural_network_for_simple_control::sort::quickSort;
 use std::fs::{File, OpenOptions};
 use std::io::{BufWriter, Write};
 fn getMinFit(fit: &Vec<f32>) -> usize {
@@ -18,8 +18,8 @@ fn getMinFit(fit: &Vec<f32>) -> usize {
     min
 }
 
-fn closeRandomSizeGeneration(population: &mut Pop, sizes: &Vec<f32>){
-    for i in 0 .. population.cols{
+fn closeRandomSizeGeneration(population: &mut Pop, sizes: &Vec<f32>) {
+    for i in 0..population.cols {
         population.s[0][i] = sizes[i as usize] + 0.7;
         population.s[1][i] = sizes[i as usize] - 0.7;
     }
@@ -137,7 +137,6 @@ pub fn testPIDRun() {
     let flag = 1;
     assert!(flag == 1);
     println!("\x1b[1m\x1b[32m=======TEST PID RUN SUCCESSFUL=======\x1b[0m");
-    
 }
 #[test]
 pub fn testNNRun() {
@@ -154,7 +153,7 @@ pub fn testNNRun() {
 
     system_nn.max_sys = 40.0;
     system_nn.min_sys = -5.0;
-    
+
     let chance = 0.1;
     let generations = 50000;
 
@@ -177,7 +176,7 @@ pub fn testNNRun() {
     let count = system_nn.neural_network.countOfValues;
     let max = vec![1.0; count];
     let min = vec![-1.0; count];
-    
+
     let mut input_pop = InputPop::default();
     let mut pop = Pop::default();
     createInputPop(&mut input_pop, &max, &min, &[100, count as i32]);
@@ -201,7 +200,10 @@ pub fn testNNRun() {
         writeln!(csv_file, "{}", fit[best_fit]).unwrap();
 
         if i % 10 == 0 || i > 9990 {
-            println!("GENERATION[{:05}] - fit: {}  - {}", i, fit[best_fit], best_fit);
+            println!(
+                "GENERATION[{:05}] - fit: {}  - {}",
+                i, fit[best_fit], best_fit
+            );
         }
 
         let mut best_pop = Pop::default();
@@ -226,11 +228,17 @@ pub fn testNNRun() {
         generateRandomPopulation(&mut pop_close_random);
 
         if (i % 100 == 0 || i == generations - 1) && i != 0 {
-            let mut csv_file2 = BufWriter::new(File::create("TOOLBOX/PYTHON/input/data_nn.csv").unwrap());
+            let mut csv_file2 =
+                BufWriter::new(File::create("TOOLBOX/PYTHON/input/data_nn.csv").unwrap());
             writeln!(csv_file2, "CV,RV, System Output, Corrected Output").unwrap();
 
-            let mut csv_file3 = BufWriter::new(OpenOptions::new()
-                .create(true).append(true).open("TOOLBOX/PYTHON/input/best_nn.txt").unwrap());
+            let mut csv_file3 = BufWriter::new(
+                OpenOptions::new()
+                    .create(true)
+                    .append(true)
+                    .open("TOOLBOX/PYTHON/input/best_nn.txt")
+                    .unwrap(),
+            );
             write!(csv_file3, "[").unwrap();
             for val in &pop.pop[0] {
                 write!(csv_file3, "{}, ", val).unwrap();
@@ -240,7 +248,10 @@ pub fn testNNRun() {
             fillMatrixesNN(&mut system_nn.neural_network, &pop.pop[best_fit]);
             makeSimulationOfSignalNN(&mut system_nn, &mut csv_file2, true);
 
-            println!("BEST NN: FIT: {} Count: {}", system_nn.fit, system_nn.max_counter);
+            println!(
+                "BEST NN: FIT: {} Count: {}",
+                system_nn.fit, system_nn.max_counter
+            );
             // plotGraphNN();
         }
 
@@ -262,7 +273,6 @@ pub fn testNNRun() {
     // plotGraphNN();
 
     println!("\x1b[1m\x1b[32m=======TEST NN RUN SUCCESSFUL=======\x1b[0m");
-    
 }
 
-fn main(){}
+fn main() {}

@@ -35,14 +35,12 @@ pub fn print_vcd(vcd: &VCD) {
 fn test_ram_vcd() {
     // 1. Read the VCD (adjust path as needed).
     let vcd_file_path = "src/bin/assets/ram.vcd";
-    let vcd = VCD::read_from_path(vcd_file_path)
-        .expect("Failed to read the 'ram.vcd' file");
+    let vcd = VCD::read_from_path(vcd_file_path).expect("Failed to read the 'ram.vcd' file");
 
     // 2. Assert the date field matches your VCD content
     let date_str = String::from_utf8_lossy(&vcd.date);
     assert_eq!(
-        date_str, 
-        "Fri Jul 15 15:17:36 2022", 
+        date_str, "Fri Jul 15 15:17:36 2022",
         "Expected date to match 'Fri Jul 15 15:17:36 2022', got '{}'",
         date_str
     );
@@ -50,8 +48,7 @@ fn test_ram_vcd() {
     // 3. Assert the version field
     let version_str = String::from_utf8_lossy(&vcd.version);
     assert_eq!(
-        version_str, 
-        "Icarus Verilog", 
+        version_str, "Icarus Verilog",
         "Expected version to match 'Icarus Verilog', got '{}'",
         version_str
     );
@@ -59,14 +56,12 @@ fn test_ram_vcd() {
     // 4. Assert timescale fields
     let unit_str = String::from_utf8_lossy(&vcd.timescale.unit);
     assert_eq!(
-        unit_str, 
-        "s",
+        unit_str, "s",
         "Expected timescale unit to be 's', got '{}'",
         unit_str
     );
     assert_eq!(
-        vcd.timescale.scale, 
-        1, 
+        vcd.timescale.scale, 1,
         "Expected timescale scale=1, got '{}'",
         vcd.timescale.scale
     );
@@ -82,11 +77,9 @@ fn test_ram_vcd() {
 
     // Confirm size is 9 bits
     assert_eq!(
-        matched_signal.size, 
-        9,
+        matched_signal.size, 9,
         "Expected signal '{}' to have size=9 bits, found '{}'",
-        matched_signal_name,
-        matched_signal.size
+        matched_signal_name, matched_signal.size
     );
 
     // 6. Check a specific timestamp for a known value in the 'matched [8:0]' signal.
@@ -97,15 +90,16 @@ fn test_ram_vcd() {
     let val_25 = matched_signal
         .get_value_at_timestamp(timestamp_25)
         .unwrap_or_else(|| {
-            panic!("No value found for '{}' at timestamp {}", matched_signal_name, timestamp_25)
+            panic!(
+                "No value found for '{}' at timestamp {}",
+                matched_signal_name, timestamp_25
+            )
         });
     let val_25_str = String::from_utf8_lossy(val_25);
     assert_eq!(
-        val_25_str, 
-        "10010",
+        val_25_str, "10010",
         "At t=#25, expected '{}' to be '10010', got '{}'",
-        matched_signal_name,
-        val_25_str
+        matched_signal_name, val_25_str
     );
 
     // 7. If you want to test other signals like 'clock', 'reset', or 'mask [7:0]',
@@ -121,8 +115,7 @@ fn test_ram_vcd() {
         .expect("No 'clock' value at #5");
     let clock_val_5_str = String::from_utf8_lossy(clock_val_5);
     assert_eq!(
-        clock_val_5_str, 
-        "1",
+        clock_val_5_str, "1",
         "Expected 'clock' at t=#5 to be '1', got '{}'",
         clock_val_5_str
     );

@@ -764,4 +764,4 @@ fn test_parsing_moves_with_weird_spaces() {
     moves = PgnMoves::from("1. Rdf8$0");
      */
 }
-fn main(){}
+fn main() {}

@@ -1,8 +1,12 @@
-use Genetic_neural_network_for_simple_control::genetic_operations::{selbest, selrand, selturn, crosov, mutx};
-use Genetic_neural_network_for_simple_control::population::{createInputPop, createStructure, clearPopulation, Pop, InputPop};
+use Genetic_neural_network_for_simple_control::genetic_operations::{
+    crosov, mutx, selbest, selrand, selturn,
+};
+use Genetic_neural_network_for_simple_control::population::{
+    InputPop, Pop, clearPopulation, createInputPop, createStructure,
+};
 
-pub fn createPopulation(population: &mut Pop, size: &[i32]){
-    let mut input : InputPop = InputPop::default();
+pub fn createPopulation(population: &mut Pop, size: &[i32]) {
+    let mut input: InputPop = InputPop::default();
     let min = vec![0.0, 50.0, -20.0];
     let max = vec![10.0, 100.0, -10.0];
     createInputPop(&mut input, &min, &max, size);
@@ -10,7 +14,7 @@ pub fn createPopulation(population: &mut Pop, size: &[i32]){
 }
 
 #[test]
-pub fn testSelbest()  {
+pub fn testSelbest() {
     println!("\x1b[1m=======TEST SELBEST STARTED=======\x1b[0m");
 
     let mut new_population_higher = Pop::default();
@@ -26,7 +30,7 @@ pub fn testSelbest()  {
     createPopulation(&mut population, &size);
 
     selbest(&fit, &population, &mut new_population_higher, &selects, 0);
-    selbest(&fit, &population, &mut new_population_lower, &selects , 1);
+    selbest(&fit, &population, &mut new_population_lower, &selects, 1);
 
     assert_eq!(new_population_higher.rows, 4);
     assert_eq!(new_population_lower.rows, 4);
@@ -36,7 +40,6 @@ pub fn testSelbest()  {
     clearPopulation(&mut new_population_lower);
 
     println!("\x1b[1m\x1b[32m=======TEST SELBEST SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
@@ -63,11 +66,10 @@ pub fn testCrossov() {
     clearPopulation(&mut population);
 
     println!("\x1b[1m\x1b[32m=======TEST CROSSOV SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
-pub fn testMutx()  {
+pub fn testMutx() {
     println!("\x1b[1m=======TEST MUTX STARTED=======\x1b[0m");
 
     let mut population = Box::new(Pop::default());
@@ -79,7 +81,6 @@ pub fn testMutx()  {
     clearPopulation(&mut population);
 
     println!("\x1b[1m\x1b[32m=======TEST MUTX SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
@@ -100,7 +101,6 @@ pub fn testSelrand() {
     clearPopulation(&mut new_population);
 
     println!("\x1b[1m\x1b[32m=======TEST SELRAND SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
@@ -122,6 +122,5 @@ pub fn testSelturn() {
     clearPopulation(&mut new_population);
 
     println!("\x1b[1m\x1b[32m=======TEST SELTURN SUCCESSFUL=======\x1b[0m");
-    
 }
-pub fn main(){}
+pub fn main() {}

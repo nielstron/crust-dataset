@@ -1,15 +1,8 @@
 use std::any::Any;
 
 use coroutine::coroutine::{
-    Schedule,
-    coroutine_open,
-    coroutine_close,
-    coroutine_new,
-    coroutine_resume,
-    coroutine_status,
-    coroutine_running,
-    coroutine_yield,
-    COROUTINE_DEAD,
+    coroutine_close, coroutine_new, coroutine_open, coroutine_resume, coroutine_running,
+    coroutine_status, coroutine_yield, Schedule, COROUTINE_DEAD,
 };
 
 struct Args {
@@ -30,9 +23,9 @@ fn foo(schedule: &mut Schedule, data: &mut dyn Any) {
 
     for i in 0..5 {
         println!("coroutine {} : {}", current_id, start + i);
-        
+
         coroutine_yield(schedule);
-        
+
         let resumed_id = coroutine_running(schedule);
         assert_eq!(
             resumed_id, current_id,
@@ -58,10 +51,7 @@ fn test(schedule: &mut Schedule) {
         "Expected a nonnegative coroutine ID for co2, got {}",
         co2
     );
-    assert_ne!(
-        co1, co2,
-        "co1 and co2 should be different coroutine IDs"
-    );
+    assert_ne!(co1, co2, "co1 and co2 should be different coroutine IDs");
 
     println!("main start");
 
@@ -86,11 +76,10 @@ fn test(schedule: &mut Schedule) {
     println!("main end");
 }
 
-
 #[test]
 fn test_main() {
     let mut schedule = coroutine_open();
     test(&mut schedule);
     coroutine_close(schedule);
 }
-fn main(){}
+fn main() {}

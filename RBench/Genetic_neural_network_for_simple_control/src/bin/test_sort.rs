@@ -12,10 +12,13 @@ pub fn testQuicksort() {
     quickSort(&mut fit, &mut result, length);
 
     for i in 0..length {
-        assert_eq!(result[i as usize], result_correct[i as usize], "Mismatch at index {}: expected {}, got {}", i, result_correct[i as usize], result[i as usize]);
+        assert_eq!(
+            result[i as usize], result_correct[i as usize],
+            "Mismatch at index {}: expected {}, got {}",
+            i, result_correct[i as usize], result[i as usize]
+        );
     }
 
     println!("\x1b[1m\x1b[32m=======TEST QUICK SORT SUCCESSFUL=======\x1b[0m");
-    
 }
-pub fn main(){}
+pub fn main() {}

@@ -1,4 +1,7 @@
-use XOpt::xopt::{xopt_context, xopt_parse, XoptOption, XoptContext, XOPT_TYPE_INT, XOPT_TYPE_FLOAT, XOPT_TYPE_DOUBLE, XOPT_TYPE_BOOL, XOPT_CTX_POSIXMEHARDER, XOPT_CTX_STRICT, XOPT_NULLOPTION};
+use XOpt::xopt::{
+    XOPT_CTX_POSIXMEHARDER, XOPT_CTX_STRICT, XOPT_NULLOPTION, XOPT_TYPE_BOOL, XOPT_TYPE_DOUBLE,
+    XOPT_TYPE_FLOAT, XOPT_TYPE_INT, XoptContext, XoptOption, xopt_context, xopt_parse,
+};
 // A sample config type, matching the original SimpleConfig in your C code.
 #[repr(C)]
 #[derive(Debug)]
@@ -131,12 +134,18 @@ fn test_parsing_some_args() {
         config.some_float
     );
     // We didn't set `--some-double`, so it should remain 0.0
-    assert_eq!(config.some_double, 0.0, "some_double should be 0.0 by default");
+    assert_eq!(
+        config.some_double, 0.0,
+        "some_double should be 0.0 by default"
+    );
     // We didn't set `--help`, so it should remain false
     assert_eq!(config.help, false, "help should be false by default");
 
     // The final two arguments were not recognized as options. They should be "extras."
-    assert_eq!(extra_count, 2, "Should have 2 extras (file1.txt, file2.txt)");
+    assert_eq!(
+        extra_count, 2,
+        "Should have 2 extras (file1.txt, file2.txt)"
+    );
     let extras_vec = extras.unwrap_or_default();
     assert_eq!(extras_vec.len(), 2);
     assert_eq!(extras_vec[0], "file1.txt");
@@ -200,6 +209,4 @@ fn test_help_arg() {
     assert_eq!(extras_vec.len(), 0, "No extras expected");
 }
 
-
-
-fn main(){}
+fn main() {}

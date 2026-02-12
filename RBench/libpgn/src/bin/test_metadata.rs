@@ -23,4 +23,4 @@ fn test_parsing_metadata() {
     assert_eq!(metadata.get("Result").unwrap(), "1/2-1/2");
     assert_eq!(PgnScore::from(metadata.get("Result").unwrap()), Draw);
 }
-fn main(){}
+fn main() {}

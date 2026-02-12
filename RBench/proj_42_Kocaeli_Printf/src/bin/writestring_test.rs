@@ -26,5 +26,4 @@ fn write_string() {
 
     println!("All tests passed successfully.");
 }
-fn main() {
-}
+fn main() {}

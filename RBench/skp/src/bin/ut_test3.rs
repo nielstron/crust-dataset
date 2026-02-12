@@ -62,4 +62,4 @@ fn ut_test3() {
     skptrace!("alt: {} '{}'", alt, &from[..len]);
     skptest!(alt == 1 && len == 2, "alt: {} len: {}", alt, len);
 }
-fn main(){}
+fn main() {}

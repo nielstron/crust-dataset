@@ -1,4 +1,7 @@
-use proj_42_Kocaeli_Printf::ft_printf::{writeint, writeuint, writehex, writepoint, writechar, writestring, HEXALOW, DECIMAL, HEXAUP, LOCATION};
+use proj_42_Kocaeli_Printf::ft_printf::{
+    writechar, writehex, writeint, writepoint, writestring, writeuint, DECIMAL, HEXALOW, HEXAUP,
+    LOCATION,
+};
 
 #[test]
 fn test_writenumber() {
@@ -46,5 +49,4 @@ fn test_writenumber() {
     println!("All tests passed successfully.");
 }
 
-fn main() {
-}
+fn main() {}

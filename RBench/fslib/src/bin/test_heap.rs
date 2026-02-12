@@ -89,5 +89,4 @@ fn test_heap_limit() {
     assert_eq!(h.pop(), None);
     h.remove();
 }
-fn main() {
-}
+fn main() {}

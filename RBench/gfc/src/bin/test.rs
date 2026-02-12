@@ -11,10 +11,10 @@ fn test_range(range: u64, rounds: u64) {
     for i in 0..range {
         let enc = gfc.encrypt(i);
         let dec = gfc.decrypt(enc);
-        
+
         // Ensure decryption returns the original value
         assert_eq!(dec, i, "Decryption failed for i = {}", i);
-        
+
         // Count occurrences of encrypted values
         counts[enc as usize] += 1;
     }
@@ -35,4 +35,4 @@ fn test() {
     test_range(100, 6);
     test_range(500 * 1000, 6);
 }
-fn main(){}
+fn main() {}

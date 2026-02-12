@@ -1,8 +1,8 @@
-use lib2bit::twobit::{TwoBit, TwoBitHeader, TwoBitCL, TwoBitMaskedIdx};
+use lib2bit::twobit::{TwoBit, TwoBitCL, TwoBitHeader, TwoBitMaskedIdx};
 use std::env;
-use std::process;
 use std::fs::File;
-use std::io::{BufReader, BufRead, Write};
+use std::io::{BufRead, BufReader, Write};
+use std::process;
 #[test]
 fn test() {
     let filename = "src/bin/foo.2bit";
@@ -11,12 +11,10 @@ fn test() {
     let mut output = File::create(new_file).expect("Unable to create file");
 
     for i in 0..tb.hdr.n_chroms {
-        writeln!( output,
-        "{}\t{}\t{} offset 0x{:x}",
-        i,
-        tb.cl.chrom[i as usize],
-        tb.idx.size[i as usize],
-        tb.idx.offset[i as usize]
+        writeln!(
+            output,
+            "{}\t{}\t{} offset 0x{:x}",
+            i, tb.cl.chrom[i as usize], tb.idx.size[i as usize], tb.idx.offset[i as usize]
         );
     }
     let seq1 = tb.twobit_sequence("chr1", 0, 0);
@@ -46,4 +44,4 @@ fn read_lines<P: AsRef<std::path::Path>>(path: P) -> std::io::Result<Vec<String>
     let reader = BufReader::new(file);
     reader.lines().collect()
 }
-fn main(){}
+fn main() {}

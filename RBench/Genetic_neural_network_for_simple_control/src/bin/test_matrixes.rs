@@ -1,5 +1,7 @@
-use Genetic_neural_network_for_simple_control::matrix_math::{Matrix, matrixSubstAdd, matrixMultiply, matrixAllValuesFormula};
 use Genetic_neural_network_for_simple_control::activation_fnc::*;
+use Genetic_neural_network_for_simple_control::matrix_math::{
+    Matrix, matrixAllValuesFormula, matrixMultiply, matrixSubstAdd,
+};
 
 pub fn from_vec(matrix: Vec<Vec<f32>>) -> Matrix {
     let rows = matrix.len();
@@ -9,7 +11,6 @@ pub fn from_vec(matrix: Vec<Vec<f32>>) -> Matrix {
         sizes: vec![rows, cols],
     }
 }
-
 
 fn compare_matrices(a: &Matrix, b: &Matrix) -> bool {
     if a.matrix.len() != b.matrix.len() || a.matrix[0].len() != b.matrix[0].len() {
@@ -25,7 +26,7 @@ fn compare_matrices(a: &Matrix, b: &Matrix) -> bool {
     true
 }
 #[test]
-pub fn test_matrix_add_sub()  {
+pub fn test_matrix_add_sub() {
     println!("\x1b[1m=======TEST MATRIX ADD SUB STARTED=======\x1b[0m");
 
     let a = from_vec(vec![vec![1.0, 1.0], vec![1.0, 1.0]]);
@@ -49,7 +50,6 @@ pub fn test_matrix_add_sub()  {
     assert!(ok_sub);
 
     println!("\x1b[1m\x1b[32m=======TEST MATRIX ADD SUB SUCCESSFUL=======\x1b[0m");
-    
 }
 #[test]
 pub fn test_matrix_multiply() {
@@ -65,7 +65,7 @@ pub fn test_matrix_multiply() {
     println!("\x1b[1m\x1b[32m=======TEST MATRIX MULTIPLY SUCCESSFUL=======\x1b[0m");
 }
 #[test]
-pub fn test_matrix_all_values_formula()  {
+pub fn test_matrix_all_values_formula() {
     println!("\x1b[1m=======TEST MATRIX ALL VALUES FORMULA STARTED=======\x1b[0m");
 
     let mut data_tanh = from_vec(vec![vec![1.0, 1.0], vec![2.0, 2.0]]);
@@ -98,11 +98,7 @@ pub fn test_matrix_all_values_formula()  {
 pub fn test_matrix_from_pointer() {
     println!("\x1b[1m=======TEST MATRIX FROM POINTER STARTED=======\x1b[0m");
 
-    let desired = from_vec(vec![
-        vec![1.0, 2.0],
-        vec![3.0, 4.0],
-        vec![5.0, 6.0],
-    ]);
+    let desired = from_vec(vec![vec![1.0, 2.0], vec![3.0, 4.0], vec![5.0, 6.0]]);
 
     let data = Matrix::createMatrixFromPointer(&[1.0, 2.0, 3.0, 4.0, 5.0, 6.0], vec![3, 2]);
 
@@ -112,21 +108,15 @@ pub fn test_matrix_from_pointer() {
     assert!(compare_matrices(&data, &desired));
 
     println!("\x1b[1m\x1b[32m=======TEST MATRIX FROM POINTER SUCCESSFUL=======\x1b[0m");
-    
 }
 #[test]
 pub fn test_matrix_fully_copy_matrix() {
     println!("\x1b[1m=======TEST MATRIX FULLY COPY STARTED=======\x1b[0m");
 
-    let original = from_vec(vec![
-        vec![1.0, 2.0],
-        vec![3.0, 4.0],
-        vec![5.0, 6.0],
-    ]);
+    let original = from_vec(vec![vec![1.0, 2.0], vec![3.0, 4.0], vec![5.0, 6.0]]);
     let copied = original.clone();
 
     assert!(compare_matrices(&original, &copied));
     println!("\x1b[1m\x1b[32m=======TEST MATRIX FULLY COPY SUCCESSFUL=======\x1b[0m");
-    
 }
-pub fn main(){}
+pub fn main() {}

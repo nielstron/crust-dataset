@@ -1,4 +1,4 @@
-use fslib::fst::{Fst, StateData, ArcData};
+use fslib::fst::{ArcData, Fst, StateData};
 
 pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.state, arc_b.state);
@@ -148,4 +148,4 @@ fn test_compose_sorted_half_2() {
     fst_3.arc_sort(0);
     assert_fst_equal(&fst_2, &mut fst_3);
 }
-fn main(){}
+fn main() {}

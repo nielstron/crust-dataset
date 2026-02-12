@@ -1,12 +1,12 @@
-use std::fs::File;
-use std::io::{Write, Read};
-use std::sync::Arc;
-use rand::{Rng, SeedableRng};
-use rand::rngs::StdRng;
-use std::f32;
-use std::cmp;
-use mvptree::mvptree::{MVPTree, MVPDatapoint, MVPDataType, MVPError};
 use mvptree::mvptree::mvptree_read;
+use mvptree::mvptree::{MVPDataType, MVPDatapoint, MVPError, MVPTree};
+use rand::rngs::StdRng;
+use rand::{Rng, SeedableRng};
+use std::cmp;
+use std::f32;
+use std::fs::File;
+use std::io::{Read, Write};
+use std::sync::Arc;
 const MVP_BRANCHFACTOR: usize = 2;
 const MVP_PATHLENGTH: usize = 5;
 const MVP_LEAFCAP: usize = 25;
@@ -26,22 +26,30 @@ fn point_l1_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     if point_a.data.len() != point_b.data.len() {
         return -1.0;
     }
-    let sum: u32 = point_a.data.iter()
+    let sum: u32 = point_a
+        .data
+        .iter()
         .zip(&point_b.data)
         .map(|(a, b)| (*a as i32 - *b as i32).abs() as u32)
         .sum();
-    unsafe { NBCALCS += 1; }
+    unsafe {
+        NBCALCS += 1;
+    }
     sum as f32 / point_a.data.len() as f32
 }
 fn point_l2_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     if point_a.data.len() != point_b.data.len() {
         return -1.0;
     }
-    let sum: i32 = point_a.data.iter()
+    let sum: i32 = point_a
+        .data
+        .iter()
         .zip(&point_b.data)
         .map(|(a, b)| (*a as i32 - *b as i32).pow(2))
         .sum();
-    unsafe { NBCALCS += 1; }
+    unsafe {
+        NBCALCS += 1;
+    }
     (sum as f32).sqrt() / point_a.data.len() as f32
 }
 fn generate_point(dp_length: usize) -> MVPDatapoint {
@@ -53,7 +61,12 @@ fn generate_point(dp_length: usize) -> MVPDatapoint {
 fn generate_uniform_points(nbpoints: usize, dp_length: usize) -> Vec<MVPDatapoint> {
     (0..nbpoints).map(|_| generate_point(dp_length)).collect()
 }
-fn generate_cluster(nbpoints: usize, dplength: usize, var: i32, dist: fn(&MVPDatapoint, &MVPDatapoint) -> f32) -> Vec<MVPDatapoint> {
+fn generate_cluster(
+    nbpoints: usize,
+    dplength: usize,
+    var: i32,
+    dist: fn(&MVPDatapoint, &MVPDatapoint) -> f32,
+) -> Vec<MVPDatapoint> {
     let mut points = Vec::with_capacity(nbpoints);
     points.push(generate_point(dplength));
     let orig_data = points[0].data.clone();
@@ -68,14 +81,23 @@ fn generate_cluster(nbpoints: usize, dplength: usize, var: i32, dist: fn(&MVPDat
             v += *val as i32;
             *val = cmp::min(255, cmp::max(0, v)) as u8;
         }
-        let new_point = MVPDatapoint { id: format!("point{}", rng.r#gen::<u64>()), data: new_data, path: vec![], datalen: dplength, data_type: MVPDataType::ByteArray };
+        let new_point = MVPDatapoint {
+            id: format!("point{}", rng.r#gen::<u64>()),
+            data: new_data,
+            path: vec![],
+            datalen: dplength,
+            data_type: MVPDataType::ByteArray,
+        };
         let d = dist(&points[0], &new_point);
         if d > max_distance {
             max_distance = d;
         }
         points.push(new_point);
     }
-    println!("Cluster - maximum distance from main point: {}", max_distance);
+    println!(
+        "Cluster - maximum distance from main point: {}",
+        max_distance
+    );
     points
 }
 #[test]
@@ -93,7 +115,13 @@ fn test() {
     let cluster1 = generate_cluster(nbcluster1, dplength, var, distance_func);
     assert!(cluster1.len() == nbcluster1);
     let cluster_center = cluster1[0].clone();
-    let mut tree = MVPTree::new(MVP_BRANCHFACTOR, MVP_PATHLENGTH, MVP_LEAFCAP, MVPDataType::ByteArray, distance_func);
+    let mut tree = MVPTree::new(
+        MVP_BRANCHFACTOR,
+        MVP_PATHLENGTH,
+        MVP_LEAFCAP,
+        MVPDataType::ByteArray,
+        distance_func,
+    );
     println!("Adding {} points to tree.", nbpoints);
     let mut error: MVPError = tree.add(pointlist);
     assert!(error == MVPError::Success);
@@ -114,13 +142,17 @@ fn test() {
         assert!(tree.add(vec![pnt]) == MVPError::Success);
     }
     println!("Retrieving point: {}", cluster_center.id);
-    let results = tree.retrieve(&cluster_center, knearest, radius).expect("Failed to retrieve points");
+    let results = tree
+        .retrieve(&cluster_center, knearest, radius)
+        .expect("Failed to retrieve points");
     for (i, res) in results.iter().enumerate() {
         println!("  FOUND --> ({}) {}", i, res.id);
     }
     if let Some(savedpoint) = savedpoint {
         println!("Retrieving point: {}", savedpoint.id);
-        let results = tree.retrieve(&savedpoint, knearest, radius).expect("Failed to retrieve points");
+        let results = tree
+            .retrieve(&savedpoint, knearest, radius)
+            .expect("Failed to retrieve points");
         for (i, res) in results.iter().enumerate() {
             println!("  FOUND --> ({}) {}", i, res.id);
         }

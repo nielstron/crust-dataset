@@ -1,5 +1,5 @@
-use libutf::libutf_utf;
 use libutf::libutf_string::Utf8String;
+use libutf::libutf_utf;
 
 #[test]
 fn test_string_append() {

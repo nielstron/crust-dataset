@@ -24,7 +24,7 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     }
 }
 #[test]
-fn test_stack(){
+fn test_stack() {
     let mut a: Fst = Fst::new();
     let mut b: Fst = Fst::new();
     let mut c: Fst = Fst::new();
@@ -40,4 +40,4 @@ fn test_stack(){
     b.remove();
     c.remove();
 }
-fn main(){}
+fn main() {}

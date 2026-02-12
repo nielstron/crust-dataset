@@ -18,14 +18,7 @@ fn header_template() -> TFHeader {
 
 #[test]
 fn test_tf_header_read_fuzz_like_inputs() {
-    let samples: [&[u8]; 6] = [
-        &[],
-        &[0],
-        &[0, 1, 2, 3],
-        &[0; 16],
-        &[0xFF; 32],
-        b"TINYFSEQ",
-    ];
+    let samples: [&[u8]; 6] = [&[], &[0], &[0, 1, 2, 3], &[0; 16], &[0xFF; 32], b"TINYFSEQ"];
 
     for sample in samples {
         let mut header = header_template();

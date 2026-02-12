@@ -8,19 +8,21 @@ struct StateOperationCounter {
     pub last_event_id: i32,
 }
 
-static mut state_a: StateOperationCounter = StateOperationCounter{    
+static mut state_a: StateOperationCounter = StateOperationCounter {
     enter_calls: 0,
     leave_calls: 0,
     event_calls: 0,
     process_calls: 0,
-    last_event_id: 0,};
+    last_event_id: 0,
+};
 
-static mut state_b: StateOperationCounter = StateOperationCounter{    
+static mut state_b: StateOperationCounter = StateOperationCounter {
     enter_calls: 0,
     leave_calls: 0,
     event_calls: 0,
     process_calls: 0,
-    last_event_id: 0,};
+    last_event_id: 0,
+};
 
 fn test_cfsm_init_is_safe_to_use<T>(fsm_instance: &mut cfsm::CfsmCtx<T>) {
     fsm_instance.cfsm_init(None);
@@ -37,14 +39,12 @@ fn test_cfsm_init_should_clear_handler(fsm_instance: &mut cfsm::CfsmCtx<u8>) {
     assert!(fsm_instance.ctx_ptr.is_some());
 }
 
-
 fn test_cfsm_transition_should_set_enter_handler_only<T>(fsm_instance: &mut cfsm::CfsmCtx<T>) {
     fsm_instance.cfsm_transition(Some(state_only_on_enter));
     assert!(fsm_instance.on_event.is_none());
     assert!(fsm_instance.on_process.is_none());
     assert!(fsm_instance.on_leave.is_none());
 }
-
 
 fn test_cfs_transition_a_b_a<T>(fsm_instance: &mut cfsm::CfsmCtx<T>) {
     fsm_instance.cfsm_transition(Some(state_a_on_enter));
@@ -161,4 +161,4 @@ fn state_b_on_leave<T>(fsm: Option<Box<&mut cfsm::CfsmCtx<T>>>) {
     }
 }
 
-fn main(){}
+fn main() {}

@@ -18,7 +18,7 @@ fn run_print_test() {
     assert!(cfg.to_string() == expected);
 }
 #[test]
-fn test(){
+fn test() {
     assert!(cfg_parse_file("sample.cfg").is_ok());
     assert!(cfg_parse_file("sample.txt").is_err_and(|err| err.msg == "invalid file extension"));
     assert!(cfg_parse_file("").is_err_and(|err| err.msg == "invalid filename"));

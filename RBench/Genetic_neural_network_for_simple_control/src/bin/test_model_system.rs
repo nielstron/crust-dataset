@@ -1,22 +1,10 @@
+use Genetic_neural_network_for_simple_control::model_system::SystemNN;
 use Genetic_neural_network_for_simple_control::model_system::{
-    createNNSystem, 
-    createDeNormalization, 
-    makeSimulationOfSignalNN, 
-    cleanNNSystem
+    cleanNNSystem, createDeNormalization, createNNSystem, makeSimulationOfSignalNN,
 };
-use Genetic_neural_network_for_simple_control::neural_network::{
-    fillMatrixesNN,
-    NNInput
-};
+use Genetic_neural_network_for_simple_control::neural_network::{NNInput, fillMatrixesNN};
 use Genetic_neural_network_for_simple_control::population::{
-    createInputPop, 
-    createStructure, 
-    clearPopulation, 
-    Pop, 
-    InputPop
-};
-use Genetic_neural_network_for_simple_control::model_system::{
-    SystemNN
+    InputPop, Pop, clearPopulation, createInputPop, createStructure,
 };
 
 use std::fs::File;
@@ -36,7 +24,7 @@ fn create_system_neural_network_input(input: &mut NNInput, check: i32) {
 }
 
 #[test]
-pub fn testSystemCreate()  {
+pub fn testSystemCreate() {
     println!("\x1b[1m=======TEST SYSTEM NN CREATE STARTED=======\x1b[0m");
 
     let mut input = NNInput::default();
@@ -57,12 +45,16 @@ pub fn testSystemCreate()  {
     let max = vec![1.0; count];
     let min = vec![0.0; count];
 
-    let mut csv_file = BufWriter::new( File::create("./input/data_nn.csv").unwrap() );
-    
-    writeln!(csv_file, "CV,RV");
-    
+    let mut csv_file = BufWriter::new(File::create("./input/data_nn.csv").unwrap());
 
-    createInputPop(&mut input_pop, &max, &min, &size.iter().map(|&x| x as i32).collect::<Vec<i32>>());
+    writeln!(csv_file, "CV,RV");
+
+    createInputPop(
+        &mut input_pop,
+        &max,
+        &min,
+        &size.iter().map(|&x| x as i32).collect::<Vec<i32>>(),
+    );
     createStructure(&mut input_pop, &mut pop);
 
     fillMatrixesNN(system_nn.neural_network.as_mut(), &pop.pop[0]);
@@ -72,11 +64,9 @@ pub fn testSystemCreate()  {
     writeln!(csv_file2, "best").unwrap();
     writeln!(csv_file2, "{}", system_nn.fit).unwrap();
 
-
     cleanNNSystem(&mut system_nn.as_mut());
     clearPopulation(&mut pop.as_mut());
 
     println!("\x1b[1m\x1b[32m=======TEST SYSTEM NN CREATE SUCCESSFUL=======\x1b[0m");
-    
 }
-fn main(){}
+fn main() {}

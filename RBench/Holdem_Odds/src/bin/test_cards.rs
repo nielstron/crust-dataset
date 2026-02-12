@@ -34,7 +34,9 @@ fn test_char_to_rank() {
 fn test_card_is_valid() {
     for rank in Rank::Deuce as u8..=Rank::Ace as u8 {
         for suit in Suit::Club as u8..=Suit::Spade as u8 {
-            let card = Card::new(unsafe { std::mem::transmute(rank) }, unsafe { std::mem::transmute(suit) });
+            let card = Card::new(unsafe { std::mem::transmute(rank) }, unsafe {
+                std::mem::transmute(suit)
+            });
             assert!(card.is_valid());
         }
     }
@@ -51,7 +53,9 @@ fn test_card_is_valid() {
 fn test_new_card() {
     for rank in Rank::Deuce as u8..=Rank::Ace as u8 {
         for suit in Suit::Club as u8..=Suit::Spade as u8 {
-            let card = Card::new(unsafe { std::mem::transmute(rank) }, unsafe { std::mem::transmute(suit) });
+            let card = Card::new(unsafe { std::mem::transmute(rank) }, unsafe {
+                std::mem::transmute(suit)
+            });
             assert!(card.is_valid());
         }
     }
@@ -100,4 +104,4 @@ fn test_card_swap() {
     assert_eq!(c2.rank, Rank::Ace);
     assert_eq!(c2.suit, Suit::Spade);
 }
-pub fn main(){}
+pub fn main() {}

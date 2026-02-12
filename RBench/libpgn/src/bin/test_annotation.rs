@@ -39,4 +39,4 @@ fn test_parsing_moves_with_nag_annotation() {
     assert_eq!(moves.values[0].white.notation, "Nce2 $2");
     assert_eq!(moves.values[0].black.notation, "e5 $0 $19");
 }
-fn main(){}
+fn main() {}

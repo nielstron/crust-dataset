@@ -1,4 +1,4 @@
-use fslib::fst::{Fst, StateData, ArcData};
+use fslib::fst::{ArcData, Fst, StateData};
 
 pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.state, arc_b.state);
@@ -50,4 +50,4 @@ fn test_test_equal() {
     fst_b.compile_str(str_b);
     assert_fst_equal(&fst_a, &fst_b);
 }
-fn main (){}
+fn main() {}

@@ -171,5 +171,4 @@ fn test_joining() {
     assert_eq!(j3.join(&j1), 1);
 }
 
-fn main() {
-}
+fn main() {}

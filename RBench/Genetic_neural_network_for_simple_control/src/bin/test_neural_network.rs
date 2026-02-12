@@ -1,9 +1,9 @@
 // This is a skeleton Rust test file representing the translated structure
 // from the C code. Actual implementation for each function assumed to exist
 
+use Genetic_neural_network_for_simple_control::matrix_math::*;
 use Genetic_neural_network_for_simple_control::neural_network::*;
 use Genetic_neural_network_for_simple_control::population::*;
-use Genetic_neural_network_for_simple_control::matrix_math::*;
 
 fn check_matrixes_nn(neural_network: &NN, population: &[f32]) -> bool {
     let mut global_index = 0;
@@ -57,7 +57,7 @@ fn create_simple_neural_network(neural_network: &mut NN, check: i32) {
 }
 
 #[test]
-pub fn test_neural_network_create()  {
+pub fn test_neural_network_create() {
     println!("\x1b[1m=======TEST NEURAL NETWORK CREATE STARTED=======\x1b[0m");
 
     let mut neural_network = NN::default();
@@ -85,7 +85,6 @@ pub fn test_neural_network_create()  {
     clearNeuralNetwork(neural_network);
 
     println!("\x1b[1m\x1b[32m=======TEST NEURAL NETWORK CREATE SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
@@ -98,7 +97,12 @@ pub fn test_fill_matrixes_nn() {
 
     let mut pop = Pop::default();
     let mut input_pop = InputPop::default();
-    createInputPop(&mut input_pop, &vec![10.0; count], &vec![0.0; count], &[1, count as i32]);
+    createInputPop(
+        &mut input_pop,
+        &vec![10.0; count],
+        &vec![0.0; count],
+        &[1, count as i32],
+    );
     createStructure(&mut input_pop, &mut pop);
 
     fillMatrixesNN(&mut neural_network, &pop.pop[0]);
@@ -110,7 +114,6 @@ pub fn test_fill_matrixes_nn() {
     clearPopulation(&mut pop);
 
     println!("\x1b[1m\x1b[32m=======TEST FILL MATRIXES NN SUCCESSFUL=======\x1b[0m");
-    
 }
 
 #[test]
@@ -156,10 +159,17 @@ pub fn test_one_calculation() {
     let count = neural_network.countOfValues;
     let mut pop = Pop::default();
     let mut input_pop = InputPop::default();
-    createInputPop(&mut input_pop, &vec![1.0; count], &vec![-1.0; count], &[1, count as i32]);
+    createInputPop(
+        &mut input_pop,
+        &vec![1.0; count],
+        &vec![-1.0; count],
+        &[1, count as i32],
+    );
     createStructure(&mut input_pop, &mut pop);
 
-    let pop_example = vec![0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.2, 0.1, 0.2];
+    let pop_example = vec![
+        0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.2, 0.1, 0.2,
+    ];
     fillMatrixesNN(&mut neural_network, &pop_example);
 
     oneCalculation(&mut neural_network, &mut input, &mut output);
@@ -189,4 +199,4 @@ pub fn test_one_calculation() {
     println!("\x1b[1m\x1b[32m=======TEST ONE CALCULATION SUCCESSFUL=======\x1b[0m");
 }
 
-fn main(){}
+fn main() {}

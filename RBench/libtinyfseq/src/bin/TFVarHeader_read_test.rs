@@ -9,14 +9,7 @@ fn var_header_template() -> TFVarHeader {
 
 #[test]
 fn test_tf_var_header_read_fuzz_like_inputs() {
-    let samples: [&[u8]; 6] = [
-        &[],
-        &[0],
-        &[0, 1, 2, 3],
-        &[0; 8],
-        &[0xFF; 12],
-        b"TINYFSEQ",
-    ];
+    let samples: [&[u8]; 6] = [&[], &[0], &[0, 1, 2, 3], &[0; 8], &[0xFF; 12], b"TINYFSEQ"];
 
     for sample in samples {
         let mut header = var_header_template();

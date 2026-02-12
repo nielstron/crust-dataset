@@ -1,6 +1,6 @@
-use Genetic_neural_network_for_simple_control::systems_builder::selectSystem;
-use Genetic_neural_network_for_simple_control::pid_controller::{deletePid, PID};
+use Genetic_neural_network_for_simple_control::pid_controller::{PID, deletePid};
 use Genetic_neural_network_for_simple_control::signal_designer::Signal;
+use Genetic_neural_network_for_simple_control::systems_builder::selectSystem;
 #[test]
 pub fn testSelectSystem() {
     println!("\x1b[1m=======TEST SELECT SYSTEM STARTED=======\x1b[0m");
@@ -29,6 +29,5 @@ pub fn testSelectSystem() {
     deletePid(pid.as_mut());
 
     println!("\x1b[1m\x1b[32m=======TEST SELECT SYSTEM SUCCESSFUL=======\x1b[0m");
-    
 }
-fn main(){}
+fn main() {}

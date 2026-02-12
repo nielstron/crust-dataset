@@ -102,4 +102,4 @@ fn test_parsing_pgn() {
 
     assert_eq!(pgn.score, PgnScore::BlackWon);
 }
-fn main(){}
+fn main() {}

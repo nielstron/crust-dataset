@@ -1,8 +1,8 @@
-use fslib::fst::Fst;
 use fslib::bitset::BitSet;
+use fslib::fst::Fst;
+use fslib::fst::{ArcData, StateData};
 use fslib::trim;
 use fslib::trim::fst_trim;
-use fslib::fst::{ArcData, StateData};
 pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.state, arc_b.state);
     assert_eq!(arc_a.ilabel, arc_b.ilabel);
@@ -80,5 +80,4 @@ fn test_trim_close() {
     fst_0.print();
     // assert_fst_equal(&fst_0, &fst_1);
 }
-fn main() {
-}
+fn main() {}

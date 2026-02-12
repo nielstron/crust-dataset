@@ -1,4 +1,4 @@
-use fslib::fst::{Fst};
+use fslib::fst::Fst;
 use fslib::iter::FstIter;
 #[test]
 fn test_iter_create() {
@@ -57,5 +57,4 @@ fn test_iter_visited() {
     assert_eq!(iter.visited(state_a), true);
     assert_eq!(iter.visited(state_b), false);
 }
-fn main() {
-}
+fn main() {}

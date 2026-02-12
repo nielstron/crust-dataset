@@ -1,4 +1,4 @@
-use FastHamming::fast_hamming::{log2uint8};
+use FastHamming::fast_hamming::log2uint8;
 
 #[test]
 fn test_log2uint8() {
@@ -14,4 +14,4 @@ fn test_log2uint8() {
     assert_eq!(log2uint8(128), 7);
     assert_eq!(log2uint8(255), 7);
 }
-fn main(){}
+fn main() {}

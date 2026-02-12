@@ -1,4 +1,6 @@
-use Genetic_neural_network_for_simple_control::pid_controller::{createNewPidController, deletePid, makeSimulationOfSignal, PID};
+use Genetic_neural_network_for_simple_control::pid_controller::{
+    PID, createNewPidController, deletePid, makeSimulationOfSignal,
+};
 use std::fs::File;
 use std::io::Write;
 
@@ -26,7 +28,7 @@ pub fn testPIDCreate() {
     makeSimulationOfSignal(&mut pid, &mut csv_file, 1);
 
     println!("{}", pid.fit);
-    
+
     deletePid(&mut pid.as_mut());
 
     let flag = 1;
@@ -34,4 +36,4 @@ pub fn testPIDCreate() {
 
     println!("\x1b[1m\x1b[32m=======TEST PID CREATE SUCCESSFUL=======\x1b[0m");
 }
-fn main(){}
+fn main() {}

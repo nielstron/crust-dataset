@@ -21,4 +21,4 @@ fn test_parsing_invalid_score() {
     assert_eq!(PgnScore::from("0-"), PgnScore::Unknown);
     assert_eq!(PgnScore::from("-0"), PgnScore::Unknown);
 }
-fn main(){}
+fn main() {}

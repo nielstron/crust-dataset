@@ -9,14 +9,7 @@ fn channel_range_template() -> TFChannelRange {
 
 #[test]
 fn test_tf_channel_range_read_fuzz_like_inputs() {
-    let samples: [&[u8]; 6] = [
-        &[],
-        &[0],
-        &[0, 1, 2, 3],
-        &[0; 8],
-        &[0xFF; 12],
-        b"TINYFSEQ",
-    ];
+    let samples: [&[u8]; 6] = [&[], &[0], &[0, 1, 2, 3], &[0; 8], &[0xFF; 12], b"TINYFSEQ"];
 
     for sample in samples {
         let mut range = channel_range_template();

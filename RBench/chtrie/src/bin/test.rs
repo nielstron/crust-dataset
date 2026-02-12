@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use chtrie::chtrie::Chtrie;
+use std::collections::HashMap;
 
 const N: usize = 65536;
 const M: usize = 256;
@@ -79,15 +79,29 @@ fn test_chtrie() {
     }
 
     let test_cases = [
-        ("hello", false), ("the", false), ("his", true), ("he", true),
-        ("his", true), ("go", false), ("he", true), ("a", false),
-        ("an", false), ("this", true), ("that", true), ("hey", false),
-        ("she", true), ("hers", true),
+        ("hello", false),
+        ("the", false),
+        ("his", true),
+        ("he", true),
+        ("his", true),
+        ("go", false),
+        ("he", true),
+        ("a", false),
+        ("an", false),
+        ("this", true),
+        ("that", true),
+        ("hey", false),
+        ("she", true),
+        ("hers", true),
     ];
 
     for &(test_case, expected) in test_cases.iter() {
         let result = query(&mut tr, &term, test_case);
-        assert_eq!(result, expected, "Query: {}, Result: {}, Expected: {}", test_case, result, expected);
+        assert_eq!(
+            result, expected,
+            "Query: {}, Result: {}, Expected: {}",
+            test_case, result, expected
+        );
     }
 
     tr.free();

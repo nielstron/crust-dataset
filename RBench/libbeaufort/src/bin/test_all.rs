@@ -54,4 +54,4 @@ fn test_tableau() {
     assert_eq!(mat_small[2], b"cba");
 }
 
-fn main(){}
+fn main() {}
