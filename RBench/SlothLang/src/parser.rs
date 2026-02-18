@@ -1,5 +1,8 @@
-use crate::slothvm::SlothProgram;
-use crate::{slothvm, throw};
+use crate::program::SlothProgram;
+use crate::throw;
+use std::fs::File;
+use std::io::{Read, Seek, SeekFrom};
+
 pub fn parse(filename: &str) -> Option<SlothProgram> {
     unimplemented!()
 }

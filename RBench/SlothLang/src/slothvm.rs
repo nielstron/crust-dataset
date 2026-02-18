@@ -1,5 +1,7 @@
-use crate::{parser, throw};
-pub type UByte = u8;
+use crate::throw;
+use crate::program::{SlothProgram, UByte};
+use crate::stack::Stack;
+use std::io::{self, Write};
 pub enum Opcodes {
     Exit = 0x00,
     Push = 0x01,
@@ -24,10 +26,6 @@ pub enum CompCodes {
 pub enum TypeCode {
     Int = 0x01,
     Chr = 0x02,
-}
-pub struct SlothProgram {
-    pub codes: Vec<UByte>,
-    pub pc: usize,
 }
 pub fn execute(sbin: &mut Option<SlothProgram>) -> i32 {
     unimplemented!()
