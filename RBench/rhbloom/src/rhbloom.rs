@@ -1,5 +1,4 @@
 // Import necessary modules
-use crate::rhbloom;
 // Define the RHBloom struct
 pub struct RHBloom {
     count: usize,
