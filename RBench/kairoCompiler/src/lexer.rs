@@ -5,11 +5,12 @@ use crate::compiler::{
 };
 use crate::lex_process::{LexProcess, LexProcessFunctions};
 use crate::vector::{vector_pop, vector_push};
+use crate::cprocess::{compile_process_next_char, compile_process_peek_char, compile_process_push_char};
 /// A global set of function pointers for reading from a CompileProcess.
 pub static COMPILER_LEX_FUNCTIONS: LexProcessFunctions = LexProcessFunctions {
-    next_char: crate::cprocess::compile_process_next_char,
-    peek_char: crate::cprocess::compile_process_peek_char,
-    push_char: crate::cprocess::compile_process_push_char,
+    next_char: compile_process_next_char,
+    peek_char: compile_process_peek_char,
+    push_char: compile_process_push_char,
 };
 /// Returns true if we're inside an expression. Stub returns false for demonstration.
 fn lex_is_in_expression(_lex_process: &LexProcess) -> bool {
