@@ -1,4 +1,4 @@
-use crate::utils::buffer::PgnBuffer;
+use crate::buffer::PgnBuffer;
 const PGN_METADATA_INITIAL_SIZE: usize = 8;
 const PGN_METADATA_GROW_SIZE: usize = 8;
 #[derive(Debug, Clone, PartialEq, Eq)]

@@ -7,4 +7,6 @@ pub mod moves;
 pub mod pgn;
 pub mod piece;
 pub mod score;
-pub mod utils;
+pub mod buffer;
+pub mod cursor;
+pub mod export;
