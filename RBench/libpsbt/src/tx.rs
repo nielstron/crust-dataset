@@ -1,4 +1,4 @@
-use super::psbt::PsbtResult;
+use crate::psbt::PsbtResult;
 /// Translates the C struct psbt_txin.
 pub struct PsbtTxIn {
     pub txid: Vec<u8>,
