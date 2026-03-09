@@ -94,6 +94,21 @@ impl BigInt {
         unimplemented!()
     }
 }
+pub fn gt(a: &BigInt, b: &BigInt) -> bool {
+    unimplemented!()
+}
+pub fn lt(a: &BigInt, b: &BigInt) -> bool {
+    unimplemented!()
+}
+pub fn ge(a: &BigInt, b: &BigInt) -> bool {
+    unimplemented!()
+}
+pub fn le(a: &BigInt, b: &BigInt) -> bool {
+    unimplemented!()
+}
+pub fn delete(a: &mut BigInt) {
+    unimplemented!()
+}
 impl std::ops::Neg for BigInt {
     type Output = BigInt;
     fn neg(self) -> BigInt {
@@ -115,19 +130,4 @@ impl fmt::Display for BigInt {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         unimplemented!()
     }
-}
-pub fn gt(a: &BigInt, b: &BigInt) -> bool {
-    unimplemented!()
-}
-pub fn lt(a: &BigInt, b: &BigInt) -> bool {
-    unimplemented!()
-}
-pub fn ge(a: &BigInt, b: &BigInt) -> bool {
-    unimplemented!()
-}
-pub fn le(a: &BigInt, b: &BigInt) -> bool {
-    unimplemented!()
-}
-pub fn delete(a: &mut BigInt) {
-    unimplemented!()
 }

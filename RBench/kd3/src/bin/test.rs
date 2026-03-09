@@ -1,17 +1,4 @@
 use kd3::kdtree;
-fn validate(iter: &mut kdtree::KDTreeIterator, count: usize, v: &[usize]) {
-    assert!(iter.size == count);
-    let mut content = vec![0; count];
-    for i in 0..count {
-        content[i] = iter.get_next().as_mut().unwrap().clone();
-    }
-    assert!(iter.get_next().is_none());
-    // sort the content
-    content.sort();
-    for i in 0..count {
-        assert!(content[i] == v[i]);
-    }
-}
 #[test]
 fn test_kd() {
     let mut x: Vec<f64> = vec![0.5, 0.5, 0.5, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0];
@@ -47,5 +34,18 @@ fn test_kd() {
     tree.search_space(0.0, 1.0, 0.5, 1.0, 0.0, 1.0);
     let mut e5: Vec<usize> = vec![0, 1, 2, 5, 6, 9, 10];
     validate(&mut iter.as_mut().unwrap(), 7, &e5);
+}
+fn validate(iter: &mut kdtree::KDTreeIterator, count: usize, v: &[usize]) {
+    assert!(iter.size == count);
+    let mut content = vec![0; count];
+    for i in 0..count {
+        content[i] = iter.get_next().as_mut().unwrap().clone();
+    }
+    assert!(iter.get_next().is_none());
+    // sort the content
+    content.sort();
+    for i in 0..count {
+        assert!(content[i] == v[i]);
+    }
 }
 fn main() {}

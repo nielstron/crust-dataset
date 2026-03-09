@@ -16,6 +16,21 @@ impl MapperSignalValue {
     }
 }
 const STACK_SIZE: usize = 256;
+macro_rules! trace {
+    ($($arg:tt)*) => {
+        if TRACING {
+            println!("-- {}", format!($($arg)*));
+        }
+    };
+}
+macro_rules! die_unless {
+    ($cond:expr, $($arg:tt)*) => {
+        if !$cond {
+            println!("-- {}", format!($($arg)*));
+            assert!($cond);
+        }
+    };
+}
 fn minf(x: f32, y: f32) -> f32 {
     unimplemented!();
 }
@@ -65,6 +80,27 @@ struct FunctionEntry {
     arity: u32,
     func: fn(f32, f32) -> f32,
 }
+lazy_static::lazy_static! {
+    static ref FUNCTION_TABLE: HashMap<&'static str, FunctionEntry> = {
+        let mut m = HashMap::new();
+        m.insert("pow", FunctionEntry { name: "pow", arity: 2, func: f32::powf });
+        m.insert("sin", FunctionEntry { name: "sin", arity: 1, func: |x, _| x.sin() });
+        m.insert("cos", FunctionEntry { name: "cos", arity: 1, func: |x, _| x.cos() });
+        m.insert("tan", FunctionEntry { name: "tan", arity: 1, func: |x, _| x.tan() });
+        m.insert("abs", FunctionEntry { name: "abs", arity: 1, func: |x, _| x.abs() });
+        m.insert("sqrt", FunctionEntry { name: "sqrt", arity: 1, func: |x, _| x.sqrt() });
+        m.insert("log", FunctionEntry { name: "log", arity: 1, func: |x, _| x.ln() });
+        m.insert("log10", FunctionEntry { name: "log10", arity: 1, func: |x, _| x.log10() });
+        m.insert("exp", FunctionEntry { name: "exp", arity: 1, func: |x, _| x.exp() });
+        m.insert("floor", FunctionEntry { name: "floor", arity: 1, func: |x, _| x.floor() });
+        m.insert("round", FunctionEntry { name: "round", arity: 1, func: |x, _| x.round() });
+        m.insert("ceil", FunctionEntry { name: "ceil", arity: 1, func: |x, _| x.ceil() });
+        m.insert("min", FunctionEntry { name: "min", arity: 2, func: minf });
+        m.insert("max", FunctionEntry { name: "max", arity: 2, func: maxf });
+        m.insert("pi", FunctionEntry { name: "pi", arity: 0, func: |_, _| pif() });
+        m
+    };
+}
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum TokenType {
     Float,
@@ -104,14 +140,6 @@ pub struct ExprNode {
     pub vector_index: i32,
     pub next: Option<Arc<ExprNode>>,
 }
-impl ExprNode {
-    pub fn new() -> ExprNode {
-        unimplemented!();
-    }
-    pub fn expr_free(&self) {
-        unimplemented!();
-    }
-}
 pub struct MapperExpr {
     pub node: ExprNode,
     pub vector_size: i32,
@@ -143,6 +171,14 @@ enum stack_obj_t {
     State(state_t),
     Node(ExprNode),
 }
+impl ExprNode {
+    pub fn new() -> ExprNode {
+        unimplemented!();
+    }
+    pub fn expr_free(&self) {
+        unimplemented!();
+    }
+}
 fn printtoken(t: &Token) {
     unimplemented!();
 }
@@ -171,40 +207,4 @@ pub fn mapper_expr_evaluate<'a>(
     input: &'a MapperSignalValue,
 ) -> MapperSignalValue {
     unimplemented!();
-}
-macro_rules! trace {
-    ($($arg:tt)*) => {
-        if TRACING {
-            println!("-- {}", format!($($arg)*));
-        }
-    };
-}
-macro_rules! die_unless {
-    ($cond:expr, $($arg:tt)*) => {
-        if !$cond {
-            println!("-- {}", format!($($arg)*));
-            assert!($cond);
-        }
-    };
-}
-lazy_static::lazy_static! {
-    static ref FUNCTION_TABLE: HashMap<&'static str, FunctionEntry> = {
-        let mut m = HashMap::new();
-        m.insert("pow", FunctionEntry { name: "pow", arity: 2, func: f32::powf });
-        m.insert("sin", FunctionEntry { name: "sin", arity: 1, func: |x, _| x.sin() });
-        m.insert("cos", FunctionEntry { name: "cos", arity: 1, func: |x, _| x.cos() });
-        m.insert("tan", FunctionEntry { name: "tan", arity: 1, func: |x, _| x.tan() });
-        m.insert("abs", FunctionEntry { name: "abs", arity: 1, func: |x, _| x.abs() });
-        m.insert("sqrt", FunctionEntry { name: "sqrt", arity: 1, func: |x, _| x.sqrt() });
-        m.insert("log", FunctionEntry { name: "log", arity: 1, func: |x, _| x.ln() });
-        m.insert("log10", FunctionEntry { name: "log10", arity: 1, func: |x, _| x.log10() });
-        m.insert("exp", FunctionEntry { name: "exp", arity: 1, func: |x, _| x.exp() });
-        m.insert("floor", FunctionEntry { name: "floor", arity: 1, func: |x, _| x.floor() });
-        m.insert("round", FunctionEntry { name: "round", arity: 1, func: |x, _| x.round() });
-        m.insert("ceil", FunctionEntry { name: "ceil", arity: 1, func: |x, _| x.ceil() });
-        m.insert("min", FunctionEntry { name: "min", arity: 2, func: minf });
-        m.insert("max", FunctionEntry { name: "max", arity: 2, func: maxf });
-        m.insert("pi", FunctionEntry { name: "pi", arity: 0, func: |_, _| pif() });
-        m
-    };
 }

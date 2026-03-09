@@ -52,6 +52,18 @@ pub struct ECube {
     pub entropy: i32,
     pub hash: u32,
 }
+impl ECube {
+    /// Initializes an ECube from a given cube.
+    pub fn new(cube: Cube) -> Self {
+        let entropy = find_entropy(&cube);
+        let hash = cube_hash(&cube);
+        ECube {
+            cube,
+            entropy,
+            hash,
+        }
+    }
+}
 /// Returns a cube in its initial (solved) state.
 pub fn populate_initial() -> Cube {
     unimplemented!()
@@ -72,18 +84,6 @@ pub fn cube_hash(cube: &Cube) -> u32 {
 /// Counts the number of “misplaced” positions.
 pub fn find_entropy(cube: &Cube) -> i32 {
     unimplemented!()
-}
-impl ECube {
-    /// Initializes an ECube from a given cube.
-    pub fn new(cube: Cube) -> Self {
-        let entropy = find_entropy(&cube);
-        let hash = cube_hash(&cube);
-        ECube {
-            cube,
-            entropy,
-            hash,
-        }
-    }
 }
 // --- Helper functions for adjacent faces and rotations ---
 fn cycle_l(color: Color) -> Color {

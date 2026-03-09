@@ -13,14 +13,14 @@ pub fn tropical_product(a: Weight, b: Weight) -> Weight {
 }
 pub type SrSum = fn(Weight, Weight) -> Weight;
 pub type SrProd = fn(Weight, Weight) -> Weight;
+pub fn sr_get(sr_type: u8) -> Sr {
+    unimplemented!()
+}
 pub struct Sr {
     sum: SrSum,
     prod: SrProd,
     zero: Weight,
     one: Weight,
-}
-pub fn sr_get(sr_type: u8) -> Sr {
-    unimplemented!()
 }
 pub const SR_REAL: Sr = Sr {
     sum: real_sum,

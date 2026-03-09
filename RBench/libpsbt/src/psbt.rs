@@ -75,14 +75,6 @@ pub enum PsbtTxElemType {
     Tx,
     WitnessItem,
 }
-/// Translates the C struct psbt_record.
-pub struct PsbtRecord {
-    /// (The C field “type” is renamed to avoid conflict with the Rust keyword.)
-    pub record_type: u8,
-    pub key: Vec<u8>,
-    pub val: Vec<u8>,
-    pub scope: PsbtScope,
-}
 // --- Struct definitions ---
 /// Translates the C struct psbt.
 /// (Here we use a Vec<u8> to hold the PSBT data and a write position index.)
@@ -104,6 +96,14 @@ impl Psbt {
             records: Vec::new(),
         }
     }
+}
+/// Translates the C struct psbt_record.
+pub struct PsbtRecord {
+    /// (The C field “type” is renamed to avoid conflict with the Rust keyword.)
+    pub record_type: u8,
+    pub key: Vec<u8>,
+    pub val: Vec<u8>,
+    pub scope: PsbtScope,
 }
 /// Translates the C union (record/txelem) in psbt_elem into an enum.
 pub enum PsbtElem {

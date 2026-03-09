@@ -86,6 +86,19 @@ pub struct MVPDatapoint {
     pub data_type: MVPDataType,
 }
 pub type DistanceFunction = fn(&MVPDatapoint, &MVPDatapoint) -> f32;
+pub struct InternalNode {
+    pub node_type: NodeType,
+    pub sv1: Option<Arc<MVPDatapoint>>,
+    pub sv2: Option<Arc<MVPDatapoint>>,
+    pub m1: Vec<f32>,
+    pub m2: Vec<f32>,
+    pub child_nodes: Vec<Rc<RefCell<Node>>>,
+}
+impl InternalNode {
+    pub fn new(bf: u32) -> Self {
+        unimplemented!()
+    }
+}
 pub struct LeafNode {
     pub node_type: NodeType,
     pub sv1: Option<Arc<MVPDatapoint>>,
@@ -96,22 +109,6 @@ pub struct LeafNode {
     pub nbpoints: usize,
 }
 impl LeafNode {
-    pub fn new(bf: u32) -> Self {
-        unimplemented!()
-    }
-}
-pub fn error_to_string(error: MVPError) -> &'static str {
-    unimplemented!()
-}
-pub struct InternalNode {
-    pub node_type: NodeType,
-    pub sv1: Option<Arc<MVPDatapoint>>,
-    pub sv2: Option<Arc<MVPDatapoint>>,
-    pub m1: Vec<f32>,
-    pub m2: Vec<f32>,
-    pub child_nodes: Vec<Rc<RefCell<Node>>>,
-}
-impl InternalNode {
     pub fn new(bf: u32) -> Self {
         unimplemented!()
     }
@@ -219,4 +216,7 @@ impl MVPDatapoint {
     pub fn write(&self, tree: &MVPTree) -> i64 {
         unimplemented!()
     }
+}
+pub fn error_to_string(error: MVPError) -> &'static str {
+    unimplemented!()
 }

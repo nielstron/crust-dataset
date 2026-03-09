@@ -27,12 +27,6 @@ pub const len8_tab: [u8; 256] = [
     0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08,
 ];
 pub const Nan: u64 = 0x7FF8000000000001;
-pub struct BitWriter {
-    pub cache: [U8; 1024],
-    pub pos: U32,
-    pub byte: U8,
-    pub bit_count: U8,
-}
 pub struct FloatEncoder {
     pub w: BitWriter,
     pub val: U64,
@@ -54,6 +48,30 @@ impl FloatEncoder {
     pub fn float_encode_write(&mut self, v: F64) -> i32 {
         unimplemented!()
     }
+}
+pub struct FloatDecoder<'a> {
+    pub val: U64,
+    pub leading: U64,
+    pub trailing: U64,
+    pub br: BitReader<'a>,
+    pub b: [U8; 1024],
+    pub first: bool,
+    pub finished: bool,
+    pub err: i32,
+}
+impl FloatDecoder<'_> {
+    pub fn float_decode_block(&mut self, data: &[U8], res: &mut [F64], res_len: &mut U32) -> i32 {
+        unimplemented!()
+    }
+    pub fn float_decode_setbytes(&mut self, data: &mut [u8]) -> i32 {
+        unimplemented!()
+    }
+}
+pub struct BitWriter {
+    pub cache: [U8; 1024],
+    pub pos: U32,
+    pub byte: U8,
+    pub bit_count: U8,
 }
 impl BitWriter {
     pub fn bitwriter_init(&mut self) -> i32 {
@@ -80,24 +98,6 @@ pub struct BitReader<'a> {
     pub len: U32,
     pub v: U64,
     pub n: U32,
-}
-pub struct FloatDecoder<'a> {
-    pub val: U64,
-    pub leading: U64,
-    pub trailing: U64,
-    pub br: BitReader<'a>,
-    pub b: [U8; 1024],
-    pub first: bool,
-    pub finished: bool,
-    pub err: i32,
-}
-impl FloatDecoder<'_> {
-    pub fn float_decode_block(&mut self, data: &[U8], res: &mut [F64], res_len: &mut U32) -> i32 {
-        unimplemented!()
-    }
-    pub fn float_decode_setbytes(&mut self, data: &mut [u8]) -> i32 {
-        unimplemented!()
-    }
 }
 impl BitReader<'_> {
     pub fn bit_readbuf(&mut self) -> i32 {

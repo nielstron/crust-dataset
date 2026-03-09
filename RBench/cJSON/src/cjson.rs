@@ -9,56 +9,6 @@ pub enum CJson {
     Array(Vec<CJson>),
     Object(HashMap<String, CJson>),
 }
-impl CJson {
-    pub fn print_unformatted(&self) -> String {
-        unimplemented!()
-    }
-    pub fn print_formatted(&self) -> String {
-        unimplemented!()
-    }
-    pub fn get_array_size(&self) -> Option<usize> {
-        unimplemented!()
-    }
-    pub fn get_array_item(&self, index: usize) -> Option<&CJson> {
-        unimplemented!()
-    }
-    pub fn get_object_item(&self, key: &str) -> Option<&CJson> {
-        unimplemented!()
-    }
-    pub fn create_null() -> Self {
-        unimplemented!()
-    }
-    pub fn create_bool(b: bool) -> Self {
-        unimplemented!()
-    }
-    pub fn create_number(n: f64) -> Self {
-        unimplemented!()
-    }
-    pub fn create_string<S: Into<String>>(s: S) -> Self {
-        unimplemented!()
-    }
-    pub fn create_array() -> Self {
-        unimplemented!()
-    }
-    pub fn create_object() -> Self {
-        unimplemented!()
-    }
-    pub fn add_item_to_array(&mut self, item: CJson) -> Result<(), &'static str> {
-        unimplemented!()
-    }
-    pub fn add_item_to_object<S: Into<String>>(
-        &mut self,
-        key: S,
-        value: CJson,
-    ) -> Result<(), &'static str> {
-        unimplemented!()
-    }
-}
-impl fmt::Display for CJson {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
 #[derive(Debug, Clone)]
 pub enum CJsonError {
     UnexpectedEOF { pos: usize },
@@ -135,4 +85,54 @@ fn write_json_compact(f: &mut impl fmt::Write, value: &CJson) -> fmt::Result {
 }
 fn write_json_pretty(f: &mut impl fmt::Write, value: &CJson, indent: usize) -> fmt::Result {
     unimplemented!()
+}
+impl CJson {
+    pub fn print_unformatted(&self) -> String {
+        unimplemented!()
+    }
+    pub fn print_formatted(&self) -> String {
+        unimplemented!()
+    }
+    pub fn get_array_size(&self) -> Option<usize> {
+        unimplemented!()
+    }
+    pub fn get_array_item(&self, index: usize) -> Option<&CJson> {
+        unimplemented!()
+    }
+    pub fn get_object_item(&self, key: &str) -> Option<&CJson> {
+        unimplemented!()
+    }
+    pub fn create_null() -> Self {
+        unimplemented!()
+    }
+    pub fn create_bool(b: bool) -> Self {
+        unimplemented!()
+    }
+    pub fn create_number(n: f64) -> Self {
+        unimplemented!()
+    }
+    pub fn create_string<S: Into<String>>(s: S) -> Self {
+        unimplemented!()
+    }
+    pub fn create_array() -> Self {
+        unimplemented!()
+    }
+    pub fn create_object() -> Self {
+        unimplemented!()
+    }
+    pub fn add_item_to_array(&mut self, item: CJson) -> Result<(), &'static str> {
+        unimplemented!()
+    }
+    pub fn add_item_to_object<S: Into<String>>(
+        &mut self,
+        key: S,
+        value: CJson,
+    ) -> Result<(), &'static str> {
+        unimplemented!()
+    }
+}
+impl fmt::Display for CJson {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
 }

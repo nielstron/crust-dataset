@@ -28,12 +28,6 @@ pub struct KDTree {
     pub node_data: Vec<Rc<RefCell<TreeNode>>>,
     pub root: Option<Rc<RefCell<TreeNode>>>,
 }
-pub struct KDTreeIterator {
-    pub data: Vec<usize>,
-    pub capacity: usize,
-    pub size: usize,
-    pub current: usize,
-}
 impl KDTree {
     pub fn new() -> Self {
         unimplemented!();
@@ -102,6 +96,12 @@ impl KDTree {
     fn build_kdtree(&mut self, points: &mut [DataPoint], depth: usize) {
         unimplemented!();
     }
+}
+pub struct KDTreeIterator {
+    pub data: Vec<usize>,
+    pub capacity: usize,
+    pub size: usize,
+    pub current: usize,
 }
 impl KDTreeIterator {
     pub fn new() -> Self {

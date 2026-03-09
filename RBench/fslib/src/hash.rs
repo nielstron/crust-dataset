@@ -1,13 +1,13 @@
 use std::collections::LinkedList;
 use std::hash::{Hash, Hasher};
 use std::marker::PhantomData;
-struct HashItem<K, V> {
-    key: K,
-    value: V,
-}
 #[derive(Default)]
 pub struct Bucket<K, V> {
     items: LinkedList<HashItem<K, V>>,
+}
+struct HashItem<K, V> {
+    key: K,
+    value: V,
 }
 pub struct HashTable<K, V, F>
 where

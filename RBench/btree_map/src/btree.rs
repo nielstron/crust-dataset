@@ -29,6 +29,32 @@ pub struct Node {
     pub child_left: Option<Arc<Node>>,
     pub child_right: Option<Arc<Node>>,
 }
+pub struct BTree {
+    pub node: Option<Arc<Node>>,
+}
+impl BTree {
+    pub fn new_btree() -> Self {
+        BTree { node: None }
+    }
+    pub fn add_entry(&mut self, key: Vec<u8>, key_len: usize, value: Vec<u8>, value_len: usize) {
+        unimplemented!()
+    }
+    pub fn list_entries(&self) -> EntryList {
+        unimplemented!()
+    }
+    pub fn remove_entry(&mut self, key: &Vec<u8>, key_len: usize) {
+        unimplemented!()
+    }
+    pub fn get_entry_count(&self) -> usize {
+        unimplemented!()
+    }
+    pub fn find_entry(&self, key: &Vec<u8>, key_len: usize) -> Option<Value> {
+        unimplemented!()
+    }
+    pub fn free_tree(&mut self) {
+        unimplemented!()
+    }
+}
 impl Node {
     pub fn new_node(key: Vec<u8>, key_len: usize, value: Vec<u8>, value_len: usize) -> Arc<Self> {
         unimplemented!()
@@ -54,32 +80,6 @@ impl Node {
         unimplemented!()
     }
     pub fn find_value(&self, key_hash: u32, key: Vec<u8>, key_len: usize) -> Option<Value> {
-        unimplemented!()
-    }
-}
-pub struct BTree {
-    pub node: Option<Arc<Node>>,
-}
-impl BTree {
-    pub fn new_btree() -> Self {
-        BTree { node: None }
-    }
-    pub fn add_entry(&mut self, key: Vec<u8>, key_len: usize, value: Vec<u8>, value_len: usize) {
-        unimplemented!()
-    }
-    pub fn list_entries(&self) -> EntryList {
-        unimplemented!()
-    }
-    pub fn remove_entry(&mut self, key: &Vec<u8>, key_len: usize) {
-        unimplemented!()
-    }
-    pub fn get_entry_count(&self) -> usize {
-        unimplemented!()
-    }
-    pub fn find_entry(&self, key: &Vec<u8>, key_len: usize) -> Option<Value> {
-        unimplemented!()
-    }
-    pub fn free_tree(&mut self) {
         unimplemented!()
     }
 }

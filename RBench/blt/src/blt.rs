@@ -1,12 +1,4 @@
 use std::any::Any;
-/// Represents a leaf node in the BLT tree.
-#[derive(Debug)]
-pub struct BltIt {
-    /// The key associated with the leaf.
-    pub key: String,
-    /// Associated data.
-    pub data: Option<Box<dyn Any>>,
-}
 /// The BLT tree structure.
 #[derive(Debug)]
 pub struct Blt {
@@ -34,6 +26,14 @@ pub struct InternalNode {
     pub padding: u32,
     /// The child node.
     pub kid: Box<BltNode>,
+}
+/// Represents a leaf node in the BLT tree.
+#[derive(Debug)]
+pub struct BltIt {
+    /// The key associated with the leaf.
+    pub key: String,
+    /// Associated data.
+    pub data: Option<Box<dyn Any>>,
 }
 impl Blt {
     /// Creates a new BLT tree.

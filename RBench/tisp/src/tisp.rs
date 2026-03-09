@@ -17,34 +17,10 @@ pub enum TspType {
     TspPair = 1 << 11,
     TspRec = 1 << 12,
 }
+pub const TSP_EXPR: u32 = TSP_NUM | TspType::TspSym as u32 | TspType::TspPair as u32;
 pub const TSP_RATIONAL: u32 = TspType::TspInt as u32 | TspType::TspRatio as u32;
 pub const TSP_OP_CHARS: &str = "_+-*/\\|=^<>.:";
 pub const TSP_NUM: u32 = TSP_RATIONAL | TspType::TspDec as u32;
-pub const TSP_EXPR: u32 = TSP_NUM | TspType::TspSym as u32 | TspType::TspPair as u32;
-pub fn is_sym(c: char) -> bool {
-    unimplemented!()
-}
-pub fn frac_reduce(num: &mut i32, den: &mut i32) {
-    unimplemented!()
-}
-pub fn isnum(str: &str) -> bool {
-    unimplemented!()
-}
-pub fn tsp_type_str(t: TspType) -> &'static str {
-    unimplemented!()
-}
-pub fn is_op(c: char) -> bool {
-    unimplemented!()
-}
-pub fn esc_str(s: &str, len: i32, do_esc: i32) -> String {
-    unimplemented!()
-}
-pub fn hash(key: &str) -> u32 {
-    unimplemented!()
-}
-pub fn esc_char(c: char) -> char {
-    unimplemented!()
-}
 pub struct Entry {
     pub key: String,
     pub val: Val,
@@ -139,7 +115,13 @@ pub fn read_pair(st: &mut Tsp, endchar: char) -> Option<Val> {
 pub fn tisp_read_sexpr(st: &mut Tsp) -> Option<Val> {
     unimplemented!()
 }
+pub fn is_sym(c: char) -> bool {
+    unimplemented!()
+}
 pub fn mk_sym(st: &mut Tsp, s: &str) -> Option<Val> {
+    unimplemented!()
+}
+pub fn frac_reduce(num: &mut i32, den: &mut i32) {
     unimplemented!()
 }
 pub fn tisp_read_line(st: &mut Tsp, level: i32) -> Option<Val> {
@@ -148,7 +130,19 @@ pub fn tisp_read_line(st: &mut Tsp, level: i32) -> Option<Val> {
 pub fn mk_prim(t: TspType, pr: Prim, name: &str) -> Option<Val> {
     unimplemented!()
 }
+pub fn isnum(str: &str) -> bool {
+    unimplemented!()
+}
+pub fn tsp_type_str(t: TspType) -> &'static str {
+    unimplemented!()
+}
 pub fn mk_str(st: &mut Tsp, s: &str) -> Option<Val> {
+    unimplemented!()
+}
+pub fn is_op(c: char) -> bool {
+    unimplemented!()
+}
+pub fn esc_str(s: &str, len: i32, do_esc: i32) -> String {
     unimplemented!()
 }
 pub fn tib_env_core(st: &mut Tsp) {
@@ -158,6 +152,9 @@ pub fn skip_ws(st: &mut Tsp, skipnl: i32) {
     unimplemented!()
 }
 pub fn rec_extend(rec: &mut Rec, args: Val, vals: Val) -> Rec {
+    unimplemented!()
+}
+pub fn hash(key: &str) -> u32 {
     unimplemented!()
 }
 pub fn mk_rec(st: &mut Tsp, env: Rec, assoc: Val) -> Option<Val> {
@@ -209,6 +206,9 @@ pub fn mk_list(st: &mut Tsp, n: i32, args: Vec<Val>) -> Option<Val> {
     unimplemented!()
 }
 pub fn vals_eq(a: &Val, b: &Val) -> bool {
+    unimplemented!()
+}
+pub fn esc_char(c: char) -> char {
     unimplemented!()
 }
 pub fn read_sign(st: &mut Tsp) -> i32 {

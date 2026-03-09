@@ -14,25 +14,6 @@ pub struct KeyValue<'a, T, U> {
     pub value: &'a mut U,
 }
 impl<T, U> KeyValue<'_, T, U> {}
-// Function Declarations
-pub fn hamt_int_hash<T>(key: &mut T) -> u32 {
-    unimplemented!()
-}
-pub fn hamt_str_hash<T>(key: &mut T) -> u32 {
-    unimplemented!()
-}
-pub fn hamt_int_equals<T>(a: &mut T, b: &mut T) -> bool {
-    unimplemented!()
-}
-pub fn hamt_str_equals<T>(a: &mut T, b: &mut T) -> bool {
-    unimplemented!()
-}
-pub fn hamt_fnv1_hash<T>(key: &mut T, len: usize) {
-    unimplemented!()
-}
-pub fn hamt_get_symbol(hash: u32, lvl: i32) {
-    unimplemented!()
-}
 pub enum HamtNode<'a, T, U> {
     Leaf(Option<KeyValue<'a, T, U>>),
     Sub(SubNode<'a, T, U>),
@@ -123,4 +104,23 @@ impl<'a, T, U> Hamt<'a, T, U> {
     pub fn hamt_print(&self, str_fn_key: StrFn<T>, str_fn_val: StrFn<U>) {
         unimplemented!()
     }
+}
+// Function Declarations
+pub fn hamt_int_hash<T>(key: &mut T) -> u32 {
+    unimplemented!()
+}
+pub fn hamt_str_hash<T>(key: &mut T) -> u32 {
+    unimplemented!()
+}
+pub fn hamt_int_equals<T>(a: &mut T, b: &mut T) -> bool {
+    unimplemented!()
+}
+pub fn hamt_str_equals<T>(a: &mut T, b: &mut T) -> bool {
+    unimplemented!()
+}
+pub fn hamt_fnv1_hash<T>(key: &mut T, len: usize) {
+    unimplemented!()
+}
+pub fn hamt_get_symbol(hash: u32, lvl: i32) {
+    unimplemented!()
 }

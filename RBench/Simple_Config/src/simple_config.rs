@@ -12,16 +12,6 @@ pub struct CfgColor {
     pub b: u8,
     pub a: u8,
 }
-impl From<(u8, u8, u8, u8)> for CfgColor {
-    fn from((r, g, b, a): (u8, u8, u8, u8)) -> Self {
-        CfgColor { r, g, b, a }
-    }
-}
-impl Display for CfgColor {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
-    }
-}
 #[derive(Clone, Debug, PartialEq)]
 pub struct CfgError {
     pub off: i32,
@@ -37,11 +27,6 @@ impl Default for CfgError {
             row: 0,
             msg: String::new(),
         }
-    }
-}
-impl Display for CfgError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
     }
 }
 #[derive(Clone, PartialEq, Debug)]
@@ -82,9 +67,9 @@ impl From<CfgColor> for CfgVal {
         CfgVal::Color(c)
     }
 }
-impl Display for CfgVal {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
+impl From<(u8, u8, u8, u8)> for CfgColor {
+    fn from((r, g, b, a): (u8, u8, u8, u8)) -> Self {
+        CfgColor { r, g, b, a }
     }
 }
 #[derive(Clone, PartialEq, Debug)]
@@ -92,16 +77,31 @@ pub struct CfgEntry {
     pub key: String,
     pub val: CfgVal,
 }
-impl Display for CfgEntry {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
-    }
-}
 #[derive(Clone, PartialEq, Debug)]
 pub struct Cfg {
     pub entries: Vec<CfgEntry>,
     pub count: i32,
     pub capacity: usize,
+}
+impl Display for CfgError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
+}
+impl Display for CfgColor {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
+}
+impl Display for CfgVal {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
+}
+impl Display for CfgEntry {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
 }
 impl Display for Cfg {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {

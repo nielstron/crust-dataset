@@ -17,11 +17,6 @@ impl fmt::Display for Header {
         unimplemented!()
     }
 }
-impl Header {
-    pub fn check(&self) -> bool {
-        unimplemented!()
-    }
-}
 #[derive(Debug, Clone)]
 pub struct BloomFilter {
     pub version: u64,
@@ -58,6 +53,11 @@ impl BloomFilter {
         unimplemented!()
     }
     pub fn initialize(n: u64, p: f64, buf: &[u8]) -> BloomFilter {
+        unimplemented!()
+    }
+}
+impl Header {
+    pub fn check(&self) -> bool {
         unimplemented!()
     }
 }

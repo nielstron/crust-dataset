@@ -5,11 +5,6 @@ pub struct SatcCircle {
     pub pos: [f64; 2],
     pub r: f64,
 }
-impl SatcCircle {
-    pub fn new(pos: [f64; 2], r: f64) -> Self {
-        SatcCircle { pos, r }
-    }
-}
 #[derive(Debug, Clone)]
 pub struct SatcPolygon {
     pub pos: [f64; 2],
@@ -21,21 +16,11 @@ pub struct SatcPolygon {
     pub edges: Vec<[f64; 2]>,
     pub normals: Vec<[f64; 2]>,
 }
-impl SatcPolygon {
-    pub fn new(pos: [f64; 2], points: Vec<[f64; 2]>) -> Self {
-        unimplemented!()
-    }
-}
 #[derive(Debug, Clone)]
 pub struct SatcBox {
     pub pos: [f64; 2],
     pub w: f64,
     pub h: f64,
-}
-impl SatcBox {
-    pub fn new(pos: [f64; 2], w: f64, h: f64) -> Self {
-        unimplemented!()
-    }
 }
 #[derive(Debug, Clone)]
 pub struct SatcResponse {
@@ -45,11 +30,6 @@ pub struct SatcResponse {
     pub a_in_b: bool,
     pub b_in_a: bool,
 }
-impl SatcResponse {
-    pub fn new() -> Self {
-        unimplemented!()
-    }
-}
 pub const SATC_TYPE_NONE: i32 = 0;
 pub const SATC_TYPE_CIRCLE: i32 = 1;
 pub const SATC_TYPE_POLYGON: i32 = 2;
@@ -57,6 +37,26 @@ pub const SATC_TYPE_BOX: i32 = 3;
 pub const SATC_LEFT_VORONOI_REGION: i32 = -1;
 pub const SATC_MIDDLE_VORONOI_REGION: i32 = 0;
 pub const SATC_RIGHT_VORONOI_REGION: i32 = 1;
+impl SatcCircle {
+    pub fn new(pos: [f64; 2], r: f64) -> Self {
+        SatcCircle { pos, r }
+    }
+}
+impl SatcPolygon {
+    pub fn new(pos: [f64; 2], points: Vec<[f64; 2]>) -> Self {
+        unimplemented!()
+    }
+}
+impl SatcBox {
+    pub fn new(pos: [f64; 2], w: f64, h: f64) -> Self {
+        unimplemented!()
+    }
+}
+impl SatcResponse {
+    pub fn new() -> Self {
+        unimplemented!()
+    }
+}
 pub fn satc_polygon_set_points(polygon: &mut SatcPolygon, points: Vec<[f64; 2]>) {
     unimplemented!()
 }

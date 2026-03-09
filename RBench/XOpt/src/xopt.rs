@@ -14,17 +14,6 @@ pub const XOPT_CTX_NOCONDENSE: i64 = 0x4;
 /// `XOPT_CTX_SLOPPYSHORTS` is defined as 0x8 | 0x4 in C
 pub const XOPT_CTX_SLOPPYSHORTS: i64 = 0x8 | XOPT_CTX_NOCONDENSE;
 pub const XOPT_CTX_STRICT: i64 = 0x10;
-#[derive(Debug, Clone)]
-pub struct XoptAutohelpOptions {
-    /// Usage string or `None` if not specified.
-    pub usage: Option<String>,
-    /// Printed before the options list, or `None`.
-    pub prefix: Option<String>,
-    /// Printed after the options list, or `None`.
-    pub suffix: Option<String>,
-    /// Number of spaces between option and description.
-    pub spacer: usize,
-}
 pub type XoptCallback = fn(
     value: Option<&str>,
     data: *mut u8,
@@ -71,6 +60,17 @@ pub struct XoptContext {
     pub name: Option<String>,
     /// Tracks whether `--` was encountered, in the C code.
     pub doubledash: bool,
+}
+#[derive(Debug, Clone)]
+pub struct XoptAutohelpOptions {
+    /// Usage string or `None` if not specified.
+    pub usage: Option<String>,
+    /// Printed before the options list, or `None`.
+    pub prefix: Option<String>,
+    /// Printed after the options list, or `None`.
+    pub suffix: Option<String>,
+    /// Number of spaces between option and description.
+    pub spacer: usize,
 }
 pub fn xopt_context(
     name: Option<&str>,

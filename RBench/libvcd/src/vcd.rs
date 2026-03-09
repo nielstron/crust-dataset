@@ -24,11 +24,6 @@ pub struct Signal {
     pub size: usize,
     pub value_changes: Vec<ValueChange>,
 }
-impl Signal {
-    pub fn get_value_at_timestamp(&self, timestamp: Timestamp) -> Option<&[u8; VCD_SIGNAL_SIZE]> {
-        unimplemented!()
-    }
-}
 #[derive(Debug)]
 pub struct Timescale {
     pub unit: [u8; VCD_TIME_UNIT_SIZE], // Fixed-size array replacing C char array
@@ -46,6 +41,11 @@ impl VCD {
         unimplemented!()
     }
     pub fn get_signal_by_name(&self, signal_name: &str) -> Option<&Signal> {
+        unimplemented!()
+    }
+}
+impl Signal {
+    pub fn get_value_at_timestamp(&self, timestamp: Timestamp) -> Option<&[u8; VCD_SIGNAL_SIZE]> {
         unimplemented!()
     }
 }

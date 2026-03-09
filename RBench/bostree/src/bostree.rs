@@ -1,5 +1,14 @@
 use std::cell::RefCell;
 use std::rc::{Rc, Weak};
+#[derive(Debug)]
+pub struct BOSTree {
+    /// The root node of the tree.
+    pub root_node: Option<Rc<RefCell<BOSNode>>>,
+    /// The key comparison function.
+    pub cmp_function: BOSTreeCmpFunction,
+    /// The optional free function for node data.
+    pub free_function: Option<BOSTreeFreeFunction>,
+}
 /// The node structure.
 #[derive(Debug)]
 pub struct BOSNode {
@@ -31,15 +40,6 @@ pub type BOSTreeCmpFunction = fn(&str, &str) -> i32;
 /// Type alias for a free function which will be called on nodes
 /// that are removed.
 pub type BOSTreeFreeFunction = fn(&Rc<RefCell<BOSNode>>);
-#[derive(Debug)]
-pub struct BOSTree {
-    /// The root node of the tree.
-    pub root_node: Option<Rc<RefCell<BOSNode>>>,
-    /// The key comparison function.
-    pub cmp_function: BOSTreeCmpFunction,
-    /// The optional free function for node data.
-    pub free_function: Option<BOSTreeFreeFunction>,
-}
 impl BOSTree {
     /// Create a new tree with a mandatory comparison function and an optional free function.
     pub fn bostree_new(

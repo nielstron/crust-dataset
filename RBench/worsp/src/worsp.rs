@@ -1,4 +1,7 @@
 pub const OBJECT_NUMBER: usize = 50;
+pub const BLOCK_SIZE: usize = std::mem::size_of::<Object>();
+pub const MEMORY_SIZE: usize = BLOCK_SIZE * OBJECT_NUMBER;
+pub const FREE_BITMAP_SIZE: usize = MEMORY_SIZE / BLOCK_SIZE;
 pub const MAX_BINDINGS: usize = 10;
 pub const MAX_SYMBOL_NAME_LENGTH: usize = 20;
 #[derive(Debug, Clone, Copy)]
@@ -30,55 +33,16 @@ pub struct ParseState {
     pub token: Option<Box<Token>>,
     pub pos: i32,
 }
+#[derive(Debug)]
+pub struct ProgramNode {
+    pub expressions: Option<Box<ExpressionList>>,
+}
 #[derive(Debug, Clone, Copy)]
 pub enum ExpressionType {
     Literal,
     Symbol,
     List,
     SymbolicExp,
-}
-#[derive(Debug, Clone, Copy)]
-pub enum LiteralType {
-    Integer,
-    String,
-    Boolean,
-}
-#[derive(Debug)]
-pub enum LiteralValue {
-    IntValue(i32),
-    BooleanValue(bool),
-    StringValue(String),
-}
-#[derive(Debug)]
-pub struct LiteralNode {
-    pub type_: LiteralType,
-    pub value: LiteralValue,
-}
-#[derive(Debug)]
-pub struct SymbolNode {
-    pub symbol_name: String,
-}
-#[derive(Debug, Clone, Copy)]
-pub enum ObjectType {
-    Integer,
-    String,
-    Bool,
-    List,
-    Nil,
-    Function,
-}
-pub fn match_token(state: &mut ParseState, kind: TokenKind) -> i32 {
-    unimplemented!()
-}
-pub fn next(source: &str, state: &mut ParseState) {
-    unimplemented!()
-}
-pub const BLOCK_SIZE: usize = std::mem::size_of::<Object>();
-pub const MEMORY_SIZE: usize = BLOCK_SIZE * OBJECT_NUMBER;
-pub const FREE_BITMAP_SIZE: usize = MEMORY_SIZE / BLOCK_SIZE;
-#[derive(Debug)]
-pub struct ProgramNode {
-    pub expressions: Option<Box<ExpressionList>>,
 }
 #[derive(Debug)]
 pub struct ExpressionList {
@@ -105,9 +69,39 @@ pub struct SymbolicExpNode {
 pub struct ListNode {
     pub expressions: Option<Box<ExpressionList>>,
 }
+#[derive(Debug, Clone, Copy)]
+pub enum LiteralType {
+    Integer,
+    String,
+    Boolean,
+}
+#[derive(Debug)]
+pub struct LiteralNode {
+    pub type_: LiteralType,
+    pub value: LiteralValue,
+}
+#[derive(Debug)]
+pub enum LiteralValue {
+    IntValue(i32),
+    BooleanValue(bool),
+    StringValue(String),
+}
+#[derive(Debug)]
+pub struct SymbolNode {
+    pub symbol_name: String,
+}
 #[derive(Debug)]
 pub struct ParseResult {
     pub program: Option<Box<ProgramNode>>,
+}
+#[derive(Debug, Clone, Copy)]
+pub enum ObjectType {
+    Integer,
+    String,
+    Bool,
+    List,
+    Nil,
+    Function,
 }
 #[derive(Debug)]
 pub struct ConsCell {
@@ -155,6 +149,12 @@ pub struct AllocatorContext {
     pub stack: Option<Box<ObjectStack>>,
     pub memory_pool: Option<Box<Object>>,
     pub free_bitmap: [u8; FREE_BITMAP_SIZE],
+}
+pub fn match_token(state: &mut ParseState, kind: TokenKind) -> i32 {
+    unimplemented!()
+}
+pub fn next(source: &str, state: &mut ParseState) {
+    unimplemented!()
 }
 pub fn parse(source: &str, state: &mut ParseState, result: &mut ParseResult) {
     unimplemented!()

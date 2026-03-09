@@ -11,12 +11,6 @@ pub struct XMLElement {
     pub children: Vector<XMLElement>, // owns children
 }
 
-impl XMLElement {
-    pub fn new(tag_name: String, value: String) -> XMLElement {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug, Clone, PartialEq)]
 pub enum XMLTokenType {
     BeginOpenTag,  // “<”
@@ -53,6 +47,12 @@ impl StackElement {
         unimplemented!()
     }
     pub fn release(&mut self) {
+        unimplemented!()
+    }
+}
+
+impl XMLElement {
+    pub fn new(tag_name: String, value: String) -> XMLElement {
         unimplemented!()
     }
 }
