@@ -11,7 +11,6 @@ pub struct RectOutInfo {
     /// The page number where the rectangle was packed (for multi-page packing)
     pub page: i32,
 }
-
 impl Default for RectOutInfo {
     fn default() -> Self {
         Self {
@@ -22,7 +21,6 @@ impl Default for RectOutInfo {
         }
     }
 }
-
 /// A rectangle to be packed
 #[derive(Debug, Clone)]
 pub struct Rect {
@@ -35,17 +33,14 @@ pub struct Rect {
     /// Output information after packing
     pub info: RectOutInfo,
 }
-
 impl Rect {
     /// Create a new rectangle with the given dimensions
     pub fn new(id: i32, width: i32, height: i32) -> Self {
         unimplemented!()
     }
 }
-
 /// Rectangle packer using a binary tree algorithm
 pub struct RectPacker;
-
 impl RectPacker {
     /// Pack rectangles into a bin of the given maximum dimensions
     ///
@@ -63,7 +58,6 @@ impl RectPacker {
         unimplemented!()
     }
 }
-
 /// A node in the binary tree used for rectangle packing
 struct BinNode {
     x: i32,
@@ -74,7 +68,6 @@ struct BinNode {
     right: Option<Box<BinNode>>,
     down: Option<Box<BinNode>>,
 }
-
 impl BinNode {
     /// Create a new bin node with the given dimensions
     fn new(x: i32, y: i32, w: i32, h: i32) -> Self {

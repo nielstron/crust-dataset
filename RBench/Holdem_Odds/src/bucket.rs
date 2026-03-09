@@ -3,7 +3,6 @@ pub struct Bucket {
     pub cards: [Option<Card>; 4],
     pub count: usize,
 }
-
 impl Bucket {
     pub fn new() -> Self {
         unimplemented!()

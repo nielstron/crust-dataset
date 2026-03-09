@@ -2,7 +2,6 @@ use ljmm::ljmm::*;
 use std::process;
 
 const ADDR_1G: usize = 0x4000_0000;
-
 const ADDR_2G: usize = 0x8000_0000;
 
 #[derive(Debug)]
@@ -114,5 +113,4 @@ fn test_001() {
         simulate_munmap(addr, test.alloc_sz);
     }
 }
-
 pub fn main() {}

@@ -8,7 +8,6 @@ fn test_empty() {
     assert!(h.root.is_none(), "error, hamt not initialized");
     h.hamt_destroy(|ptr| (), |ptr| ());
 }
-
 #[test]
 fn test_big() {
     let mut h = Hamt::new_hamt(hamt_int_hash, hamt_int_equals);
@@ -34,7 +33,6 @@ fn test_big() {
     }
     h.hamt_destroy(|ptr| (), |ptr| ());
 }
-
 #[test]
 fn test_big2() {
     let mut h = Hamt::new_hamt(hamt_int_hash, hamt_int_equals);
@@ -70,7 +68,6 @@ fn test_big2() {
     }
     h.hamt_destroy(|ptr| (), |ptr| ());
 }
-
 #[test]
 fn test_create() {
     let mut h = Hamt::new_hamt(hamt_str_hash, hamt_str_equals);
@@ -92,7 +89,6 @@ fn test_create() {
     }
     h.hamt_destroy(|_| {}, |_| {});
 }
-
 #[test]
 fn test_search_destroy() {
     let mut h = Hamt::new_hamt(hamt_str_hash, hamt_str_equals);
@@ -146,7 +142,6 @@ fn test_search_destroy() {
         );
     }
 }
-
 #[test]
 fn test_hamta2() {
     let mut h = Hamt::new_hamt(hamt_str_hash, hamt_str_equals);
@@ -175,5 +170,4 @@ fn test_hamta2() {
         "error, hamt size doesn't match"
     );
 }
-
 fn main() {}

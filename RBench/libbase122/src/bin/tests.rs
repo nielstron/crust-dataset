@@ -316,5 +316,4 @@ fn test_encode_file() {
     let decoded = decode(&encoded).expect("Failed to decode");
     assert_eq!(decoded, data, "Decoded file does not match original");
 }
-
 fn main() {}

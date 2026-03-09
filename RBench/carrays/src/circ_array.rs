@@ -10,7 +10,6 @@ pub struct CircBuf {
     mask: usize,
     b: NonNull<u8>,
 }
-
 impl CircBuf {
     pub fn new(el: usize, size: usize) -> Self {
         unimplemented!();
@@ -43,15 +42,12 @@ impl CircBuf {
         unimplemented!();
     }
 }
-
 fn roundup64(x: u64) -> u64 {
     unimplemented!();
 }
-
 fn gca_cycle_left(ptr: &mut [u8], n: usize, es: usize, shift: usize) {
     unimplemented!();
 }
-
 fn gca_calc_gcd(mut a: u32, mut b: u32) -> u32 {
     unimplemented!();
 }

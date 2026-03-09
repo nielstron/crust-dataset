@@ -53,7 +53,6 @@ const TESTS: &[(&str, Option<&str>)] = &[
     ("Void", Some("Void")),
     // Add more test cases as needed
 ];
-
 fn tisp_test(st: &mut tisp::Tsp, input: &str, expect: Option<&str>, output: bool) -> bool {
     st.file = input.to_string();
     st.filec = 0;
@@ -80,7 +79,6 @@ fn tisp_test(st: &mut tisp::Tsp, input: &str, expect: Option<&str>, output: bool
     }
     expect.map_or(false, |e| buf.trim() == e)
 }
-
 #[test]
 fn run_tests() {
     let mut correct = 0;
@@ -135,5 +133,4 @@ fn run_tests() {
     println!("{:?} ms", duration.as_millis());
     assert_eq!(correct, total, "Some tests failed");
 }
-
 fn main() {}

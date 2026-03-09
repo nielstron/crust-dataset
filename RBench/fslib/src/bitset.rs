@@ -1,11 +1,16 @@
 type word_t = u32;
-
 const WORD_SIZE: usize = std::mem::size_of::<word_t>() * 8;
-
+#[inline]
+fn bindex(b: usize) -> usize {
+    b / WORD_SIZE
+}
+#[inline]
+fn boffset(b: usize) -> usize {
+    b % WORD_SIZE
+}
 pub struct BitSet {
     words: Vec<word_t>,
 }
-
 impl BitSet {
     pub fn new(nbits: usize) -> Self {
         unimplemented!()
@@ -37,14 +42,4 @@ impl BitSet {
     pub fn toggle_all(&self) -> Self {
         unimplemented!()
     }
-}
-
-#[inline]
-fn bindex(b: usize) -> usize {
-    b / WORD_SIZE
-}
-
-#[inline]
-fn boffset(b: usize) -> usize {
-    b % WORD_SIZE
 }

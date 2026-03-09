@@ -3,7 +3,6 @@ pub struct IntVec<'a> {
     pub size: u64,
     pub data: &'a [u8],
 }
-
 impl IntVec<'_> {
     pub fn vec_free(&mut self) {
         unimplemented!()

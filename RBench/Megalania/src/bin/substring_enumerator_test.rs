@@ -2,11 +2,9 @@ use Megalania::substring_enumerator::SubstringEnumerator;
 pub fn pretty_print_test_name(name: &str) {
     println!("=== {} ===", name);
 }
-
 pub fn pretty_print_sub_test_name(name: &str) {
     println!("> {}", name);
 }
-
 #[test]
 fn substring_enumerator_hello_hello_test() {
     pretty_print_sub_test_name("substring_enumerator_hello_hello_test");
@@ -68,5 +66,4 @@ fn substring_enumerator_aa_bb_cc_test() {
         });
     }
 }
-
 pub fn main() {}

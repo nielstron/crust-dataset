@@ -5,7 +5,6 @@ fn test_create() {
     bs.set(0);
     assert_eq!(bs.get(0), true);
 }
-
 #[test]
 fn test_set_all() {
     let mut bs = BitSet::new(1024);
@@ -14,7 +13,6 @@ fn test_set_all() {
         assert_eq!(bs.get(i), true);
     }
 }
-
 #[test]
 fn test_clear_all() {
     let mut bs = BitSet::new(1024);
@@ -24,7 +22,6 @@ fn test_clear_all() {
         assert_eq!(bs.get(i), false);
     }
 }
-
 #[test]
 fn test_clear() {
     let mut bs = BitSet::new(8);
@@ -33,5 +30,4 @@ fn test_clear() {
     bs.clear(0);
     assert_eq!(bs.get(0), false);
 }
-
 fn main() {}

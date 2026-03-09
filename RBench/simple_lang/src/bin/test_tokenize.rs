@@ -21,5 +21,4 @@ fn test_tokenize() {
 
     println!("All Tests passed!");
 }
-
 fn main() {}

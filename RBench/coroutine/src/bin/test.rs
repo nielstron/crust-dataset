@@ -82,5 +82,4 @@ fn test_main() {
     test(&mut schedule);
     coroutine_close(schedule);
 }
-
 fn main() {}

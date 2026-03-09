@@ -6,7 +6,6 @@ pub struct CircularBuffer {
     head_offset: usize,
     buffer: Vec<u8>,
 }
-
 impl CircularBuffer {
     pub fn new(size: usize) -> Self {
         CircularBuffer {

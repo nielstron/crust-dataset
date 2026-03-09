@@ -2,7 +2,6 @@ use roaring_bitmap::rset::RSet;
 fn print_type_of<T>(_: &T) {
     println!("{}", std::any::type_name::<T>());
 }
-
 fn rset_new_items(items: &[u16]) -> RSet {
     let mut set = RSet::new();
     for &item in items {
@@ -10,14 +9,12 @@ fn rset_new_items(items: &[u16]) -> RSet {
     }
     set
 }
-
 #[test]
 fn test_new() {
     let set = RSet::new();
     assert_eq!(set.cardinality(), 0);
     assert_eq!(set.length(), std::mem::size_of::<u16>() * 2);
 }
-
 #[test]
 fn test_new_items() {
     let set = rset_new_items(&[]);
@@ -31,7 +28,6 @@ fn test_new_items() {
     assert_eq!(set.buffer[2], 2000);
     assert_eq!(set.buffer[3], 3000);
 }
-
 #[test]
 fn test_equals() {
     let set = rset_new_items(&[1000, 2000, 3000]);
@@ -48,7 +44,6 @@ fn test_equals() {
     let comparison = rset_new_items(&[1000, 2000, 3000]);
     assert!(set.equals(&comparison));
 }
-
 #[test]
 fn test_import_export() {
     let set = rset_new_items(&[1, 2, 3]);
@@ -56,7 +51,6 @@ fn test_import_export() {
     let copy = RSet::import(&exported, set.length());
     assert!(set.equals(&copy));
 }
-
 #[test]
 fn test_copy() {
     let set = RSet::new();
@@ -70,7 +64,6 @@ fn test_copy() {
     assert_eq!(set.cardinality(), copy.cardinality());
     assert_eq!(set.length(), copy.length());
 }
-
 #[test]
 fn test_truncate() {
     let mut set = rset_new_items(&[1, 2, 3, 4, 5]);
@@ -78,7 +71,6 @@ fn test_truncate() {
     set.truncate();
     assert_eq!(set.cardinality(), 0);
 }
-
 #[test]
 fn test_buffer_resizing() {
     let mut set = RSet::new();
@@ -90,7 +82,6 @@ fn test_buffer_resizing() {
     println!("{}", ctr);
     assert_eq!(set.cardinality(), 1000);
 }
-
 #[test]
 fn test_array_to_bitset() {
     let mut set = RSet::new();
@@ -100,7 +91,6 @@ fn test_array_to_bitset() {
     assert_eq!(set.cardinality(), 32768);
     // Additional checks can be added based on the specific implementation details
 }
-
 #[test]
 fn test_bitset_to_inverted_array() {
     let mut set = RSet::new();
@@ -110,7 +100,6 @@ fn test_bitset_to_inverted_array() {
     assert_eq!(set.cardinality(), 61441);
     // Additional checks can be added based on the specific implementation details
 }
-
 #[test]
 fn test_fill_ascending() {
     let mut set = RSet::new();
@@ -123,7 +112,6 @@ fn test_fill_ascending() {
     assert_eq!(set.cardinality(), 65536);
     assert_eq!(set.length(), std::mem::size_of::<u16>());
 }
-
 #[test]
 fn test_fill_descending() {
     let mut set = RSet::new();
@@ -136,7 +124,6 @@ fn test_fill_descending() {
     assert_eq!(set.cardinality(), 65536);
     assert_eq!(set.length(), std::mem::size_of::<u16>());
 }
-
 #[test]
 fn test_fill_optimal() {
     let mut set = RSet::new();
@@ -154,7 +141,6 @@ fn test_fill_optimal() {
     assert_eq!(set.cardinality(), 65536);
     assert_eq!(set.length(), std::mem::size_of::<u16>());
 }
-
 #[test]
 fn test_contains() {
     let mut set = RSet::new();
@@ -164,7 +150,6 @@ fn test_contains() {
         assert!(set.contains(i));
     }
 }
-
 #[test]
 fn test_invert() {
     let mut set = RSet::new();
@@ -204,7 +189,6 @@ fn test_invert() {
     assert_eq!(inverted_twice.cardinality(), 30000);
     assert!(set.equals(&inverted_twice));
 }
-
 #[test]
 fn test_intersection() {
     let mut a = RSet::new();
@@ -233,5 +217,4 @@ fn test_intersection() {
     a.intersection(&b, &mut result);
     assert_eq!(result.cardinality(), 0);
 }
-
 fn main() {}

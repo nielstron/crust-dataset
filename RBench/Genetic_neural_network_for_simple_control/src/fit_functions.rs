@@ -11,7 +11,6 @@ pub fn pidFitFunction(
 ) {
     unimplemented!();
 }
-
 pub fn nnFitFunction(
     population: &mut population::Pop,
     fit: &mut Vec<f32>,

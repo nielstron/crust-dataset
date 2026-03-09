@@ -9,7 +9,6 @@ pub struct LexProcessFunctions {
     pub peek_char: fn(&mut LexProcess) -> char,
     pub push_char: fn(&mut LexProcess, char),
 }
-
 /// The LexProcess struct, referencing a CompileProcess, token vector, etc.
 #[derive(Debug, Default, Clone)]
 pub struct LexProcess {
@@ -19,7 +18,6 @@ pub struct LexProcess {
     pub function: Option<LexProcessFunctions>,
     pub private: Option<()>,
 }
-
 /// Creates a new LexProcess, allocating a Vector to store tokens, referencing the given CompileProcess.
 pub fn lex_process_create(
     compiler: CompileProcess,
@@ -28,17 +26,14 @@ pub fn lex_process_create(
 ) -> LexProcess {
     unimplemented!()
 }
-
 /// Frees the lex process, including the token vector. In Rust, dropping is enough.
 pub fn lex_process_free(process: LexProcess) {
     unimplemented!()
 }
-
 /// Returns the private data pointer (always None in this safe version).
 pub fn lex_process_private(process: &LexProcess) -> Option<()> {
     unimplemented!()
 }
-
 /// Returns a reference to the token vector if any.
 pub fn lex_process_tokens(process: &LexProcess) -> Option<&Vector> {
     unimplemented!()

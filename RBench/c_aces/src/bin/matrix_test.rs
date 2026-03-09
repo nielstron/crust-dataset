@@ -37,5 +37,4 @@ fn fill_random_invertible_pairs_test() {
     // The product m1 * m2 should be the identity.
     assert_eq!(result.data, exp_result.data);
 }
-
 fn main() {}

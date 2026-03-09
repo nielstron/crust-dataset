@@ -4,7 +4,6 @@ pub struct Cursor {
     x: usize,
     y: usize,
 }
-
 pub struct VirtualScreen {
     buffer: Vec<char>,
     buf_pos: usize,
@@ -14,7 +13,6 @@ pub struct VirtualScreen {
     height: usize,
     render_start_line: usize,
 }
-
 pub struct EditorState {
     orig_termios: termios::Termios,
     file_name: Option<String>,
@@ -23,7 +21,6 @@ pub struct EditorState {
     current_buffer: TextBuffer,
     screen: VirtualScreen,
 }
-
 impl EditorState {
     pub fn initialize(argc: i32, argv: Vec<String>) {
         unimplemented!()
@@ -74,5 +71,4 @@ impl EditorState {
         unimplemented!()
     }
 }
-
 pub fn main() {}

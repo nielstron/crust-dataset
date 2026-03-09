@@ -78,7 +78,6 @@ fn apply_errors(vect: &mut [u16; 24], start_pos: u8, end_pos: u8, num_errs: u8, 
         err_loc |= 1 << bit_pos;
     }
 }
-
 #[test]
 fn symbol_to_dibit() {
     let test_values = [30.0, 4.0, 3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0, -4.0, -30.0];
@@ -102,7 +101,6 @@ fn symbol_to_dibit() {
         assert_eq!(dibit[1], expected_results[i][1]);
     }
 }
-
 #[test]
 fn golay_encode() {
     let mut data: u16 = 0x0800;
@@ -117,7 +115,6 @@ fn golay_encode() {
     data = 0x0D78;
     assert_eq!(0x0D7880F, golay24_encode(data));
 }
-
 #[test]
 fn test_golay_soft_decode() {
     let test_params = [
@@ -162,7 +159,6 @@ fn test_golay_soft_decode() {
         }
     }
 }
-
 #[test]
 fn golay_soft_decode_flipped_parity_4() {
     let mut vector: [u16; 24] = [0; 24];
@@ -217,7 +213,6 @@ fn golay_soft_decode_flipped_data_4() {
         vector[23 - i] = (((0x0D7880F >> i) & 1) * 0xFFFF) as u16;
     }
 }
-
 #[test]
 fn golay_soft_decode_corrupt_data_4_5() {
     let mut vector: [u16; 24] = [0; 24];

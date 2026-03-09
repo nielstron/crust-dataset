@@ -15,12 +15,10 @@ use crate::vector::{
 fn parser_ignore_nl_or_comments(process: &mut CompileProcess, token_opt: &mut Option<Token>) {
     unimplemented!()
 }
-
 /// Returns the next token without consuming it, ignoring newlines/comments.
 fn token_peek_no_increment(process: &mut CompileProcess) -> Option<Token> {
     unimplemented!()
 }
-
 /// Returns the next token with increment, ignoring newlines/comments.
 fn token_next(
     process: &mut CompileProcess,
@@ -28,22 +26,18 @@ fn token_next(
 ) -> Option<Token> {
     unimplemented!()
 }
-
 /// We create a placeholder function that returns a default token. In a real parser, we'd decode real data.
 fn next_token_placeholder(_vec: &mut crate::vector::Vector, pos: &Pos) -> Option<Token> {
     unimplemented!()
 }
-
 /// Single token -> AST node creation.
 fn parse_single_token_to_node(process: &mut CompileProcess, parser_last_token: &mut Option<Token>) {
     unimplemented!()
 }
-
 /// parse_next in the original code. Returns 0 if we handled a token, -1 if none left.
 fn parse_next(process: &mut CompileProcess, parser_last_token: &mut Option<Token>) -> i32 {
     unimplemented!()
 }
-
 /// The main parse function. We set node vectors, then repeatedly call parse_next until no tokens remain.
 pub fn parse(process: &mut CompileProcess) -> i32 {
     unimplemented!()

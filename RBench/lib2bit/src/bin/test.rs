@@ -8,7 +8,6 @@ fn read_lines<P: AsRef<std::path::Path>>(path: P) -> std::io::Result<Vec<String>
     let reader = BufReader::new(file);
     reader.lines().collect()
 }
-
 #[test]
 fn test() {
     let filename = "src/bin/foo.2bit";

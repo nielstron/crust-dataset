@@ -15,7 +15,6 @@ fn new_hand_from_string(hand_str: &str) -> [Card; 5] {
     }
     hand
 }
-
 #[test]
 fn test_hand_classify_straight_flush() {
     let straight_flushes = [
@@ -44,7 +43,6 @@ fn test_hand_classify_straight_flush() {
         }
     }
 }
-
 #[test]
 fn test_hand_classify_wheel_flush() {
     let hand = new_hand_from_string("Ac 5c 4c 3c 2c");
@@ -54,7 +52,6 @@ fn test_hand_classify_wheel_flush() {
         "A-5-4-3-2 should be a wheel flush"
     );
 }
-
 #[test]
 fn test_hand_classify_quads() {
     for rank1 in [
@@ -108,7 +105,6 @@ fn test_hand_classify_quads() {
         }
     }
 }
-
 #[test]
 fn test_hand_classify_full_house() {
     for rank1 in [
@@ -160,7 +156,6 @@ fn test_hand_classify_full_house() {
         }
     }
 }
-
 #[test]
 fn test_hand_classify_flush() {
     let flushes = [
@@ -198,7 +193,6 @@ fn test_hand_classify_flush() {
         }
     }
 }
-
 #[test]
 fn test_hand_classify_straight() {
     let straights = [
@@ -227,7 +221,6 @@ fn test_hand_classify_straight() {
         );
     }
 }
-
 #[test]
 fn test_hand_classify_wheel() {
     let hand = [
@@ -243,7 +236,6 @@ fn test_hand_classify_wheel() {
         "A-5-4-3-2 should be a wheel"
     );
 }
-
 #[test]
 fn test_hand_classify_trips() {
     for rank1 in [
@@ -314,7 +306,6 @@ fn test_hand_classify_trips() {
         }
     }
 }
-
 #[test]
 fn test_hand_classify_two_pair() {
     let two_pairs = [
@@ -346,7 +337,6 @@ fn test_hand_classify_two_pair() {
         );
     }
 }
-
 #[test]
 fn test_hand_classify_pair() {
     let pairs = [
@@ -378,7 +368,6 @@ fn test_hand_classify_pair() {
         );
     }
 }
-
 #[test]
 fn test_hand_classify_high_card() {
     let high_cards = [
@@ -410,7 +399,6 @@ fn test_hand_classify_high_card() {
         );
     }
 }
-
 #[test]
 fn test_hand_sort() {
     let hands = [
@@ -544,7 +532,6 @@ fn test_hand_sort() {
         );
     }
 }
-
 #[test]
 fn test_hand_compare() {
     let hands = [
@@ -759,5 +746,4 @@ fn test_hand_compare() {
         );
     }
 }
-
 fn main() {}

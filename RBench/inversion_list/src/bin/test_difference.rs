@@ -24,5 +24,4 @@ fn test() {
 
     println!("test_difference passed.");
 }
-
 fn main() {}

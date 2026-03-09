@@ -10,20 +10,17 @@ pub struct TwoBitMaskedIdx {
     pub mask_block_sizes: Vec<Vec<u32>>,
     pub offset: Vec<u64>,
 }
-
 #[derive(Debug)]
 pub struct TwoBitHeader {
     pub magic: u32,
     pub version: u32,
     pub n_chroms: u32,
 }
-
 #[derive(Debug)]
 pub struct TwoBitCL {
     pub chrom: Vec<String>,
     pub offset: Vec<u32>,
 }
-
 #[derive(Debug)]
 pub struct TwoBit {
     pub fp: File,
@@ -34,7 +31,6 @@ pub struct TwoBit {
     pub cl: TwoBitCL,
     pub idx: TwoBitMaskedIdx,
 }
-
 impl TwoBit {
     pub fn twobit_open(fname: &str, store_masked: bool) -> Self {
         unimplemented!()
@@ -94,16 +90,13 @@ impl TwoBit {
         unimplemented!()
     }
 }
-
 // Helper function
 pub fn byte2base(byte: u8, offset: i32) -> char {
     unimplemented!()
 }
-
 pub fn bytes2bases(seq: &mut [char], bytes: &mut [u8], sz: u32, offset: i32) {
     unimplemented!()
 }
-
 pub fn getByteMaskFromOffset(offset: i32) {
     unimplemented!()
 }

@@ -30,5 +30,4 @@ pub fn testSelectSystem() {
 
     println!("\x1b[1m\x1b[32m=======TEST SELECT SYSTEM SUCCESSFUL=======\x1b[0m");
 }
-
 fn main() {}

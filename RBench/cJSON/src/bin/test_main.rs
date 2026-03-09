@@ -4,19 +4,6 @@ use std::path::Path;
 
 use cJSON::cjson::{parse, CJson};
 
-/// A helper struct mirroring the `struct record` in the C code.
-#[derive(Debug)]
-struct Record {
-    precision: &'static str,
-    lat: f64,
-    lon: f64,
-    address: &'static str,
-    city: &'static str,
-    state: &'static str,
-    zip: &'static str,
-    country: &'static str,
-}
-
 /// The Rust equivalent of the C `doit` function.
 /// It parses the input text, prints an error if parsing fails,
 /// otherwise prints out the re–serialized JSON.
@@ -42,6 +29,19 @@ fn dofile(filename: &str) {
     let mut data = String::new();
     file.read_to_string(&mut data).expect("Failed to read file");
     doit(&data);
+}
+
+/// A helper struct mirroring the `struct record` in the C code.
+#[derive(Debug)]
+struct Record {
+    precision: &'static str,
+    lat: f64,
+    lon: f64,
+    address: &'static str,
+    city: &'static str,
+    state: &'static str,
+    zip: &'static str,
+    country: &'static str,
 }
 
 /// Replicates the logic of C's `create_objects` function:

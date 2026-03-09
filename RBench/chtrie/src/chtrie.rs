@@ -1,5 +1,6 @@
+// Generated Rust Code
+use std::collections::VecDeque;
 pub const SZ_MAX: usize = usize::MAX;
-
 // Struct Definitions
 pub struct ChtrieEdge {
     pub next: Option<Box<ChtrieEdge>>,
@@ -7,7 +8,6 @@ pub struct ChtrieEdge {
     pub sym: i32,
     pub to: i32,
 }
-
 pub struct Chtrie {
     pub etab: Vec<Option<Box<ChtrieEdge>>>,
     pub idxpool: VecDeque<i32>,
@@ -17,7 +17,6 @@ pub struct Chtrie {
     pub alphsz: i32,
     pub ecap: i32,
 }
-
 impl Chtrie {
     pub fn new(n: usize, m: usize) -> Option<Self> {
         unimplemented!()
@@ -32,15 +31,9 @@ impl Chtrie {
         unimplemented!()
     }
 }
-
 pub fn chtrie_walk(trie: &mut Chtrie, from: i32, sym: i32, creat: i32) -> i32 {
     unimplemented!()
 }
-
 pub fn chtrie_del(trie: &mut Chtrie, from: i32, sym: i32) {
     unimplemented!()
 }
-
-// Generated Rust Code
-
-use std::collections::VecDeque;

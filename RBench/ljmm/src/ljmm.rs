@@ -5,7 +5,6 @@
 pub fn ljmm_init() -> i32 {
     unimplemented!()
 }
-
 /// Instructs the OS to take care of the [1G..2G] space.
 ///
 /// # Parameters
@@ -13,7 +12,6 @@ pub fn ljmm_init() -> i32 {
 pub fn ljmm_let_os_take_care_1g_2g(turn_on: i32) {
     unimplemented!()
 }
-
 /// Sets test parameters for the ljmm system.
 ///
 /// # Parameters

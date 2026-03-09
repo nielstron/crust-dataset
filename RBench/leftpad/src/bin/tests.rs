@@ -1,11 +1,7 @@
-fn main() {}
-
 // Import the leftpad module
-
 use leftpad::leftpad::leftpad;
 
 #[cfg(test)]
-
 mod tests {
     use super::*;
 
@@ -43,3 +39,4 @@ mod tests {
     }
 }
 
+fn main() {}

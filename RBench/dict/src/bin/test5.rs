@@ -73,5 +73,4 @@ fn test5() {
 
     dict_destroy(&mut dict2);
 }
-
 fn main() {}

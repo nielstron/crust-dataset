@@ -82,7 +82,6 @@ fn test_default() {
     sk.brsa_secretkey_deinit();
     pk.brsa_publickey_deinit();
 }
-
 #[test]
 fn test_deterministic() {
     let mut context = BRSAContext {
@@ -158,7 +157,6 @@ fn test_deterministic() {
     blind_sig.brsa_blind_signature_deinit();
     blind_sig2.brsa_blind_signature_deinit();
 }
-
 #[test]
 fn test_custom_parameters() {
     let mut context = BRSAContext {
@@ -224,5 +222,4 @@ fn test_custom_parameters() {
     sk.brsa_secretkey_deinit();
     pk.brsa_publickey_deinit();
 }
-
 fn main() {}

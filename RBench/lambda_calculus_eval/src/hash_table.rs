@@ -1,11 +1,9 @@
 use crate::common;
 use std::collections::HashMap;
 pub const HASH_TABLE_SIZE: usize = 2000;
-
 pub struct HashTable {
     table: HashMap<String, common::AstNode>,
 }
-
 impl HashTable {
     pub fn new() -> Self {
         unimplemented!()
@@ -23,15 +21,12 @@ impl HashTable {
         unimplemented!()
     }
 }
-
 pub fn hash(key: &str) -> u32 {
     unimplemented!()
 }
-
 pub fn createHashTable() -> HashTable {
     unimplemented!()
 }
-
 pub fn destroyHashTable(_hashTable: HashTable) {
     unimplemented!()
 }

@@ -53,7 +53,6 @@ static SEED3_DEALING_ORDER: [CardSuitRank; 52] = [
     CardSuitRank::Spade10,
     CardSuitRank::Club8,
 ];
-
 fn test_sort_card_by_rank_1(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     let test_data = [
         CardSuitRank::SpadeAce,
@@ -70,7 +69,6 @@ fn test_sort_card_by_rank_1(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     );
     ItrAction::Continue
 }
-
 fn test_sort_card_by_rank_2(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     let test_data = [
         CardSuitRank::SpadeAce,
@@ -86,7 +84,6 @@ fn test_sort_card_by_rank_2(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     );
     ItrAction::Continue
 }
-
 fn test_sort_card_by_rank_3(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     let test_data = [
         CardSuitRank::SpadeAce,
@@ -101,7 +98,6 @@ fn test_sort_card_by_rank_3(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     );
     ItrAction::Continue
 }
-
 fn test_sort_card_by_rank_4(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     let test_data = [CardSuitRank::Heart9, CardSuitRank::Heart10];
     assert_eq!(
@@ -110,12 +106,10 @@ fn test_sort_card_by_rank_4(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     );
     ItrAction::Continue
 }
-
 fn test_empty_hand(len: u64, pos: u64, c: &Option<Card>) -> ItrAction {
     assert!(false, "Hand should be empty");
     ItrAction::Continue
 }
-
 #[test]
 fn test_card_operations() {
     let mut c: Option<Card>;
@@ -363,5 +357,4 @@ fn test_card_operations() {
         assert_eq!(card_count[i], expected_card_count[i]);
     }
 }
-
 fn main() {}

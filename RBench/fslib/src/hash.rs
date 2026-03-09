@@ -5,12 +5,10 @@ struct HashItem<K, V> {
     key: K,
     value: V,
 }
-
 #[derive(Default)]
 pub struct Bucket<K, V> {
     items: LinkedList<HashItem<K, V>>,
 }
-
 pub struct HashTable<K, V, F>
 where
     K: Eq + Hash,
@@ -21,7 +19,6 @@ where
     pub n_items: usize,
     pub _marker: PhantomData<K>,
 }
-
 impl<K, V, F> HashTable<K, V, F>
 where
     K: Eq + Hash,

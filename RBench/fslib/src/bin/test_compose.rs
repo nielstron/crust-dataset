@@ -6,12 +6,10 @@ pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.olabel, arc_b.olabel);
     assert_eq!(arc_a.weight, arc_b.weight);
 }
-
 pub fn assert_state_equal(state_a: &StateData, state_b: &StateData) {
     assert_eq!(state_a.weight, state_b.weight);
     assert_eq!(state_a.final_state, state_b.final_state);
 }
-
 pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     assert_eq!(a.start, b.start);
     assert_eq!(a.sr_type, b.sr_type);
@@ -26,7 +24,6 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
         }
     }
 }
-
 #[test]
 fn test_compose() {
     let fst_str_0 = "0 1 1 1\n1";
@@ -43,7 +40,6 @@ fn test_compose() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_1() {
     let fst_str_0 = "0 1 1 1\n1 2 1 1\n2";
@@ -60,7 +56,6 @@ fn test_compose_1() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_sorted_full_0() {
     let fst_str_0 = "0 1 1 1\n1";
@@ -79,7 +74,6 @@ fn test_compose_sorted_full_0() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_sorted_full_1() {
     let fst_str_0 = "0 1 1 1\n1 2 1 1\n2";
@@ -99,7 +93,6 @@ fn test_compose_sorted_full_1() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_sorted_half_0() {
     let fst_str_0 = "0 1 1 1\n1";
@@ -117,7 +110,6 @@ fn test_compose_sorted_half_0() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_sorted_half_1() {
     let fst_str_0 = "0 1 1 1\n1 2 1 1\n2";
@@ -136,7 +128,6 @@ fn test_compose_sorted_half_1() {
     fst_3.print();
     assert_fst_equal(&fst_2, &fst_3);
 }
-
 #[test]
 fn test_compose_sorted_half_2() {
     let fst_str_0 = "0 1 1 1\n1 2 1 1\n2";
@@ -157,5 +148,4 @@ fn test_compose_sorted_half_2() {
     fst_3.arc_sort(0);
     assert_fst_equal(&fst_2, &mut fst_3);
 }
-
 fn main() {}

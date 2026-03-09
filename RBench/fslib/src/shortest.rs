@@ -8,7 +8,6 @@ pub struct ShortestPath {
     weights: Vec<f32>,
     backtrack: Vec<Option<ArcData>>,
 }
-
 impl ShortestPath {
     pub fn new(fst: &Fst) -> Self {
         unimplemented!()
@@ -23,11 +22,9 @@ impl ShortestPath {
         unimplemented!()
     }
 }
-
 fn states_hash(a: &u32) -> u64 {
     unimplemented!()
 }
-
 fn states_key_eq(a: &u32, b: &u32) -> bool {
     unimplemented!()
 }

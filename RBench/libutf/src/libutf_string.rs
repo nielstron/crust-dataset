@@ -4,12 +4,10 @@ pub struct Utf8String<'a> {
     pub len: usize,
     pub cap: usize,
 }
-
 pub struct Utf8StringView<'a> {
     pub data: &'a [Utf8],
     pub len: usize,
 }
-
 impl Utf8String<'_> {
     pub fn new() -> Self {
         unimplemented!()
@@ -119,7 +117,6 @@ impl Utf8String<'_> {
         unimplemented!()
     }
 }
-
 impl<'a> Utf8StringView<'a> {
     pub fn is_empty(&self) -> bool {
         unimplemented!()

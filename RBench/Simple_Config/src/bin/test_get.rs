@@ -22,7 +22,6 @@ fn run_get_str_test() {
     assert!(cfg_get_string(&cfg, "keyB", "barfoo") == "barfoo");
     assert!(cfg_get_string(&cfg, "keyC", "barfoo") == "barfoo");
 }
-
 #[test]
 fn run_get_int_test() {
     let entries = vec![CfgEntry {
@@ -47,7 +46,6 @@ fn run_get_int_test() {
     assert_eq!(cfg_get_int_range(&cfg, "key", 4, 4, 8), 4);
     assert_eq!(cfg_get_int_range(&cfg, "key", 32, 32, 64), 32);
 }
-
 #[test]
 fn run_get_float_test() {
     let entries = vec![CfgEntry {
@@ -72,7 +70,6 @@ fn run_get_float_test() {
     assert!((cfg_get_float_range(&cfg, "key", 4.0, 4.0, 8.0) - 4.0).abs() < std::f32::EPSILON);
     assert!((cfg_get_float_range(&cfg, "key", 32.0, 32.0, 64.0) - 32.0).abs() < std::f32::EPSILON);
 }
-
 #[test]
 fn run_get_color_test() {
     let c1 = CfgColor {

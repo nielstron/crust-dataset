@@ -3,13 +3,10 @@ use crate::symt::SymTable;
 use std::fs::File;
 use std::io::{self, Write};
 const HEADER: &str = "digraph T {\n\trankdir = LR;\n\torientation = Landscape;\n";
-
 const FOOTER: &str = "}\n";
-
 pub fn fst_draw(fst: &Fst, fout: &mut File) -> io::Result<()> {
     unimplemented!()
 }
-
 pub fn fst_draw_sym(
     fst: &Fst,
     fout: &mut File,
@@ -19,11 +16,9 @@ pub fn fst_draw_sym(
 ) -> io::Result<()> {
     unimplemented!()
 }
-
 fn trn(st: &mut SymTable, id: usize, token: &str) -> String {
     unimplemented!()
 }
-
 fn trt(st: &mut SymTable, id: usize, token: &str) -> String {
     unimplemented!()
 }

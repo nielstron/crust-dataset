@@ -1,8 +1,6 @@
 use crate::gap::GapBuffer;
 pub const DEFAULT_GAP_BUF_CAP: usize = 100;
-
 pub const DEFAULT_CAPACITY: usize = 100;
-
 pub struct TextBuffer {
     pub lines: Vec<Option<GapBuffer>>,
     pub lines_capacity: usize,
@@ -11,7 +9,6 @@ pub struct TextBuffer {
     pub cursor_col_moved: bool,
     pub last_line_loc: usize,
 }
-
 impl TextBuffer {
     pub fn create(lines: usize, line_size: usize) -> Option<Self> {
         unimplemented!()

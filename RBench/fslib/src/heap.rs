@@ -1,11 +1,8 @@
 use std::cmp::Ordering;
 use std::collections::HashMap;
 const HEAP_INIT_SIZE: usize = 0xff;
-
 const HEAP_RESIZE_FACTOR: usize = 2;
-
 pub type HeapCmp<T> = fn(&T, &T) -> Ordering;
-
 pub struct Heap<T> {
     pub n_items: usize,
     pub n_max: usize,
@@ -14,19 +11,15 @@ pub struct Heap<T> {
     pub ht: HashMap<T, usize>,
     pub items: Vec<T>,
 }
-
 pub fn parent(i: usize) -> usize {
     unimplemented!()
 }
-
 pub fn left(i: usize) -> usize {
     unimplemented!()
 }
-
 pub fn right(i: usize) -> usize {
     unimplemented!()
 }
-
 impl<T: Ord + Clone + std::hash::Hash + Eq> Heap<T> {
     pub fn new(cmp: HeapCmp<T>, item_size: usize, init_size: usize, limit: usize) -> Self {
         unimplemented!()

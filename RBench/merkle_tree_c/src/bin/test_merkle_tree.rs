@@ -156,5 +156,4 @@ fn test_build_proof() {
     // This test is left empty (as in the original C file).
     println!("test_build_proof passed.");
 }
-
 pub fn main() {}

@@ -3,7 +3,6 @@ pub struct SubstringEnumerator<'a> {
     min_length: usize,
     max_length: usize,
 }
-
 impl<'a> SubstringEnumerator<'a> {
     pub fn memory_usage(data_size: usize) -> usize {
         unimplemented!()

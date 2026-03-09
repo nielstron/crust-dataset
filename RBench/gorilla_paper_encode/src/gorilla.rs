@@ -1,19 +1,13 @@
 pub type U8 = u8;
-
 pub type U32 = u32;
-
 pub type U64 = u64;
-
 pub type F64 = f64;
-
 pub const de_bruijn64: U64 = 0x03f79d71b4ca8b09;
-
 pub const de_bruijn64_tab: [u8; 64] = [
     0, 1, 56, 2, 57, 49, 28, 3, 61, 58, 42, 50, 38, 29, 17, 4, 62, 47, 59, 36, 45, 43, 51, 22, 53,
     39, 33, 30, 24, 18, 12, 5, 63, 55, 48, 27, 60, 41, 37, 16, 46, 35, 44, 21, 52, 32, 23, 11, 54,
     26, 40, 15, 34, 20, 31, 10, 25, 14, 19, 9, 13, 8, 7, 6,
 ];
-
 pub const len8_tab: [u8; 256] = [
     0x00, 0x01, 0x02, 0x02, 0x03, 0x03, 0x03, 0x03, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04,
     0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05,
@@ -32,16 +26,35 @@ pub const len8_tab: [u8; 256] = [
     0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08,
     0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08,
 ];
-
 pub const Nan: u64 = 0x7FF8000000000001;
-
 pub struct BitWriter {
     pub cache: [U8; 1024],
     pub pos: U32,
     pub byte: U8,
     pub bit_count: U8,
 }
-
+pub struct FloatEncoder {
+    pub w: BitWriter,
+    pub val: U64,
+    pub leading: U64,
+    pub trailing: U64,
+    pub first: bool,
+    pub finished: bool,
+}
+impl FloatEncoder {
+    pub fn float_encoder_init(&mut self) -> i32 {
+        unimplemented!()
+    }
+    pub fn float_cache_print(&self) -> i32 {
+        unimplemented!()
+    }
+    pub fn float_encode_flush(&mut self, dst: &mut [U8], length: &mut U32) -> i32 {
+        unimplemented!()
+    }
+    pub fn float_encode_write(&mut self, v: F64) -> i32 {
+        unimplemented!()
+    }
+}
 impl BitWriter {
     pub fn bitwriter_init(&mut self) -> i32 {
         unimplemented!()
@@ -62,38 +75,12 @@ impl BitWriter {
         unimplemented!()
     }
 }
-
-pub struct FloatEncoder {
-    pub w: BitWriter,
-    pub val: U64,
-    pub leading: U64,
-    pub trailing: U64,
-    pub first: bool,
-    pub finished: bool,
-}
-
-impl FloatEncoder {
-    pub fn float_encoder_init(&mut self) -> i32 {
-        unimplemented!()
-    }
-    pub fn float_cache_print(&self) -> i32 {
-        unimplemented!()
-    }
-    pub fn float_encode_flush(&mut self, dst: &mut [U8], length: &mut U32) -> i32 {
-        unimplemented!()
-    }
-    pub fn float_encode_write(&mut self, v: F64) -> i32 {
-        unimplemented!()
-    }
-}
-
 pub struct BitReader<'a> {
     pub data: &'a [u8],
     pub len: U32,
     pub v: U64,
     pub n: U32,
 }
-
 pub struct FloatDecoder<'a> {
     pub val: U64,
     pub leading: U64,
@@ -104,7 +91,6 @@ pub struct FloatDecoder<'a> {
     pub finished: bool,
     pub err: i32,
 }
-
 impl FloatDecoder<'_> {
     pub fn float_decode_block(&mut self, data: &[U8], res: &mut [F64], res_len: &mut U32) -> i32 {
         unimplemented!()
@@ -113,7 +99,6 @@ impl FloatDecoder<'_> {
         unimplemented!()
     }
 }
-
 impl BitReader<'_> {
     pub fn bit_readbuf(&mut self) -> i32 {
         unimplemented!()
@@ -137,16 +122,13 @@ impl BitReader<'_> {
         unimplemented!()
     }
 }
-
 // static/helper function
 pub fn bitslen(x: U64) -> i32 {
     unimplemented!()
 }
-
 pub fn leading_zero64(u: U64) -> i32 {
     unimplemented!()
 }
-
 pub fn trailing_zero64(u: U64) -> i32 {
     unimplemented!()
 }

@@ -6,7 +6,6 @@ pub enum TFError {
     TF_EINVALID_BUFFER_SIZE,
     TF_EINVALID_VAR_SIZE,
 }
-
 impl TFError {
     pub fn to_string(&self) -> &'static str {
         match self {
@@ -24,14 +23,12 @@ impl TFError {
         }
     }
 }
-
 #[derive(Debug)]
 pub enum TFCompressionType {
     TF_COMPRESSION_NONE,
     TF_COMPRESSION_ZSTD,
     TF_COMPRESSION_ZLIB,
 }
-
 #[derive(Debug)]
 pub struct TFHeader {
     pub channel_data_offset: u16,
@@ -46,25 +43,21 @@ pub struct TFHeader {
     pub channel_range_count: u8,
     pub sequence_uid: u64,
 }
-
 #[derive(Debug)]
 pub struct TFCompressionBlock {
     pub first_frame_id: u32,
     pub size: u32,
 }
-
 #[derive(Debug)]
 pub struct TFVarHeader {
     pub size: u16,
     pub id: [u8; 2],
 }
-
 #[derive(Debug)]
 pub struct TFChannelRange {
     pub first_channel_number: u32,
     pub channel_count: u32,
 }
-
 pub fn tf_var_header_read(
     bd: &[u8],
     var_header: &mut TFVarHeader,
@@ -73,11 +66,9 @@ pub fn tf_var_header_read(
 ) -> TFError {
     unimplemented!()
 }
-
 pub fn tf_header_read(bd: &[u8], header: &mut TFHeader, ep: Option<&mut &[u8]>) -> TFError {
     unimplemented!()
 }
-
 pub fn tf_compression_block_read(
     bd: &[u8],
     block: &mut TFCompressionBlock,
@@ -85,7 +76,6 @@ pub fn tf_compression_block_read(
 ) -> TFError {
     unimplemented!()
 }
-
 pub fn tf_channel_range_read(
     bd: &[u8],
     channel_range: &mut TFChannelRange,

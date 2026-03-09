@@ -1,14 +1,11 @@
 use crate::{data, utils};
 pub const DEFAULT_POPPED_CAP: usize = 32;
-
 pub const DEFAULT_STACK_CAP: usize = 1024;
-
 #[derive(Debug)]
 pub struct Popped {
     pub str: String,
     pub marked: bool,
 }
-
 #[derive(Debug)]
 pub struct Stack {
     pub buf: Vec<data::Data>,
@@ -18,7 +15,6 @@ pub struct Stack {
     pub popped_cap: usize,
     pub popped_size: usize,
 }
-
 impl Stack {
     fn new(cap: usize, popped_cap: usize) -> Self {
         unimplemented!()

@@ -7,7 +7,6 @@ pub fn compute_velocity(
 ) {
     unimplemented!()
 }
-
 pub fn compute_forces(
     dt: f64,
     particles_size: usize,
@@ -22,11 +21,9 @@ pub fn compute_forces(
 ) {
     unimplemented!()
 }
-
 pub fn compute_distance(p1: &data::Particle, p2: &data::Particle) -> f64 {
     unimplemented!()
 }
-
 pub fn apply_gravity(
     size: usize,
     particles_properties: &[data::ParticleProperties],
@@ -34,11 +31,9 @@ pub fn apply_gravity(
 ) {
     unimplemented!()
 }
-
 pub fn compute_overlap(p1: &data::Particle, p2: &data::Particle) -> f64 {
     unimplemented!()
 }
-
 pub fn fix_displacement(
     particle_index: usize,
     velocities: &mut [data::Vector],
@@ -46,7 +41,6 @@ pub fn fix_displacement(
 ) {
     unimplemented!()
 }
-
 pub fn compute_acceleration(
     particle_index: usize,
     particles_properties: &[data::ParticleProperties],
@@ -55,7 +49,6 @@ pub fn compute_acceleration(
 ) {
     unimplemented!()
 }
-
 pub fn compute_displacement(
     dt: f64,
     particle_index: usize,
@@ -64,11 +57,9 @@ pub fn compute_displacement(
 ) {
     unimplemented!()
 }
-
 pub fn size_triangular_matrix(n: usize) -> usize {
     unimplemented!()
 }
-
 pub fn displace_particle(
     particle_index: usize,
     displacements: &[data::Vector],
@@ -76,7 +67,6 @@ pub fn displace_particle(
 ) {
     unimplemented!()
 }
-
 pub fn collide_two_particles(
     dt: f64,
     distance: f64,

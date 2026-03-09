@@ -4,7 +4,6 @@ use crate::rubik_model::ECube;
 fn ecube_compare_equal(a: &ECube, b: &ECube) -> bool {
     unimplemented!()
 }
-
 fn main() {
     unimplemented!()
 }

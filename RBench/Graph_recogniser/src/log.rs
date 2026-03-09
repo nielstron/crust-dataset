@@ -9,17 +9,14 @@ pub enum LogType {
     OpenHash = 2,
     CuckooHash = 3,
 }
-
 pub struct LogInfo {
     priority: u8,
     prefix: &'static str,
     suffix: &'static str,
 }
-
 pub struct Logger {
     log_info_table: RwLock<HashMap<LogType, LogInfo>>,
 }
-
 impl Logger {
     pub fn new() -> Arc<Self> {
         unimplemented!()

@@ -120,5 +120,4 @@ fn tests_multiply() {
     // Testing an invalid method = 0
     assert_ne!(test_multiply(x1, y1, x2, y2, "multiply 5-0", 0), 0);
 }
-
 fn main() {}

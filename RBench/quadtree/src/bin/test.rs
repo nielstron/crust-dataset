@@ -1,6 +1,4 @@
 use quadtree::quadtree::quadtree::*;
-fn main() {}
-
 mod tests {
     use super::*;
     fn descent<T>(_node: &mut Option<Box<QuadtreeNode<T>>>) {}
@@ -110,3 +108,4 @@ mod tests {
         point.quadtree_point_free();
     }
 }
+fn main() {}

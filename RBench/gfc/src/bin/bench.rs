@@ -1,4 +1,7 @@
-use gfc::gfc::GFC; /// Benchmark decryption performance
+use gfc::gfc::GFC; // Assuming the `GFC` struct is in a `gfc` module
+use std::time::Instant;
+
+/// Benchmark decryption performance
 fn benchmark_dec(range: u64, rounds: u64, seed: u64, count: u64) -> f64 {
     let gfc = GFC::new(range, rounds, seed);
 
@@ -37,8 +40,3 @@ fn main() {
         }
     }
 }
-
-// Assuming the `GFC` struct is in a `gfc` module
-
-use std::time::Instant;
-

@@ -6,7 +6,6 @@ use ted::gap::GapBuffer;
 fn string_comp_assert(str1: &str, str2: &str) {
     assert_eq!(str1, str2);
 }
-
 #[test]
 fn test_gap_buffer() {
     println!("\n\nTesting GapBuffer");

@@ -17,7 +17,6 @@ fn test_iter_create() {
     assert_eq!(iter.state, state_c);
     assert_eq!(iter.next(), None);
 }
-
 #[test]
 fn test_iter_cyclic() {
     let mut fst = Fst::new();
@@ -36,7 +35,6 @@ fn test_iter_cyclic() {
     assert_eq!(iter.state, state_c);
     assert_eq!(iter.next(), None);
 }
-
 #[test]
 fn test_iter_nonaccessible() {
     let mut fst = Fst::new();
@@ -48,7 +46,6 @@ fn test_iter_nonaccessible() {
     assert_eq!(iter.state, state_a);
     assert_eq!(iter.next(), None);
 }
-
 #[test]
 fn test_iter_visited() {
     let mut fst = Fst::new();
@@ -60,5 +57,4 @@ fn test_iter_visited() {
     assert_eq!(iter.visited(state_a), true);
     assert_eq!(iter.visited(state_b), false);
 }
-
 fn main() {}

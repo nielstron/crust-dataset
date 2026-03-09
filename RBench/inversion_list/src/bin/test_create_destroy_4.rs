@@ -21,5 +21,4 @@ fn test() {
         }
     }
 }
-
 fn main() {}

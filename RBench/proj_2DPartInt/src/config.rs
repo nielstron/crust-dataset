@@ -14,7 +14,6 @@ pub struct Config {
     pub v0: f64,
     pub r0: f64,
 }
-
 impl Config {
     pub fn parse_config(filename: &str) -> Self {
         unimplemented!()

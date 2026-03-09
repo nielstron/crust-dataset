@@ -1,5 +1,4 @@
 pub const MEM_ERROR: i32 = 128;
-
 #[derive(Clone)]
 pub struct GapBuffer {
     pub buffer: Vec<char>,
@@ -7,7 +6,6 @@ pub struct GapBuffer {
     pub gap_len: usize,
     pub gap_loc: usize,
 }
-
 impl GapBuffer {
     pub fn create(capacity: usize) -> Self {
         unimplemented!()

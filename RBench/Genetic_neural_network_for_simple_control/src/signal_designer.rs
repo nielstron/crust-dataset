@@ -5,19 +5,15 @@ pub struct Signal {
     pub dt: f32,          // the sampling time for the signal
     pub length: i32,      // length of the signal in seconds
 }
-
 pub fn deleteSignal(signal: &mut Signal) {
     unimplemented!();
 }
-
 pub fn cliSignalSelector(signal: &mut Signal) {
     unimplemented!();
 }
-
 fn selectStepSignal(signal: &mut Signal) {
     unimplemented!();
 }
-
 fn selectCustomASignal(signal: &mut Signal) {
     unimplemented!();
 }

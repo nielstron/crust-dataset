@@ -3,12 +3,10 @@ pub struct ListNode {
     pub data: i32,
     pub next: Option<Box<ListNode>>,
 }
-
 pub struct Stack {
     pub top: Option<Box<ListNode>>,
     pub bottom: Option<Box<ListNode>>,
 }
-
 impl Stack {
     pub fn new() -> Self {
         unimplemented!()
@@ -29,7 +27,6 @@ impl Stack {
         unimplemented!()
     }
 }
-
 impl Drop for Stack {
     fn drop(&mut self) {
         unimplemented!()

@@ -7,23 +7,19 @@ pub struct DataPoint {
     pub z: f64,
     pub idx: usize,
 }
-
 pub struct TreeNode {
     pub left: Option<Rc<RefCell<TreeNode>>>,
     pub right: Option<Rc<RefCell<TreeNode>>>,
     pub split: f64,
     pub idx: usize,
 }
-
 pub struct Boundaries {
     pub min: f64,
     pub max: f64,
 }
-
 pub struct space {
     pub dim: [Boundaries; 3],
 }
-
 pub struct KDTree {
     pub count: usize,
     pub max_nodes: usize,
@@ -32,14 +28,12 @@ pub struct KDTree {
     pub node_data: Vec<Rc<RefCell<TreeNode>>>,
     pub root: Option<Rc<RefCell<TreeNode>>>,
 }
-
 pub struct KDTreeIterator {
     pub data: Vec<usize>,
     pub capacity: usize,
     pub size: usize,
     pub current: usize,
 }
-
 impl KDTree {
     pub fn new() -> Self {
         unimplemented!();
@@ -109,7 +103,6 @@ impl KDTree {
         unimplemented!();
     }
 }
-
 impl KDTreeIterator {
     pub fn new() -> Self {
         unimplemented!();
@@ -133,19 +126,15 @@ impl KDTreeIterator {
         unimplemented!();
     }
 }
-
 fn compare_x(a: &DataPoint, b: &DataPoint) -> std::cmp::Ordering {
     unimplemented!();
 }
-
 fn compare_y(a: &DataPoint, b: &DataPoint) -> std::cmp::Ordering {
     unimplemented!();
 }
-
 fn compare_z(a: &DataPoint, b: &DataPoint) -> std::cmp::Ordering {
     unimplemented!();
 }
-
 fn compare_size_t(a: &usize, b: &usize) -> std::cmp::Ordering {
     unimplemented!();
 }

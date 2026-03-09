@@ -8,8 +8,6 @@ use lambda_calculus_eval::reducer;
 use lambda_calculus_eval::typechecker;
 use std::io::{Read, Seek, Write};
 
-const TEMP_PATH: &str = "temp/test.txt";
-
 #[test]
 fn test_trim() {
     let mut str_to_trim = String::from("  test  ");
@@ -36,6 +34,8 @@ fn test_parse_config() {
     assert_eq!(key, "file");
     assert_eq!(value, "expr.lambda");
 }
+
+const TEMP_PATH: &str = "temp/test.txt";
 
 #[test]
 fn test_create_file() {

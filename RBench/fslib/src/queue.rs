@@ -2,7 +2,6 @@ use std::collections::VecDeque;
 pub struct Queue<T> {
     pub items: VecDeque<T>,
 }
-
 impl<T> Queue<T> {
     pub fn new() -> Self {
         unimplemented!()

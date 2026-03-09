@@ -24,5 +24,4 @@ fn test() {
 
     println!("ok");
 }
-
 fn main() {}

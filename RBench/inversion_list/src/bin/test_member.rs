@@ -18,5 +18,4 @@ fn test() {
 
     println!("test_member passed: membership checks are correct.");
 }
-
 fn main() {}

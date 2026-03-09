@@ -15,7 +15,6 @@ pub enum Opcodes {
     Goto = 0x09,
     Dup = 0x0A,
 }
-
 pub enum CompCodes {
     Eq = 0x01,
     Neq = 0x02,
@@ -24,12 +23,10 @@ pub enum CompCodes {
     Gt = 0x05,
     Ge = 0x06,
 }
-
 pub enum TypeCode {
     Int = 0x01,
     Chr = 0x02,
 }
-
 pub fn execute(sbin: &mut Option<SlothProgram>) -> i32 {
     unimplemented!()
 }

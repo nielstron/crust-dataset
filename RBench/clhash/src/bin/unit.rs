@@ -1,7 +1,6 @@
 use clhash::clhash::{clhash, get_random_key_for_clhash};
 
 const RANDOM_BYTES_NEEDED_FOR_CLHASH: usize = 2;
-
 fn flipbit(block: &mut [u8], bit: u32) {
     let byte = (bit >> 3) as usize;
     let bit = bit & 0x7;
@@ -108,7 +107,6 @@ fn clhash_test() {
     }
     println!("Test passed!");
 }
-
 #[test]
 fn demo() {
     let random = get_random_key_for_clhash(0x23a23cf5033c3c81, 0xb3816f6a2c68e530);

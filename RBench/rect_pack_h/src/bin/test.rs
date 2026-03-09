@@ -278,5 +278,4 @@ fn test_rect_pack_loop() {
         assert!(RectPacker::pack(500, 500, true, &mut rects));
     }
 }
-
 fn main() {}

@@ -2,7 +2,6 @@ use fslib::hash::HashTable;
 fn int_hash(x: &i32) -> usize {
     *x as usize
 }
-
 #[test]
 fn test_hash_table() {
     let mut hash_table = HashTable::new(int_hash, 1003);
@@ -15,7 +14,6 @@ fn test_hash_table() {
     }
     assert!(hash_table.get(&1500).is_none());
 }
-
 #[test]
 fn test_hash_resize() {
     let mut hash_table = HashTable::new(int_hash, 1);
@@ -24,7 +22,6 @@ fn test_hash_resize() {
     }
     assert!(hash_table.buckets.len() >= 4);
 }
-
 #[test]
 fn test_load_int() {
     let mut hash_table = HashTable::new(int_hash, 10000);
@@ -35,7 +32,6 @@ fn test_load_int() {
         assert_eq!(hash_table.get(&i), Some(&i));
     }
 }
-
 #[test]
 fn test_hash_update() {
     let mut hash_table = HashTable::new(int_hash, 1);
@@ -44,7 +40,6 @@ fn test_hash_update() {
     hash_table.insert(0, 1);
     assert_eq!(hash_table.get(&0), Some(&1));
 }
-
 #[test]
 fn test_hash_delete() {
     let mut hash_table = HashTable::new(int_hash, 1);
@@ -53,5 +48,4 @@ fn test_hash_delete() {
     hash_table.remove(&0);
     assert!(hash_table.get(&0).is_none());
 }
-
 fn main() {}

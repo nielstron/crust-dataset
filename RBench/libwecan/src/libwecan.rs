@@ -1,15 +1,9 @@
 pub const FALSE: u8 = 0;
-
 pub const TRUE: u8 = 1;
-
 pub const UNSIGNED: u8 = 2;
-
 pub const SIGNED: u8 = 3;
-
 pub const INTEL: u8 = 4;
-
 pub const MOTOROLA: u8 = 5;
-
 /// Extract a signal value from a CAN frame.
 ///
 /// * `frame`      – byte slice of the frame data.
@@ -22,7 +16,6 @@ pub const MOTOROLA: u8 = 5;
 pub fn extract(frame: &[u8], startbit: u16, len: u8, signedness: u8, endianness: u8) -> u64 {
     unimplemented!()
 }
-
 /// Insert a signal value into a CAN frame.
 ///
 /// * `frame`     – mutable byte slice.
@@ -33,7 +26,6 @@ pub fn extract(frame: &[u8], startbit: u16, len: u8, signedness: u8, endianness:
 pub fn insert(frame: &mut [u8], startbit: u16, len: u8, can_value: u64, endianness: u8) {
     unimplemented!()
 }
-
 /// Encode an unsigned 64‑bit physical value into the CAN frame.
 pub fn encode_uint64_t(
     frame: &mut [u8],
@@ -46,7 +38,6 @@ pub fn encode_uint64_t(
 ) {
     unimplemented!()
 }
-
 /// Encode a signed 64‑bit physical value into the CAN frame.
 pub fn encode_int64_t(
     frame: &mut [u8],
@@ -59,7 +50,6 @@ pub fn encode_int64_t(
 ) {
     unimplemented!()
 }
-
 /// Encode a double‑precision (f64) physical value.
 pub fn encode_double(
     frame: &mut [u8],
@@ -72,7 +62,6 @@ pub fn encode_double(
 ) {
     unimplemented!()
 }
-
 /// Encode a single‑precision (f32) physical value.
 pub fn encode_float(
     frame: &mut [u8],
@@ -85,7 +74,6 @@ pub fn encode_float(
 ) {
     unimplemented!()
 }
-
 /// Decode an unsigned 64‑bit value from the CAN frame.
 pub fn decode_uint64_t(
     frame: &[u8],
@@ -97,7 +85,6 @@ pub fn decode_uint64_t(
 ) -> u64 {
     unimplemented!()
 }
-
 /// Decode a signed 64‑bit value from the CAN frame.
 pub fn decode_int64_t(
     frame: &[u8],
@@ -109,7 +96,6 @@ pub fn decode_int64_t(
 ) -> i64 {
     unimplemented!()
 }
-
 /// Decode a double‑precision (f64) physical value.
 pub fn decode_double(
     frame: &[u8],
@@ -121,7 +107,6 @@ pub fn decode_double(
 ) -> f64 {
     unimplemented!()
 }
-
 /// Decode a single‑precision (f32) physical value.
 pub fn decode_float(
     frame: &[u8],

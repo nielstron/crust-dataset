@@ -3,7 +3,6 @@ use std::f64;
 fn satc_nearest_hundredth(n: f64) -> f64 {
     (n * 100.0).floor() / 100.0
 }
-
 #[test]
 fn satc_point_scale_xy_test() {
     let mut v = [5.0, 5.0];
@@ -17,7 +16,6 @@ fn satc_point_scale_xy_test() {
     assert_eq!(v[0], 0.0);
     assert_eq!(v[1], 0.0);
 }
-
 #[test]
 fn satc_polygon_get_centroid_test() {
     {
@@ -37,7 +35,6 @@ fn satc_polygon_get_centroid_test() {
         assert_eq!(centroid[1], 33.0);
     }
 }
-
 #[test]
 fn satc_collision_test() {
     {
@@ -89,7 +86,6 @@ fn satc_collision_test() {
         assert!(!collided);
     }
 }
-
 #[test]
 fn satc_point_test() {
     {
@@ -129,5 +125,4 @@ fn satc_point_test() {
         assert!(test);
     }
 }
-
 fn main() {}

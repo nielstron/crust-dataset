@@ -10,7 +10,6 @@ use std::sync::Mutex;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 const TEST_FILE: &str = "clog_test.out";
-
 const THIS_FILE: &str = "clog_test_c.c";
 
 fn error(args: std::fmt::Arguments) {
@@ -278,7 +277,6 @@ fn test_reuse_logger_id() -> Result<(), &'static str> {
     }
     Ok(())
 }
-
 #[test]
 fn test_all() {
     let tests: Vec<(&str, fn() -> Result<(), &'static str>)> = vec![
@@ -315,5 +313,4 @@ fn test_all() {
     println!("\n{} successes, {} failures.", pass, fail);
     assert_eq!(fail, 0, "Some tests failed");
 }
-
 pub fn main() {}

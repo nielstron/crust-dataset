@@ -1,11 +1,9 @@
 pub static ENCODE_MATRIX: &[u16; 12] = &[
     0x8eb, 0x93e, 0xa97, 0xdc6, 0x367, 0x6cd, 0xd99, 0x3da, 0x7b4, 0xf68, 0x63b, 0xc75,
 ];
-
 pub static DECODE_MATRIX: &[u16; 12] = &[
     0xc75, 0x49f, 0x93e, 0x6e3, 0xdc6, 0xf13, 0xab9, 0x1ed, 0x3da, 0x7b4, 0xf68, 0xa4f,
 ];
-
 pub const RRC_TAPS_10: [f32; 81] = [
     -0.003195702904062073,
     -0.002930279157647190,
@@ -89,7 +87,6 @@ pub const RRC_TAPS_10: [f32; 81] = [
     -0.002930279157647190,
     -0.003195702904062073,
 ];
-
 pub const RRC_TAPS_5: [f32; 41] = [
     -0.004519384154389,
     -0.002744505321971,
@@ -133,75 +130,57 @@ pub const RRC_TAPS_5: [f32; 41] = [
     -0.002744505321971,
     -0.004519384154389,
 ];
-
 pub fn golay24_encode(data: u16) -> u32 {
     unimplemented!()
 }
-
 pub fn s_popcount(inp: &[u16], siz: u8) -> u32 {
     unimplemented!()
 }
-
 pub fn s_calc_checksum(out: &mut [u16], value: &[u16]) {
     unimplemented!()
 }
-
 pub fn s_detect_errors(codeword: &[u16]) -> u32 {
     unimplemented!()
 }
-
 pub fn golay24_sdecode(codeword: &[u16; 24]) -> u16 {
     unimplemented!()
 }
-
 pub fn decode_LICH(outp: &[u8; 6], inp: [u16; 96]) {
     unimplemented!()
 }
-
 pub fn encode_LICH(inp: &[u8; 6]) -> [u8; 12] {
     unimplemented!()
 }
-
 pub fn q_abs_diff(v1: u16, v2: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn eucl_norm(in1: &[f32], in2: &[i8], n: u8) -> f32 {
     unimplemented!()
 }
-
 pub fn int_to_soft(out: &mut [u16], input: u16, len: u8) {
     unimplemented!()
 }
-
 pub fn soft_to_int(input: &[u16], len: u8) -> u16 {
     unimplemented!()
 }
-
 pub fn add16(a: u16, b: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn sub16(a: u16, b: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn div16(a: u16, b: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn mul16(a: u16, b: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn soft_bit_xor(a: u16, b: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn soft_bit_not(a: u16) -> u16 {
     unimplemented!()
 }
-
 pub fn soft_xor(out: &mut [u16], a: &[u16], b: &[u16], len: u8) {
     unimplemented!()
 }

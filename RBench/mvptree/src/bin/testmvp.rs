@@ -8,13 +8,9 @@ use std::fs::File;
 use std::io::{Read, Write};
 use std::sync::Arc;
 const MVP_BRANCHFACTOR: usize = 2;
-
 const MVP_PATHLENGTH: usize = 5;
-
 const MVP_LEAFCAP: usize = 25;
-
 static mut NBCALCS: u64 = 0;
-
 fn next_poisson_int(lambda: i32) -> i32 {
     let mut rng = rand::thread_rng();
     let mut l = (-lambda as f64).exp();
@@ -26,7 +22,6 @@ fn next_poisson_int(lambda: i32) -> i32 {
     }
     k - 1
 }
-
 fn point_l1_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     if point_a.data.len() != point_b.data.len() {
         return -1.0;
@@ -42,7 +37,6 @@ fn point_l1_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     }
     sum as f32 / point_a.data.len() as f32
 }
-
 fn point_l2_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     if point_a.data.len() != point_b.data.len() {
         return -1.0;
@@ -58,18 +52,15 @@ fn point_l2_distance(point_a: &MVPDatapoint, point_b: &MVPDatapoint) -> f32 {
     }
     (sum as f32).sqrt() / point_a.data.len() as f32
 }
-
 fn generate_point(dp_length: usize) -> MVPDatapoint {
     let mut rng = StdRng::seed_from_u64(98293928);
     let id = format!("point{}", rng.r#gen::<u64>());
     let data: Vec<u8> = (0..dp_length).map(|_| rng.r#gen()).collect();
     MVPDatapoint::new(id, data, MVPDataType::ByteArray)
 }
-
 fn generate_uniform_points(nbpoints: usize, dp_length: usize) -> Vec<MVPDatapoint> {
     (0..nbpoints).map(|_| generate_point(dp_length)).collect()
 }
-
 fn generate_cluster(
     nbpoints: usize,
     dplength: usize,
@@ -109,7 +100,6 @@ fn generate_cluster(
     );
     points
 }
-
 #[test]
 fn test() {
     let nbpoints = 100;
@@ -169,5 +159,4 @@ fn test() {
     }
     println!("Done.");
 }
-
 pub fn main() {}

@@ -10,7 +10,6 @@ fn test_char_to_suit() {
         assert_eq!(Suit::from_char(c), Suit::InvalidSuit);
     }
 }
-
 #[test]
 fn test_char_to_rank() {
     assert_eq!(Rank::from_char('2'), Rank::Deuce);
@@ -31,7 +30,6 @@ fn test_char_to_rank() {
         assert_eq!(Rank::from_char(c), Rank::InvalidRank);
     }
 }
-
 #[test]
 fn test_card_is_valid() {
     for rank in Rank::Deuce as u8..=Rank::Ace as u8 {
@@ -51,7 +49,6 @@ fn test_card_is_valid() {
         assert!(!card.is_valid());
     }
 }
-
 #[test]
 fn test_new_card() {
     for rank in Rank::Deuce as u8..=Rank::Ace as u8 {
@@ -63,7 +60,6 @@ fn test_new_card() {
         }
     }
 }
-
 #[test]
 fn test_new_card_from_chars() {
     for rank in "23456789TJQKA".chars() {
@@ -73,7 +69,6 @@ fn test_new_card_from_chars() {
         }
     }
 }
-
 #[test]
 fn test_new_card_from_string() {
     for rank in "23456789TJQKA".chars() {
@@ -88,7 +83,6 @@ fn test_new_card_from_string() {
         assert!(!card.is_valid());
     }
 }
-
 #[test]
 fn test_card_compare() {
     for rank1 in Rank::Deuce as u8..Rank::Ace as u8 {
@@ -100,7 +94,6 @@ fn test_card_compare() {
         }
     }
 }
-
 #[test]
 fn test_card_swap() {
     let mut c1 = Card::new(Rank::Ace, Suit::Spade);
@@ -111,5 +104,4 @@ fn test_card_swap() {
     assert_eq!(c2.rank, Rank::Ace);
     assert_eq!(c2.suit, Suit::Spade);
 }
-
 pub fn main() {}

@@ -10,13 +10,11 @@ fn print_hex(buf: &[u8], len: usize) {
     }
     println!();
 }
-
 fn print_f64_array(arr: &[f64], len: usize) {
     for i in 0..len {
         println!("{:.2}", arr[i]);
     }
 }
-
 #[test]
 fn test() {
     let mut buffer: [u8; 1024] = [0; 1024];
@@ -66,5 +64,4 @@ fn test() {
     print_f64_array(&de_arr, de_len as usize);
     assert_eq!(&arr[..], &de_arr[..de_len as usize]);
 }
-
 fn main() {}

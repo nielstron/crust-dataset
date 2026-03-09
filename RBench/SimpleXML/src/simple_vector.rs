@@ -3,7 +3,6 @@ pub struct Vector<T> {
     pub size: usize,
     pub data: Vec<T>,
 }
-
 impl<T> Vector<T> {
     pub fn new(capacity: usize) -> Self {
         Vector {

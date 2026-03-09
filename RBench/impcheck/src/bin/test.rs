@@ -22,7 +22,6 @@ use std::{
 };
 
 static NEXT_CHECKER_ID: AtomicU64 = AtomicU64::new(1);
-
 #[derive(Clone, Debug)]
 struct HelperBins {
     parse: PathBuf,
@@ -199,6 +198,26 @@ fn resolve_helper_binary(bin_name: &str, env_var: &str) -> Result<PathBuf, Strin
     Err(format!("{} not found. searched: {}", bin_name, searched))
 }
 
+fn helper_bins() -> &'static HelperBins {
+    HELPER_BINS.get_or_init(|| {
+        let parse = resolve_helper_binary("impcheck_parse", "IMPCHECK_PARSE_BIN")
+            .unwrap_or_else(|e| panic!("{}", e));
+        let check = resolve_helper_binary("impcheck_check", "IMPCHECK_CHECK_BIN")
+            .unwrap_or_else(|e| panic!("{}", e));
+        let confirm = resolve_helper_binary("impcheck_confirm", "IMPCHECK_CONFIRM_BIN")
+            .unwrap_or_else(|e| panic!("{}", e));
+        HelperBins {
+            parse,
+            check,
+            confirm,
+        }
+    })
+}
+
+fn ensure_required_binaries() {
+    let _ = helper_bins();
+}
+
 fn create_pipe(path: &str) {
     let _ = std::fs::remove_file(path);
     let c_path = CString::new(path).expect("Pipe path contains interior NUL");
@@ -227,91 +246,6 @@ fn await_ok(out: &mut File, input: &mut File) {
     let mut ok = [0u8; 1];
     input.read_exact(&mut ok).unwrap();
     do_assert(ok[0] != 0);
-}
-
-fn clean_up(checker_id: u64, mut out_directives: File, mut in_feedback: File) {
-    trusted_utils_write_char(TRUSTED_CHK_TERMINATE, &mut out_directives);
-    await_ok(&mut out_directives, &mut in_feedback);
-
-    drop(out_directives);
-    drop(in_feedback);
-
-    let pipe_parsed = format!(".parsed.{}.pipe", checker_id);
-    let pipe_directives = format!(".directives.{}.pipe", checker_id);
-    let pipe_feedback = format!(".feedback.{}.pipe", checker_id);
-    let _ = std::fs::remove_file(pipe_parsed);
-    let _ = std::fs::remove_file(pipe_directives);
-    let _ = std::fs::remove_file(pipe_feedback);
-
-    thread::sleep(Duration::from_millis(100)); // Wait for child processes to exit
-}
-
-fn produce_cls(
-    out_directives: &mut File,
-    in_feedback: &mut File,
-    id: u64,
-    clslen: i32,
-    lits: &[i32],
-    hintlen: i32,
-    hints: &[u64],
-    sig_or_null: Option<&mut [u8]>,
-) {
-    trusted_utils_write_char(TRUSTED_CHK_CLS_PRODUCE, out_directives);
-    trusted_utils_write_ul(id, out_directives);
-    trusted_utils_write_int(clslen, out_directives);
-    trusted_utils_write_ints(lits, clslen as u64, out_directives);
-    trusted_utils_write_int(hintlen, out_directives);
-    trusted_utils_write_uls(hints, hintlen as u64, out_directives);
-    trusted_utils_write_bool(sig_or_null.is_some(), out_directives);
-    await_ok(out_directives, in_feedback);
-    if let Some(sig) = sig_or_null {
-        trusted_utils_read_sig(sig, in_feedback);
-    }
-}
-
-fn import_cls(
-    out_directives: &mut File,
-    in_feedback: &mut File,
-    id: u64,
-    clslen: i32,
-    lits: &[i32],
-    signature: &[u8],
-) {
-    trusted_utils_write_char(TRUSTED_CHK_CLS_IMPORT, out_directives);
-    trusted_utils_write_ul(id, out_directives);
-    trusted_utils_write_int(clslen, out_directives);
-    trusted_utils_write_ints(lits, clslen as u64, out_directives);
-    trusted_utils_write_sig(signature, out_directives);
-    await_ok(out_directives, in_feedback);
-}
-
-fn delete_cls(out_directives: &mut File, in_feedback: &mut File, ids: &[u64], nb_ids: i32) {
-    trusted_utils_write_char(TRUSTED_CHK_CLS_DELETE, out_directives);
-    trusted_utils_write_int(nb_ids, out_directives);
-    trusted_utils_write_uls(ids, nb_ids as u64, out_directives);
-    await_ok(out_directives, in_feedback);
-}
-
-fn main() {}
-
-fn helper_bins() -> &'static HelperBins {
-    HELPER_BINS.get_or_init(|| {
-        let parse = resolve_helper_binary("impcheck_parse", "IMPCHECK_PARSE_BIN")
-            .unwrap_or_else(|e| panic!("{}", e));
-        let check = resolve_helper_binary("impcheck_check", "IMPCHECK_CHECK_BIN")
-            .unwrap_or_else(|e| panic!("{}", e));
-        let confirm = resolve_helper_binary("impcheck_confirm", "IMPCHECK_CONFIRM_BIN")
-            .unwrap_or_else(|e| panic!("{}", e));
-        HelperBins {
-            parse,
-            check,
-            confirm,
-        }
-    })
-}
-
-fn ensure_required_binaries() {
-    let _ = helper_bins();
 }
 
 fn setup(cnf_input: &str) -> (u64, File, File) {
@@ -395,6 +329,69 @@ fn confirm(cnf_input: &str, result: i32, sig: &[u8]) -> bool {
         .output()
         .expect("Failed to execute impcheck_confirm");
     output.status.success()
+}
+
+fn clean_up(checker_id: u64, mut out_directives: File, mut in_feedback: File) {
+    trusted_utils_write_char(TRUSTED_CHK_TERMINATE, &mut out_directives);
+    await_ok(&mut out_directives, &mut in_feedback);
+
+    drop(out_directives);
+    drop(in_feedback);
+
+    let pipe_parsed = format!(".parsed.{}.pipe", checker_id);
+    let pipe_directives = format!(".directives.{}.pipe", checker_id);
+    let pipe_feedback = format!(".feedback.{}.pipe", checker_id);
+    let _ = std::fs::remove_file(pipe_parsed);
+    let _ = std::fs::remove_file(pipe_directives);
+    let _ = std::fs::remove_file(pipe_feedback);
+
+    thread::sleep(Duration::from_millis(100)); // Wait for child processes to exit
+}
+
+fn produce_cls(
+    out_directives: &mut File,
+    in_feedback: &mut File,
+    id: u64,
+    clslen: i32,
+    lits: &[i32],
+    hintlen: i32,
+    hints: &[u64],
+    sig_or_null: Option<&mut [u8]>,
+) {
+    trusted_utils_write_char(TRUSTED_CHK_CLS_PRODUCE, out_directives);
+    trusted_utils_write_ul(id, out_directives);
+    trusted_utils_write_int(clslen, out_directives);
+    trusted_utils_write_ints(lits, clslen as u64, out_directives);
+    trusted_utils_write_int(hintlen, out_directives);
+    trusted_utils_write_uls(hints, hintlen as u64, out_directives);
+    trusted_utils_write_bool(sig_or_null.is_some(), out_directives);
+    await_ok(out_directives, in_feedback);
+    if let Some(sig) = sig_or_null {
+        trusted_utils_read_sig(sig, in_feedback);
+    }
+}
+
+fn import_cls(
+    out_directives: &mut File,
+    in_feedback: &mut File,
+    id: u64,
+    clslen: i32,
+    lits: &[i32],
+    signature: &[u8],
+) {
+    trusted_utils_write_char(TRUSTED_CHK_CLS_IMPORT, out_directives);
+    trusted_utils_write_ul(id, out_directives);
+    trusted_utils_write_int(clslen, out_directives);
+    trusted_utils_write_ints(lits, clslen as u64, out_directives);
+    trusted_utils_write_sig(signature, out_directives);
+    await_ok(out_directives, in_feedback);
+}
+
+fn delete_cls(out_directives: &mut File, in_feedback: &mut File, ids: &[u64], nb_ids: i32) {
+    trusted_utils_write_char(TRUSTED_CHK_CLS_DELETE, out_directives);
+    trusted_utils_write_int(nb_ids, out_directives);
+    trusted_utils_write_uls(ids, nb_ids as u64, out_directives);
+    await_ok(out_directives, in_feedback);
 }
 
 #[test]
@@ -551,3 +548,4 @@ fn test_trivial_unsat_x2() {
     println!("[TEST] ---  end  test_trivial_unsat_x2() ---\n");
 }
 
+fn main() {}

@@ -1,7 +1,6 @@
 use Simple_Config::simple_config::{cfg_parse, Cfg, CfgColor, CfgEntry, CfgVal};
 
 pub const TEST_CAPACITY: usize = 10;
-
 #[test]
 fn test() {
     let test_cases: &[(&'static str, Result<Cfg, &'static str>)] = &[
@@ -243,5 +242,4 @@ fn test() {
         }
     }
 }
-
 fn main() {}

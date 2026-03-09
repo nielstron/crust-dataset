@@ -1,9 +1,7 @@
 use crate::em;
 use core::fmt;
 pub const PARSER_MAX_TOKEN_LENGTH: usize = 1024;
-
 pub const PARSER_MAX_NESTS: usize = 256;
-
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ParserError {
     UnexpectedEscape,
@@ -13,13 +11,11 @@ pub enum ParserError {
     IllegalPrintNest,
     ExpectedEnd,
 }
-
 impl fmt::Display for ParserError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
 }
-
 #[derive(Debug)]
 pub struct ParserResult {
     pub path: String,
@@ -27,7 +23,6 @@ pub struct ParserResult {
     pub col: usize,
     pub prog: Result<em::Program, ParserError>,
 }
-
 #[derive(Debug)]
 pub struct Parser {
     pub path: String,
@@ -41,7 +36,6 @@ pub struct Parser {
     pub tok_len: usize,
     pub prog: em::Program,
 }
-
 impl Parser {
     pub fn new() -> Self {
         unimplemented!()

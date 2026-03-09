@@ -1,3 +1,10 @@
+// This is a skeleton Rust test file representing the translated structure
+// from the C code. Actual implementation for each function assumed to exist
+
+use Genetic_neural_network_for_simple_control::matrix_math::*;
+use Genetic_neural_network_for_simple_control::neural_network::*;
+use Genetic_neural_network_for_simple_control::population::*;
+
 fn check_matrixes_nn(neural_network: &NN, population: &[f32]) -> bool {
     let mut global_index = 0;
 
@@ -193,14 +200,3 @@ pub fn test_one_calculation() {
 }
 
 fn main() {}
-
-// This is a skeleton Rust test file representing the translated structure
-
-// from the C code. Actual implementation for each function assumed to exist
-
-use Genetic_neural_network_for_simple_control::matrix_math::*;
-
-use Genetic_neural_network_for_simple_control::neural_network::*;
-
-use Genetic_neural_network_for_simple_control::population::*;
-

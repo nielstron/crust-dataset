@@ -3,7 +3,6 @@ pub struct TrustedChecker {
 input: File,
 output: File,
 }
-
 impl TrustedChecker {
 pub fn tc_run(check_model: bool, lenient: bool) -> i32 {
 unimplemented!()
@@ -25,7 +24,5 @@ unimplemented!()
 }
 pub fn say(&mut self, ok: bool) {
 unimplemented!()
-}
-}()
 }
 }

@@ -7,7 +7,6 @@ pub struct PacketEnumerator<'a> {
     /// An owned substring enumerator built on the same data.
     pub substring_enumerator: Box<SubstringEnumerator<'a>>,
 }
-
 impl<'a> PacketEnumerator<'a> {
     pub fn memory_usage(data_size: usize) -> usize {
         unimplemented!();

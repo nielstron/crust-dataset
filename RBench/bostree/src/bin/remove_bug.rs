@@ -34,5 +34,4 @@ fn test() {
         }
     }
 }
-
 fn main() {}

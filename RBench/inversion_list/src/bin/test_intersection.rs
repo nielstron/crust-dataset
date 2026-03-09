@@ -21,5 +21,4 @@ fn test() {
 
     println!("test_intersection passed.");
 }
-
 fn main() {}

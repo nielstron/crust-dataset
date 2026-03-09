@@ -1,18 +1,5 @@
 use blt::blt::*;
 
-struct Arr {
-    p: Vec<String>,
-}
-
-impl Arr {
-    fn new() -> Self {
-        Arr { p: Vec::new() }
-    }
-    fn add(&mut self, s: String) {
-        self.p.push(s);
-    }
-}
-
 /// Splits a string `s` on the space character (including empty tokens)
 /// and calls the provided closure for each token.
 fn split<F: FnMut(String)>(s: &str, mut fun: F) {
@@ -27,6 +14,19 @@ fn split<F: FnMut(String)>(s: &str, mut fun: F) {
         }
     }
     fun(s[start..].to_string());
+}
+
+struct Arr {
+    p: Vec<String>,
+}
+
+impl Arr {
+    fn new() -> Self {
+        Arr { p: Vec::new() }
+    }
+    fn add(&mut self, s: String) {
+        self.p.push(s);
+    }
 }
 
 /// Creates a BLT tree from a line of space‐separated keys.
@@ -213,5 +213,4 @@ fn test() {
         .expect("Expected floor for blink182");
     assert_eq!(floor.key, "blink", "blt_floor mismatch for blink182");
 }
-
 fn main() {}

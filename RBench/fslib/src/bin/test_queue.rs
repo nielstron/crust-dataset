@@ -4,7 +4,6 @@ fn test_queue_create() {
     let q: Queue<i32> = Queue::new();
     assert!(q.items.len() == 0);
 }
-
 #[test]
 fn test_queue_enqueue() {
     let mut q: Queue<i32> = Queue::new();
@@ -22,5 +21,4 @@ fn test_queue_enqueue() {
     assert_eq!(q.dequeue(), None);
     assert_eq!(q.dequeue(), None);
 }
-
 fn main() {}

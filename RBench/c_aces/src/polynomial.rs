@@ -1,11 +1,9 @@
 use crate::error::Result;
 pub type Coeff = i64;
-
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Polynomial {
     pub coeffs: Vec<Coeff>,
 }
-
 impl Polynomial {
     pub fn new(coeffs: Vec<Coeff>) -> Self {
         unimplemented!()
@@ -44,12 +42,10 @@ impl Polynomial {
         unimplemented!()
     }
 }
-
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PolyArray {
     pub polies: Vec<Polynomial>,
 }
-
 impl PolyArray {
     pub fn new(polies: Vec<Polynomial>) -> Self {
         unimplemented!()

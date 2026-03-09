@@ -8,7 +8,6 @@ pub struct RHBloom {
     m: usize,
     bits: Vec<u8>,
 }
-
 // Implement the RHBloom struct
 impl RHBloom {
     pub fn new(n: usize, p: f64) -> Self {

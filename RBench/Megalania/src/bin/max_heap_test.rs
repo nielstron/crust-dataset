@@ -2,11 +2,9 @@ use Megalania::max_heap::MaxHeap;
 pub fn pretty_print_test_name(name: &str) {
     println!("=== {} ===", name);
 }
-
 pub fn pretty_print_sub_test_name(name: &str) {
     println!("> {}", name);
 }
-
 // A plain comparator: returns a - b.
 fn plain_comparator(a: u32, b: u32) -> i32 {
     (a as i32) - (b as i32)
@@ -124,5 +122,4 @@ fn max_heap_top_k_test() {
     }
     println!();
 }
-
 pub fn main() {}

@@ -1,17 +1,10 @@
 use cset::cset;
-#[derive(PartialEq, Eq, Hash)]
-struct Node {
-    x: i32,
-    y: i32,
-}
-
 #[test]
 fn test_cset_init() {
     let mut cset_int = cset::Cset::<i32>::new();
     assert_eq!(cset_int.size(), 0);
     assert_eq!(cset_int.capacity(), 2);
 }
-
 #[test]
 fn test_cset_add() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -23,7 +16,6 @@ fn test_cset_add() {
     cset_int.add(37);
     cset_int.add(38);
 }
-
 #[test]
 fn test_cset_contains() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -36,7 +28,6 @@ fn test_cset_contains() {
     assert!(!cset_int.contains(&45));
     assert_eq!(cset_int.size(), 2);
 }
-
 #[test]
 fn test_cset_iteration() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -47,7 +38,6 @@ fn test_cset_iteration() {
         assert!(cset_int.contains(&value));
     }
 }
-
 #[test]
 fn test_cset_unique() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -58,7 +48,11 @@ fn test_cset_unique() {
     cset_int.add(45);
     assert_eq!(cset_int.size(), 3);
 }
-
+#[derive(PartialEq, Eq, Hash)]
+struct Node {
+    x: i32,
+    y: i32,
+}
 #[test]
 fn test_cset_struct() {
     let mut cset_node = cset::Cset::<Node>::new();
@@ -71,7 +65,6 @@ fn test_cset_struct() {
     cset_node.add(Node { x: 5, y: 8 });
     assert_eq!(cset_node.size(), 3);
 }
-
 #[test]
 fn test_cset_remove() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -91,7 +84,6 @@ fn test_cset_remove() {
     cset_int.remove(10);
     assert_eq!(cset_int.size(), 0);
 }
-
 #[test]
 fn test_cset_resize() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -99,7 +91,6 @@ fn test_cset_resize() {
         cset_int.add(i);
     }
 }
-
 #[test]
 fn test_default_bytes_comparator() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -125,15 +116,12 @@ fn test_default_bytes_comparator() {
     }
     assert_eq!(cset_int.size(), 2000);
 }
-
 fn node_pointer_comparator(selfs: &Node, other: &Node) -> bool {
     selfs.x == other.x
 }
-
 fn custom_node_compare(selfs: &Node, other: &Node) -> bool {
     selfs.x == other.x
 }
-
 #[test]
 fn test_custom_comparator() {
     let mut cset_node = cset::Cset::<Node>::new();
@@ -146,7 +134,6 @@ fn test_custom_comparator() {
     cset_node.remove(Node { x: 1, y: 45 });
     assert_eq!(cset_node.size(), 1);
 }
-
 #[test]
 fn test_cset_clear() {
     let mut cset_int = cset::Cset::<i32>::new();
@@ -159,7 +146,6 @@ fn test_cset_clear() {
     cset_int.add(45);
     assert_eq!(cset_int.size(), 1);
 }
-
 #[test]
 fn test_cset_intersection() {
     let mut cset_int_a = cset::Cset::<i32>::new();
@@ -177,7 +163,6 @@ fn test_cset_intersection() {
     result.intersect(&cset_int_a, &cset_int_b);
     assert_eq!(result.size(), 3);
 }
-
 #[test]
 fn test_cset_union() {
     let mut cset_int_a = cset::Cset::<i32>::new();
@@ -195,7 +180,6 @@ fn test_cset_union() {
     cset_result.union(&cset_int_a, &cset_int_b);
     assert_eq!(cset_result.size(), 6);
 }
-
 #[test]
 fn test_cset_disjoint() {
     let mut cset_a = cset::Cset::<char>::new();
@@ -208,7 +192,6 @@ fn test_cset_disjoint() {
     cset_b.add('a');
     assert!(!cset_a.is_disjoint(&cset_b));
 }
-
 #[test]
 fn test_cset_difference() {
     let mut cset_a = cset::Cset::<i32>::new();
@@ -235,5 +218,4 @@ fn test_cset_difference() {
     result.difference(&cset_b, &cset_a);
     assert_eq!(result.size(), 2);
 }
-
 fn main() {}

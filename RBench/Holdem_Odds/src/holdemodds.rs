@@ -5,11 +5,9 @@ use rand::thread_rng;
 use std::env;
 use std::process;
 const ITERATIONS: usize = 2_000_000;
-
 fn usage(program_name: &str) {
     unimplemented!()
 }
-
 fn main() {
     unimplemented!()
 }

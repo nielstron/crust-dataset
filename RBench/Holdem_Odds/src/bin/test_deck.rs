@@ -15,7 +15,6 @@ fn test_deck_shuffle() {
         .any(|(c1, c2)| card_compare(c1, c2) == 0);
     assert!(decks_differ, "Deck was not shuffled");
 }
-
 #[test]
 fn test_new_deck() {
     let deck = new_deck();
@@ -41,5 +40,4 @@ fn test_new_deck() {
     }
     assert_eq!(deck, expected_deck, "Deck is not properly initialized");
 }
-
 fn main() {}

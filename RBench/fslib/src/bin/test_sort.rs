@@ -5,12 +5,10 @@ pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.olabel, arc_b.olabel);
     assert_eq!(arc_a.weight, arc_b.weight);
 }
-
 pub fn assert_state_equal(state_a: &StateData, state_b: &StateData) {
     assert_eq!(state_a.weight, state_b.weight);
     assert_eq!(state_a.final_state, state_b.final_state);
 }
-
 pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     assert_eq!(a.start, b.start);
     assert_eq!(a.sr_type, b.sr_type);
@@ -25,7 +23,6 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
         }
     }
 }
-
 #[test]
 fn test_fst_sort() {
     let str_a = "0 0 1 1\n0 0 0 0\n1";
@@ -37,5 +34,4 @@ fn test_fst_sort() {
     fst_a.arc_sort(0);
     assert_fst_equal(&fst_a, &fst_b);
 }
-
 fn main() {}

@@ -18,5 +18,4 @@ fn test() {
 
     println!("test_clone passed.");
 }
-
 fn main() {}

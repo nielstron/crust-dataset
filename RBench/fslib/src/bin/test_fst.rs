@@ -21,7 +21,6 @@ fn test_fst_create() {
     assert_eq!(count, 10);
     fst.remove();
 }
-
 #[test]
 fn test_fst_stress() {
     let mut fst = Fst::new();
@@ -45,7 +44,6 @@ fn test_fst_stress() {
     assert_eq!(count, arc_size as u32);
     fst.remove();
 }
-
 #[test]
 fn test_fst_copy() {
     let mut fst_a = Fst::new();
@@ -65,5 +63,4 @@ fn test_fst_copy() {
         assert_eq!(arc.weight, a as f32);
     }
 }
-
 fn main() {}

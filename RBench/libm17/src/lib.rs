@@ -1,3 +1,10 @@
+pub mod decode;
+pub mod encode;
+pub mod math;
+pub mod payload;
+pub mod phy;
+pub mod types;
+
 pub fn send_data(_out: &mut [f32], _cnt: &mut u32, _input: &[u8]) {
     todo!()
 }
@@ -24,16 +31,3 @@ pub fn send_frame(
 ) {
     todo!()
 }
-
-pub mod decode;
-
-pub mod encode;
-
-pub mod math;
-
-pub mod payload;
-
-pub mod phy;
-
-pub mod types;
-

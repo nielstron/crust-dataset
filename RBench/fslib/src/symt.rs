@@ -2,18 +2,17 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 const SYM_INIT_SIZE: usize = 1024;
-
 const TOKEN_SIZE: usize = 1024;
-
 type Token = String;
-
+pub fn fnv32(token: &str) -> usize {
+    unimplemented!()
+}
 pub struct SymTable {
     pub n_items: usize,
     pub n_max: usize,
     pub sym: Vec<Option<String>>,    // Symbol storage
     pub rev: HashMap<String, usize>, // Reverse lookup
 }
-
 impl SymTable {
     pub fn new() -> Self {
         unimplemented!()
@@ -45,8 +44,4 @@ impl SymTable {
     pub fn compile(&mut self, token: &str) {
         unimplemented!()
     }
-}
-
-pub fn fnv32(token: &str) -> usize {
-    unimplemented!()
 }

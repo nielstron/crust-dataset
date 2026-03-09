@@ -10,17 +10,14 @@ pub fn compile_process_create(
 ) -> Option<CompileProcess> {
     unimplemented!()
 }
-
 /// Mimics getc() by returning the next character in the process's file buffer.
 pub fn compile_process_next_char(lex_process: &mut LexProcess) -> char {
     unimplemented!()
 }
-
 /// Peeks the next character without consuming it, or '\0' at EOF.
 pub fn compile_process_peek_char(lex_process: &mut LexProcess) -> char {
     unimplemented!()
 }
-
 /// Ungets a character by moving the position back by one, ignoring if already at start of file.
 pub fn compile_process_push_char(lex_process: &mut LexProcess, _c: char) {
     unimplemented!()

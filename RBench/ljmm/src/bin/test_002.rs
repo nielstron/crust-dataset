@@ -4,7 +4,6 @@ use std::process::{exit, Command};
 use ljmm::ljmm::*;
 
 const ADDR_1G: usize = 0x4000_0000;
-
 const SBRK0: usize = 0x2000_0000;
 
 // Simulate a malloc that returns a dummy pointer greater than SBRK0.
@@ -64,5 +63,4 @@ fn test_002() {
         }
     }
 }
-
 pub fn main() {}

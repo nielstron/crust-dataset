@@ -18,5 +18,4 @@ fn test() {
 
     println!("test_couple_iterator passed.");
 }
-
 fn main() {}

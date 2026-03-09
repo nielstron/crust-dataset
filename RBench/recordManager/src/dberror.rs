@@ -1,6 +1,5 @@
 /* Module-wide constants */
 pub const PAGE_SIZE: i32 = 4096;
-
 /* Return code definitions */
 #[derive(Debug, PartialEq, Eq)]
 pub enum RC {
@@ -36,19 +35,15 @@ pub enum RC {
     ShutdownWithoutInit = 420,
     LoggingSetupFailure = 430,
 }
-
 pub fn throw(rc: RC, message: &str) -> i32 {
     unimplemented!()
 }
-
 pub fn check(code: i32) {
     unimplemented!()
 }
-
 pub fn print_error(error: RC) {
     unimplemented!()
 }
-
 pub fn error_message(error: RC) -> String {
     unimplemented!()
 }

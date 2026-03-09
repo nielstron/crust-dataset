@@ -2,6 +2,12 @@ use emlang::env::{Env, RuntimeResult};
 use emlang::parser::Parser;
 use emlang::stack::{DEFAULT_POPPED_CAP, DEFAULT_STACK_CAP};
 
+macro_rules! test_case {
+    ($fname:expr) => {
+        concat!(env!("CARGO_MANIFEST_DIR"), "/resources/test/", $fname)
+    };
+}
+
 fn run_program(file: &str) -> RuntimeResult {
     let mut parser = Parser::new();
     parser.load_file(file);
@@ -40,12 +46,4 @@ fn test() {
     let runtime = run_program(test_case!("runtime_error.eml"));
     assert!(runtime.em.is_err());
 }
-
 fn main() {}
-
-macro_rules! test_case {
-    ($fname:expr) => {
-        concat!(env!("CARGO_MANIFEST_DIR"), "/resources/test/", $fname)
-    };
-}
-

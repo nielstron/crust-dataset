@@ -4,7 +4,6 @@ use crate::{
 };
 use std::fmt;
 pub const GC_FREQUENCY_IN_TICKS: usize = 64;
-
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum RuntimeError {
     StackUnderflow,
@@ -12,19 +11,16 @@ pub enum RuntimeError {
     DivByZero,
     IncorrectType,
 }
-
 impl fmt::Display for RuntimeError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
-
 #[derive(Debug)]
 pub struct RuntimeResult {
     pub ex: i64,
     pub em: Result<em::Em, RuntimeError>,
 }
-
 #[derive(Debug)]
 pub struct Env<'a> {
     pub prog: &'a Program,
@@ -36,7 +32,6 @@ pub struct Env<'a> {
     pub print: bool,
     pub print_from: usize,
 }
-
 impl<'a> Env<'a> {
     pub fn new(stack_cap: usize, popped_cap: usize) -> Self {
         unimplemented!()
