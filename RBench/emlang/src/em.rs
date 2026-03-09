@@ -1,8 +1,11 @@
 use crate::data;
 use core::fmt;
 pub const DEFAULT_PROGRAM_CAP: usize = 256;
+
 pub const DATA_STDOUT: i32 = 1;
+
 pub const DATA_STDERR: i32 = 2;
+
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum EmType {
     Push,
@@ -27,11 +30,13 @@ pub enum EmType {
     #[cfg(debug_assertions)]
     Debug,
 }
+
 impl fmt::Display for EmType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
+
 #[derive(Debug, Clone)]
 pub struct Em {
     pub data: data::Data,
@@ -42,11 +47,13 @@ pub struct Em {
     pub r#ref: usize,
     pub ran: bool,
 }
+
 impl fmt::Display for Em {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
+
 impl Em {
     pub fn new(typ: EmType) -> Self {
         unimplemented!()
@@ -55,12 +62,14 @@ impl Em {
         unimplemented!()
     }
 }
+
 #[derive(Debug, Clone)]
 pub struct Program {
     pub ems: Vec<Em>,
     pub cap: usize,
     pub size: usize,
 }
+
 impl Program {
     pub fn new(cap: usize) -> Self {
         unimplemented!()

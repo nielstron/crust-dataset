@@ -4,9 +4,8 @@ use std::fs;
 use std::path::Path;
 
 const MDB_OK: MdbStatusCode = MdbStatusCode::MDB_OK;
-const MDB_NO_KEY: MdbStatusCode = MdbStatusCode::MDB_NO_KEY;
 
-use rand::Rng;
+const MDB_NO_KEY: MdbStatusCode = MdbStatusCode::MDB_NO_KEY;
 
 // Helper function to clean up test databases before/after tests
 fn cleanup_db(db_name: &str) {
@@ -362,3 +361,6 @@ fn main() {
     // In Rust, we would use the built-in test framework
     // This main function could be used for manual testing if desired
 }
+
+use rand::Rng;
+

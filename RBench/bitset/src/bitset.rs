@@ -8,6 +8,7 @@ pub struct Bitset {
     pub count: usize,
     pub array: Vec<u8>,
 }
+
 impl Bitset {
     pub fn new(nb_bits: usize) -> Self {
         unimplemented!()

@@ -1,19 +1,4 @@
 use skp::skp::skp_;
-#[macro_export]
-macro_rules! skptrace {
-    ($($arg:tt)*) => {
-        eprintln!($($arg)*);
-    };
-}
-#[macro_export]
-macro_rules! skptest {
-    ($cond:expr, $($arg:tt)*) => {
-        if !$cond {
-            eprintln!($($arg)*);
-            panic!("Test failed: {}", stringify!($cond));
-        }
-    };
-}
 #[test]
 fn ut_test2() {
     let from = "A&B";
@@ -64,4 +49,24 @@ fn ut_test2() {
     skptrace!("alt: {} '{}'", alt, &to[..len]);
     skptest!(alt == 1 && len == 2, "alt: {} len: {}", alt, len);
 }
+
 fn main() {}
+
+#[macro_export]
+
+macro_rules! skptrace {
+    ($($arg:tt)*) => {
+        eprintln!($($arg)*);
+    };
+}
+
+#[macro_export]
+
+macro_rules! skptest {
+    ($cond:expr, $($arg:tt)*) => {
+        if !$cond {
+            eprintln!($($arg)*);
+            panic!("Test failed: {}", stringify!($cond));
+        }
+    };
+}

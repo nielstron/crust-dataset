@@ -25,6 +25,7 @@ fn compare_matrices(a: &Matrix, b: &Matrix) -> bool {
     }
     true
 }
+
 #[test]
 pub fn test_matrix_add_sub() {
     println!("\x1b[1m=======TEST MATRIX ADD SUB STARTED=======\x1b[0m");
@@ -51,6 +52,7 @@ pub fn test_matrix_add_sub() {
 
     println!("\x1b[1m\x1b[32m=======TEST MATRIX ADD SUB SUCCESSFUL=======\x1b[0m");
 }
+
 #[test]
 pub fn test_matrix_multiply() {
     println!("\x1b[1m=======TEST MATRIX MULTIPLY STARTED=======\x1b[0m");
@@ -64,6 +66,7 @@ pub fn test_matrix_multiply() {
 
     println!("\x1b[1m\x1b[32m=======TEST MATRIX MULTIPLY SUCCESSFUL=======\x1b[0m");
 }
+
 #[test]
 pub fn test_matrix_all_values_formula() {
     println!("\x1b[1m=======TEST MATRIX ALL VALUES FORMULA STARTED=======\x1b[0m");
@@ -109,6 +112,7 @@ pub fn test_matrix_from_pointer() {
 
     println!("\x1b[1m\x1b[32m=======TEST MATRIX FROM POINTER SUCCESSFUL=======\x1b[0m");
 }
+
 #[test]
 pub fn test_matrix_fully_copy_matrix() {
     println!("\x1b[1m=======TEST MATRIX FULLY COPY STARTED=======\x1b[0m");
@@ -119,4 +123,5 @@ pub fn test_matrix_fully_copy_matrix() {
     assert!(compare_matrices(&original, &copied));
     println!("\x1b[1m\x1b[32m=======TEST MATRIX FULLY COPY SUCCESSFUL=======\x1b[0m");
 }
+
 pub fn main() {}

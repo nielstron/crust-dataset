@@ -52,4 +52,7 @@ fn test() {
 
     println!("test_complement passed.");
 }
-fn main() {} // This is the entry point for the binary
+
+fn main() {}
+
+// This is the entry point for the binary

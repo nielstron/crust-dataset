@@ -9,4 +9,5 @@ fn test_file2str_file_read_properly() {
     assert_eq!(len, 11, "Expected length of 11");
     assert_eq!(buf, "Text file\n", "Expected string content does not match");
 }
+
 fn main() {}

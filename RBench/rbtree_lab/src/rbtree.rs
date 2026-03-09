@@ -8,6 +8,7 @@ pub enum Color {
 }
 
 pub type Key = i32;
+
 pub type NodeRef = Rc<RefCell<Node>>;
 
 #[derive(Debug, Clone)]

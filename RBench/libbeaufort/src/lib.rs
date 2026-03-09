@@ -1,8 +1,5 @@
-pub mod decrypt;
-pub mod encrypt;
-pub mod tableau;
-
 pub const BEAUFORT_ALPHA: &[u8] = b"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
 pub const BEAUFORT_VERSION: &str = "1";
 
 pub fn ssize(s: &str) -> usize {
@@ -24,3 +21,10 @@ pub fn read_stdin() -> Vec<u8> {
 pub fn main() {
     unimplemented!()
 }
+
+pub mod decrypt;
+
+pub mod encrypt;
+
+pub mod tableau;
+

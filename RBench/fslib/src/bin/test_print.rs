@@ -12,4 +12,5 @@ fn test_print() {
     fst.print();
     assert_eq!(fst.n_states, 2);
 }
+
 fn main() {}

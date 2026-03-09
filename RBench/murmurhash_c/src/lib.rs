@@ -1,5 +1,3 @@
-pub mod murmurhash;
-
 pub fn usage() {
     unimplemented!()
 }
@@ -15,3 +13,6 @@ pub fn read_stdin() -> Vec<u8> {
 pub fn main() {
     unimplemented!()
 }
+
+pub mod murmurhash;
+

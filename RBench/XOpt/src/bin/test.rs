@@ -12,16 +12,6 @@ struct SimpleConfig {
     help: bool,
 }
 
-// This macro is to emulate C's offsetof for our SimpleConfig.
-macro_rules! offset_of {
-    ($ty:ty, $field:ident) => {{
-        let tmp = std::mem::MaybeUninit::<$ty>::uninit();
-        let base_ptr = tmp.as_ptr();
-        let field_ptr = unsafe { std::ptr::addr_of!((*base_ptr).$field) };
-        (field_ptr as usize) - (base_ptr as usize)
-    }};
-}
-
 fn build_options() -> Vec<XoptOption> {
     vec![
         XoptOption {
@@ -210,3 +200,15 @@ fn test_help_arg() {
 }
 
 fn main() {}
+
+// This macro is to emulate C's offsetof for our SimpleConfig.
+
+macro_rules! offset_of {
+    ($ty:ty, $field:ident) => {{
+        let tmp = std::mem::MaybeUninit::<$ty>::uninit();
+        let base_ptr = tmp.as_ptr();
+        let field_ptr = unsafe { std::ptr::addr_of!((*base_ptr).$field) };
+        (field_ptr as usize) - (base_ptr as usize)
+    }};
+}
+

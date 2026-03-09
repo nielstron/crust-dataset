@@ -14,4 +14,5 @@ fn test_log2uint8() {
     assert_eq!(log2uint8(128), 7);
     assert_eq!(log2uint8(255), 7);
 }
+
 fn main() {}

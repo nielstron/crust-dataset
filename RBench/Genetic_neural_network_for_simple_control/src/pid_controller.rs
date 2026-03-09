@@ -1,6 +1,3 @@
-// pid_controller.rs
-use crate::signal_designer::Signal;
-use std::fs::File;
 #[derive(Default)]
 pub struct PID {
     // constants not changed in calculations
@@ -33,15 +30,25 @@ pub struct PID {
     // signal oscillation counter
     pub maxCounter: i32,
 }
+
 pub fn createNewPidController(pid: &mut PID) {
     unimplemented!();
 }
+
 pub fn deletePid(pid: &mut PID) {
     unimplemented!();
 }
+
 pub fn makeSimulationOfSignal(pid: &mut PID, csv_file: &mut File, csv: i32) {
     unimplemented!();
 }
+
 pub fn resetOutputMemoryPid(pid: &mut PID) {
     unimplemented!();
 }
+
+// pid_controller.rs
+
+use crate::signal_designer::Signal;
+
+use std::fs::File;

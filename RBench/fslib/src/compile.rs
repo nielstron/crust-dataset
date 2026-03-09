@@ -6,18 +6,23 @@ use std::io::{self, BufRead};
 fn trn(token: &str, symt: &SymTable) -> usize {
     unimplemented!()
 }
+
 fn trt(token: &str, symt: &SymTable) -> usize {
     unimplemented!()
 }
+
 fn add_arc(fst: &mut fst::Fst, sa: usize, sb: usize, li: usize, lo: usize, w: f32) {
     unimplemented!()
 }
+
 fn add_final(fst: &mut fst::Fst, s: usize, w: f32) {
     unimplemented!()
 }
+
 fn parse_line(fst: &mut fst::Fst, buf: &mut str) -> i32 {
     unimplemented!()
 }
+
 fn parse_line_sym(
     fst: &mut fst::Fst,
     buf: &mut str,
@@ -27,6 +32,7 @@ fn parse_line_sym(
 ) -> i32 {
     unimplemented!()
 }
+
 fn parse_line_sym_acc(
     fst: &mut fst::Fst,
     buf: &mut str,
@@ -36,6 +42,7 @@ fn parse_line_sym_acc(
 ) -> i32 {
     unimplemented!()
 }
+
 fn fst_compile(
     fst: &mut fst::Fst,
     fin: &mut dyn BufRead,
@@ -46,6 +53,7 @@ fn fst_compile(
 ) -> fst::Fst {
     unimplemented!()
 }
+
 fn fst_compile_str(fst: &mut fst::Fst, s: &str) -> fst::Fst {
     unimplemented!()
 }

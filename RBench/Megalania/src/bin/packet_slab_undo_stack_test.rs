@@ -4,13 +4,15 @@ use Megalania::{
     packet_slab::PacketSlab,
     packet_slab_undo_stack::{PacketSlabUndo, PacketSlabUndoStack},
 };
+const SLAB_SIZE: usize = 1024;
+
 pub fn pretty_print_test_name(name: &str) {
     println!("=== {} ===", name);
 }
+
 pub fn pretty_print_sub_test_name(name: &str) {
     println!("> {}", name);
 }
-const SLAB_SIZE: usize = 1024;
 
 #[test]
 fn packet_slab_undo_stack_test_apply() {
@@ -73,4 +75,5 @@ fn packet_slab_undo_stack_test_free() {
     }
     // (Memory will be dropped automatically.)
 }
+
 pub fn main() {}

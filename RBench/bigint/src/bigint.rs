@@ -5,6 +5,7 @@ pub struct BigInt {
     negative: bool,
     digits: Vec<u8>,
 }
+
 impl BigInt {
     pub fn zero() -> Self {
         unimplemented!()
@@ -94,40 +95,50 @@ impl BigInt {
         unimplemented!()
     }
 }
+
 impl std::ops::Neg for BigInt {
     type Output = BigInt;
     fn neg(self) -> BigInt {
         unimplemented!()
     }
 }
+
 impl PartialEq for BigInt {
     fn eq(&self, other: &Self) -> bool {
         unimplemented!()
     }
 }
+
 impl Eq for BigInt {}
+
 impl PartialOrd for BigInt {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         unimplemented!()
     }
 }
+
 impl fmt::Display for BigInt {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         unimplemented!()
     }
 }
+
 pub fn gt(a: &BigInt, b: &BigInt) -> bool {
     unimplemented!()
 }
+
 pub fn lt(a: &BigInt, b: &BigInt) -> bool {
     unimplemented!()
 }
+
 pub fn ge(a: &BigInt, b: &BigInt) -> bool {
     unimplemented!()
 }
+
 pub fn le(a: &BigInt, b: &BigInt) -> bool {
     unimplemented!()
 }
+
 pub fn delete(a: &mut BigInt) {
     unimplemented!()
 }

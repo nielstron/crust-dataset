@@ -1,7 +1,9 @@
 use crate::simple_vector::Vector;
 
 const BEGIN_TAG_TOKEN: char = '<';
+
 const END_TAG_TOKEN: char = '>';
+
 const SPLASH_TOKEN: char = '/';
 
 pub struct XMLElement {

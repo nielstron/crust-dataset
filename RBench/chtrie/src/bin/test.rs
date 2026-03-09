@@ -2,11 +2,15 @@ use chtrie::chtrie::Chtrie;
 use std::collections::HashMap;
 
 const N: usize = 65536;
+
 const M: usize = 256;
 
 static DICT1: [&str; 4] = ["", "the", "a", "an"];
+
 static DICT2: [&str; 4] = ["he", "she", "his", "hers"];
+
 static DICT3: [&str; 2] = ["this", "that"];
+
 static STOP: [&str; 3] = ["the", "an", "a"];
 
 fn add(tr: &mut Chtrie, term: &mut HashMap<i32, bool>, nchild: &mut HashMap<i32, i32>, s: &str) {
@@ -107,6 +111,7 @@ fn test_chtrie() {
     tr.free();
     println!("All tests passed!");
 }
+
 fn main() {
     //
 }

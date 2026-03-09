@@ -7,6 +7,7 @@ pub struct BltIt {
     /// Associated data.
     pub data: Option<Box<dyn Any>>,
 }
+
 /// The BLT tree structure.
 #[derive(Debug)]
 pub struct Blt {
@@ -15,6 +16,7 @@ pub struct Blt {
     /// Indicates whether the tree is empty.
     pub empty: i32,
 }
+
 /// A node in the BLT tree.
 #[derive(Debug)]
 pub enum BltNode {
@@ -23,6 +25,7 @@ pub enum BltNode {
     /// A leaf node (external node).
     Leaf(BltIt),
 }
+
 /// Represents an internal node in the BLT tree.
 #[derive(Debug)]
 pub struct InternalNode {
@@ -35,6 +38,7 @@ pub struct InternalNode {
     /// The child node.
     pub kid: Box<BltNode>,
 }
+
 impl Blt {
     /// Creates a new BLT tree.
     pub fn blt_new() -> Self {

@@ -9,10 +9,12 @@ pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.olabel, arc_b.olabel);
     assert_eq!(arc_a.weight, arc_b.weight);
 }
+
 pub fn assert_state_equal(state_a: &StateData, state_b: &StateData) {
     assert_eq!(state_a.weight, state_b.weight);
     assert_eq!(state_a.final_state, state_b.final_state);
 }
+
 pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     assert_eq!(a.start, b.start);
     assert_eq!(a.sr_type, b.sr_type);
@@ -27,6 +29,7 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
         }
     }
 }
+
 #[test]
 fn test_reverse() {
     let mut fst = Fst::new();
@@ -43,6 +46,7 @@ fn test_reverse() {
     assert_eq!(arc.olabel, 1);
     assert_eq!(arc.weight, 1.0);
 }
+
 #[test]
 fn test_rm_states() {
     let fst_str_0 = "0 1 1 1\n1 2 1 1\n2 3 1 1\n3";
@@ -56,6 +60,7 @@ fn test_rm_states() {
     trim::fst_rm_states(&mut fst_0, &bs);
     assert_fst_equal(&fst_0, &fst_1);
 }
+
 #[test]
 fn test_trim() {
     let fst_str_0 = "0 1 1 1\n0 2 1 1\n3 0 1 1\n1";
@@ -68,6 +73,7 @@ fn test_trim() {
     fst_0.print();
     assert_fst_equal(&fst_0, &fst_1);
 }
+
 #[test]
 fn test_trim_close() {
     let fst_str_0 = "0 1 1 1\n0 2 1 1\n3 0 1 1\n1\n2";
@@ -80,4 +86,5 @@ fn test_trim_close() {
     fst_0.print();
     // assert_fst_equal(&fst_0, &fst_1);
 }
+
 fn main() {}

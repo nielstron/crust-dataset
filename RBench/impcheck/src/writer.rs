@@ -2,6 +2,7 @@ use std::fs::File;
 pub struct Writer {
     file: File,
 }
+
 impl Writer {
     pub fn write_char(&mut self, c_int: i32) {
         unimplemented!()

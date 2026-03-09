@@ -1,8 +1,4 @@
 use carrays::carrays;
-// use carrays::circ_array;
-use rand::Rng;
-use std::cmp::Ordering;
-
 #[test]
 fn test_round() {
     println!("Testing roundup32() / roundup64()");
@@ -71,3 +67,10 @@ fn main() {
     // In Rust, we don't need a main function for tests.
     // The `cargo test` command will automatically run all functions marked with `#[test]`.
 }
+
+// use carrays::circ_array;
+
+use rand::Rng;
+
+use std::cmp::Ordering;
+

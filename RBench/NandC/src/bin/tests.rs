@@ -1,6 +1,9 @@
 use NandC::nand;
 
+fn main() {}
+
 #[cfg(test)]
+
 mod tests {
     use super::*;
 
@@ -102,4 +105,3 @@ mod tests {
     }
 }
 
-fn main() {}

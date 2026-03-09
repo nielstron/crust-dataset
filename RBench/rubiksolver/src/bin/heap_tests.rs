@@ -15,6 +15,7 @@ fn test_heap_with_strings() {
     assert_eq!(heap.delete_min(), Some("charlie"));
     assert!(heap.is_empty());
 }
+
 #[test]
 fn test_heap_with_integers() {
     let mut heap = Heap::new(10, is_smaller_int);
@@ -25,4 +26,5 @@ fn test_heap_with_integers() {
     // The minimum should be 11.
     assert_eq!(heap.delete_min(), Some(11));
 }
+
 pub fn main() {}

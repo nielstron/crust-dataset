@@ -24,6 +24,7 @@ fn test_range(range: u64, rounds: u64) {
         assert_eq!(count, 1, "Incorrect count for index {}: {}", i, count);
     }
 }
+
 #[test]
 fn test() {
     test_range(0, 0);
@@ -35,4 +36,5 @@ fn test() {
     test_range(100, 6);
     test_range(500 * 1000, 6);
 }
+
 fn main() {}

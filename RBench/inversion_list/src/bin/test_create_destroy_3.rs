@@ -12,4 +12,5 @@ fn test() {
 
     println!("test_create_destroy_3 passed.");
 }
+
 fn main() {}

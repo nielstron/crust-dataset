@@ -7,8 +7,10 @@ pub mod razz_simulation {
         pub opponent_card_count: u8,
         pub opponent_cards: [Option<Card>; 7],
     }
-    pub type RankListener<T> = fn(&mut T, CardRank);
-    pub fn simulate_razz_game<T>(
+
+pub type RankListener<T> = fn(&mut T, CardRank);
+
+pub fn simulate_razz_game<T>(
         decided_cards: &DecidedCards,
         game_count: u64,
         arg: &mut T,
@@ -16,10 +18,12 @@ pub mod razz_simulation {
     ) -> i32 {
         unimplemented!()
     }
-    pub fn strip_deck(deck: &mut CardDeck, decided_cards: &DecidedCards) {
+
+pub fn strip_deck(deck: &mut CardDeck, decided_cards: &DecidedCards) {
         unimplemented!()
     }
-    pub fn complete_hand(
+
+pub fn complete_hand(
         my_hand: &mut CardHand,
         decided_cards: &DecidedCards,
         deck: &mut CardDeck,

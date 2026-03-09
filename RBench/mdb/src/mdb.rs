@@ -1,11 +1,17 @@
 use std::fs::{File, OpenOptions};
 use std::io::{self, Read, Seek, SeekFrom, Write};
 use std::path::{Path, PathBuf};
-const DB_NAME_MAX: usize = 128; // Assuming a reasonable maximum length
+const DB_NAME_MAX: usize = 128;
+
+// Assuming a reasonable maximum length
 type MdbPtr = u32;
+
 type MdbSize = u32;
+
 const MDB_PTR_SIZE: usize = std::mem::size_of::<MdbPtr>();
+
 const MDB_DATALEN_SIZE: usize = std::mem::size_of::<MdbSize>();
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MdbStatusCode {
     MDB_OK = 0,
@@ -23,6 +29,7 @@ pub enum MdbStatusCode {
     MDB_ERR_VALUE_SIZE,
     MDB_ERR_UNIMPLEMENTED = 100,
 }
+
 #[derive(Debug, Clone)]
 pub struct MdbOptions {
     pub db_name: String,
@@ -31,11 +38,13 @@ pub struct MdbOptions {
     pub hash_buckets: u32,
     pub items_max: u32,
 }
+
 #[derive(Debug)]
 pub struct MdbStatus {
     pub code: u8,
     pub desc: String,
 }
+
 #[derive(Debug)]
 pub enum MdbError {
     Io(io::Error),
@@ -45,18 +54,22 @@ pub enum MdbError {
     KeySizeTooLarge,
     ValueSizeTooLarge,
 }
+
 impl From<io::Error> for MdbError {
     fn from(error: io::Error) -> Self {
         MdbError::Io(error)
     }
 }
+
 pub type Result<T> = std::result::Result<T, MdbError>;
+
 struct MdbIndex {
     next_ptr: MdbPtr,
     value_ptr: MdbPtr,
     value_size: MdbSize,
     key: Vec<u8>,
 }
+
 pub struct Mdb {
     db_name: String,
     fp_superblock: File,
@@ -65,6 +78,7 @@ pub struct Mdb {
     options: MdbOptions,
     index_record_size: u32,
 }
+
 impl Mdb {
     pub fn open<P: AsRef<Path>>(path: P) -> Result<Self> {
         unimplemented!()
@@ -148,7 +162,9 @@ impl Mdb {
     fn close(&mut self) -> Result<()> {
         unimplemented!()
     }
-} // impl Mdb
+}
+
+// impl Mdb
 pub fn mdb_status() -> Result<MdbStatus> {
     unimplemented!()
 }

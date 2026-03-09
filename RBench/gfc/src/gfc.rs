@@ -1,16 +1,9 @@
 use std::f64::consts::SQRT_2;
 /// Constants for Speck encryption
 const SPECK_ROUNDS: usize = 27;
+
 const SPECK_KEY_LEN: usize = 4;
-fn ror(x: u32, r: u32) -> u32 {
-    unimplemented!()
-}
-fn rol(x: u32, r: u32) -> u32 {
-    unimplemented!()
-}
-fn round(x: &mut u32, y: &mut u32, k: u32) {
-    unimplemented!()
-}
+
 #[derive(Debug)]
 pub struct GFC {
     m: u64, // Range
@@ -19,6 +12,7 @@ pub struct GFC {
     b: u64,
     speck_exp: Vec<u32>,
 }
+
 impl GFC {
     /// Initialize the GFC structure
     pub fn new(range: u64, rounds: u64, seed: u64) -> Self {
@@ -45,10 +39,24 @@ impl GFC {
         unimplemented!()
     }
 }
+
+fn ror(x: u32, r: u32) -> u32 {
+    unimplemented!()
+}
+
+fn rol(x: u32, r: u32) -> u32 {
+    unimplemented!()
+}
+
+fn round(x: &mut u32, y: &mut u32, k: u32) {
+    unimplemented!()
+}
+
 /// Speck key expansion
 fn speck_expand(key: &[u32; SPECK_KEY_LEN], round_keys: &mut [u32]) {
     unimplemented!()
 }
+
 /// Speck encryption function
 fn speck_encrypt(pt: &[u32; 2], ct: &mut [u32; 2], key: &[u32]) {
     unimplemented!()

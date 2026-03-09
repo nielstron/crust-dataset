@@ -7,6 +7,7 @@ fn test_create() {
         assert!(st.get(i as i32) == None);
     }
 }
+
 #[test]
 fn test_add() {
     let mut st: SymTable = SymTable::new();
@@ -25,6 +26,7 @@ fn test_add() {
     assert!(st.n_max >= 5);
     st.remove();
 }
+
 #[test]
 fn test_add_sparse() {
     let mut token: &str = "token";
@@ -33,6 +35,7 @@ fn test_add_sparse() {
     assert!(st.sym.get(0) == None);
     assert!(st.get(100) == Some("token"));
 }
+
 #[test]
 fn test_reverse() {
     let mut st: SymTable = SymTable::new();
@@ -48,6 +51,7 @@ fn test_reverse() {
     assert!(rev.get(k1) == Some(&1));
     st.remove();
 }
+
 #[test]
 fn test_getr() {
     let mut st: SymTable = SymTable::new();
@@ -63,6 +67,7 @@ fn test_getr() {
     assert!(st.getr(k2).unwrap() == -1);
     st.remove();
 }
+
 // #[test]
 // fn test_read(){
 //     let mut st: SymTable = SymTable::new();

@@ -1,6 +1,9 @@
 use ulidgen::ulid::ulidgen_r;
 
+fn main() {}
+
 #[cfg(test)]
+
 mod tests {
     use super::*;
 
@@ -15,4 +18,3 @@ mod tests {
     }
 }
 
-fn main() {}

@@ -29,6 +29,7 @@ fn test_fst_read_write() {
     assert_eq!(count, 10);
     fst.remove();
 }
+
 #[test]
 fn test_fst_stress() {
     let mut fst = Fst::new();
@@ -51,4 +52,5 @@ fn test_fst_stress() {
     assert_eq!(count, arcs_size);
     fst.remove();
 }
+
 fn main() {}

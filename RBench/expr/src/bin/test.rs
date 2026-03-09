@@ -17,6 +17,7 @@ fn test1() {
         evaluated
     );
 }
+
 #[test]
 fn test2() {
     let mut expr = "26.0*2.0/2.0 + x*30.0/(20.0*1.0)";
@@ -38,4 +39,5 @@ fn test2() {
         );
     }
 }
+
 fn main() {}

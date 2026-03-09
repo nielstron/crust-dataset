@@ -7,9 +7,11 @@ struct TestCase {
     vertices: Vec<Point>,
     inside: bool,
 }
+
 fn check_inside(test_case: &TestCase) {
     assert!(is_position_in_geofence(&test_case.point, &test_case.vertices) == test_case.inside);
 }
+
 #[test]
 fn test() {
     let poly1 = vec![
@@ -54,4 +56,5 @@ fn test() {
         check_inside(&test_case);
     }
 }
+
 fn main() {}

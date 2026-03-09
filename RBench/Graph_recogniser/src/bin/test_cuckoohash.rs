@@ -14,9 +14,11 @@ static TEST_STRS: &[(&str, &str)] = &[
     ("henning", "weiler"),
     ("javier", "martin"),
 ];
+
 static PERMUT: &[usize] = &[
     10, 0, 4, 3, 5, 3, 7, 11, 4, 11, 6, 0, 1, 8, 5, 1, 10, 3, 5, 2, 9,
 ];
+
 #[test]
 pub fn test_cuckoohash() {
     let tt = CuckooHashTable::new(2);
@@ -38,4 +40,5 @@ pub fn test_cuckoohash() {
         }
     }
 }
+
 fn main() {}

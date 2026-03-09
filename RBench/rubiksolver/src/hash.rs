@@ -6,6 +6,7 @@ pub struct Hash<T> {
     hash_function: Box<dyn Fn(&T) -> u32>,
     max_key: u32,
 }
+
 impl<T> Hash<T> {
     /// Create a new hash table with `max_key` buckets.
     /// The `hash_function` is used to compute a hash for each element.

@@ -3,6 +3,7 @@ pub struct MaxHeap {
     data: Vec<u32>,
     comparator: Box<dyn Fn(u32, u32) -> i32>,
 }
+
 impl MaxHeap {
     pub fn new(capacity: usize, comparator: Box<dyn Fn(u32, u32) -> i32>) -> Self {
         Self {

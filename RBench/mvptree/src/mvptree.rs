@@ -6,9 +6,13 @@ use std::ptr;
 use std::rc::Rc;
 use std::sync::Arc;
 pub const TAG: &str = "phashmvp2010";
+
 pub const VERSION: u32 = 0x01000000;
+
 pub const HEADER_SIZE: usize = 32;
+
 pub const FILE_OFFSET_BITS: usize = 64;
+
 pub const ERROR_MSGS: [&str; 25] = [
     "no error",
     "bad argument",
@@ -36,6 +40,7 @@ pub const ERROR_MSGS: [&str; 25] = [
     "could not open file",
     "unrecognized node",
 ];
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MVPDataType {
     ByteArray = 1,
@@ -43,11 +48,13 @@ pub enum MVPDataType {
     UInt32Array = 4,
     UInt64Array = 8,
 }
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum NodeType {
     InternalNode = 1,
     LeafNode,
 }
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MVPError {
     Success,
@@ -77,6 +84,7 @@ pub enum MVPError {
     FileNotFound,
     Unrecognized,
 }
+
 #[derive(Debug, Clone)]
 pub struct MVPDatapoint {
     pub id: String,
@@ -85,7 +93,9 @@ pub struct MVPDatapoint {
     pub datalen: usize,
     pub data_type: MVPDataType,
 }
+
 pub type DistanceFunction = fn(&MVPDatapoint, &MVPDatapoint) -> f32;
+
 pub struct LeafNode {
     pub node_type: NodeType,
     pub sv1: Option<Arc<MVPDatapoint>>,
@@ -95,14 +105,17 @@ pub struct LeafNode {
     pub d2: Vec<f32>,
     pub nbpoints: usize,
 }
+
 impl LeafNode {
     pub fn new(bf: u32) -> Self {
         unimplemented!()
     }
 }
+
 pub fn error_to_string(error: MVPError) -> &'static str {
     unimplemented!()
 }
+
 pub struct InternalNode {
     pub node_type: NodeType,
     pub sv1: Option<Arc<MVPDatapoint>>,
@@ -111,15 +124,18 @@ pub struct InternalNode {
     pub m2: Vec<f32>,
     pub child_nodes: Vec<Rc<RefCell<Node>>>,
 }
+
 impl InternalNode {
     pub fn new(bf: u32) -> Self {
         unimplemented!()
     }
 }
+
 pub enum Node {
     Leaf(LeafNode),
     Internal(InternalNode),
 }
+
 pub struct MVPTree {
     pub branch_factor: usize,
     pub path_length: usize,
@@ -132,6 +148,7 @@ pub struct MVPTree {
     pub node: Option<Rc<RefCell<Node>>>,
     pub distance_function: DistanceFunction,
 }
+
 impl MVPTree {
     pub fn new(
         branch_factor: usize,
@@ -166,12 +183,14 @@ impl MVPTree {
         unimplemented!()
     }
 }
+
 pub fn mvptree_read(
     filename: &str,
     distance_function: DistanceFunction,
 ) -> Result<MVPTree, MVPError> {
     unimplemented!()
 }
+
 impl MVPDatapoint {
     pub fn new(id: String, data: Vec<u8>, data_type: MVPDataType) -> Self {
         let datalen = data.len();

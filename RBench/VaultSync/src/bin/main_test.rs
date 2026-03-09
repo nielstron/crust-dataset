@@ -75,4 +75,5 @@ pub fn test() {
     adding_changes();
     made_commit();
 }
+
 fn main() {}

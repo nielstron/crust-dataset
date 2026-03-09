@@ -21,4 +21,5 @@ fn test() {
 
     println!("test_union passed.");
 }
+
 fn main() {}

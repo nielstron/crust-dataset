@@ -9,6 +9,7 @@ fn compare_results(a: f32, b: f32) -> bool {
 fn test_sigmoid(x: f32) -> f32 {
     1.0 / (1.0 + (-x).exp())
 }
+
 #[test]
 pub fn testActivationFncTanh() {
     println!("\x1b[1m=======TEST ACTIVAION FNC TANH STARTED=======\x1b[0m");
@@ -56,4 +57,5 @@ pub fn testActivationFncSigm() {
     );
     println!("\x1b[1m\x1b[32m=======TEST ACTIVAION FNC SIGM SUCCESSFUL=======\x1b[0m");
 }
+
 fn main() {}

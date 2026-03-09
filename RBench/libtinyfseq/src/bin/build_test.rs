@@ -1,6 +1,8 @@
 use libtinyfseq::tinyfseq::TFError;
 
-const TINYFSEQ_VERSION: &str = "1.0.0"; // Assuming a version string
+const TINYFSEQ_VERSION: &str = "1.0.0";
+
+// Assuming a version string
 
 #[test]
 fn test_tferror_string_and_version() {

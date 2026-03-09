@@ -1,4 +1,6 @@
 use Phills_DHT::dht::dht::*;
+fn main() {}
+
 mod test {
     use super::*;
     #[test]
@@ -252,4 +254,3 @@ mod test {
         assert!(j.is_none());
     }
 }
-fn main() {}

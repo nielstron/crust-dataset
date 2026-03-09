@@ -1,4 +1,5 @@
 pub const PGN_BUFFER_INITIAL_SIZE: usize = 16;
+
 pub const PGN_BUFFER_GROW_SIZE: usize = 32;
 
 #[derive(Debug, Clone, PartialEq, Eq)]

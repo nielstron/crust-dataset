@@ -3,6 +3,8 @@ use std::rc::Rc;
 
 use SimpleXML::simple_vector::Vector;
 use SimpleXML::simple_xml::{XMLElement, parse_xml_from_text};
+const SIZE: usize = 100000;
+
 #[test]
 fn test_vector() {
     let a = 10;
@@ -73,7 +75,6 @@ fn test_vector() {
     println!("PASSED Test vector1");
 }
 
-const SIZE: usize = 100000;
 #[test]
 fn test_vector2() {
     let mut v = Vector::new(8);
@@ -100,6 +101,7 @@ fn test_vector2() {
 
     println!("PASSED Test vector2");
 }
+
 #[test]
 fn test_xml() {
     let s = r#"<programmer>

@@ -79,42 +79,6 @@ fn run_test(args: &Test) {
     }
 }
 
-/// A convenience macro to shorten calls to `run_test(...)`.
-macro_rules! test {
-    // If the caller specifies all fields in struct-literal style:
-    ($args:expr) => {
-        run_test(&$args);
-    };
-    // Or a partial syntax of the form: test("regex", "input", matches) ...
-    // We can parse a few common cases. For example:
-    ($re:expr, $inp:expr, $mat:expr) => {
-        run_test(&Test {
-            regex: $re,
-            input: $inp,
-            matches: $mat,
-            errors: false,
-            partial: false,
-            ignorecase: false,
-            complement: false,
-            quick: false,
-        });
-    };
-    // If we want quick also (4th param):
-    ($re:expr, $inp:expr, $mat:expr, .quick = $q:expr) => {
-        run_test(&Test {
-            regex: $re,
-            input: $inp,
-            matches: $mat,
-            errors: false,
-            partial: false,
-            ignorecase: false,
-            complement: false,
-            quick: $q,
-        });
-    }; // If we want an advanced named-struct call: test("foo", .partial = true) etc.
-       // you can just do test!(Test{ regex: "...", input: "...", ... }) if needed.
-}
-
 #[test]
 pub fn test() {
     // The big battery of tests:
@@ -1265,4 +1229,43 @@ typedef|union|unsigned|void|volatile|while|_Bool|_Complex|_Imaginary)";
 
     println!("All done!");
 }
+
 fn main() {}
+
+/// A convenience macro to shorten calls to `run_test(...)`.
+
+macro_rules! test {
+    // If the caller specifies all fields in struct-literal style:
+    ($args:expr) => {
+        run_test(&$args);
+    };
+    // Or a partial syntax of the form: test("regex", "input", matches) ...
+    // We can parse a few common cases. For example:
+    ($re:expr, $inp:expr, $mat:expr) => {
+        run_test(&Test {
+            regex: $re,
+            input: $inp,
+            matches: $mat,
+            errors: false,
+            partial: false,
+            ignorecase: false,
+            complement: false,
+            quick: false,
+        });
+    };
+    // If we want quick also (4th param):
+    ($re:expr, $inp:expr, $mat:expr, .quick = $q:expr) => {
+        run_test(&Test {
+            regex: $re,
+            input: $inp,
+            matches: $mat,
+            errors: false,
+            partial: false,
+            ignorecase: false,
+            complement: false,
+            quick: $q,
+        });
+    }; // If we want an advanced named-struct call: test("foo", .partial = true) etc.
+       // you can just do test!(Test{ regex: "...", input: "...", ... }) if needed.
+}
+

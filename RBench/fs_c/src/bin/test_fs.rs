@@ -3,6 +3,7 @@ use fs_c::fs::*;
 use std::fs;
 
 static TMP_DIR: &str = "./tmp";
+
 static ALPHA: &str = "abcdefghijklmnopqrstuvwxyz\n";
 
 fn setup() {
@@ -210,4 +211,5 @@ fn test_fs_fnwrite() {
     let buf = fs_read(&file_path).unwrap();
     assert_eq!(buf, b"abcdefghi");
 }
+
 fn main() {}

@@ -38,4 +38,5 @@ pub fn testPopulation() {
 
     println!("\x1b[1m\x1b[32m=======TEST POPULATION SUCCESSFUL=======\x1b[0m");
 }
+
 fn main() {}

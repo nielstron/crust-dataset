@@ -110,4 +110,5 @@ fn poly_lshift_test_2() {
     let result = poly1.lshift(&poly2, 10).unwrap();
     assert_eq!(result, expected);
 }
+
 fn main() {}

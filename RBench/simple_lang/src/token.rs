@@ -1,4 +1,5 @@
 pub const SIMPLE_LANG_TOKEN_H: bool = true;
+
 /// Replicates the C enum:
 /// typedef enum {
 ///     TOKEN_INT,
@@ -23,6 +24,7 @@ pub enum TokenType {
     TOKEN_EOF,
     TOKEN_DIS,
 }
+
 /// Replicates the C struct:
 /// typedef struct {
 ///     TokenType type;
@@ -33,10 +35,12 @@ pub struct Token {
     pub token_type: TokenType,
     pub value: String,
 }
+
 /// Replicates: Token* new_token(TokenType type, const char* value);
 pub fn new_token(type_: TokenType, value: &str) -> Token {
     unimplemented!()
 }
+
 /// Replicates: void free_token(Token* token);
 pub fn free_token(_token: Token) {
     unimplemented!()

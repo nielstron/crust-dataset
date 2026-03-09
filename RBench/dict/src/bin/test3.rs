@@ -94,4 +94,5 @@ fn test3() {
 
     dict_destroy(&mut dict2);
 }
+
 fn main() {}

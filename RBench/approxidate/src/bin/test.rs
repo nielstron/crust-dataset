@@ -6,11 +6,13 @@ use std::time::{Duration, SystemTime};
 fn _start_of_day(sec: approxidate::TimeT) -> approxidate::TimeT {
     sec - (sec % 86400)
 }
+
 pub fn monotonic_now() -> f64 {
     let now = SystemTime::now();
     let duration = now.duration_since(UNIX_EPOCH).unwrap_or(Duration::ZERO);
     duration.as_secs() as f64 + (duration.subsec_nanos() as f64 / 1_000_000_000.0)
 }
+
 #[test]
 fn approxidate_test() {
     let mut errors = 0;
@@ -112,6 +114,7 @@ fn approxidate_test() {
         println!("All tests passed");
     }
 }
+
 #[test]
 fn approxidate_benchmark() {
     let rounds = 1000000;
@@ -124,4 +127,5 @@ fn approxidate_benchmark() {
         assert!(approxidate::approxidate_main("2019-01-01 00:00:00", &mut tv) >= 0);
     }
 }
+
 fn main() {}

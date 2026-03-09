@@ -1,5 +1,6 @@
 /// Protocol version.
 pub const AMP_VERSION: i16 = 1;
+
 /// Message struct.
 pub struct Amp {
     /// Protocol version.
@@ -9,6 +10,7 @@ pub struct Amp {
     /// Encoded buffer.
     pub buf: String,
 }
+
 impl Amp {
     /// Decodes the given buffer into this message.
     ///
@@ -27,6 +29,7 @@ impl Amp {
         unimplemented!()
     }
 }
+
 /// Encodes the given arguments into a message buffer.
 ///
 /// # Arguments

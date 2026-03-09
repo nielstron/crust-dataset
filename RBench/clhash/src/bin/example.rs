@@ -9,4 +9,5 @@ fn test() {
     assert_eq!(hashvalue1, hashvalue3);
     assert_ne!(hashvalue1, hashvalue2);
 }
+
 fn main() {}

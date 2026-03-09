@@ -6,6 +6,7 @@ fn verify(condition: bool, file: &str, line: u32) {
     // panic!("{}:{}: expression failed", file, line);
     // }
 }
+
 fn verify_array(a1: &[u32], a2: &[u32], len: usize) {
     for i in 0..len {
         if a1[i] != a2[i] {
@@ -13,6 +14,7 @@ fn verify_array(a1: &[u32], a2: &[u32], len: usize) {
         }
     }
 }
+
 fn verify_array_u8(a1: &[u8], a2: &[u8], len: usize) {
     for i in 0..len {
         if a1[i] != a2[i] {
@@ -20,6 +22,7 @@ fn verify_array_u8(a1: &[u8], a2: &[u8], len: usize) {
         }
     }
 }
+
 fn generate_input(base: u32, length: u32, bits: u32) -> Vec<u32> {
     let mut inbuf = vec![0; length as usize];
     let max = (1 << bits) - 1;
@@ -34,6 +37,7 @@ fn generate_input(base: u32, length: u32, bits: u32) -> Vec<u32> {
     }
     inbuf
 }
+
 fn highlevel_sorted(length: u32) {
     let mut in_data = vec![0; length as usize];
     let mut out = vec![0u8; 1024 * 10];
@@ -75,6 +79,7 @@ fn highlevel_sorted(length: u32) {
         verify(actual == in_data[i as usize], file!(), line!());
     }
 }
+
 fn rnd() -> u32 {
     static mut A: u32 = 3;
     unsafe {
@@ -82,6 +87,7 @@ fn rnd() -> u32 {
         A
     }
 }
+
 fn highlevel_unsorted(length: u32) {
     let mut in_data = vec![0; length as usize];
     let mut out = vec![0u8; 1024 * 10];
@@ -114,6 +120,7 @@ fn highlevel_unsorted(length: u32) {
         );
     }
 }
+
 fn append_sorted() {
     const MAX: usize = 10000;
     let mut out1 = vec![0u8; MAX * 8];
@@ -128,6 +135,7 @@ fn append_sorted() {
         verify_array_u8(&out1[..s1 as usize], &out2[..s2 as usize], s1 as usize);
     }
 }
+
 fn append_unsorted() {
     const MAX: usize = 10000;
     let mut out1 = vec![0u8; MAX * 8];
@@ -142,6 +150,7 @@ fn append_unsorted() {
         verify_array_u8(&out1[..s1 as usize], &out2[..s2 as usize], s1 as usize);
     }
 }
+
 fn append_sorted_bignum() {
     const MAX: usize = 10;
     let mut out1 = vec![0u8; MAX * 8];
@@ -156,6 +165,7 @@ fn append_sorted_bignum() {
         verify_array_u8(&out1[..s1 as usize], &out2[..s2 as usize], s1 as usize);
     }
 }
+
 fn lowlevel_block_func(
     bits: u32,
     pack: fn(u32, &[u32], &mut [u8]) -> u32,
@@ -186,6 +196,7 @@ fn lowlevel_block_func(
         );
     }
 }
+
 fn lowlevel_blockx_func(
     bits: u32,
     pack: fn(u32, &[u32], &mut [u8], u32) -> u32,
@@ -216,6 +227,7 @@ fn lowlevel_blockx_func(
         );
     }
 }
+
 fn lowlevel_block32(bits: u32) {
     let in_data = generate_input(10, 32, bits);
     println!("lowlevel pack/unpack 32 ints, {:2} bits", bits);
@@ -228,6 +240,7 @@ fn lowlevel_block32(bits: u32) {
         32,
     );
 }
+
 fn lowlevel_block16(bits: u32) {
     let in_data = generate_input(10, 16, bits);
     println!("lowlevel pack/unpack 16 ints, {:2} bits", bits);
@@ -240,11 +253,13 @@ fn lowlevel_block16(bits: u32) {
         16,
     );
 }
+
 fn lowlevel_block8(bits: u32) {
     let in_data = generate_input(10, 8, bits);
     println!("lowlevel pack/unpack  8 ints, {:2} bits", bits);
     lowlevel_block_func(bits, for_gen::pack0_8, for_gen::unpack0_8, &in_data, 10, 8);
 }
+
 fn lowlevel_blockx(length: usize, bits: u32) {
     let in_data = generate_input(10, 8, bits);
     println!("lowlevel pack/unpack  {} ints, {:2} bits", length, bits);
@@ -257,6 +272,7 @@ fn lowlevel_blockx(length: usize, bits: u32) {
         length as u32,
     );
 }
+
 fn run_all() {
     for i in 0..=32 {
         lowlevel_block32(i);
@@ -317,6 +333,7 @@ fn main() {
 }
 
 #[cfg(test)]
+
 mod tests {
     use super::run_all;
 

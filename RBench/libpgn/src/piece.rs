@@ -10,11 +10,13 @@ pub enum PgnPiece {
     Queen = b'Q',
     King = b'K',
 }
+
 impl From<char> for PgnPiece {
     fn from(ch: char) -> Self {
         unimplemented!()
     }
 }
+
 impl Display for PgnPiece {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()

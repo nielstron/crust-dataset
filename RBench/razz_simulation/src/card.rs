@@ -1,3 +1,45 @@
+pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
+        unimplemented!();
+    }
+
+pub fn sort_card_by_rank(
+        before: &Option<Card>,
+        new: &Option<Card>,
+        after: &Option<Card>,
+    ) -> i32 {
+        unimplemented!();
+    }
+
+impl CardHand {
+        pub fn create_hand(max: u8, sorter: CardSorter) -> Option<CardHand> {
+            unimplemented!();
+        }
+        pub fn reset_hand(&mut self) {
+            unimplemented!();
+        }
+        pub fn insert_into_hand(&mut self, c: &Option<Card>) {
+            unimplemented!();
+        }
+        pub fn count_cards_in_hand(&self) -> u64 {
+            unimplemented!();
+        }
+        pub fn get_max_of_hand(&self) -> u64 {
+            unimplemented!();
+        }
+        pub fn get_max_rank_of_hand(&self) -> CardRank {
+            unimplemented!();
+        }
+        pub fn iterate_hand(&mut self, itr_fn: CardIterator) {
+            unimplemented!();
+        }
+        pub fn remove_from_hand(&mut self, c: CardSuitRank) {
+            unimplemented!();
+        }
+        pub fn remove_from_hand_under_iter(&mut self, CardCollection: &CardCollection, pos: usize) {
+            unimplemented!()
+        }
+    }
+
 pub mod card {
     pub const CLUB_BITS: u32 = 4 << 5;
     pub const ACE_BITS: u32 = 1;
@@ -183,16 +225,6 @@ pub mod card {
         sorter: CardSorter,
         cards: CardCollection,
     }
-    pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
-        unimplemented!();
-    }
-    pub fn sort_card_by_rank(
-        before: &Option<Card>,
-        new: &Option<Card>,
-        after: &Option<Card>,
-    ) -> i32 {
-        unimplemented!();
-    }
     #[derive(Debug, Clone, Copy)]
     pub enum ItrAction {
         Continue,
@@ -201,33 +233,4 @@ pub mod card {
         RemoveAndBreak,
     }
     pub type CardIterator = fn(u64, u64, &Option<Card>) -> ItrAction;
-}impl CardHand {
-        pub fn create_hand(max: u8, sorter: CardSorter) -> Option<CardHand> {
-            unimplemented!();
-        }
-        pub fn reset_hand(&mut self) {
-            unimplemented!();
-        }
-        pub fn insert_into_hand(&mut self, c: &Option<Card>) {
-            unimplemented!();
-        }
-        pub fn count_cards_in_hand(&self) -> u64 {
-            unimplemented!();
-        }
-        pub fn get_max_of_hand(&self) -> u64 {
-            unimplemented!();
-        }
-        pub fn get_max_rank_of_hand(&self) -> CardRank {
-            unimplemented!();
-        }
-        pub fn iterate_hand(&mut self, itr_fn: CardIterator) {
-            unimplemented!();
-        }
-        pub fn remove_from_hand(&mut self, c: CardSuitRank) {
-            unimplemented!();
-        }
-        pub fn remove_from_hand_under_iter(&mut self, CardCollection: &CardCollection, pos: usize) {
-            unimplemented!()
-        }
-    }
-    
+}

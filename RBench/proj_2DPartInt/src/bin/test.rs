@@ -3,6 +3,7 @@ use twoDPartInt::functions::{
     compute_acceleration, compute_forces, compute_velocity, displace_particle,
 };
 const TOLERANCE: f64 = 0.00005;
+
 fn assert_approx_eq(result: f64, expected: f64, test_description: &str) {
     if (result - expected).abs() > TOLERANCE {
         panic!(
@@ -13,6 +14,7 @@ fn assert_approx_eq(result: f64, expected: f64, test_description: &str) {
         println!("Test: '{}' PASSED!", test_description);
     }
 }
+
 #[test]
 fn test_compute_forces_one_contact() {
     let size = 2;
@@ -123,6 +125,7 @@ fn test_compute_forces_one_contact() {
         "test_compute_forces_one_contact - tangent_forces[P2 <- P1]",
     );
 }
+
 #[test]
 fn test_compute_forces_multiple_contacts() {
     let size = 9;
@@ -539,6 +542,7 @@ fn test_compute_forces_multiple_contacts() {
         "test_compute_forces_multiple_contacts - tangent_forces[P9 <- P2]",
     );
 }
+
 #[test]
 fn test_compute_acceleration_one_element() {
     let size = 1;
@@ -570,6 +574,7 @@ fn test_compute_acceleration_one_element() {
         "test_compute_acceleration_one_element - y_component",
     );
 }
+
 #[test]
 fn test_compute_acceleration_multiple_elements() {
     let size = 3;
@@ -647,6 +652,7 @@ fn test_compute_acceleration_multiple_elements() {
         );
     }
 }
+
 #[test]
 fn test_compute_velocity_one_element() {
     let size = 1;
@@ -674,6 +680,7 @@ fn test_compute_velocity_one_element() {
         "test_compute_velocity_one_element - y_component",
     );
 }
+
 #[test]
 fn test_compute_velocity_multiple_elements() {
     let size = 3;
@@ -742,6 +749,7 @@ fn test_compute_velocity_multiple_elements() {
         );
     }
 }
+
 #[test]
 fn test_displace_particles_one_element() {
     let size = 1;
@@ -768,6 +776,7 @@ fn test_displace_particles_one_element() {
         "test_displace_particles_one_element - y_coordinate",
     );
 }
+
 #[test]
 fn test_displace_particles_multiple_elements() {
     let size = 3;
@@ -853,4 +862,5 @@ fn test_displace_particles_multiple_elements() {
         );
     }
 }
+
 fn main() {}

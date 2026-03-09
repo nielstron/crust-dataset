@@ -42,4 +42,5 @@ fn test() {
     test_macros();
     print_hilbert();
 }
+
 fn main() {}

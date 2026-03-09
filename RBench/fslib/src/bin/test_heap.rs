@@ -3,6 +3,7 @@ use std::cmp::Ordering;
 fn cmp_lower(a: &i32, b: &i32) -> Ordering {
     a.cmp(b)
 }
+
 #[test]
 fn test_heap_create() {
     let mut h = Heap::new(cmp_lower, std::mem::size_of::<i32>(), 10, 0);
@@ -10,6 +11,7 @@ fn test_heap_create() {
     assert_eq!(h.n_max, 10);
     h.remove();
 }
+
 #[test]
 fn test_heap_pop() {
     let a = [1, 0, 4, 3, 2];
@@ -25,6 +27,7 @@ fn test_heap_pop() {
     assert_eq!(h.pop(), None);
     h.remove();
 }
+
 #[test]
 fn test_heap_equal() {
     let a = [1, 1, 1, 0, 0];
@@ -40,6 +43,7 @@ fn test_heap_equal() {
     assert_eq!(h.pop(), None);
     h.remove();
 }
+
 #[test]
 fn test_heap_update() {
     let mut a = [3, 2, 1];
@@ -51,6 +55,7 @@ fn test_heap_update() {
     assert_eq!(h.pop(), Some(2));
     h.remove();
 }
+
 #[test]
 fn test_heap_find() {
     let a = [3, 2, 1];
@@ -61,6 +66,7 @@ fn test_heap_find() {
     assert_eq!(h.find(&1), Some(0));
     h.remove();
 }
+
 #[test]
 fn test_heap_resize() {
     let a = [0, 1, 3];
@@ -76,6 +82,7 @@ fn test_heap_resize() {
     assert_eq!(h.n_max, 4);
     h.remove();
 }
+
 #[test]
 fn test_heap_limit() {
     let a = [1, 0, 4, 3, 2];
@@ -89,4 +96,5 @@ fn test_heap_limit() {
     assert_eq!(h.pop(), None);
     h.remove();
 }
+
 fn main() {}

@@ -1,5 +1,3 @@
-// Import necessary modules
-use std::collections::HashMap;
 // Struct Definitions
 #[derive(Debug, Clone)]
 pub struct MinimizerResult {
@@ -7,6 +5,7 @@ pub struct MinimizerResult {
     pub kmer_position: usize,
     pub smer_position: usize,
 }
+
 // Function Declarations
 pub fn compute_closed_syncmers(
     sequence_input: &str,
@@ -18,12 +17,15 @@ pub fn compute_closed_syncmers(
 ) {
     unimplemented!()
 }
+
 pub fn base_to_bits(base: char) -> u8 {
     unimplemented!()
 }
+
 pub fn complement_base(base: u8) -> u8 {
     unimplemented!()
 }
+
 pub fn add_minimizer(
     results: &mut Vec<MinimizerResult>,
     size: &mut i32,
@@ -33,3 +35,7 @@ pub fn add_minimizer(
 ) {
     unimplemented!()
 }
+
+// Import necessary modules
+
+use std::collections::HashMap;

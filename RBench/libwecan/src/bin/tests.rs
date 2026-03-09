@@ -1,6 +1,7 @@
 use libwecan::libwecan::*;
 
 const PRECISION32: f32 = 0.00001;
+
 const PRECISION64: f64 = 0.00001;
 
 fn display_one(frame: &[u8]) {
@@ -1154,4 +1155,5 @@ fn run_tests() {
         dphy_value
     ));
 }
+
 pub fn main() {}

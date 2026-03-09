@@ -11,6 +11,7 @@ pub struct CbtNode {
     /// Right child.
     pub right: Option<Box<CbtNode>>,
 }
+
 /// Represents a leaf node in the crit‐bit tree.
 /// Leaves are also linked together in a doubly linked list.
 #[derive(Debug)]
@@ -26,16 +27,22 @@ pub struct CbtLeaf {
     /// Next leaf in the doubly linked list.
     pub next: Option<Rc<RefCell<CbtLeaf>>>,
 }
+
 /// A type alias for a reference‑counted, mutable leaf.
 pub type CbtLeafPtr = Rc<RefCell<CbtLeaf>>;
+
 /// Callback type for duplicating a key.
 pub type DupFn = dyn Fn(&Cbt, &dyn Any) -> Box<dyn Any>;
+
 /// Callback type for obtaining the length of a key.
 pub type GetLenFn = dyn Fn(&Cbt, &dyn Any) -> i32;
+
 /// Callback type for comparing two keys.
 pub type CmpFn = dyn Fn(&Cbt, &dyn Any, &dyn Any) -> i32;
+
 /// Callback type for determining the critical bit between two keys.
 pub type GetCritFn = dyn Fn(&Cbt, &dyn Any, &dyn Any) -> i32;
+
 /// Represents the entire crit‑bit tree.
 pub struct Cbt {
     /// Number of elements in the tree.
@@ -57,6 +64,7 @@ pub struct Cbt {
     /// Fixed key length (if applicable).
     pub len: i32,
 }
+
 impl Cbt {
     /// Creates a new crit‐bit tree with ASCIIZ keys.
     pub fn cbt_new() -> Self {

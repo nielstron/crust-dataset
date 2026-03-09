@@ -110,4 +110,5 @@ fn test2() {
 
     dict_destroy(&mut dict);
 }
+
 fn main() {}

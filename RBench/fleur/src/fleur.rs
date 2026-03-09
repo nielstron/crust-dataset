@@ -1,8 +1,12 @@
 use std::{fmt, fs::File};
 const M: u64 = 18446744073709551557;
+
 const G: u64 = 18446744073709550147;
+
 const FNV_PRIME: u64 = 1099511628211;
+
 const FNV_OFFSET_BASIS: u64 = 14695981039346656037;
+
 #[derive(Debug, Clone)]
 pub struct Header {
     pub version: u64,
@@ -12,16 +16,19 @@ pub struct Header {
     pub m: u64,
     pub n_value: u64,
 }
+
 impl fmt::Display for Header {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
+
 impl Header {
     pub fn check(&self) -> bool {
         unimplemented!()
     }
 }
+
 #[derive(Debug, Clone)]
 pub struct BloomFilter {
     pub version: u64,
@@ -33,11 +40,13 @@ pub struct BloomFilter {
     pub modified: i32,
     pub error: i32,
 }
+
 impl fmt::Display for BloomFilter {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
+
 impl BloomFilter {
     pub fn fingerprint(&self, buf: &[u8]) -> Vec<u64> {
         unimplemented!()

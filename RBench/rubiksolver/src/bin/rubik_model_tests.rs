@@ -9,6 +9,7 @@ fn test_rear() {
     assert_eq!(rear(rear(Color::Green)), Color::Green);
     assert_eq!(rear(rear(Color::Blue)), Color::Blue);
 }
+
 #[test]
 fn test_adjacent() {
     // Test adjacent_cw (values chosen to match the original assertions)
@@ -40,6 +41,7 @@ fn test_adjacent() {
     assert_eq!(adjacent_ccw(Color::Yellow, Color::Orange), Color::White);
     assert_eq!(adjacent_ccw(Color::Yellow, Color::White), Color::Red);
 }
+
 #[test]
 fn test_cube_functions() {
     let test_cube_data: Cube = [
@@ -174,4 +176,5 @@ fn test_cube_functions() {
     // Test find_entropy (expected entropy 25 for original)
     assert_eq!(find_entropy(&original), 25);
 }
+
 pub fn main() {}

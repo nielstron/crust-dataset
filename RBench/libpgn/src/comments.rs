@@ -6,13 +6,17 @@ pub enum PgnCommentPosition {
     AfterMove,
     AfterAlternative,
 }
+
 const PGN_COMMENTS_INITIAL_SIZE: usize = 1;
+
 const PGN_COMMENTS_GROW_SIZE: usize = 1;
+
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct PgnComment {
     pub position: PgnCommentPosition,
     pub value: String, // Replacing `pgn_buffer_t *` with `String` in Rust
 }
+
 impl PgnComment {
     /// Initializes an empty comment (like `pgn_comment_init`)
     pub fn new() -> Self {
@@ -31,10 +35,12 @@ impl PgnComment {
         unimplemented!()
     }
 }
+
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct PgnComments {
     pub values: Vec<PgnComment>, // Dynamic array instead of `pgn_comment_t *values`
 }
+
 impl PgnComments {
     /// Initializes an empty collection of comments (like `pgn_comments_init`)
     pub fn new() -> Self {

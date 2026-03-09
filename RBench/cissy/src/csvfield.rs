@@ -5,6 +5,7 @@ pub struct CsvField {
     pub data: String,
     pub len: usize,
 }
+
 impl CsvField {
     pub fn new() -> Self {
         unimplemented!();

@@ -17,6 +17,7 @@ fn run_print_test() {
     let cfg = cfg_parse(src).unwrap();
     assert!(cfg.to_string() == expected);
 }
+
 #[test]
 fn test() {
     assert!(cfg_parse_file("sample.cfg").is_ok());
@@ -24,4 +25,5 @@ fn test() {
     assert!(cfg_parse_file("").is_err_and(|err| err.msg == "invalid filename"));
     assert!(cfg_parse_file("sample2.cfg").is_err_and(|err| err.msg == "failed to open file"));
 }
+
 fn main() {}

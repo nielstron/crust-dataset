@@ -1,3 +1,8 @@
+// Helper function
+pub fn elision_<T>(key: Option<Box<T>>) {
+    unimplemented!()
+}
+
 pub mod quadtree {
     #[derive(Default)]
     pub struct QuadtreePoint {
@@ -40,6 +45,12 @@ pub mod quadtree {
         pub point: Option<Box<QuadtreePoint>>,
         pub key: Option<T>,
     }
+    #[derive(Default)]
+    pub struct Quadtree<T> {
+        pub root: Option<Box<QuadtreeNode<T>>>,
+        pub key_free: Option<fn(Option<T>)>,
+        pub length: u32,
+    }
     impl<T> QuadtreeNode<T> {
         pub fn node_contains_(&mut self, point: Option<Box<QuadtreePoint>>) {
             unimplemented!()
@@ -77,12 +88,6 @@ pub mod quadtree {
             unimplemented!()
         }
     }
-    #[derive(Default)]
-    pub struct Quadtree<T> {
-        pub root: Option<Box<QuadtreeNode<T>>>,
-        pub key_free: Option<fn(Option<T>)>,
-        pub length: u32,
-    }
     impl<T> Quadtree<T> {
         pub fn split_node_(&mut self, node: Option<Box<QuadtreeNode<T>>>) {
             unimplemented!()
@@ -115,8 +120,4 @@ pub mod quadtree {
             unimplemented!()
         }
     }
-}
-// Helper function
-pub fn elision_<T>(key: Option<Box<T>>) {
-    unimplemented!()
 }

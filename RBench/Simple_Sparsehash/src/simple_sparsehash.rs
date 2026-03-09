@@ -1,13 +1,18 @@
 /// The maximum size of each sparse_array_group.
 pub const GROUP_SIZE: usize = 48;
+
 /// The default size of the hash table. Used to init bucket_max.
 pub const STARTING_SIZE: usize = 32;
+
 /// The default 'should we resize' percentage, out of 100.
 pub const RESIZE_PERCENT: usize = 80;
+
 /// Number of bits per u32.
 pub const BITCHUNK_SIZE: usize = std::mem::size_of::<u32>() * 8;
+
 /// The minimum number of u32 entries required to hold GROUP_SIZE bits.
 pub const BITMAP_SIZE: usize = (GROUP_SIZE - 1) / BITCHUNK_SIZE + 1;
+
 /// Represents one stored key/value pair.
 #[derive(Debug)]
 pub struct SparseBucket {
@@ -22,6 +27,7 @@ pub struct SparseBucket {
     /// The hash of the key.
     pub hash: u64,
 }
+
 /// One group in a sparse array.
 #[derive(Debug)]
 pub struct SparseArrayGroup {
@@ -34,6 +40,7 @@ pub struct SparseArrayGroup {
     /// A bitmap tracking which slots in `group` are occupied.
     pub bitmap: [u32; BITMAP_SIZE],
 }
+
 /// A sparse array consisting of one or more groups.
 #[derive(Debug)]
 pub struct SparseArray {
@@ -42,6 +49,7 @@ pub struct SparseArray {
     /// The groups that hold the elements.
     pub groups: Vec<SparseArrayGroup>,
 }
+
 /// A sparse dictionary that maps keys to values.
 #[derive(Debug)]
 pub struct SparseDict {
@@ -52,6 +60,7 @@ pub struct SparseDict {
     /// An array of sparse arrays (buckets).
     pub buckets: Vec<SparseArray>,
 }
+
 /// Creates a new sparse array.
 ///
 /// # Parameters
@@ -63,6 +72,7 @@ pub struct SparseDict {
 pub fn sparse_array_init(element_size: usize, maximum: u32) -> Option<Box<SparseArray>> {
     unimplemented!()
 }
+
 /// Sets the element at index `i` to `val`.
 ///
 /// # Parameters
@@ -76,6 +86,7 @@ pub fn sparse_array_init(element_size: usize, maximum: u32) -> Option<Box<Sparse
 pub fn sparse_array_set(arr: &mut SparseArray, i: u32, val: &[u8], vlen: usize) -> i32 {
     unimplemented!()
 }
+
 /// Retrieves the element at index `i`.
 ///
 /// # Parameters
@@ -93,6 +104,7 @@ pub fn sparse_array_get<'a>(
 ) -> Option<&'a [u8]> {
     unimplemented!()
 }
+
 /// Frees the sparse array.
 ///
 /// # Parameters
@@ -103,6 +115,7 @@ pub fn sparse_array_get<'a>(
 pub fn sparse_array_free(arr: Box<SparseArray>) -> i32 {
     unimplemented!()
 }
+
 // ---------- Sparse Dictionary API ----------
 /// Creates a new sparse dictionary.
 ///
@@ -111,6 +124,7 @@ pub fn sparse_array_free(arr: Box<SparseArray>) -> i32 {
 pub fn sparse_dict_init() -> Option<Box<SparseDict>> {
     unimplemented!()
 }
+
 /// Inserts a key/value pair into the dictionary.
 ///
 /// # Parameters
@@ -131,6 +145,7 @@ pub fn sparse_dict_set(
 ) -> i32 {
     unimplemented!()
 }
+
 /// Retrieves the value associated with a key.
 ///
 /// # Parameters
@@ -149,6 +164,7 @@ pub fn sparse_dict_get<'a>(
 ) -> Option<&'a [u8]> {
     unimplemented!()
 }
+
 /// Frees the sparse dictionary.
 ///
 /// # Parameters

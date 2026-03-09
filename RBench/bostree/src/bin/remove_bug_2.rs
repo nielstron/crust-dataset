@@ -35,4 +35,5 @@ fn test() {
         process::exit(1);
     }
 }
+
 fn main() {}

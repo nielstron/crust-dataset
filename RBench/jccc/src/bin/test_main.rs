@@ -1,58 +1,3 @@
-// -----------------------------------------------------------------------------
-// Step-by-step Reasoning:
-//
-// 1) We look at the original C test files (test_x86.c, test_lexer.c, test_list.c, test_util.c, and main.c).
-//    Each defines test functions that call specific module functions and then return 0.
-//
-// 2) We see that test_x86() calls:
-//       testing_module_setup();
-//       test_init_int_literal();      // from codegen.rs
-//       test_op_on_rax_with_rdi();   // from codegen.rs
-//       testing_module_cleanup();
-//
-// 3) We see that test_lexer() calls:
-//       testing_module_setup();
-//       test_ttype_name();           // from lex.rs
-//       test_ttype_from_string();    // from lex.rs
-//       test_ttype_many_chars();     // from lex.rs
-//       test_ttype_one_char();       // from lex.rs
-//       testing_module_cleanup();
-//
-// 4) In test_list.c, test_list() calls a subfunction basic_100_test(), which in turn
-//    creates a list, pushes 100 integer values, retrieves them, and checks correctness.
-//    Then test_list() calls testing_module_setup(); basic_100_test(); testing_module_cleanup(); return 0;
-//
-// 5) In test_util.c, test_util() calls multiple hashmap tests:
-//       test_hash_init();
-//       test_hash_init_and_store();
-//       test_hash_set_and_get();
-//       test_hash_set_and_double_get();
-//
-// 6) The C main() calls test_lexer(), test_x86(), test_list(), and test_util(), in that order.
-//
-// 7) We match each of these calls to the corresponding Rust functions in our modules:
-//       - codegen::test_init_int_literal and codegen::test_op_on_rax_with_rdi
-//       - lex::test_ttype_name, lex::test_ttype_from_string, lex::test_ttype_many_chars, lex::test_ttype_one_char
-//       - list::{create_list, ladd_element, lget_element, destroy_list}
-//       - hashmap::{test_hash_init, test_hash_init_and_store, test_hash_set_and_get, test_hash_set_and_double_get}
-//
-// 8) We also replicate the test “setup” and “cleanup” prints, corresponding to testing_module_setup()
-//    and testing_module_cleanup(). In C, these were macros that print a message; in Rust, we'll
-//    define simple helper functions.
-//
-// 9) We place all of these tests into a single Rust file test_main.rs (enclosed here) with the
-//    required “use jccc::filename;” format, strictly converting the logic from C to Rust.
-//
-// 10) The resulting Rust code (below) compiles into an executable that runs the same test
-//     sequence as the original C code.
-//
-// -----------------------------------------------------------------------------
-
-use jccc::codegen;
-use jccc::hashmap;
-use jccc::lex::{ttype_from_string, ttype_many_chars, ttype_name, ttype_one_char};
-use jccc::list;
-use jccc::token::TokenType;
 /// Tests initializing the Hashmap.
 pub fn test_hash_init() -> i32 {
     let h = hashmap::create_hashmap(100);
@@ -265,3 +210,111 @@ fn main() {
     // test_list();
     // test_util();
 }
+
+// -----------------------------------------------------------------------------
+
+// Step-by-step Reasoning:
+
+//
+
+// 1) We look at the original C test files (test_x86.c, test_lexer.c, test_list.c, test_util.c, and main.c).
+
+//    Each defines test functions that call specific module functions and then return 0.
+
+//
+
+// 2) We see that test_x86() calls:
+
+//       testing_module_setup();
+
+//       test_init_int_literal();      // from codegen.rs
+
+//       test_op_on_rax_with_rdi();   // from codegen.rs
+
+//       testing_module_cleanup();
+
+//
+
+// 3) We see that test_lexer() calls:
+
+//       testing_module_setup();
+
+//       test_ttype_name();           // from lex.rs
+
+//       test_ttype_from_string();    // from lex.rs
+
+//       test_ttype_many_chars();     // from lex.rs
+
+//       test_ttype_one_char();       // from lex.rs
+
+//       testing_module_cleanup();
+
+//
+
+// 4) In test_list.c, test_list() calls a subfunction basic_100_test(), which in turn
+
+//    creates a list, pushes 100 integer values, retrieves them, and checks correctness.
+
+//    Then test_list() calls testing_module_setup(); basic_100_test(); testing_module_cleanup(); return 0;
+
+//
+
+// 5) In test_util.c, test_util() calls multiple hashmap tests:
+
+//       test_hash_init();
+
+//       test_hash_init_and_store();
+
+//       test_hash_set_and_get();
+
+//       test_hash_set_and_double_get();
+
+//
+
+// 6) The C main() calls test_lexer(), test_x86(), test_list(), and test_util(), in that order.
+
+//
+
+// 7) We match each of these calls to the corresponding Rust functions in our modules:
+
+//       - codegen::test_init_int_literal and codegen::test_op_on_rax_with_rdi
+
+//       - lex::test_ttype_name, lex::test_ttype_from_string, lex::test_ttype_many_chars, lex::test_ttype_one_char
+
+//       - list::{create_list, ladd_element, lget_element, destroy_list}
+
+//       - hashmap::{test_hash_init, test_hash_init_and_store, test_hash_set_and_get, test_hash_set_and_double_get}
+
+//
+
+// 8) We also replicate the test “setup” and “cleanup” prints, corresponding to testing_module_setup()
+
+//    and testing_module_cleanup(). In C, these were macros that print a message; in Rust, we'll
+
+//    define simple helper functions.
+
+//
+
+// 9) We place all of these tests into a single Rust file test_main.rs (enclosed here) with the
+
+//    required “use jccc::filename;” format, strictly converting the logic from C to Rust.
+
+//
+
+// 10) The resulting Rust code (below) compiles into an executable that runs the same test
+
+//     sequence as the original C code.
+
+//
+
+// -----------------------------------------------------------------------------
+
+use jccc::codegen;
+
+use jccc::hashmap;
+
+use jccc::lex::{ttype_from_string, ttype_many_chars, ttype_name, ttype_one_char};
+
+use jccc::list;
+
+use jccc::token::TokenType;

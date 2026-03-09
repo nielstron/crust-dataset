@@ -1,10 +1,15 @@
+fn main() {}
+
 // Converted from the original C test script content: "877"
 
 use kairoCompiler::buffer;
+
 use kairoCompiler::compiler;
+
 use kairoCompiler::vector;
 
 #[cfg(test)]
+
 mod tests {
     use super::*;
 
@@ -16,4 +21,3 @@ mod tests {
     }
 }
 
-fn main() {}

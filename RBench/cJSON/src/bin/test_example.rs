@@ -64,4 +64,5 @@ fn test() {
     // So there is no explicit `cJSON_Delete` or `free`.
     println!("Re‐parsed object:\n{}", parse_node.print_formatted());
 }
+
 fn main() {}

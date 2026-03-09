@@ -60,4 +60,5 @@ fn generate_secret_test() {
     assert_eq!(u.coef_sum(), 33);
     assert_eq!(secret.polies.len(), 10);
 }
+
 fn main() {}

@@ -24,13 +24,16 @@ pub struct BOSNode {
     /// Validity flag for the weak reference.
     pub weak_ref_node_valid: u8,
 }
+
 /// Type alias for a key comparison function.
 /// Should return a positive value if `b` is larger than `a`,
 /// a negative value if `a` is larger, and zero if equal.
 pub type BOSTreeCmpFunction = fn(&str, &str) -> i32;
+
 /// Type alias for a free function which will be called on nodes
 /// that are removed.
 pub type BOSTreeFreeFunction = fn(&Rc<RefCell<BOSNode>>);
+
 #[derive(Debug)]
 pub struct BOSTree {
     /// The root node of the tree.
@@ -40,6 +43,7 @@ pub struct BOSTree {
     /// The optional free function for node data.
     pub free_function: Option<BOSTreeFreeFunction>,
 }
+
 impl BOSTree {
     /// Create a new tree with a mandatory comparison function and an optional free function.
     pub fn bostree_new(
@@ -82,18 +86,22 @@ impl BOSTree {
         unimplemented!()
     }
 }
+
 /// Increase the weak reference count for a node and return the node.
 pub fn bostree_node_weak_ref(node: &Rc<RefCell<BOSNode>>) -> Rc<RefCell<BOSNode>> {
     unimplemented!()
 }
+
 /// Return the next node in an in-order traversal.
 pub fn bostree_next_node(node: &Rc<RefCell<BOSNode>>) -> Option<Rc<RefCell<BOSNode>>> {
     unimplemented!()
 }
+
 /// Return the previous node in an in-order traversal.
 pub fn bostree_previous_node(node: &Rc<RefCell<BOSNode>>) -> Option<Rc<RefCell<BOSNode>>> {
     unimplemented!()
 }
+
 /// Return the rank (in-order index) of the given node.
 pub fn bostree_rank(node: &Rc<RefCell<BOSNode>>) -> u32 {
     unimplemented!()

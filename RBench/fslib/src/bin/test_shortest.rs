@@ -6,10 +6,12 @@ pub fn assert_arc_equal(arc_a: &ArcData, arc_b: &ArcData) {
     assert_eq!(arc_a.olabel, arc_b.olabel);
     assert_eq!(arc_a.weight, arc_b.weight);
 }
+
 pub fn assert_state_equal(state_a: &StateData, state_b: &StateData) {
     assert_eq!(state_a.weight, state_b.weight);
     assert_eq!(state_a.final_state, state_b.final_state);
 }
+
 pub fn assert_fst_equal(a: &Fst, b: &Fst) {
     assert_eq!(a.start, b.start);
     assert_eq!(a.sr_type, b.sr_type);
@@ -24,6 +26,7 @@ pub fn assert_fst_equal(a: &Fst, b: &Fst) {
         }
     }
 }
+
 #[test]
 fn test_shortest() {
     let fst_str = "0 1 1 1 1.0\n0 1 2 2 2.0\n1 2 3 3 1.0\n1 2 4 4 2.0\n2";
@@ -39,6 +42,7 @@ fn test_shortest() {
     path.remove();
     expected_path.remove();
 }
+
 #[test]
 fn test_shortest_three() {
     let fst_str = "0 1 1 1 1.0\n0 2 2 2 2.0\n1 3 3 3 1.0\n2 3 4 4 2.0\n0 3 5 5 4.0\n3";
@@ -56,6 +60,7 @@ fn test_shortest_three() {
     path.remove();
     expected_path.remove();
 }
+
 #[test]
 fn test_shortest_cyclic() {
     let fst_str = "0 1 1 1 1.0\n1 2 2 2 1.0\n1 0 3 3 1.0\n2";
@@ -71,6 +76,7 @@ fn test_shortest_cyclic() {
     path.remove();
     expected_path.remove();
 }
+
 #[test]
 fn test_shortest_reflexive() {
     let fst_str = "0 1 1 1 1.0\n1 2 2 2 1.0\n1 1 3 3 1.0\n2";
@@ -86,4 +92,5 @@ fn test_shortest_reflexive() {
     path.remove();
     expected_path.remove();
 }
+
 fn main() {}
