@@ -19,16 +19,16 @@ impl fmt::Display for DataType {
     }
 }
 #[derive(Debug, Clone)]
-pub struct Value {
-    pub dt: DataType,
-    pub v: ValueUnion,
-}
-#[derive(Debug, Clone)]
 pub enum ValueUnion {
     IntV(i32),
     StringV(String),
     FloatV(f32),
     BoolV(Bool),
+}
+#[derive(Debug, Clone)]
+pub struct Value {
+    pub dt: DataType,
+    pub v: ValueUnion,
 }
 #[derive(Debug, Clone)]
 pub struct RID {

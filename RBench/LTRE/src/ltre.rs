@@ -59,7 +59,6 @@ impl Nfa {
     }
 }
 pub fn nfa_free(_nfa: Nfa) {}
-pub fn dfa_free(_dfa: Dfa) {}
 pub fn nfa_clone(orig: &Nfa) -> Nfa {
     unimplemented!()
 }
@@ -95,6 +94,7 @@ pub struct Dfa {
     pub states: Vec<DState>,
     pub initial: usize,
 }
+pub fn dfa_free(_dfa: Dfa) {}
 impl Dfa {
     pub fn new() -> Self {
         unimplemented!()

@@ -144,6 +144,25 @@ pub mod card {
         next: Option<Box<CardCollection>>,
         c: Option<Card>,
     }
+    pub struct CardDeck {
+        card_count: u8,
+        cards: [Card; CardSuitRank::CardCount as usize],
+    }
+    impl CardDeck {
+        pub fn is_card_in_deck(&self, c: CardSuitRank) -> i32 {
+            unimplemented!();
+        }
+        pub fn deal_from_deck(&mut self) -> Option<Card> {
+            unimplemented!();
+        }
+        pub fn strip_card_from_deck(&mut self, c: CardSuitRank) {
+            unimplemented!();
+        }
+        pub fn create_shuffled_deck() -> Option<CardDeck> {
+            unimplemented!();
+        }
+    }
+    pub type CardSorter = fn(&Option<Card>, &Option<Card>, &Option<Card>) -> i32;
     impl CardCollection {
         pub fn insert_into_collection(self, c: Option<Card>, sorter: CardSorter) -> Self {
             unimplemented!()
@@ -164,7 +183,25 @@ pub mod card {
         sorter: CardSorter,
         cards: CardCollection,
     }
-    impl CardHand {
+    pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
+        unimplemented!();
+    }
+    pub fn sort_card_by_rank(
+        before: &Option<Card>,
+        new: &Option<Card>,
+        after: &Option<Card>,
+    ) -> i32 {
+        unimplemented!();
+    }
+    #[derive(Debug, Clone, Copy)]
+    pub enum ItrAction {
+        Continue,
+        Break,
+        RemoveAndContinue,
+        RemoveAndBreak,
+    }
+    pub type CardIterator = fn(u64, u64, &Option<Card>) -> ItrAction;
+}impl CardHand {
         pub fn create_hand(max: u8, sorter: CardSorter) -> Option<CardHand> {
             unimplemented!();
         }
@@ -193,41 +230,4 @@ pub mod card {
             unimplemented!()
         }
     }
-    pub struct CardDeck {
-        card_count: u8,
-        cards: [Card; CardSuitRank::CardCount as usize],
-    }
-    impl CardDeck {
-        pub fn is_card_in_deck(&self, c: CardSuitRank) -> i32 {
-            unimplemented!();
-        }
-        pub fn deal_from_deck(&mut self) -> Option<Card> {
-            unimplemented!();
-        }
-        pub fn strip_card_from_deck(&mut self, c: CardSuitRank) {
-            unimplemented!();
-        }
-        pub fn create_shuffled_deck() -> Option<CardDeck> {
-            unimplemented!();
-        }
-    }
-    pub type CardSorter = fn(&Option<Card>, &Option<Card>, &Option<Card>) -> i32;
-    pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
-        unimplemented!();
-    }
-    pub fn sort_card_by_rank(
-        before: &Option<Card>,
-        new: &Option<Card>,
-        after: &Option<Card>,
-    ) -> i32 {
-        unimplemented!();
-    }
-    #[derive(Debug, Clone, Copy)]
-    pub enum ItrAction {
-        Continue,
-        Break,
-        RemoveAndContinue,
-        RemoveAndBreak,
-    }
-    pub type CardIterator = fn(u64, u64, &Option<Card>) -> ItrAction;
-}
+    

@@ -10,6 +10,14 @@ pub enum Suit {
     Heart,
     Spade,
 }
+impl Suit {
+    pub fn from_char(c: char) -> Suit {
+        unimplemented!()
+    }
+    pub fn to_char(&self) -> char {
+        unimplemented!()
+    }
+}
 #[derive(Debug, PartialEq, Eq, Copy, Clone, PartialOrd, Ord)]
 pub enum Rank {
     InvalidRank,
@@ -26,6 +34,14 @@ pub enum Rank {
     Queen,
     King,
     Ace,
+}
+impl Rank {
+    pub fn from_char(c: char) -> Rank {
+        unimplemented!()
+    }
+    pub fn to_char(&self) -> char {
+        unimplemented!()
+    }
 }
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub struct Card {
@@ -51,22 +67,6 @@ impl Card {
 }
 pub fn card_swap(card1: &mut Card, card2: &mut Card) {
     unimplemented!()
-}
-impl Rank {
-    pub fn from_char(c: char) -> Rank {
-        unimplemented!()
-    }
-    pub fn to_char(&self) -> char {
-        unimplemented!()
-    }
-}
-impl Suit {
-    pub fn from_char(c: char) -> Suit {
-        unimplemented!()
-    }
-    pub fn to_char(&self) -> char {
-        unimplemented!()
-    }
 }
 pub fn index_of(c: char, chars: &str) -> Option<usize> {
     unimplemented!()

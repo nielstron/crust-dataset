@@ -22,14 +22,14 @@ use std::{
 };
 
 static NEXT_CHECKER_ID: AtomicU64 = AtomicU64::new(1);
-static HELPER_BINS: OnceLock<HelperBins> = OnceLock::new();
-
 #[derive(Clone, Debug)]
 struct HelperBins {
     parse: PathBuf,
     check: PathBuf,
     confirm: PathBuf,
 }
+
+static HELPER_BINS: OnceLock<HelperBins> = OnceLock::new();
 
 fn do_assert(cond: bool) {
     assert!(cond, "Assertion failed!");

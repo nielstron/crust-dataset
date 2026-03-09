@@ -14,11 +14,11 @@ pub struct Bufferpool {
     pub pagedata: String,
     pub fhl: SM_FileHandle,
 }
+pub type PageNumber = i32;
 pub struct BM_PageHandle {
     pub page_num: PageNumber,
     pub data: String,
 }
-pub type PageNumber = i32;
 pub const NO_PAGE: PageNumber = -1;
 pub enum ReplacementStrategy {
     RsFifo = 0,

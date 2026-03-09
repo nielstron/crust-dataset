@@ -3,6 +3,11 @@ use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 use std::process;
+fn read_lines<P: AsRef<std::path::Path>>(path: P) -> std::io::Result<Vec<String>> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    reader.lines().collect()
+}
 #[test]
 fn test() {
     let filename = "src/bin/foo.2bit";
@@ -39,9 +44,4 @@ fn test() {
     assert_eq!(expected_lines, output_lines);
 }
 
-fn read_lines<P: AsRef<std::path::Path>>(path: P) -> std::io::Result<Vec<String>> {
-    let file = File::open(path)?;
-    let reader = BufReader::new(file);
-    reader.lines().collect()
-}
 fn main() {}

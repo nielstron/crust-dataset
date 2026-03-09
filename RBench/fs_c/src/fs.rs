@@ -1,18 +1,18 @@
 use std::fs;
 use std::io::Result;
 use std::os::fd;
-#[cfg(target_os = "windows")]
-pub const FS_OPEN_READ: &str = "rb";
-#[cfg(target_os = "windows")]
-pub const FS_OPEN_WRITE: &str = "wb";
-#[cfg(target_os = "windows")]
-pub const FS_OPEN_READWRITE: &str = "rwb";
 #[cfg(not(target_os = "windows"))]
 pub const FS_OPEN_READ: &str = "r";
+#[cfg(target_os = "windows")]
+pub const FS_OPEN_READ: &str = "rb";
 #[cfg(not(target_os = "windows"))]
 pub const FS_OPEN_WRITE: &str = "w";
+#[cfg(target_os = "windows")]
+pub const FS_OPEN_WRITE: &str = "wb";
 #[cfg(not(target_os = "windows"))]
 pub const FS_OPEN_READWRITE: &str = "rw";
+#[cfg(target_os = "windows")]
+pub const FS_OPEN_READWRITE: &str = "rwb";
 pub fn fs_error(s: &str) {
     unimplemented!()
 }

@@ -15,13 +15,11 @@ const OSORT: u8 = 0x02;
 const EPS: u32 = 0;
 const EPS_L: i32 = -1;
 pub const START_STATE: &str = "<start>";
-pub struct Fst {
-    pub start: State,
-    pub n_states: State,
-    pub n_max: State,
-    pub sr_type: u8,
-    pub flags: u8,
-    pub states: Vec<StateData>,
+pub struct ArcData {
+    pub state: State,
+    pub weight: Weight,
+    pub ilabel: Label,
+    pub olabel: Label,
 }
 pub struct StateData {
     pub n_arcs: Arc,
@@ -30,32 +28,13 @@ pub struct StateData {
     pub final_state: bool,
     pub arcs: Vec<ArcData>,
 }
-pub struct ArcData {
-    pub state: State,
-    pub weight: Weight,
-    pub ilabel: Label,
-    pub olabel: Label,
-}
-pub struct Spair {
-    pub a: State,
-    pub b: State,
-}
-pub struct Striple {
-    pub a: State,
-    pub b: State,
-    pub c: State,
-}
-pub struct Apair {
-    pub a: Arc,
-    pub b: Arc,
-}
-pub struct ArcPair {
-    pub a: ArcData,
-    pub b: ArcData,
-}
-pub struct MatchItem {
-    pub a: ArcData,
-    pub b: ArcData,
+pub struct Fst {
+    pub start: State,
+    pub n_states: State,
+    pub n_max: State,
+    pub sr_type: u8,
+    pub flags: u8,
+    pub states: Vec<StateData>,
 }
 impl Fst {
     pub fn new() -> Self {
@@ -152,6 +131,27 @@ impl Fst {
     pub fn relabel(&mut self, old: Label, new: Label, dir: i32) {
         unimplemented!()
     }
+}
+pub struct Spair {
+    pub a: State,
+    pub b: State,
+}
+pub struct Striple {
+    pub a: State,
+    pub b: State,
+    pub c: State,
+}
+pub struct Apair {
+    pub a: Arc,
+    pub b: Arc,
+}
+pub struct ArcPair {
+    pub a: ArcData,
+    pub b: ArcData,
+}
+pub struct MatchItem {
+    pub a: ArcData,
+    pub b: ArcData,
 }
 pub fn match_unsorted(
     a: &[ArcData],

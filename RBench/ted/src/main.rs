@@ -1,12 +1,8 @@
 use ted::buffer::TextBuffer;
 use ted::defs::panic;
-pub struct EditorState {
-    orig_termios: termios::Termios,
-    file_name: Option<String>,
-    file_path: Option<String>,
-    flushed: bool,
-    current_buffer: TextBuffer,
-    screen: VirtualScreen,
+pub struct Cursor {
+    x: usize,
+    y: usize,
 }
 pub struct VirtualScreen {
     buffer: Vec<char>,
@@ -17,9 +13,13 @@ pub struct VirtualScreen {
     height: usize,
     render_start_line: usize,
 }
-pub struct Cursor {
-    x: usize,
-    y: usize,
+pub struct EditorState {
+    orig_termios: termios::Termios,
+    file_name: Option<String>,
+    file_path: Option<String>,
+    flushed: bool,
+    current_buffer: TextBuffer,
+    screen: VirtualScreen,
 }
 impl EditorState {
     pub fn initialize(argc: i32, argv: Vec<String>) {

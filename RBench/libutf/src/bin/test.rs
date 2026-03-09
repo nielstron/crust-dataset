@@ -97,6 +97,21 @@ fn test_utf16_length() {
 }
 
 #[test]
+fn test_validate() {
+    fn test_validate(string: &[u16]) {
+        assert!(libutf_utf::utf16le_validate(string));
+    }
+
+    test_validate(&[0x0061]);
+    test_validate(&[0x0048, 0x0065, 0x006C, 0x006C, 0x006F]);
+    test_validate(&[0x00E8]);
+    test_validate(&[0x00E8, 0x00E9, 0x00EA, 0x00EB]);
+    test_validate(&[0xD801, 0xDC37]);
+    test_validate(&[0xD801, 0xDC37, 0xD83F, 0xDC1F]);
+    test_validate(&[0x0048, 0x0065, 0x006C, 0x006C, 0x006F, 0xD801, 0xDC37]);
+}
+
+#[test]
 fn test_validate_invalid_utf8() {
     fn test_validate(string: &[u8]) {
         assert!(!libutf_utf::utf8_validate(string));
@@ -150,21 +165,6 @@ fn test_validate_utf8() {
     test_validate(b"\xF0\x9F\x98\x80");
     test_validate(b"\xF0\x9F\x98\x80\xF0\x9F\x98\x81\xF0\x9F\x98\x82");
     test_validate(b"a \xC3\xA9 \xE2\x82\xAC \xF0\x9F\x98\x80");
-}
-
-#[test]
-fn test_validate() {
-    fn test_validate(string: &[u16]) {
-        assert!(libutf_utf::utf16le_validate(string));
-    }
-
-    test_validate(&[0x0061]);
-    test_validate(&[0x0048, 0x0065, 0x006C, 0x006C, 0x006F]);
-    test_validate(&[0x00E8]);
-    test_validate(&[0x00E8, 0x00E9, 0x00EA, 0x00EB]);
-    test_validate(&[0xD801, 0xDC37]);
-    test_validate(&[0xD801, 0xDC37, 0xD83F, 0xDC1F]);
-    test_validate(&[0x0048, 0x0065, 0x006C, 0x006C, 0x006F, 0xD801, 0xDC37]);
 }
 
 fn main() {}
