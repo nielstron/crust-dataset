@@ -6,15 +6,40 @@ use std::collections::VecDeque;
 use std::fs::File;
 use std::io::{self, Read, Write};
 pub type State = u32;
+
 pub type Arc = u32;
+
 pub type Label = u32;
+
 pub type Weight = f32;
+
 const FST_HEADER: u32 = 0x66733031;
+
 const ISORT: u8 = 0x01;
+
 const OSORT: u8 = 0x02;
+
 const EPS: u32 = 0;
+
 const EPS_L: i32 = -1;
+
 pub const START_STATE: &str = "<start>";
+
+pub struct ArcData {
+    pub state: State,
+    pub weight: Weight,
+    pub ilabel: Label,
+    pub olabel: Label,
+}
+
+pub struct StateData {
+    pub n_arcs: Arc,
+    pub n_max: Arc,
+    pub weight: Weight,
+    pub final_state: bool,
+    pub arcs: Vec<ArcData>,
+}
+
 pub struct Fst {
     pub start: State,
     pub n_states: State,
@@ -23,40 +48,7 @@ pub struct Fst {
     pub flags: u8,
     pub states: Vec<StateData>,
 }
-pub struct StateData {
-    pub n_arcs: Arc,
-    pub n_max: Arc,
-    pub weight: Weight,
-    pub final_state: bool,
-    pub arcs: Vec<ArcData>,
-}
-pub struct ArcData {
-    pub state: State,
-    pub weight: Weight,
-    pub ilabel: Label,
-    pub olabel: Label,
-}
-pub struct Spair {
-    pub a: State,
-    pub b: State,
-}
-pub struct Striple {
-    pub a: State,
-    pub b: State,
-    pub c: State,
-}
-pub struct Apair {
-    pub a: Arc,
-    pub b: Arc,
-}
-pub struct ArcPair {
-    pub a: ArcData,
-    pub b: ArcData,
-}
-pub struct MatchItem {
-    pub a: ArcData,
-    pub b: ArcData,
-}
+
 impl Fst {
     pub fn new() -> Self {
         unimplemented!()
@@ -153,6 +145,33 @@ impl Fst {
         unimplemented!()
     }
 }
+
+pub struct Spair {
+    pub a: State,
+    pub b: State,
+}
+
+pub struct Striple {
+    pub a: State,
+    pub b: State,
+    pub c: State,
+}
+
+pub struct Apair {
+    pub a: Arc,
+    pub b: Arc,
+}
+
+pub struct ArcPair {
+    pub a: ArcData,
+    pub b: ArcData,
+}
+
+pub struct MatchItem {
+    pub a: ArcData,
+    pub b: ArcData,
+}
+
 pub fn match_unsorted(
     a: &[ArcData],
     b: &[ArcData],
@@ -162,6 +181,7 @@ pub fn match_unsorted(
 ) {
     unimplemented!()
 }
+
 pub fn match_half_sorted(
     a: &[ArcData],
     b: &[ArcData],
@@ -171,6 +191,7 @@ pub fn match_half_sorted(
 ) {
     unimplemented!()
 }
+
 pub fn match_half_sorted_rev(
     a: &[ArcData],
     b: &[ArcData],
@@ -180,6 +201,7 @@ pub fn match_half_sorted_rev(
 ) {
     unimplemented!()
 }
+
 pub fn match_full_sorted(
     a: &[ArcData],
     b: &[ArcData],
@@ -189,6 +211,7 @@ pub fn match_full_sorted(
 ) {
     unimplemented!()
 }
+
 pub fn match_arcs(
     fst_a: &Fst,
     fst_b: &Fst,

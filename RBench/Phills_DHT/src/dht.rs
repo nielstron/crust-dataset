@@ -4,6 +4,7 @@ pub mod dht {
         pub lower_bound: i32,
         pub higher_bound: i32,
     }
+
     impl<T> HASHTABLE<T> {
         pub fn dht_init() -> HASHTABLE<T> {
             unimplemented!()

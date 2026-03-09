@@ -2,11 +2,13 @@ struct QueueNode<T> {
     value: T,
     next: Option<Box<QueueNode<T>>>,
 }
+
 pub struct Queue<T> {
     pub head: Option<Box<QueueNode<T>>>,
     pub tail: Option<*mut QueueNode<T>>, // Tail for efficient appending
     pub size: usize,
 }
+
 impl<T> Queue<T> {
     /// Creates a new, empty queue.
     pub fn new() -> Self {

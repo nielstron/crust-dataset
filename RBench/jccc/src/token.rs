@@ -87,8 +87,10 @@ pub enum TokenType {
     TT_VOLATILE,
     TT_WHILE,
 }
+
 /// The maximum length of a token in C code; here it serves as a reference.
 pub const TOKEN_LENGTH: usize = 256;
+
 /// Represents a token with its type, contents, position, and the file it came from.
 #[derive(Debug)]
 pub struct Token {

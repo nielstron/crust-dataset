@@ -7,6 +7,7 @@ pub struct TopKEntry {
     pub packet: LZMAPacket,
     pub cost: f32,
 }
+
 /// Finds the top-K best packets for encoding.
 ///
 /// The `entries` and `next_packets` fields store candidate packets and the
@@ -24,6 +25,7 @@ pub struct TopKPacketFinder<'a> {
     /// A reference to the packet enumerator used to generate candidate packets.
     pub packet_enumerator: &'a PacketEnumerator<'a>,
 }
+
 impl<'a> TopKPacketFinder<'a> {
     pub fn new(size: usize, _packet_enumerator: &PacketEnumerator) -> Self {
         unimplemented!();

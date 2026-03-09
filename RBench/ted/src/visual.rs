@@ -3,6 +3,7 @@ pub struct Cursor {
     x: usize,
     y: usize,
 }
+
 pub struct VirtualScreen {
     buffer: Vec<char>,
     buf_pos: usize,
@@ -12,6 +13,7 @@ pub struct VirtualScreen {
     height: usize,
     render_start_line: usize,
 }
+
 impl VirtualScreen {
     pub fn screen_append(&mut self, str: &str, size: usize) {
         unimplemented!()

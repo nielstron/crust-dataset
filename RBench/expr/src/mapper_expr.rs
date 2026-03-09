@@ -7,6 +7,7 @@ pub enum MapperSignalValue {
     F(f32),
     I32(i32),
 }
+
 impl MapperSignalValue {
     pub fn as_f32(&self) -> Option<f32> {
         unimplemented!()
@@ -15,31 +16,9 @@ impl MapperSignalValue {
         unimplemented!()
     }
 }
+
 const STACK_SIZE: usize = 256;
-macro_rules! trace {
-    ($($arg:tt)*) => {
-        if TRACING {
-            println!("-- {}", format!($($arg)*));
-        }
-    };
-}
-macro_rules! die_unless {
-    ($cond:expr, $($arg:tt)*) => {
-        if !$cond {
-            println!("-- {}", format!($($arg)*));
-            assert!($cond);
-        }
-    };
-}
-fn minf(x: f32, y: f32) -> f32 {
-    unimplemented!();
-}
-fn maxf(x: f32, y: f32) -> f32 {
-    unimplemented!();
-}
-fn pif() -> f32 {
-    unimplemented!();
-}
+
 #[repr(i32)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum ExprFunc {
@@ -74,12 +53,166 @@ enum ExprFunc {
     Pi,
     NFuncs,
 }
+
 #[derive(Debug, Clone, Copy)]
 struct FunctionEntry {
     name: &'static str,
     arity: u32,
     func: fn(f32, f32) -> f32,
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum TokenType {
+    Float,
+    Int,
+    Op,
+    OpenParen,
+    CloseParen,
+    Var,
+    OpenSquare,
+    CloseSquare,
+    OpenCurly,
+    CloseCurly,
+    Func,
+    Comma,
+    End,
+    ToFloat,
+    ToInt32,
+}
+
+#[derive(Debug, Clone, Copy)]
+struct Token {
+    token_type: TokenType,
+    value: Option<f32>,
+    int_value: Option<i32>,
+    var: Option<char>,
+    op: Option<char>,
+}
+
+pub struct ExprNode {
+    pub tok: Token,
+    pub is_float: i32,
+    pub history_index: i32,
+    pub vector_index: i32,
+    pub next: Option<Arc<ExprNode>>,
+}
+
+impl ExprNode {
+    pub fn new() -> ExprNode {
+        unimplemented!();
+    }
+    pub fn expr_free(&self) {
+        unimplemented!();
+    }
+}
+
+pub struct MapperExpr {
+    pub node: ExprNode,
+    pub vector_size: i32,
+    pub history_size: i32,
+    pub history_pos: i32,
+    pub input_history: Vec<MapperSignalValue>,
+    pub output_history: Vec<MapperSignalValue>,
+}
+
+pub enum state_t {
+    YEQUAL_Y,
+    YEQUAL_EQ,
+    EXPR,
+    EXPR_RIGHT,
+    TERM,
+    TERM_RIGHT,
+    VALUE,
+    NEGATE,
+    VAR_RIGHT,
+    VAR_VECTINDEX,
+    VAR_HISTINDEX,
+    CLOSE_VECTINDEX,
+    CLOSE_HISTINDEX,
+    OPEN_PAREN,
+    CLOSE_PAREN,
+    COMMA,
+    END,
+}
+
+enum stack_obj_t {
+    State(state_t),
+    Node(ExprNode),
+}
+
+fn minf(x: f32, y: f32) -> f32 {
+    unimplemented!();
+}
+
+fn maxf(x: f32, y: f32) -> f32 {
+    unimplemented!();
+}
+
+fn pif() -> f32 {
+    unimplemented!();
+}
+
+fn function_lookup(s: &str) -> Option<&'static FunctionEntry> {
+    unimplemented!();
+}
+
+fn expr_lex(s: Vec<&str>) -> Vec<Token> {
+    unimplemented!();
+}
+
+fn printtoken(t: &Token) {
+    unimplemented!();
+}
+
+fn printexprnode(s: &str, list: &ExprNode) {
+    unimplemented!();
+}
+
+fn printexpr(s: &str, list: &MapperExpr) {
+    unimplemented!();
+}
+
+fn printstack(stack: &stack_obj_t, stack_size: i32) {
+    unimplemented!();
+}
+
+fn collapse_expr_to_left(plhs: &mut ExprNode, constant_folding: i32) {
+    unimplemented!();
+}
+
+pub fn mapper_expr_new_from_string(
+    s: &str,
+    input_is_float: i32,
+    output_is_float: i32,
+    vector_size: i32,
+) -> MapperExpr {
+    unimplemented!();
+}
+
+pub fn mapper_expr_evaluate<'a>(
+    mapper: &mut MapperExpr,
+    input: &'a MapperSignalValue,
+) -> MapperSignalValue {
+    unimplemented!();
+}
+
+macro_rules! trace {
+    ($($arg:tt)*) => {
+        if TRACING {
+            println!("-- {}", format!($($arg)*));
+        }
+    };
+}
+
+macro_rules! die_unless {
+    ($cond:expr, $($arg:tt)*) => {
+        if !$cond {
+            println!("-- {}", format!($($arg)*));
+            assert!($cond);
+        }
+    };
+}
+
 lazy_static::lazy_static! {
     static ref FUNCTION_TABLE: HashMap<&'static str, FunctionEntry> = {
         let mut m = HashMap::new();
@@ -101,110 +234,4 @@ lazy_static::lazy_static! {
         m
     };
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum TokenType {
-    Float,
-    Int,
-    Op,
-    OpenParen,
-    CloseParen,
-    Var,
-    OpenSquare,
-    CloseSquare,
-    OpenCurly,
-    CloseCurly,
-    Func,
-    Comma,
-    End,
-    ToFloat,
-    ToInt32,
-}
-#[derive(Debug, Clone, Copy)]
-struct Token {
-    token_type: TokenType,
-    value: Option<f32>,
-    int_value: Option<i32>,
-    var: Option<char>,
-    op: Option<char>,
-}
-fn function_lookup(s: &str) -> Option<&'static FunctionEntry> {
-    unimplemented!();
-}
-fn expr_lex(s: Vec<&str>) -> Vec<Token> {
-    unimplemented!();
-}
-pub struct ExprNode {
-    pub tok: Token,
-    pub is_float: i32,
-    pub history_index: i32,
-    pub vector_index: i32,
-    pub next: Option<Arc<ExprNode>>,
-}
-pub struct MapperExpr {
-    pub node: ExprNode,
-    pub vector_size: i32,
-    pub history_size: i32,
-    pub history_pos: i32,
-    pub input_history: Vec<MapperSignalValue>,
-    pub output_history: Vec<MapperSignalValue>,
-}
-pub enum state_t {
-    YEQUAL_Y,
-    YEQUAL_EQ,
-    EXPR,
-    EXPR_RIGHT,
-    TERM,
-    TERM_RIGHT,
-    VALUE,
-    NEGATE,
-    VAR_RIGHT,
-    VAR_VECTINDEX,
-    VAR_HISTINDEX,
-    CLOSE_VECTINDEX,
-    CLOSE_HISTINDEX,
-    OPEN_PAREN,
-    CLOSE_PAREN,
-    COMMA,
-    END,
-}
-enum stack_obj_t {
-    State(state_t),
-    Node(ExprNode),
-}
-impl ExprNode {
-    pub fn new() -> ExprNode {
-        unimplemented!();
-    }
-    pub fn expr_free(&self) {
-        unimplemented!();
-    }
-}
-fn printtoken(t: &Token) {
-    unimplemented!();
-}
-fn printexprnode(s: &str, list: &ExprNode) {
-    unimplemented!();
-}
-fn printexpr(s: &str, list: &MapperExpr) {
-    unimplemented!();
-}
-fn printstack(stack: &stack_obj_t, stack_size: i32) {
-    unimplemented!();
-}
-fn collapse_expr_to_left(plhs: &mut ExprNode, constant_folding: i32) {
-    unimplemented!();
-}
-pub fn mapper_expr_new_from_string(
-    s: &str,
-    input_is_float: i32,
-    output_is_float: i32,
-    vector_size: i32,
-) -> MapperExpr {
-    unimplemented!();
-}
-pub fn mapper_expr_evaluate<'a>(
-    mapper: &mut MapperExpr,
-    input: &'a MapperSignalValue,
-) -> MapperSignalValue {
-    unimplemented!();
-}
+

@@ -4,13 +4,16 @@ use crate::log::{LogType, Logger};
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
 const LOAD_FACTOR: f32 = 1.0;
+
 #[cfg(debug_assertions)]
 const EPS: f32 = 1e-3;
+
 pub struct CuckooEntry {
     key: Option<&'static str>,
     data: Option<&'static str>,
     marker: u32,
 }
+
 pub struct CuckooHashTable {
     cur_size: u32,
     cur_marker: u32,
@@ -18,6 +21,7 @@ pub struct CuckooHashTable {
     first_arr: Vec<CuckooEntry>,
     second_arr: Vec<CuckooEntry>,
 }
+
 impl CuckooHashTable {
     pub fn new(initial_size: usize) -> Arc<RwLock<Self>> {
         unimplemented!()

@@ -2,6 +2,7 @@ pub struct HashTableEntry<'a, T> {
     pub key: u64,
     pub val: &'a mut [T],
 }
+
 pub struct HashTable<'a, T> {
     pub size: u64,
     pub max_size: u64,
@@ -10,6 +11,7 @@ pub struct HashTable<'a, T> {
     pub data: &'a mut [HashTableEntry<'a, T>],
     pub last_found_idx: u64,
 }
+
 impl<T> HashTable<'_, T> {
     pub fn new(log_init_capacity: i32) -> Self {
         unimplemented!()

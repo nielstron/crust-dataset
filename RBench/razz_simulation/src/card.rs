@@ -1,24 +1,44 @@
 pub mod card {
     pub const CLUB_BITS: u32 = 4 << 5;
+
     pub const ACE_BITS: u32 = 1;
+
     pub const J_BITS: u32 = 11;
+
     pub const R8_BITS: u32 = 8;
+
     pub const R10_BITS: u32 = 10;
+
     pub const HEART_BITS: u32 = 2 << 5;
+
     pub const R4_BITS: u32 = 4;
+
     pub const SPADE_BITS: u32 = 1 << 5;
+
     pub const Q_BITS: u32 = 12;
+
     pub const R7_BITS: u32 = 7;
+
     pub const R5_BITS: u32 = 5;
+
     pub const K_BITS: u32 = 13;
+
     pub const R3_BITS: u32 = 3;
+
     pub const RANK_BITS: u32 = 0x1F;
+
     pub const R9_BITS: u32 = 9;
+
     pub const SUIT_BITS: u32 = 0x7 << 5;
+
     pub const R6_BITS: u32 = 6;
+
     pub const INVALID_CARD_BITS: u32 = 0;
+
     pub const DIAMOND_BITS: u32 = 3 << 5;
+
     pub const R2_BITS: u32 = 2;
+
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardSuitRank {
         SpadeAce,
@@ -76,11 +96,13 @@ pub mod card {
         CardCount,
         InvalidCard,
     }
+
     impl CardSuitRank {
         pub fn cardtostr(&self) -> Option<String> {
             unimplemented!()
         }
     }
+
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardRank {
         Ace,
@@ -99,6 +121,7 @@ pub mod card {
         RankCount,
         InvalidRank,
     }
+
     impl CardRank {
         pub fn ranktostr(&self) -> Option<String> {
             unimplemented!();
@@ -107,6 +130,7 @@ pub mod card {
             unimplemented!();
         }
     }
+
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     pub enum CardSuit {
         Spade,
@@ -116,9 +140,11 @@ pub mod card {
         SuitCount,
         InvalidSuit,
     }
+
     pub struct Card {
         card: u8,
     }
+
     impl Card {
         pub fn write_card(csr: CardSuitRank) -> Self {
             unimplemented!()
@@ -139,11 +165,35 @@ pub mod card {
             unimplemented!();
         }
     }
+
     pub struct CardCollection {
         prev: Option<Box<CardCollection>>,
         next: Option<Box<CardCollection>>,
         c: Option<Card>,
     }
+
+    pub struct CardDeck {
+        card_count: u8,
+        cards: [Card; CardSuitRank::CardCount as usize],
+    }
+
+    impl CardDeck {
+        pub fn is_card_in_deck(&self, c: CardSuitRank) -> i32 {
+            unimplemented!();
+        }
+        pub fn deal_from_deck(&mut self) -> Option<Card> {
+            unimplemented!();
+        }
+        pub fn strip_card_from_deck(&mut self, c: CardSuitRank) {
+            unimplemented!();
+        }
+        pub fn create_shuffled_deck() -> Option<CardDeck> {
+            unimplemented!();
+        }
+    }
+
+    pub type CardSorter = fn(&Option<Card>, &Option<Card>, &Option<Card>) -> i32;
+
     impl CardCollection {
         pub fn insert_into_collection(self, c: Option<Card>, sorter: CardSorter) -> Self {
             unimplemented!()
@@ -158,12 +208,24 @@ pub mod card {
             unimplemented!()
         }
     }
+
     pub struct CardHand {
         max: u8,
         len: u8,
         sorter: CardSorter,
         cards: CardCollection,
     }
+
+    #[derive(Debug, Clone, Copy)]
+    pub enum ItrAction {
+        Continue,
+        Break,
+        RemoveAndContinue,
+        RemoveAndBreak,
+    }
+
+    pub type CardIterator = fn(u64, u64, &Option<Card>) -> ItrAction;
+
     impl CardHand {
         pub fn create_hand(max: u8, sorter: CardSorter) -> Option<CardHand> {
             unimplemented!();
@@ -193,28 +255,11 @@ pub mod card {
             unimplemented!()
         }
     }
-    pub struct CardDeck {
-        card_count: u8,
-        cards: [Card; CardSuitRank::CardCount as usize],
-    }
-    impl CardDeck {
-        pub fn is_card_in_deck(&self, c: CardSuitRank) -> i32 {
-            unimplemented!();
-        }
-        pub fn deal_from_deck(&mut self) -> Option<Card> {
-            unimplemented!();
-        }
-        pub fn strip_card_from_deck(&mut self, c: CardSuitRank) {
-            unimplemented!();
-        }
-        pub fn create_shuffled_deck() -> Option<CardDeck> {
-            unimplemented!();
-        }
-    }
-    pub type CardSorter = fn(&Option<Card>, &Option<Card>, &Option<Card>) -> i32;
+
     pub fn sort_card_after(before: &Option<Card>, new: &Option<Card>, after: &Option<Card>) -> i32 {
         unimplemented!();
     }
+
     pub fn sort_card_by_rank(
         before: &Option<Card>,
         new: &Option<Card>,
@@ -222,12 +267,5 @@ pub mod card {
     ) -> i32 {
         unimplemented!();
     }
-    #[derive(Debug, Clone, Copy)]
-    pub enum ItrAction {
-        Continue,
-        Break,
-        RemoveAndContinue,
-        RemoveAndBreak,
-    }
-    pub type CardIterator = fn(u64, u64, &Option<Card>) -> ItrAction;
+    
 }

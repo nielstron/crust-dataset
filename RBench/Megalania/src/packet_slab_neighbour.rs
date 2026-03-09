@@ -8,6 +8,7 @@ pub struct PacketSlabNeighbour<'a> {
     pub perplexity: u64,
     pub undo_stack: PacketSlabUndoStack,
 }
+
 impl<'a> PacketSlabNeighbour<'a> {
     pub fn new(slab: PacketSlab, init_state: LZMAState) -> Self {
         unimplemented!();

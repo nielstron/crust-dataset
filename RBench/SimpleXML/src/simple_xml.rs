@@ -1,7 +1,9 @@
 use crate::simple_vector::Vector;
 
 const BEGIN_TAG_TOKEN: char = '<';
+
 const END_TAG_TOKEN: char = '>';
+
 const SPLASH_TOKEN: char = '/';
 
 pub struct XMLElement {
@@ -9,6 +11,12 @@ pub struct XMLElement {
     pub value: String,
     pub parent: (),
     pub children: Vector<XMLElement>, // owns children
+}
+
+impl XMLElement {
+    pub fn new(tag_name: String, value: String) -> XMLElement {
+        unimplemented!()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -47,12 +55,6 @@ impl StackElement {
         unimplemented!()
     }
     pub fn release(&mut self) {
-        unimplemented!()
-    }
-}
-
-impl XMLElement {
-    pub fn new(tag_name: String, value: String) -> XMLElement {
         unimplemented!()
     }
 }

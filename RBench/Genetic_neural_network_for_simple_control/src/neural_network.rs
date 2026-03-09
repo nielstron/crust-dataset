@@ -1,6 +1,3 @@
-// neural_network.rs
-use crate::matrix_math::Matrix;
-use crate::population::Pop;
 #[derive(Default)]
 /// Structure representing the neural network definition.
 pub struct NN {
@@ -16,6 +13,7 @@ pub struct NN {
     pub sdNeuronsTypes: Vec<Vec<u8>>, // Neuron types per SD layer (0 = straight, 1 = S, 2 = D)
     pub SDMemory: Vec<Matrix>,        // Memory for each SD layer (one Matrix per SD layer)
 }
+
 #[derive(Default)]
 /// Input structure used to create an NN instance.
 pub struct NNInput {
@@ -26,24 +24,31 @@ pub struct NNInput {
     pub layerType: Vec<i32>,                  // Type per hidden layer
     pub sdNumber: usize,                      // Number of SD layers
 }
+
 fn clearNNInput(input: NNInput) {
     unimplemented!();
 }
+
 pub fn createNeuralNetwork(input: NNInput, neural_network: &mut NN) {
     unimplemented!();
 }
+
 pub fn clearNeuralNetwork(neural_network: NN) {
     unimplemented!();
 }
+
 pub fn fillMatrixesNN(neural_network: &mut NN, population: &[f32]) {
     unimplemented!();
 }
+
 pub fn clearSDMemory(neural_network: &mut NN) {
     unimplemented!();
 }
+
 pub fn deNormalizationProcess(neural_network: &mut NN, input: &mut Matrix, way: i32) {
     unimplemented!();
 }
+
 fn makeSDLayerAction(
     neural_network: &mut NN,
     input: &mut Matrix,
@@ -52,6 +57,14 @@ fn makeSDLayerAction(
 ) {
     unimplemented!();
 }
+
 pub fn oneCalculation(neural_network: &mut NN, input: &mut Matrix, output: &mut Matrix) {
     unimplemented!();
 }
+
+// neural_network.rs
+
+use crate::matrix_math::Matrix;
+
+use crate::population::Pop;
+

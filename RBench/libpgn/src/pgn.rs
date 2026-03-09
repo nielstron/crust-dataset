@@ -9,6 +9,7 @@ pub struct Pgn {
     pub moves: Option<Box<PgnMoves>>,       // Instead of raw `pgn_moves_t *`
     pub score: PgnScore,
 }
+
 impl Pgn {
     pub fn new() -> Self {
         unimplemented!()

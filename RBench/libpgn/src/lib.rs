@@ -1,12 +1,23 @@
 pub mod annotation;
+
 pub mod check;
+
 pub mod comments;
+
 pub mod coordinate;
+
 pub mod metadata;
+
 pub mod moves;
+
 pub mod pgn;
+
 pub mod piece;
+
 pub mod score;
+
 pub mod buffer;
+
 pub mod cursor;
+
 pub mod export;

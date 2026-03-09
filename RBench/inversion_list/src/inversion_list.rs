@@ -4,12 +4,14 @@ pub enum InversionListError {
     ValueOutOfRange(u32, u32),
     Generic(String),
 }
+
 #[derive(Clone, Debug)]
 pub struct InversionList {
     capacity: u32,
     support: u32,
     pub intervals: Vec<(u32, u32)>,
 }
+
 impl InversionList {
     pub fn new(capacity: u32, values: &[u32]) -> Result<Self, InversionListError> {
         unimplemented!()
@@ -57,42 +59,51 @@ impl InversionList {
         unimplemented!()
     }
 }
+
 impl PartialEq for InversionList {
     fn eq(&self, other: &Self) -> bool {
         unimplemented!()
     }
 }
+
 impl Eq for InversionList {}
+
 impl fmt::Display for InversionList {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
 }
+
 pub struct InversionListIterator<'a> {
     list: &'a InversionList,
     interval_index: usize,
     current_value: u32,
 }
+
+pub struct InversionListCoupleIterator<'a> {
+    list: &'a InversionList,
+    couple_index: usize,
+}
+
 impl<'a> InversionListIterator<'a> {
     pub fn new(list: &'a InversionList) -> Self {
         unimplemented!()
     }
 }
+
 impl<'a> Iterator for InversionListIterator<'a> {
     type Item = u32;
     fn next(&mut self) -> Option<Self::Item> {
         unimplemented!()
     }
 }
-pub struct InversionListCoupleIterator<'a> {
-    list: &'a InversionList,
-    couple_index: usize,
-}
+
 impl<'a> InversionListCoupleIterator<'a> {
     pub fn new(list: &'a InversionList) -> Self {
         unimplemented!()
     }
 }
+
 impl<'a> Iterator for InversionListCoupleIterator<'a> {
     type Item = (u32, u32);
     fn next(&mut self) -> Option<Self::Item> {

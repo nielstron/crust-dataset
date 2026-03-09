@@ -11,11 +11,13 @@ pub enum PgnAnnotation {
     InterestingMove, // !?
     DubiousMove,     // ?!
 }
+
 impl From<i8> for PgnAnnotation {
     fn from(value: i8) -> Self {
         unimplemented!()
     }
 }
+
 impl PgnAnnotation {
     /// Parses a PGN annotation from a string, consuming characters as needed.
     pub fn pgn_annotation_nag_from_string(str: &str, consumed: &mut usize) -> Self {
@@ -26,11 +28,13 @@ impl PgnAnnotation {
         unimplemented!()
     }
 }
+
 impl Display for PgnAnnotation {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
 }
+
 impl From<&str> for PgnAnnotation {
     fn from(s: &str) -> Self {
         unimplemented!()

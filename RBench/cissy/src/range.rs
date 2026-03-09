@@ -6,6 +6,7 @@ pub mod range {
         StartEnd,
         GreaterEqual,
     }
+
     #[derive(Debug, Clone)]
     pub struct RangeElement {
         pub start: u32,
@@ -13,6 +14,7 @@ pub mod range {
         pub rangetype: RangeType,
         pub next: Option<Box<RangeElement>>,
     }
+
     impl RangeElement {
         pub fn new() -> Self {
             unimplemented!();

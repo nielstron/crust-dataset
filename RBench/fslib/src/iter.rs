@@ -7,6 +7,7 @@ pub struct FstIter<'a, T> {
     pub queue: Queue<T>,
     pub state: u32,
 }
+
 impl<'a, T> FstIter<'a, T> {
     pub fn new(fst: &'a Fst) -> Self {
         unimplemented!()

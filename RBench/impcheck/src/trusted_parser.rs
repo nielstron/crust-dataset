@@ -1,10 +1,12 @@
 use std::fs::File;
 use std::io::Write;
 pub struct IntVec;
+
 pub struct TrustedParser {
 f_out: File,
 f: File,
 }
+
 impl TrustedParser {
 pub fn tp_end(&mut self) {
 unimplemented!()

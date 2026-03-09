@@ -8,6 +8,7 @@ pub struct CsvLine {
     pub current_idx: usize,
     pub eol_str: String,
 }
+
 impl CsvLine {
     pub fn new() -> Self {
         unimplemented!();
