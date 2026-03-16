@@ -60,6 +60,17 @@ impl InversionList {
     }
 }
 
+pub struct InversionListIterator<'a> {
+    list: &'a InversionList,
+    interval_index: usize,
+    current_value: u32,
+}
+
+pub struct InversionListCoupleIterator<'a> {
+    list: &'a InversionList,
+    couple_index: usize,
+}
+
 impl PartialEq for InversionList {
     fn eq(&self, other: &Self) -> bool {
         unimplemented!()
@@ -72,17 +83,6 @@ impl fmt::Display for InversionList {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
     }
-}
-
-pub struct InversionListIterator<'a> {
-    list: &'a InversionList,
-    interval_index: usize,
-    current_value: u32,
-}
-
-pub struct InversionListCoupleIterator<'a> {
-    list: &'a InversionList,
-    couple_index: usize,
 }
 
 impl<'a> InversionListIterator<'a> {

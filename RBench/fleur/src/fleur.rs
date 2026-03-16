@@ -17,12 +17,6 @@ pub struct Header {
     pub n_value: u64,
 }
 
-impl fmt::Display for Header {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
-
 impl Header {
     pub fn check(&self) -> bool {
         unimplemented!()
@@ -39,12 +33,6 @@ pub struct BloomFilter {
     pub data: Vec<u8>,
     pub modified: i32,
     pub error: i32,
-}
-
-impl fmt::Display for BloomFilter {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
 }
 
 impl BloomFilter {
@@ -70,4 +58,18 @@ impl BloomFilter {
         unimplemented!()
     }
 }
+
+impl fmt::Display for Header {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+impl fmt::Display for BloomFilter {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+
 

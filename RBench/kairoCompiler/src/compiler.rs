@@ -121,16 +121,6 @@ impl ClonableFile {
     }
 }
 
-impl Clone for ClonableFile {
-    fn clone(&self) -> Self {
-        let file = File::open(&self.path).expect("Failed to reopen file");
-        Self {
-            file,
-            path: self.path.clone(),
-        }
-    }
-}
-
 /// Represents a position in a file (line, column, and filename).
 #[derive(Debug, Default, Clone)]
 pub struct Pos {
@@ -178,6 +168,16 @@ pub struct CompileProcess {
     pub node_vec: Option<Vector>,
     pub node_tree_vec: Option<Vector>,
     pub ofile: Option<ClonableFile>,
+}
+
+impl Clone for ClonableFile {
+    fn clone(&self) -> Self {
+        let file = File::open(&self.path).expect("Failed to reopen file");
+        Self {
+            file,
+            path: self.path.clone(),
+        }
+    }
 }
 
 // Function Declarations

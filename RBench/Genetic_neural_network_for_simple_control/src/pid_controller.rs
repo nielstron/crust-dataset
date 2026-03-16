@@ -1,3 +1,9 @@
+// pid_controller.rs
+
+use crate::signal_designer::Signal;
+
+use std::fs::File;
+
 #[derive(Default)]
 pub struct PID {
     // constants not changed in calculations
@@ -47,9 +53,5 @@ pub fn resetOutputMemoryPid(pid: &mut PID) {
     unimplemented!();
 }
 
-// pid_controller.rs
 
-use crate::signal_designer::Signal;
-
-use std::fs::File;
 

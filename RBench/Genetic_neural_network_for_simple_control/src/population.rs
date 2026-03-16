@@ -1,3 +1,7 @@
+// population.rs
+
+use crate::general_math::createRandomFloat;
+
 #[derive(Default)]
 /// Structure representing the input to create a population.
 pub struct InputPop {
@@ -50,7 +54,5 @@ pub fn placePartOfPop(pop: &mut Pop, source: &Pop, indexes: &[usize; 2]) {
     unimplemented!();
 }
 
-// population.rs
 
-use crate::general_math::createRandomFloat;
 

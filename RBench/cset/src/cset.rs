@@ -1,3 +1,9 @@
+// Import necessary modules
+
+use std::mem;
+
+use std::ptr;
+
 // Type aliases
 pub type XXH64HashT = u64;
 
@@ -206,9 +212,5 @@ impl<T> Cset<T> {
     }
 }
 
-// Import necessary modules
 
-use std::mem;
-
-use std::ptr;
 

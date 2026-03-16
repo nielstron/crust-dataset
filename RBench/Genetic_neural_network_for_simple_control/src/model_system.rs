@@ -1,3 +1,13 @@
+// model_system.rs
+
+use crate::neural_network::{NN, NNInput};
+
+use crate::signal_designer::Signal;
+
+use std::fs::File;
+
+use std::io::Write;
+
 #[derive(Default)]
 /// Represents a neural network-based system with simulation data and signal processing.
 pub struct SystemNN {
@@ -63,13 +73,5 @@ pub fn makeSimulationOfSignalNN<W: Write>(system: &mut SystemNN, writer: &mut W,
     unimplemented!();
 }
 
-// model_system.rs
 
-use crate::neural_network::{NN, NNInput};
-
-use crate::signal_designer::Signal;
-
-use std::fs::File;
-
-use std::io::Write;
 

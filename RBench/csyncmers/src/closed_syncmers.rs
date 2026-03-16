@@ -1,3 +1,7 @@
+// Import necessary modules
+
+use std::collections::HashMap;
+
 // Struct Definitions
 #[derive(Debug, Clone)]
 pub struct MinimizerResult {
@@ -36,7 +40,5 @@ pub fn add_minimizer(
     unimplemented!()
 }
 
-// Import necessary modules
 
-use std::collections::HashMap;
 

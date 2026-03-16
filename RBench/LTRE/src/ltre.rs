@@ -69,12 +69,6 @@ pub struct DState {
     pub bitset: Vec<u8>,
 }
 
-impl std::fmt::Debug for DState {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Clone, Debug)]
 pub struct Dfa {
     pub states: Vec<DState>,
@@ -93,6 +87,12 @@ impl Dfa {
 struct ParseContext<'a> {
     chars: &'a [u8],
     pos: usize,
+}
+
+impl std::fmt::Debug for DState {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
 }
 
 pub fn symset_fmt(set: &SymSet) -> String {

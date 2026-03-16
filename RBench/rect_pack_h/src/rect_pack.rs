@@ -12,17 +12,6 @@ pub struct RectOutInfo {
     pub page: i32,
 }
 
-impl Default for RectOutInfo {
-    fn default() -> Self {
-        Self {
-            x: 0,
-            y: 0,
-            packed: false,
-            page: 0,
-        }
-    }
-}
-
 /// A rectangle to be packed
 #[derive(Debug, Clone)]
 pub struct Rect {
@@ -109,3 +98,16 @@ impl BinNode {
         unimplemented!()
     }
 }
+
+impl Default for RectOutInfo {
+    fn default() -> Self {
+        Self {
+            x: 0,
+            y: 0,
+            packed: false,
+            page: 0,
+        }
+    }
+}
+
+

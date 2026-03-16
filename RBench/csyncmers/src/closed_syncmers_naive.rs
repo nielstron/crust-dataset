@@ -1,3 +1,7 @@
+// Import necessary modules
+
+use crate::closed_syncmers::MinimizerResult;
+
 // Function Declarations
 pub fn compute_closed_syncmers_naive(
     sequence: &str,
@@ -10,7 +14,5 @@ pub fn compute_closed_syncmers_naive(
     unimplemented!()
 }
 
-// Import necessary modules
 
-use crate::closed_syncmers::MinimizerResult;
 

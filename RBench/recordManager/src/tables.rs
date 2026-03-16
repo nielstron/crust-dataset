@@ -8,18 +8,6 @@ pub enum DataType {
     DtBool = 3,
 }
 
-impl fmt::Display for DataType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let name = match self {
-            DataType::DtInt => "0",
-            DataType::DtString => "1",
-            DataType::DtFloat => "2",
-            DataType::DtBool => "3",
-        };
-        write!(f, "{}", name)
-    }
-}
-
 #[derive(Debug, Clone)]
 pub enum ValueUnion {
     IntV(i32),
@@ -61,6 +49,18 @@ pub struct RM_TableData {
     pub name: String,
     pub schema: Schema,
     pub mgmt_data: Option<Box<dyn std::any::Any>>,
+}
+
+impl fmt::Display for DataType {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let name = match self {
+            DataType::DtInt => "0",
+            DataType::DtString => "1",
+            DataType::DtFloat => "2",
+            DataType::DtBool => "3",
+        };
+        write!(f, "{}", name)
+    }
 }
 
 pub fn make_string_value(value: &Value) -> String {

@@ -1,3 +1,7 @@
+// Generated Rust Code
+
+use std::collections::VecDeque;
+
 pub const SZ_MAX: usize = usize::MAX;
 
 // Struct Definitions
@@ -41,7 +45,5 @@ pub fn chtrie_del(trie: &mut Chtrie, from: i32, sym: i32) {
     unimplemented!()
 }
 
-// Generated Rust Code
 
-use std::collections::VecDeque;
 

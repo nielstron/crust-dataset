@@ -1,3 +1,7 @@
+// Importing required modules
+
+use crate::std;
+
 // Constants
 pub const TOTP_EXPORT: &str = "__attribute__((visibility(\"default\")))";
 
@@ -38,7 +42,5 @@ pub fn rotl(x: u32, n: i32) -> u32 {
     unimplemented!()
 }
 
-// Importing required modules
 
-use crate::std;
 

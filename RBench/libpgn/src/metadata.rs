@@ -1,4 +1,6 @@
 use crate::buffer::PgnBuffer;
+use std::collections::HashMap;
+
 const PGN_METADATA_INITIAL_SIZE: usize = 8;
 
 const PGN_METADATA_GROW_SIZE: usize = 8;
@@ -41,5 +43,5 @@ impl PgnMetadata {
     }
 }
 
-use std::collections::HashMap;
+
 

@@ -5,12 +5,6 @@ pub enum DataType {
     Str,
 }
 
-impl fmt::Display for DataType {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug, Clone)]
 pub enum DataValue {
     Int(i64),
@@ -21,12 +15,6 @@ pub enum DataValue {
 pub struct Data {
     pub dtype: DataType,
     pub value: DataValue,
-}
-
-impl fmt::Display for Data {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
 }
 
 impl Data {
@@ -40,3 +28,17 @@ impl Data {
         unimplemented!()
     }
 }
+
+impl fmt::Display for DataType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+impl fmt::Display for Data {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+

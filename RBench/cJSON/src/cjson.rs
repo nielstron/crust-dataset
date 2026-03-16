@@ -56,12 +56,6 @@ impl CJson {
     }
 }
 
-impl fmt::Display for CJson {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug, Clone)]
 pub enum CJsonError {
     UnexpectedEOF { pos: usize },
@@ -74,6 +68,17 @@ pub enum CJsonError {
     ExpectedCommaOrEnd { pos: usize },
 }
 
+struct Parser<'a> {
+    input: &'a str,
+    pos: usize,
+}
+
+impl fmt::Display for CJson {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
 impl fmt::Display for CJsonError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         unimplemented!()
@@ -81,11 +86,6 @@ impl fmt::Display for CJsonError {
 }
 
 impl std::error::Error for CJsonError {}
-
-struct Parser<'a> {
-    input: &'a str,
-    pos: usize,
-}
 
 impl<'a> Parser<'a> {
     fn new(input: &'a str) -> Self {

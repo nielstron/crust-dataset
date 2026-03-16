@@ -55,12 +55,6 @@ pub enum MdbError {
     ValueSizeTooLarge,
 }
 
-impl From<io::Error> for MdbError {
-    fn from(error: io::Error) -> Self {
-        MdbError::Io(error)
-    }
-}
-
 pub type Result<T> = std::result::Result<T, MdbError>;
 
 struct MdbIndex {
@@ -164,7 +158,13 @@ impl Mdb {
     }
 }
 
- // impl Mdb
+ impl From<io::Error> for MdbError {
+    fn from(error: io::Error) -> Self {
+        MdbError::Io(error)
+    }
+}
+
+// impl Mdb
 pub fn mdb_status() -> Result<MdbStatus> {
     unimplemented!()
 }

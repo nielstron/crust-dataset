@@ -13,12 +13,6 @@ pub enum RuntimeError {
     IncorrectType,
 }
 
-impl fmt::Display for RuntimeError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug)]
 pub struct RuntimeResult {
     pub ex: i64,
@@ -35,6 +29,12 @@ pub struct Env<'a> {
     pub halt: bool,
     pub print: bool,
     pub print_from: usize,
+}
+
+impl fmt::Display for RuntimeError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
 }
 
 impl<'a> Env<'a> {

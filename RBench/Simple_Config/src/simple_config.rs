@@ -17,6 +17,42 @@ pub struct CfgColor {
     pub a: u8,
 }
 
+#[derive(Clone, Debug, PartialEq)]
+pub struct CfgError {
+    pub off: i32,
+    pub col: i32,
+    pub row: i32,
+    pub msg: String,
+}
+
+#[derive(Clone, PartialEq, Debug)]
+pub enum CfgVal {
+    String(String),
+    Boolean(bool),
+    Int(i32),
+    Float(f32),
+    Color(CfgColor),
+}
+
+#[derive(Clone, PartialEq, Debug)]
+pub struct CfgEntry {
+    pub key: String,
+    pub val: CfgVal,
+}
+
+#[derive(Clone, PartialEq, Debug)]
+pub struct Cfg {
+    pub entries: Vec<CfgEntry>,
+    pub count: i32,
+    pub capacity: usize,
+}
+
+pub struct Scanner {
+    pub src: String,
+    pub len: i32,
+    pub cur: i32,
+}
+
 impl From<(u8, u8, u8, u8)> for CfgColor {
     fn from((r, g, b, a): (u8, u8, u8, u8)) -> Self {
         CfgColor { r, g, b, a }
@@ -27,14 +63,6 @@ impl Display for CfgColor {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
-}
-
-#[derive(Clone, Debug, PartialEq)]
-pub struct CfgError {
-    pub off: i32,
-    pub col: i32,
-    pub row: i32,
-    pub msg: String,
 }
 
 impl Default for CfgError {
@@ -52,15 +80,6 @@ impl Display for CfgError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
-}
-
-#[derive(Clone, PartialEq, Debug)]
-pub enum CfgVal {
-    String(String),
-    Boolean(bool),
-    Int(i32),
-    Float(f32),
-    Color(CfgColor),
 }
 
 impl From<&str> for CfgVal {
@@ -105,35 +124,16 @@ impl Display for CfgVal {
     }
 }
 
-#[derive(Clone, PartialEq, Debug)]
-pub struct CfgEntry {
-    pub key: String,
-    pub val: CfgVal,
-}
-
 impl Display for CfgEntry {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
 }
 
-#[derive(Clone, PartialEq, Debug)]
-pub struct Cfg {
-    pub entries: Vec<CfgEntry>,
-    pub count: i32,
-    pub capacity: usize,
-}
-
 impl Display for Cfg {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         unimplemented!()
     }
-}
-
-pub struct Scanner {
-    pub src: String,
-    pub len: i32,
-    pub cur: i32,
 }
 
 // Public Functions

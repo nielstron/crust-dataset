@@ -15,12 +15,6 @@ pub enum PsbtResult {
     OobWrite,
 }
 
-impl fmt::Display for PsbtResult {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum PsbtGlobalType {
     UnsignedTx = 0,
@@ -133,6 +127,12 @@ pub const PSBT_MAGIC: [u8; 4] = [0x70, 0x73, 0x62, 0x74];
 
  // "psbt"
 pub static PSBT_ERRMSG: &str = "psbt error";
+
+impl fmt::Display for PsbtResult {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
 
 /// Return the number of bytes stored in the PSBT.
 pub fn psbt_size(tx: &Psbt) -> usize {

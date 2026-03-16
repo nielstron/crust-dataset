@@ -31,12 +31,6 @@ pub enum EmType {
     Debug,
 }
 
-impl fmt::Display for EmType {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug, Clone)]
 pub struct Em {
     pub data: data::Data,
@@ -46,12 +40,6 @@ pub struct Em {
     pub col: usize,
     pub r#ref: usize,
     pub ran: bool,
-}
-
-impl fmt::Display for Em {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        unimplemented!()
-    }
 }
 
 impl Em {
@@ -78,3 +66,17 @@ impl Program {
         unimplemented!()
     }
 }
+
+impl fmt::Display for EmType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+impl fmt::Display for Em {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unimplemented!()
+    }
+}
+
+

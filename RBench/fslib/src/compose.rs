@@ -9,19 +9,23 @@ const ISORT: u32 = 0x2;
 #[derive(Clone, Debug)]
 pub struct FloatSemiring(pub f32);
 
-impl Semiring for FloatSemiring {
-    fn zero() -> Self {
-        unimplemented!()
-    }
-    fn one() -> Self {
-        unimplemented!()
-    }
-    fn plus(&self, rhs: &Self) -> Self {
-        unimplemented!()
-    }
-    fn prod(&self, rhs: &Self) -> Self {
-        unimplemented!()
-    }
+// A pair of states (a,b)
+#[derive(Copy, Clone, Debug, Eq)]
+pub struct StatePair {
+    pub a: usize,
+    pub b: usize,
+}
+
+// The “EPS” label constant
+pub const EPS: u32 = 0;
+
+// A trait to represent your semiring
+
+pub trait Semiring: Clone {
+    fn zero() -> Self;
+    fn one() -> Self;
+    fn plus(&self, rhs: &Self) -> Self;
+    fn prod(&self, rhs: &Self) -> Self;
 }
 
 // Arc representation
@@ -49,11 +53,26 @@ pub struct Fst<W: Semiring> {
     // sr_type, etc. could go here if needed
 }
 
-// A pair of states (a,b)
-#[derive(Copy, Clone, Debug, Eq)]
-pub struct StatePair {
-    pub a: usize,
-    pub b: usize,
+// A pair of arcs matched together
+#[derive(Clone, Debug)]
+pub struct ArcPair<W: Semiring> {
+    pub a: Arc<W>,
+    pub b: Arc<W>,
+}
+
+impl Semiring for FloatSemiring {
+    fn zero() -> Self {
+        unimplemented!()
+    }
+    fn one() -> Self {
+        unimplemented!()
+    }
+    fn plus(&self, rhs: &Self) -> Self {
+        unimplemented!()
+    }
+    fn prod(&self, rhs: &Self) -> Self {
+        unimplemented!()
+    }
 }
 
 // We need to implement PartialEq and Hash for StatePair
@@ -71,16 +90,6 @@ impl Hash for StatePair {
         state.write_usize(self.b);
     }
 }
-
-// A pair of arcs matched together
-#[derive(Clone, Debug)]
-pub struct ArcPair<W: Semiring> {
-    pub a: Arc<W>,
-    pub b: Arc<W>,
-}
-
-// The “EPS” label constant
-pub const EPS: u32 = 0;
 
 impl<W: Semiring> Fst<W> {
     pub fn new() -> Self {
@@ -149,11 +158,4 @@ pub fn fst_compose<W: Semiring>(
     unimplemented!()
 }
 
-// A trait to represent your semiring
 
-pub trait Semiring: Clone {
-    fn zero() -> Self;
-    fn one() -> Self;
-    fn plus(&self, rhs: &Self) -> Self;
-    fn prod(&self, rhs: &Self) -> Self;
-}

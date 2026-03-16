@@ -1,3 +1,7 @@
+// input_toolbox.rs
+
+use crate::model_system::SystemNN;
+
 /// Input preparation for NN type one.
 pub fn typeOne(data: &mut [f32]) {
     unimplemented!();
@@ -23,7 +27,5 @@ pub fn selectInputNNFunction(func_ptr: &mut Option<fn(&mut [f32])>, system_nn: &
     unimplemented!();
 }
 
-// input_toolbox.rs
 
-use crate::model_system::SystemNN;
 

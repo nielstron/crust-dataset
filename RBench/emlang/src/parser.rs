@@ -14,12 +14,6 @@ pub enum ParserError {
     ExpectedEnd,
 }
 
-impl fmt::Display for ParserError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        unimplemented!()
-    }
-}
-
 #[derive(Debug)]
 pub struct ParserResult {
     pub path: String,
@@ -71,3 +65,11 @@ impl Parser {
         unimplemented!()
     }
 }
+
+impl fmt::Display for ParserError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        unimplemented!()
+    }
+}
+
+

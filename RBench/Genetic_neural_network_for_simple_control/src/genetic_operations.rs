@@ -1,3 +1,11 @@
+// genetic_operations.rs
+
+use crate::general_math::createRandomFloat;
+
+use crate::population::{InputPop, Pop};
+
+use crate::sort::quickSort;
+
 /// Creates a new input population structure from a given population.
 /// Used internally by other selection functions.
 fn create_input_pop_custom(input_pop: &mut InputPop, rows: i32, population: &Pop) {
@@ -29,11 +37,5 @@ pub fn mutx(population: &mut Pop, chance: f32) {
     unimplemented!();
 }
 
-// genetic_operations.rs
 
-use crate::general_math::createRandomFloat;
-
-use crate::population::{InputPop, Pop};
-
-use crate::sort::quickSort;
 

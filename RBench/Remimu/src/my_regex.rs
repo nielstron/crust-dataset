@@ -62,12 +62,6 @@ impl RegexToken {
     }
 }
 
-impl Default for RegexToken {
-    fn default() -> Self {
-        Self::new(REMIMU_KIND_NORMAL, 0)
-    }
-}
-
 pub struct RegexMatcherState {
     pub k: u32,
     pub group_state: u32,
@@ -98,6 +92,12 @@ enum State {
     CharClassInit,
     CharClassNormal,
     CharClassRange,
+}
+
+impl Default for RegexToken {
+    fn default() -> Self {
+        Self::new(REMIMU_KIND_NORMAL, 0)
+    }
 }
 
 pub fn regex_parse(

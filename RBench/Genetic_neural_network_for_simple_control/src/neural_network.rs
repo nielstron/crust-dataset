@@ -1,3 +1,9 @@
+// neural_network.rs
+
+use crate::matrix_math::Matrix;
+
+use crate::population::Pop;
+
 #[derive(Default)]
 /// Structure representing the neural network definition.
 pub struct NN {
@@ -62,9 +68,5 @@ pub fn oneCalculation(neural_network: &mut NN, input: &mut Matrix, output: &mut 
     unimplemented!();
 }
 
-// neural_network.rs
 
-use crate::matrix_math::Matrix;
-
-use crate::population::Pop;
 

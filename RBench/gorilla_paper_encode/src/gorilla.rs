@@ -42,6 +42,27 @@ pub struct BitWriter {
     pub bit_count: U8,
 }
 
+impl BitWriter {
+    pub fn bitwriter_init(&mut self) -> i32 {
+        unimplemented!()
+    }
+    pub fn append_to_cache(&mut self) -> i32 {
+        unimplemented!()
+    }
+    pub fn write_bit(&mut self, bit: bool) -> i32 {
+        unimplemented!()
+    }
+    pub fn write_byte(&mut self, b: U8) -> i32 {
+        unimplemented!()
+    }
+    pub fn write_bits(&mut self, u: U64, nbits: i32) -> i32 {
+        unimplemented!()
+    }
+    pub fn write_flush(&mut self, bit: bool) -> i32 {
+        unimplemented!()
+    }
+}
+
 pub struct FloatEncoder {
     pub w: BitWriter,
     pub val: U64,
@@ -62,27 +83,6 @@ impl FloatEncoder {
         unimplemented!()
     }
     pub fn float_encode_write(&mut self, v: F64) -> i32 {
-        unimplemented!()
-    }
-}
-
-impl BitWriter {
-    pub fn bitwriter_init(&mut self) -> i32 {
-        unimplemented!()
-    }
-    pub fn append_to_cache(&mut self) -> i32 {
-        unimplemented!()
-    }
-    pub fn write_bit(&mut self, bit: bool) -> i32 {
-        unimplemented!()
-    }
-    pub fn write_byte(&mut self, b: U8) -> i32 {
-        unimplemented!()
-    }
-    pub fn write_bits(&mut self, u: U64, nbits: i32) -> i32 {
-        unimplemented!()
-    }
-    pub fn write_flush(&mut self, bit: bool) -> i32 {
         unimplemented!()
     }
 }
