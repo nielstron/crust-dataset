@@ -55,6 +55,11 @@ pub enum HamtNode<'a, T, U> {
     Sub(SubNode<'a, T, U>),
 }
 
+pub struct SubNode<'a, T, U> {
+    pub bitmap: u32,
+    pub children: Option<Box<HamtNode<'a, T, U>>>,
+}
+
 impl<T, U> HamtNode<'_, T, U> {
     pub fn get_children_pointer(&mut self) -> Self {
         unimplemented!()
@@ -105,10 +110,6 @@ impl<T, U> HamtNode<'_, T, U> {
     }
 }
 
-pub struct SubNode<'a, T, U> {
-    pub bitmap: u32,
-    pub children: Option<Box<HamtNode<'a, T, U>>>,
-}
 
 pub struct Hamt<'a, T, U> {
     pub root: Option<Box<HamtNode<'a, T, U>>>,
