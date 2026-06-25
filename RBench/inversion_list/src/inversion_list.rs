@@ -12,54 +12,6 @@ pub struct InversionList {
     pub intervals: Vec<(u32, u32)>,
 }
 
-impl InversionList {
-    pub fn new(capacity: u32, values: &[u32]) -> Result<Self, InversionListError> {
-        unimplemented!()
-    }
-    pub fn capacity(&self) -> u32 {
-        unimplemented!()
-    }
-    pub fn support(&self) -> u32 {
-        unimplemented!()
-    }
-    pub fn contains(&self, value: u32) -> bool {
-        unimplemented!()
-    }
-    pub fn clone_list(&self) -> Self {
-        unimplemented!()
-    }
-    pub fn complement(&self) -> Self {
-        unimplemented!()
-    }
-    pub fn to_str(&self) -> String {
-        unimplemented!()
-    }
-    pub fn equal(&self, other: &Self) -> bool {
-        unimplemented!()
-    }
-    pub fn is_strict_subset_of(&self, other: &Self) -> bool {
-        unimplemented!()
-    }
-    pub fn is_subset_of(&self, other: &Self) -> bool {
-        unimplemented!()
-    }
-    pub fn is_disjoint(&self, other: &Self) -> bool {
-        unimplemented!()
-    }
-    pub fn union(&self, other: &Self) -> Self {
-        unimplemented!()
-    }
-    pub fn intersection(&self, other: &Self) -> Self {
-        unimplemented!()
-    }
-    pub fn difference(&self, other: &Self) -> Self {
-        unimplemented!()
-    }
-    pub fn symmetric_difference(&self, other: &Self) -> Self {
-        unimplemented!()
-    }
-}
-
 pub struct InversionListIterator<'a> {
     list: &'a InversionList,
     interval_index: usize,
@@ -110,3 +62,52 @@ impl<'a> Iterator for InversionListCoupleIterator<'a> {
         unimplemented!()
     }
 }
+
+impl InversionList {
+    pub fn new(capacity: u32, values: &[u32]) -> Result<Self, InversionListError> {
+        unimplemented!()
+    }
+    pub fn capacity(&self) -> u32 {
+        unimplemented!()
+    }
+    pub fn support(&self) -> u32 {
+        unimplemented!()
+    }
+    pub fn contains(&self, value: u32) -> bool {
+        unimplemented!()
+    }
+    pub fn clone_list(&self) -> Self {
+        unimplemented!()
+    }
+    pub fn complement(&self) -> Self {
+        unimplemented!()
+    }
+    pub fn to_str(&self) -> String {
+        unimplemented!()
+    }
+    pub fn equal(&self, other: &Self) -> bool {
+        unimplemented!()
+    }
+    pub fn is_strict_subset_of(&self, other: &Self) -> bool {
+        unimplemented!()
+    }
+    pub fn is_subset_of(&self, other: &Self) -> bool {
+        unimplemented!()
+    }
+    pub fn is_disjoint(&self, other: &Self) -> bool {
+        unimplemented!()
+    }
+    pub fn union(&self, other: &Self) -> Self {
+        unimplemented!()
+    }
+    pub fn intersection(&self, other: &Self) -> Self {
+        unimplemented!()
+    }
+    pub fn difference(&self, other: &Self) -> Self {
+        unimplemented!()
+    }
+    pub fn symmetric_difference(&self, other: &Self) -> Self {
+        unimplemented!()
+    }
+}
+
