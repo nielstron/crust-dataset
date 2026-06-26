@@ -27,3 +27,5 @@ pub mod sr;
 pub mod symt;
 
 pub mod trim;
+
+pub mod compose;

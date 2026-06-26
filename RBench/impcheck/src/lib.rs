@@ -7,3 +7,13 @@ pub mod trusted_utils;
 pub mod vec;
 
 pub mod writer;
+
+pub mod confirm;
+pub mod lrat_check;
+pub mod main_check;
+pub mod main_confirm;
+pub mod main_parse;
+pub mod siphash;
+pub mod top_check;
+pub mod trusted_checker;
+pub mod trusted_parser;
