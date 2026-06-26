@@ -6,4 +6,6 @@ pub mod compactsize;
 
 pub mod psbt;
 
+pub mod result;
+
 pub mod tx;

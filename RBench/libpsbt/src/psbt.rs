@@ -1,19 +1,7 @@
+pub use crate::result::PsbtResult;
 use crate::tx::*;
-use std::fmt;
 // Common constant from common.h
 pub const MAX_SERIALIZE_SIZE: u32 = 0x02000000;
-
-// --- Enum definitions ---
-#[derive(Debug, PartialEq, Eq)]
-pub enum PsbtResult {
-    Ok,
-    CompactReadError,
-    ReadError,
-    WriteError,
-    InvalidState,
-    NotImplemented,
-    OobWrite,
-}
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum PsbtGlobalType {
@@ -127,12 +115,6 @@ pub const PSBT_MAGIC: [u8; 4] = [0x70, 0x73, 0x62, 0x74];
 
  // "psbt"
 pub static PSBT_ERRMSG: &str = "psbt error";
-
-impl fmt::Display for PsbtResult {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
 
 /// Return the number of bytes stored in the PSBT.
 pub fn psbt_size(tx: &Psbt) -> usize {
